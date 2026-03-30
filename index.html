@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Récap Partenaires 2026 — This Is It Event | Interface Premium</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        noir: '#0A0A0A',
+                        blanc: '#F5F2EC',
+                        rouge: '#E8281E',
+                        or: '#C9A84C',
+                        gris: '#1A1A1A',
+                        'gris-mid': '#2E2E2E',
+                        'gris-light': '#888',
+                        'vert-proof': '#2D7D46',
+                        'glass-dark': 'rgba(15, 23, 42, 0.8)',
+                        'glass-light': 'rgba(255, 255, 255, 0.1)'
+                    },
+                    fontFamily: {
+                        'bebas': ['Bebas Neue', 'sans-serif'],
+                        'dm-sans': ['DM Sans', 'sans-serif'],
+                        'dm-mono': ['DM Mono', 'monospace'],
+                        'geist': ['Geist', 'system-ui', 'sans-serif']
+                    },
+                    backdropBlur: {
+                        'xs': '2px',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'slide-down': 'slideDown 0.6s ease-out',
+                        'slide-left': 'slideLeft 0.6s ease-out',
+                        'slide-right': 'slideRight 0.6s ease-out',
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                        'count-up': 'countUp 2s ease-out forwards'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideLeft: {
+                            '0%': { transform: 'translateX(20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        slideRight: {
+                            '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(232, 40, 30, 0.3)' },
+                            '50%': { boxShadow: '0 0 40px rgba(232, 40, 30, 0.6)' }
+                        },
+                        countUp: {
+                            '0%': { content: '"0"' },
+                            '100%': { content: 'attr(data-target)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #f1f5f9; overflow-x: hidden; }
+        .glass-card { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; }
+        .glass-card-light { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; }
+        .gradient-text { background: linear-gradient(90deg, #E8281E 0%, #C9A84C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .progress-bar { height: 4px; background: linear-gradient(90deg, #E8281E 0%, #C9A84C 100%); position: fixed; top: 0; left: 0; z-index: 9999; }
+        .counter { font-variant-numeric: tabular-nums; }
+        .nav-active { background: rgba(232, 40, 30, 0.2); border-left: 3px solid #E8281E; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.5); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #E8281E 0%, #C9A84C 100%); border-radius: 4px; }
+        .section-spacing { padding-top: 6rem; padding-bottom: 6rem; }
+        @media (max-width: 768px) { .section-spacing { padding-top: 4rem; padding-bottom: 4rem; } }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100">
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card py-4 px-6 backdrop-blur-md border-b border-white/10">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-rouge rounded-full flex items-center justify-center">
+                    <span class="text-white font-bebas text-sm">TII</span>
+                </div>
+                <span class="font-bebas text-xl text-white">THIS IS IT EVENT</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#cover" class="text-slate-300 hover:text-white transition-colors">Accueil</a>
+                <a href="#chiffres" class="text-slate-300 hover:text-white transition-colors">Chiffres</a>
+                <a href="#impact" class="text-slate-300 hover:text-white transition-colors">Impact</a>
+                <a href="#digital" class="text-slate-300 hover:text-white transition-colors">Digital</a>
+                <a href="#livraison" class="text-slate-300 hover:text-white transition-colors">Livraison</a>
+                <a href="#local" class="text-slate-300 hover:text-white transition-colors">Local</a>
+                <a href="#scene" class="text-slate-300 hover:text-white transition-colors">Scénographie</a>
+                <a href="#cta" class="bg-rouge text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">2027</a>
+            </div>
+            
+            <button id="mobileMenuButton" class="md:hidden text-slate-300">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <div id="mobileMenu" class="md:hidden absolute top-full left-0 right-0 glass-card border-t border-white/10 hidden">
+            <div class="flex flex-col space-y-4 p-6">
+                <a href="#cover" class="text-slate-300 hover:text-white py-2">Accueil</a>
+                <a href="#chiffres" class="text-slate-300 hover:text-white py-2">Chiffres</a>
+                <a href="#impact" class="text-slate-300 hover:text-white py-2">Impact</a>
+                <a href="#digital" class="text-slate-300 hover:text-white py-2">Digital</a>
+                <a href="#livraison" class="text-slate-300 hover:text-white py-2">Livraison</a>
+                <a href="#local" class="text-slate-300 hover:text-white py-2">Local</a>
+                <a href="#scene" class="text-slate-300 hover:text-white py-2">Scénographie</a>
+                <a href="#cta" class="bg-rouge text-white px-4 py-2 rounded-lg hover:bg-red-700 text-center">2027</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="pt-20">
+        <!-- Section 1: Cover -->
+        <section id="cover" class="min-h-screen flex items-center justify-center relative overflow-hidden py-20">
+            <div class="absolute inset-0 bg-gradient-to-br from-noir via-gris to-gris-mid opacity-90"></div>
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3')] bg-cover bg-center opacity-20"></div>
+            
+            <div class="container mx-auto px-4 relative z-10" data-aos="fade-up">
+                <div class="glass-card p-8 md:p-12 max-w-6xl mx-auto">
+                    <div class="mb-8">
+                        <span class="font-dm-mono text-sm tracking-widest text-or uppercase">THIS IS IT EVENT — ASSOCIATION LOI 1901</span>
+                    </div>
+                    
+                    <h1 class="font-bebas text-5xl md:text-8xl lg:text-9xl text-white leading-tight mb-6">
+                        RÉCAP<br>
+                        <span class="gradient-text">PARTENAIRES</span>
+                        <div class="text-4xl md:text-6xl text-or tracking-widest mt-4">2026</div>
+                    </h1>
+                    
+                    <div class="mt-12 pt-8 border-t border-white/20">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <p class="text-slate-300 font-medium mb-2"><span class="text-white font-bold">Enjoylife Ed.3</span> — Vendredi 20 Février 2026</p>
+                                <p class="text-slate-300 font-medium mb-2"><span class="text-white font-bold">La Nuit des Amateurs Ed.2</span> — Samedi 21 Février 2026</p>
+                                <p class="text-slate-300 font-medium">Centre Innovance · Villieu-Loyes-Mollon (01)</p>
+                            </div>
+                            <div class="md:text-right">
+                                <p class="text-or font-bold text-lg md:text-xl">DOUBLE SOLD OUT · 1 500 SPECTATEURS · 30 PARTENAIRES</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12 flex justify-center">
+                        <a href="#chiffres" class="bg-rouge text-white px-8 py-4 rounded-lg hover:bg-red-700 transition-all transform hover:scale-105 font-medium text-lg flex items-center space-x-2">
+                            <span>Découvrir les résultats</span>
+                            <i class="fas fa-arrow-down"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-rouge via-or to-vert-proof"></div>
+        </section>
+        
+        <!-- Section 2: Chiffres Clés -->
+        <section id="chiffres" class="py-20 section-spacing">
+            <div class="container mx-auto px-4">
+                <div class="mb-12 text-center" data-aos="fade-up">
+                    <div class="inline-block font-dm-mono text-sm tracking-widest text-rouge uppercase mb-4">01</div>
+                    <h2 class="font-bebas text-4xl md:text-6xl text-white mb-4">Les chiffres qui parlent d'eux-mêmes</h2>
+                    <p class="text-slate-400 max-w-3xl mx-auto">Week-end complet · Centre Innovance · Villieu-Loyes-Mollon</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="glass-card p-6 relative" data-aos="fade-up" data-aos-delay="100">
+                        <div class="absolute top-4 right-4 bg-rouge text-white text-xs font-dm-mono px-3 py-1 rounded-full">SOLD OUT</div>
+                        <div class="font-dm-mono text-xs tracking-widest text-slate-400 uppercase mb-4">Spectateurs</div>
+                        <div class="font-bebas text-5xl md:text-6xl text-rouge mb-4 counter" id="counter1">0</div>
+                        <p class="text-slate-400 text-sm">Week-end complet<br>Les deux soirs à guichets fermés</p>
+                    </div>
+                    
+                    <div class="glass-card p-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="font-dm-mono text-xs tracking-widest text-slate-400 uppercase mb-4">Personnes touchées</div>
+                        <div class="font-bebas text-5xl md:text-6xl text-or mb-4 counter" id="counter2">0</div>
+                        <p class="text-slate-400 text-sm">Audience unique Facebook & Instagram<br>1,67 M d'impressions publicitaires</p>
+                    </div>
+                    
+                    <div class="glass-card p-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="font-dm-mono text-xs tracking-widest text-slate-400 uppercase mb-4">Budget de production</div>
+                        <div class="font-bebas text-5xl md:text-6xl text-white mb-4 counter" id="counter3">0</div>
+                        <p class="text-slate-400 text-sm">Budget équilibré · Zéro dette<br>Gestion rigoureuse certifiée</p>
+                    </div>
+                    
+                    <div class="glass-card p-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="font-dm-mono text-xs tracking-widest text-slate-400 uppercase mb-4">Incidents · Dettes</div>
+                        <div class="font-bebas text-5xl md:text-6xl text-vert-proof mb-4">ZÉRO</div>
+                        <p class="text-slate-400 text-sm">100% festif · Sécurisé<br>Moyenne d'âge : 36 ans</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="glass-card p-6" data-aos="fade-up" data-aos-delay="500">
+                        <div class="font-dm-mono text-xs tracking-widest text-slate-400 uppercase mb-4">Partenaires</div>
+                        <div class="font-bebas text-5xl md:text-6xl text-white mb-4 counter" id="counter4">0</div>
+                        <p class="text-slate-400 text-sm">Sponsors & mécènes<br>3 niveaux d'engagement</p>
+                    </div>
+                    
+                    <div class="glass-card p-6" data-aos="fade-up" data-aos-delay="600">
+                        <div class="font-dm-mono text-xs tracking-widest text-slate-400 uppercase mb-4">Visites web + billetterie</div>
+                        <div class="font-bebas text-5xl md:text-6xl text-white mb-4 counter" id="counter5">0</div>
+                        <p class="text-slate-400 text-sm">Site officiel + Shotgun<br>durant la campagne</p>
+                    </div>
+                    
+                    <div class="glass-card p-6" data-aos="fade-up" data-aos-delay="700">
+                        <div class="font-dm-mono text-xs tracking-widest text-slate-400 uppercase mb-4">Publications réseaux</div>
+                        <div class="font-bebas text-5xl md:text-6xl text-white mb-4 counter" id="counter6">0</div>
+                        <p class="text-slate-400 text-sm">Sur 9 mois de campagne<br>Instagram & Facebook</p>
+                    </div>
+                    
+                    <div class="glass-card p-6" data-aos="fade-up" data-aos-delay="800">
+                        <div class="font-dm-mono text-xs tracking-widest text-slate-400 uppercase mb-4">Renouvellement 2027</div>
+                        <div class="font-bebas text-5xl md:text-6xl text-vert-proof mb-4">100%</div>
+                        <p class="text-slate-400 text-sm">Des partenaires recroisés<br>ont confirmé leur retour</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 3: Impact Global -->
+        <section id="impact" class="py-20 bg-gradient-to-b from-slate-900 to-slate-950 section-spacing">
+            <div class="container mx-auto px-4">
+                <div class="mb-12 text-center" data-aos="fade-up">
+                    <div class="inline-block font-dm-mono text-sm tracking-widest text-rouge uppercase mb-4">02</div>
+                    <h2 class="font-bebas text-4xl md:text-6xl text-white mb-4">Un succès qui dépasse les frontières</h2>
+                    <p class="text-slate-400 max-w-3xl mx-auto">Rayonnement territorial · Santé associative · Impact local</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="glass-card p-8" data-aos="fade-right">
+                        <div class="font-dm-mono text-xs tracking-widest text-rouge uppercase mb-6">Fréquentation & Rayonnement</div>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-rouge text-xl mt-1">▸</div>
+                                <div>
+                                    <p class="text-white font-medium">1 500 spectateurs réunis sur le week-end</p>
+                                    <p class="text-slate-400 text-sm mt-1">Double Sold Out les deux soirs</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="text-rouge text-xl mt-1">▸</div>
+                                <div>
+                                    <p class="text-white font-medium">Enjoylife : guichets fermés 24h avant l'ouverture</p>
+                                    <p class="text-slate-400 text-sm mt-1">+ 200 personnes en liste d'attente</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="text-rouge text-xl mt-1">▸</div>
+                                <div>
+                                    <p class="text-white font-medium">La Nuit des Amateurs : complet dès 20h00</p>
+                                    <p class="text-slate-400 text-sm mt-1">Au lancement du show</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="text-rouge text-xl mt-1">▸</div>
+                                <div>
+                                    <p class="text-white font-medium">90% du public issu de la Plaine de l'Ain</p>
+                                    <p class="text-slate-400 text-sm mt-1">Votre clientèle naturelle</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 pt-6 border-t border-white/20">
+                            <div class="font-dm-mono text-xs tracking-widest text-or uppercase mb-4">Santé associative</div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="glass-card-light p-4">
+                                    <div class="text-vert-proof font-bold text-lg">31K€</div>
+                                    <p class="text-slate-400 text-sm">Budget de production · Zéro dette</p>
+                                </div>
+                                <div class="glass-card-light p-4">
+                                    <div class="text-or font-bold text-lg">95%</div>
+                                    <p class="text-slate-400 text-sm">Prestataires locaux dans l'Ain</p>
+                                </div>
+                                <div class="glass-card-light p-4">
+                                    <div class="text-white font-bold text-lg">80</div>
+                                    <p class="text-slate-400 text-sm">Bénévoles mobilisés avec T-shirts logotés</p>
+                                </div>
+                                <div class="glass-card-light p-4">
+                                    <div class="text-vert-proof font-bold text-lg">100%</div>
+                                    <p class="text-slate-400 text-sm">Reconduction des partenaires recroisés</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-8" data-aos="fade-left">
+                        <div class="font-dm-mono text-xs tracking-widest text-or uppercase mb-6">Impact économique local</div>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                                <span class="text-slate-300">Subvention CCPA</span>
+                                <span class="font-bebas text-xl text-rouge">3 500 €</span>
+                            </div>
+                            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                                <span class="text-slate-300">Subvention Ville d'accueil VLM</span>
+                                <span class="font-bebas text-xl text-rouge">1 517 €</span>
+                            </div>
+                            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                                <span class="text-slate-300">Prestataires locaux</span>
+                                <span class="font-bebas text-xl text-or">95%</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-300">Communes touchées</span>
+                                <span class="font-bebas text-xl text-white">13</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 p-6 bg-gradient-to-r from-rouge/10 to-or/10 border border-or/20 rounded-lg">
+                            <p class="text-white italic">"Tout ce qui était contractualisé a été livré. Sans exception. Et nous avons fait encore plus."</p>
+                            <p class="text-or font-medium mt-2">This Is It Event — Bilan Partenaires 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 4: Performance Digitale -->
+        <section id="digital" class="py-20 section-spacing">
+            <div class="container mx-auto px-4">
+                <div class="mb-12 text-center" data-aos="fade-up">
+                    <div class="inline-block font-dm-mono text-sm tracking-widest text-rouge uppercase mb-4">03</div>
+                    <h2 class="font-bebas text-4xl md:text-6xl text-white mb-4">Votre marque, partout pendant 9 mois</h2>
+                    <p class="text-slate-400 max-w-3xl mx-auto">Présence digitale intensive · Juillet 2025 → Mars 2026</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="glass-card p-8" data-aos="fade-right">
+                        <div class="font-dm-mono text-xs tracking-widest text-rouge uppercase mb-6">Volume organique</div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                                <span class="text-slate-300">Publications cumulées</span>
+                                <span class="font-bebas text-xl text-white">408</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                                <span class="text-slate-300">Points de contact / partenaire</span>
+                                <span class="font-bebas text-xl text-white">8</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                                <span class="text-slate-300">Publications avec slide partenaire</span>
+                                <span class="font-bebas text-xl text-white">144</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-300">Repartages stories partenaires</span>
+                                <span class="font-bebas text-xl text-white">120</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <div class="font-dm-mono text-xs tracking-widest text-or uppercase mb-4">Relais médias</div>
+                            <div class="grid grid-cols-3 gap-3">
+                                <div class="glass-card-light p-4 text-center">
+                                    <span class="text-slate-300 font-medium">NRJ</span>
+                                </div>
+                                <div class="glass-card-light p-4 text-center">
+                                    <span class="text-slate-300 font-medium">Le Progrès</span>
+                                </div>
+                                <div class="glass-card-light p-4 text-center">
+                                    <span class="text-slate-300 font-medium">BEB Media</span>
+                                </div>
+                                <div class="glass-card-light p-4 text-center">
+                                    <span class="text-slate-300 font-medium">La Cotière</span>
+                                </div>
+                                <div class="glass-card-light p-4 text-center">
+                                    <span class="text-slate-300 font-medium">Voix de l'Ain</span>
+                                </div>
+                                <div class="glass-card-light p-4 text-center">
+                                    <span class="text-slate-300 font-medium">Ciné Festival</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-8" data-aos="fade-left">
+                        <div class="font-dm-mono text-xs tracking-widest text-or uppercase mb-6">Performance publicitaire</div>
+                        
+                        <div class="mb-6">
+                            <div class="font-bebas text-3xl text-white mb-2">Meta Ads · 3 222€ investis</div>
+                            <p class="text-slate-400 text-sm">Campagnes : sept. 2025 → fév. 2026 · Facebook & Instagram</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-300">Impressions publicitaires</span>
+                                <span class="font-bebas text-xl text-or">1 670 000</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-300">Personnes uniques touchées</span>
+                                <span class="font-bebas text-xl text-or">334 700</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-300">Clics vers la billetterie</span>
+                                <span class="font-bebas text-xl text-white">7 889</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-300">Billets vendus via ads</span>
+                                <span class="font-bebas text-xl text-white">148</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-300">CPM (coût / 1 000 pers.)</span>
+                                <span class="font-bebas text-xl text-vert-proof">1,92 €</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-300">Coût moyen par clic</span>
+                                <span class="font-bebas text-xl text-vert-proof">0,41 €</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 p-6 bg-gradient-to-r from-vert-proof/10 to-or/10 border border-vert-proof/20 rounded-lg">
+                            <p class="text-white text-sm">Un CPM à <span class="text-vert-proof font-bold">1,92€</span> et un CPC à <span class="text-vert-proof font-bold">0,41€</span> — bien en dessous des benchmarks marché. Chaque euro investi en communication a généré une visibilité maximale pour vos marques.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 5: Livraison 100% -->
+        <section id="livraison" class="py-20 bg-gradient-to-b from-slate-900 to-slate-950 section-spacing">
+            <div class="container mx-auto px-4">
+                <div class="mb-12 text-center" data-aos="fade-up">
+                    <div class="inline-block font-dm-mono text-sm tracking-widest text-rouge uppercase mb-4">04</div>
+                    <h2 class="font-bebas text-4xl md:text-6xl text-white mb-4">TOUT LIVRÉ. <span class="text-vert-proof">SANS EXCEPTION.</span></h2>
+                    <p class="text-slate-400 max-w-3xl mx-auto">15 supports contractualisés · 6 livrables bonus offerts · 0 manquant</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="glass-card p-8" data-aos="fade-right">
+                        <div class="font-dm-mono text-xs tracking-widest text-rouge uppercase mb-6">✅ Supports contractuels</div>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-slate-300">Réseaux sociaux (130K abonnés)</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-slate-300">15 000 affiches et flyers</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-slate-300">Signalétique d'entrée</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-slate-300">Toiles partenaires (5 totems)</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-slate-300">Salle principale (écrans géants)</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-slate-300">Signalétique intérieure (40 supports)</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-slate-300">Photocall</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-slate-300">Trophée La Nuit des Amateurs</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-slate-300">Pancartes de vote (600 unités)</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-slate-300">Brochures partenaires (600 unités)</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-slate-300">Invitations balcon VIP (2 à 6 places)</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-slate-300">2 sites officiels</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-slate-300">Invitations grand public</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-slate-300">Éco-cups logotés</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-slate-300">Stand hall d'accueil</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-8" data-aos="fade-left">
+                        <div class="font-dm-mono text-xs tracking-widest text-or uppercase mb-6">⭐ Bonus non contractuels</div>
+                        <p class="text-slate-400 text-sm mb-6">Ces livrables n'étaient pas dans votre contrat. Nous les avons ajoutés car vous le méritez.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3 p-4 bg-gradient-to-r from-or/10 to-rouge/10 border border-or/20 rounded-lg">
+                                <div class="w-8 h-8 bg-or rounded-full flex items-center justify-center">
+                                    <span class="text-black font-bold text-xs">+</span>
+                                </div>
+                                <span class="text-slate-300">Affiche abribus McDonald's Drive — 40 000 clients/mois</span>
+                            </div>
+                            <div class="flex items-center space-x-3 p-4 bg-gradient-to-r from-or/10 to-rouge/10 border border-or/20 rounded-lg">
+                                <div class="w-8 h-8 bg-or rounded-full flex items-center justify-center">
+                                    <span class="text-black font-bold text-xs">+</span>
+                                </div>
+                                <span class="text-slate-300">Écran Cinéma l'Horloge de Meximieux</span>
+                            </div>
+                            <div class="flex items-center space-x-3 p-4 bg-gradient-to-r from-or/10 to-rouge/10 border border-or/20 rounded-lg">
+                                <div class="w-8 h-8 bg-or rounded-full flex items-center justify-center">
+                                    <span class="text-black font-bold text-xs">+</span>
+                                </div>
+                                <span class="text-slate-300">Visuel dans les reportages médias (La Cotière, NRJ...)</span>
+                            </div>
+                            <div class="flex items-center space-x-3 p-4 bg-gradient-to-r from-or/10 to-rouge/10 border border-or/20 rounded-lg">
+                                <div class="w-8 h-8 bg-or rounded-full flex items-center justify-center">
+                                    <span class="text-black font-bold text-xs">+</span>
+                                </div>
+                                <span class="text-slate-300">Bracelets d'accès logotés Partenaires Majeurs (500 unités)</span>
+                            </div>
+                            <div class="flex items-center space-x-3 p-4 bg-gradient-to-r from-or/10 to-rouge/10 border border-or/20 rounded-lg">
+                                <div class="w-8 h-8 bg-or rounded-full flex items-center justify-center">
+                                    <span class="text-black font-bold text-xs">+</span>
+                                </div>
+                                <span class="text-slate-300">Bâche individuelle accrochée dans la salle</span>
+                            </div>
+                            <div class="flex items-center space-x-3 p-4 bg-gradient-to-r from-or/10 to-rouge/10 border border-or/20 rounded-lg">
+                                <div class="w-8 h-8 bg-or rounded-full flex items-center justify-center">
+                                    <span class="text-black font-bold text-xs">+</span>
+                                </div>
+                                <span class="text-slate-300">Remerciements nominatifs sur scène devant 750 spectateurs</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 p-6 bg-gradient-to-r from-vert-proof/10 to-or/10 border border-vert-proof/20 rounded-lg">
+                            <p class="text-white text-sm">Vous avez reçu <span class="text-vert-proof font-bold">21 livrables</span> pour le prix de <span class="text-or font-bold">15</span>. C'est notre façon de dire merci pour votre confiance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 6: Impact Local -->
+        <section id="local" class="py-20 section-spacing">
+            <div class="container mx-auto px-4">
+                <div class="mb-12 text-center" data-aos="fade-up">
+                    <div class="inline-block font-dm-mono text-sm tracking-widest text-rouge uppercase mb-4">05</div>
+                    <h2 class="font-bebas text-4xl md:text-6xl text-white mb-4">Votre investissement reste dans l'Ain</h2>
+                    <p class="text-slate-400 max-w-3xl mx-auto">Économie circulaire locale · RSE · Ancrage territorial</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="glass-card p-8" data-aos="fade-right">
+                        <div class="font-dm-mono text-xs tracking-widest text-rouge uppercase mb-6">Affichage physique — portée directe</div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                                <div>
+                                    <p class="text-white font-medium">Abribus Drive McDonald's</p>
+                                    <p class="text-slate-400 text-sm">Affiche A0 + affiche intérieure</p>
+                                </div>
+                                <span class="font-bebas text-xl text-rouge">40K/mois</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                                <div>
+                                    <p class="text-white font-medium">Cinéma l'Horloge</p>
+                                    <p class="text-slate-400 text-sm">Écran avant séance</p>
+                                </div>
+                                <span class="font-bebas text-xl text-or">1 mois</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                                <div>
+                                    <p class="text-white font-medium">Flyers A4</p>
+                                    <p class="text-slate-400 text-sm">15 000 boîtes aux lettres</p>
+                                </div>
+                                <span class="font-bebas text-xl text-white">15K</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <p class="text-white font-medium">Affiches A3</p>
+                                    <p class="text-slate-400 text-sm">Vitrines commerçants locaux</p>
+                                </div>
+                                <span class="font-bebas text-xl text-white">300</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <div class="font-dm-mono text-xs tracking-widest text-or uppercase mb-6">Économie circulaire locale</div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="glass-card-light p-4 text-center">
+                                    <div class="font-bebas text-3xl text-rouge">95%</div>
+                                    <p class="text-slate-400 text-sm mt-2">Prestataires locaux dans l'Ain</p>
+                                </div>
+                                <div class="glass-card-light p-4 text-center">
+                                    <div class="font-bebas text-3xl text-or">80</div>
+                                    <p class="text-slate-400 text-sm mt-2">Bénévoles mobilisés</p>
+                                </div>
+                                <div class="glass-card-light p-4 text-center">
+                                    <div class="font-bebas text-3xl text-white">13</div>
+                                    <p class="text-slate-400 text-sm mt-2">Communes touchées</p>
+                                </div>
+                                <div class="glass-card-light p-4 text-center">
+                                    <div class="font-bebas text-3xl text-vert-proof">90%</div>
+                                    <p class="text-slate-400 text-sm mt-2">Public local</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-8" data-aos="fade-left">
+                        <div class="font-dm-mono text-xs tracking-widest text-rouge uppercase mb-6">Retour sur investissement social</div>
+                        
+                        <div class="mb-6">
+                            <div class="font-bebas text-4xl text-white mb-2">Grâce à vous, la culture est accessible à tous</div>
+                            <p class="text-slate-400">Votre logo sur chaque billet vendu. Votre marque associée à l'accessibilité culturelle.</p>
+                        </div>
+                        
+                        <div class="p-6 bg-gradient-to-r from-rouge/10 to-or/10 border border-rouge/20 rounded-lg mb-6">
+                            <div class="font-bebas text-6xl text-rouge text-center mb-2">-49%</div>
+                            <p class="text-white text-center text-sm">de réduction sur le billet grâce au soutien des partenaires</p>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-300">Prix réel de production</span>
+                                <span class="font-bebas text-xl text-slate-400 line-through">29,47€</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-300">Prix payé par le public</span>
+                                <span class="font-bebas text-3xl text-or">15€</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 p-6 bg-gradient-to-r from-vert-proof/10 to-or/10 border border-vert-proof/20 rounded-lg">
+                            <p class="text-white text-sm">En soutenant This Is It Event, votre entreprise s'associe à des valeurs positives : <span class="text-vert-proof font-bold">culture, jeunesse, territoire</span>. Un investissement qui valorise votre image RSE auprès de <span class="text-or font-bold">90% de vos clients locaux</span>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 7: Scénographie & VIP -->
+        <section id="scene" class="py-20 bg-gradient-to-b from-slate-900 to-slate-950 section-spacing">
+            <div class="container mx-auto px-4">
+                <div class="mb-12 text-center" data-aos="fade-up">
+                    <div class="inline-block font-dm-mono text-sm tracking-widest text-rouge uppercase mb-4">06</div>
+                    <h2 class="font-bebas text-4xl md:text-6xl text-white mb-4">Votre marque au cœur du show</h2>
+                    <p class="text-slate-400 max-w-3xl mx-auto">Scénographie immersive · Expérience VIP · Supports exclusifs</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="glass-card p-8" data-aos="fade-right">
+                        <div class="font-dm-mono text-xs tracking-widest text-or uppercase mb-6">Supports scénographiques</div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                                <span class="text-slate-300">Totems (toiles sur cadres bois)</span>
+                                <span class="font-bebas text-xl text-or">5</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                                <span class="text-slate-300">Pancartes de vote logotées</span>
+                                <span class="font-bebas text-xl text-or">600</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                                <span class="text-slate-300">Brochures avec encart dédié</span>
+                                <span class="font-bebas text-xl text-or">600</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                                <span class="text-slate-300">Bracelets d'accès marqués</span>
+                                <span class="font-bebas text-xl text-or">500</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                                <span class="text-slate-300">Supports signalétique salle</span>
+                                <span class="font-bebas text-xl text-or">40</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                                <span class="text-slate-300">Bâche individuelle exclusive</span>
+                                <span class="font-bebas text-xl text-or">1</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-300">Logo sur trophée officiel LNDA</span>
+                                <span class="font-bebas text-xl text-or">1</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 p-6 bg-gradient-to-r from-rouge/10 to-or/10 border border-rouge/20 rounded-lg">
+                            <div class="font-bebas text-5xl text-rouge text-center mb-2">800</div>
+                            <p class="text-white text-center text-sm">passages de votre logo sur les écrans géants de scène — l'élément le plus photographié de la soirée</p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-8" data-aos="fade-left">
+                        <div class="font-dm-mono text-xs tracking-widest text-or uppercase mb-6">Expérience VIP partenaires</div>
+                        
+                        <div class="mb-6">
+                            <div class="font-bebas text-3xl text-white mb-2">Balcon privatif · Vue sur scène</div>
+                            <p class="text-slate-400 text-sm">250 invités partenaires accueillis avec service traiteur local</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-or rounded-full flex items-center justify-center mt-1">
+                                    <i class="fas fa-users text-xs text-black"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-medium">250 invités partenaires</p>
+                                    <p class="text-slate-400 text-sm">Accueillis sur le balcon privatif avec vue exclusive sur la scène</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-or rounded-full flex items-center justify-center mt-1">
+                                    <i class="fas fa-beer text-xs text-black"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-medium">Service traiteur local</p>
+                                    <p class="text-slate-400 text-sm">2 bières Ninkasi offertes par invité</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-or rounded-full flex items-center justify-center mt-1">
+                                    <i class="fas fa-tshirt text-xs text-black"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-medium">T-shirt "Partenaire"</p>
+                                    <p class="text-slate-400 text-sm">This Is It Event remis à chaque invité VIP</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-or rounded-full flex items-center justify-center mt-1">
+                                    <i class="fas fa-microphone text-xs text-black"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-medium">Remerciements au micro</p>
+                                    <p class="text-slate-400 text-sm">Mentions nominatives devant 750 spectateurs</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-or rounded-full flex items-center justify-center mt-1">
+                                    <i class="fas fa-lock text-xs text-black"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-medium">Accès exclusif</p>
+                                    <p class="text-slate-400 text-sm">Espace privatisé, WC dédié, bar partenaires</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 8: CTA 2027 -->
+        <section id="cta" class="py-20 section-spacing">
+            <div class="container mx-auto px-4">
+                <div class="mb-12 text-center" data-aos="fade-up">
+                    <div class="inline-block font-dm-mono text-sm tracking-widest text-rouge uppercase mb-4">07</div>
+                    <h2 class="font-bebas text-4xl md:text-6xl text-white mb-4">CAP SUR <span class="gradient-text">2027</span></h2>
+                    <p class="text-slate-400 max-w-3xl mx-auto">L'Édition 4 est en préparation dans la Plaine de l'Ain</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="glass-card p-8 bg-gradient-to-br from-rouge/20 to-or/20 border border-rouge/30" data-aos="fade-right">
+                        <div class="font-dm-mono text-xs tracking-widest text-white uppercase mb-6">PROCHAINE ÉTAPE</div>
+                        
+                        <div class="mb-8">
+                            <div class="font-bebas text-5xl md:text-7xl text-white mb-4">EARLY BIRD<br>2027</div>
+                            <p class="text-slate-300 text-lg">Les partenaires qui confirment avant le <span class="text-or font-bold">[DATE À DÉFINIR]</span> bénéficient d'un tarif préférentiel et d'un meilleur emplacement de logo sur tous les supports.</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-white">100% de livraison prouvée</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-white">Double Sold Out = double exposition</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-white">334 700 personnes touchées</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-white">Votre investissement reste local</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-6 h-6 bg-vert-proof rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-xs text-white"></i>
+                                </div>
+                                <span class="text-white">Édition 4 = visibilité maximisée</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 pt-6 border-t border-white/20">
+                            <div class="font-dm-mono text-xs tracking-widest text-white uppercase mb-4">Contact</div>
+                            <div class="space-y-2">
+                                <a href="mailto:thisisit-event@outlook.com" class="flex items-center space-x-3 text-slate-300 hover:text-white transition-colors">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>thisisit-event@outlook.com</span>
+                                </a>
+                                <a href="tel:0744980015" class="flex items-center space-x-3 text-slate-300 hover:text-white transition-colors">
+                                    <i class="fas fa-phone"></i>
+                                    <span>07 44 98 00 15</span>
+                                </a>
+                                <a href="#" class="flex items-center space-x-3 text-slate-300 hover:text-white transition-colors">
+                                    <i class="fas fa-globe"></i>
+                                    <span>www.enjoylife-emx.fr</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-8" data-aos="fade-left">
+                        <div class="font-dm-mono text-xs tracking-widest text-or uppercase mb-6">RÉSUMÉ DU BILAN</div>
+                        
+                        <div class="mb-8">
+                            <div class="font-bebas text-4xl text-white mb-4">21 LIVRABLES<br>POUR 15 CONTRACTUALISÉS</div>
+                            <p class="text-slate-400">Nous avons honoré chaque engagement pris avec vous — et nous avons fait plus. C'est notre façon de travailler, et ce sera encore le cas en 2027.</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-3 mb-6">
+                            <div class="glass-card-light p-4 text-center">
+                                <div class="font-bebas text-2xl text-vert-proof">15</div>
+                                <p class="text-slate-400 text-xs mt-1">supports contractuels</p>
+                            </div>
+                            <div class="glass-card-light p-4 text-center">
+                                <div class="font-bebas text-2xl text-or">6</div>
+                                <p class="text-slate-400 text-xs mt-1">bonus non prévus</p>
+                            </div>
+                            <div class="glass-card-light p-4 text-center">
+                                <div class="font-bebas text-2xl text-vert-proof">100%</div>
+                                <p class="text-slate-400 text-xs mt-1">livré</p>
+                            </div>
+                            <div class="glass-card-light p-4 text-center">
+                                <div class="font-bebas text-2xl text-white">0</div>
+                                <p class="text-slate-400 text-xs mt-1">manquant</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <a href="mailto:thisisit-event@outlook.com?subject=Confirmation%20partenariat%202027&body=Bonjour,%20je%20souhaite%20confirmer%20notre%20partenariat%20pour%202027." class="bg-gradient-to-r from-rouge to-or text-white px-8 py-4 rounded-lg hover:opacity-90 transition-all transform hover:scale-105 font-medium text-lg flex items-center justify-center space-x-2 w-full">
+                                <span>Confirmer pour 2027</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="py-8 border-t border-white/10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-6 h-6 bg-rouge rounded-full flex items-center justify-center">
+                            <span class="text-white font-bebas text-xs">TII</span>
+                        </div>
+                        <span class="font-bebas text-lg text-white">THIS IS IT EVENT</span>
+                    </div>
+                    <p class="text-slate-400 text-sm mt-2">Association Loi 1901 · SIRET 889 266 037 00023</p>
+                </div>
+                <div class="text-slate-400 text-sm text-center md:text-right">
+                    <p>7 RUE PIERRE BERNIN · 01800 MEXIMIEUX</p>
+                    <p class="mt-1">© 2026 This Is It Event · Tous droits réservés</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', (event) => {
+                if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        }
+        
+        // Progress bar
+        const progressBar = document.getElementById('progressBar');
+        if (progressBar) {
+            window.addEventListener('scroll', () => {
+                const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (window.scrollY / windowHeight) * 100;
+                progressBar.style.width = scrolled + '%';
+            });
+        }
+        
+        // Counter animation
+        function animateCounter(element, target, duration = 2000) {
+            const start = 0;
+            const increment = target / (duration / 16); // 60fps
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString();
+                }
+            }, 16);
+        }
+        
+        // Start counters when in viewport
+        const counters = [
+            { id: 'counter1', target: 1500 },
+            { id: 'counter2', target: 334700 },
+            { id: 'counter3', target: 31 },
+            { id: 'counter4', target: 30 },
+            { id: 'counter5', target: 11000 },
+            { id: 'counter6', target: 408 }
+        ];
+        
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    counters.forEach(counter => {
+                        const element = document.getElementById(counter.id);
+                        if (element && element.textContent === '0') {
+                            animateCounter(element, counter.target);
+                        }
+                    });
+                    observer.disconnect();
+                }
+            });
+        }, observerOptions);
+        
+        // Observe the chiffres section
+        const chiffresSection = document.getElementById('chiffres');
+        if (chiffresSection) {
+            observer.observe(chiffresSection);
+        }
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Add active class to navigation links on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('nav-active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('nav-active');
+                }
+            });
+        });
+    </script>
+</body>

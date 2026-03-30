@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Récap Partenaires 2026 — This Is It Event | Interface Premium</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        noir: '#0A0A0A',
+                        blanc: '#F5F2EC',
+                        rouge: '#E8281E',
+                        or: '#C9A84C',
+                        gris: '#1A1A1A',
+                        'gris-mid': '#2E2E2E',
+                        'gris-light': '#888',
+                        'vert-proof': '#2D7D46',
+                        'glass-dark': 'rgba(15, 23, 42, 0.8)',
+                        'glass-light': 'rgba(255, 255, 255, 0.1)'
+                    },
+                    fontFamily: {
+                        'bebas': ['Bebas Neue', 'sans-serif'],
+                        'dm-sans': ['DM Sans', 'sans-serif'],
+                        'dm-mono': ['DM Mono', 'monospace'],
+                        'geist': ['Geist', 'system-ui', 'sans-serif']
+                    },
+                    backdropBlur: {
+                        'xs': '2px',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'slide-down': 'slideDown 0.6s ease-out',
+                        'slide-left': 'slideLeft 0.6s ease-out',
+                        'slide-right': 'slideRight 0.6s ease-out',
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                        'count-up': 'countUp 2s ease-out forwards'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideLeft: {
+                            '0%': { transform: 'translateX(20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        slideRight: {
+                            '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(232, 40, 30, 0.3)' },
+                            '50%': { boxShadow: '0 0 40px rgba(232, 40, 30, 0.6)' }
+                        },
+                        countUp: {
+                            '0%': { content: '"0"' },
+                            '100%': { content: 'attr(data-target)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
+            overflow-x: hidden;
+        }
+        
+        /* Glassmorphism effect */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+        }
+        
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(90deg, #E8281E 0%, #C9A84C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.5);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #E8281E 0%, #C9A84C 100%);
+            border-radius: 4px;
+        }
+        
+        /* Section spacing */
+        .section-spacing {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+        
+        @media (max-width: 768px) {
+            .section-spacing {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+        }
+        
+        /* KPI counter animation */
+        .kpi-counter {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        /* Navigation active state */
+        .nav-active {
+            background: rgba(232, 40, 30, 0.2);
+            border-left: 3px solid #E8281E;
+        }
+        
+        /* Mobile menu animation */
+        .mobile-menu-enter {
+            transform: translateX(100%);
+        }
+        
+        .mobile-menu-enter-active {
+            transform: translateX(0);
+            transition: transform 300ms ease-out;
+        }
+        
+        .mobile-menu-exit {
+            transform: translateX(0);
+        }
+        
+        .mobile-menu-exit-active {
+            transform: translateX(100%);
+            transition: transform 300ms ease-out;
+        }
+        
+        /* Custom animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Progress bar */
+        .progress-bar {
+            height: 4px;
+            background: linear-gradient(90deg, #E8281E 0%, #C9A84C 100%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+        
+        /* KPI counter styles */
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100">
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card py-4 px-6 backdrop-blur-md border-b border-white/10">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-rouge rounded-full flex items-center justify-center">
+                    <span class="text-white font-bebas text-sm">TII</span>
+                </div>
+                <span class="font-bebas text-xl text-white">THIS IS IT EVENT</span>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#cover" class="text-slate-300 hover:text-white transition-colors duration-300 font-medium">Accueil</a>
+                <a href="#chiffres" class="text-slate-300 hover:text-white transition-colors duration-300 font-medium">Chiffres</a>
+                <a href="#impact" class="text-slate-300 hover:text-white transition-colors duration-300 font-medium">Impact</a>
+                <a href="#digital" class="text-slate-300 hover:text-white transition-colors duration-300 font-medium">Digital</a>
+                <a href="#livraison" class="text-slate-300 hover:text-white transition-colors duration-300 font-medium">Livraison</a>
+                <a href="#local" class="text-slate-300 hover:text-white transition-colors duration-300 font-medium">Local</a>
+                <a href="#scene" class="text-slate-300 hover:text-white transition-colors duration-300 font-medium">Scénographie</a>
+                <a href="#cta" class="bg-rouge text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-300 font-medium">2027</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuButton" class="md:hidden text-slate-300">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobileMenu" class="md:hidden absolute top-full left-0 right-0 glass-card border-t border-white/10 hidden">
+            <div class="flex flex-col space-y-4 p-6">
+                <a href="#cover" class="text-slate-300 hover:text-white transition-colors duration-300 font-medium py-2">Accueil</a>
+                <a href="#chiffres" class="text-slate-300 hover:text-white transition-colors duration-300 font-medium py-2">Chiffres</a>
+                <a href="#impact" class="text-slate-300 hover:text-white transition-colors duration-300 font-medium py-2">Impact</a>
+                <a href="#digital" class="text-slate-300 hover:text-white transition-colors duration-300 font-medium py-2">Digital</a>
+                <a href="#livraison" class="text-slate-300 hover:text-white transition-colors duration-300 font-medium py-2">Livraison</a>
+                <a href="#local" class="text-slate-300 hover:text-white transition-colors duration-300 font-medium py-2">Local</a>
+                <a href="#scene" class="text-slate-300 hover:text-white transition-colors duration-300 font-medium py-2">Scénographie</a>
+                <a href="#cta" class="bg-rouge text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-300 font-medium text-center">2027</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="pt-20">
+        <!-- Section 1: Cover -->
+        <section id="cover" class="min-h-screen flex items-center justify-center relative overflow-hidden section-spacing">
+            <div class="absolute inset-0 bg-gradient-to-br from-noir via-gris to-gris-mid opacity-90"></div>
+            <div class="absolute inset-0" style="background-image: url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); background-size: cover; background-position: center; opacity: 0.2;"></div>
+            
+            <div class="container mx-auto px-4 relative z-10" data-aos="fade-up" data-aos-duration="1000">
+                <div class="glass-card p-8 md:p-12 max-w-6xl mx-auto">
+                    <div class="mb-8">
+                        <span class="font-dm-mono text-sm tracking-widest text-or uppercase">THIS IS IT EVENT — ASSOCIATION LOI 1901</span>
+                    </div>
+                    
+                    <h1 class="font-bebas text-5xl md:text-8xl lg:text-9xl text-white leading-tight mb-6">
+                        RÉCAP<br>
+                        <span class="gradient-text">PARTENAIRES</span>
+                        <div class="text-4xl md:text-6xl text-or tracking-widest mt-4">2026</div>
+                    </h1>
+                    
+                    <div class="mt-12 pt-8 border-t border-white/20">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <p class="text-slate-300 font-medium mb-2"><span class="text-white font-bold">Enjoylife Ed.3</span> — Vendredi 20 Février 2026</p>
+                                <p class="text-slate-300 font-medium mb-2"><span class="text-white font-bold">La Nuit des Amateurs Ed.2</span> — Samedi 21 Février 2026</p>
+                                <p class="text-slate-300 font-medium">Centre Innovance · Villieu-Loyes-Mollon (01)</p>
+                            </div>
+                            <div class="md:text-right">
+                                <p class="text-or font-bold text-lg md:text-xl">DOUBLE SOLD OUT · 1 500 SPECTATEURS · 30 PARTENAIRES</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12 flex justify-center">
+                        <a href="#chiffres" class="bg-rouge text-white px-8 py-4 rounded-lg hover:bg-red-700 transition-all duration-300 transform hover:scale-105 font-medium text-lg flex items-center space-x-2">
+                            <span>Découvrir les résultats</span>
+                            <i class="fas fa-arrow-down"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-rouge via-or to-vert-proof"></div>
+        </section>
+        
+        <!-- Section 2: Chiffres Clés -->
+        <section id="chiffres" class="section-spacing">
+            <div class="container mx-auto px-4">
+                <div class="mb-12 text-center" data-aos="fade-up">
+                    <div class="inline-block font-dm-mono text-sm tracking-widest text-rouge uppercase mb-4">01</div>
+                    <h2 class="font-bebas text-4xl md:text-6xl text-white mb-4">Les chiffres qui parlent d'eux-mêmes</h2>
+                    <p class="text-slate-400 max-w-3xl mx-auto">Week-end complet · Centre Innovance · Villieu-Loyes-Mollon</p>
+                </div>
+                
+                <!-- KPI Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <!-- KPI 1 -->
+                    <div class="glass-card p-6 relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                        <div class="absolute top-4 right-4 bg-rouge text-white text-xs font-dm-mono px-3 py-1 rounded-full">SOLD OUT</div>
+                        <div class="font-dm-mono text-xs tracking-widest text-slate-400 uppercase mb-4">Spectateurs</div>
+                        <div class="font-bebas text-5xl md:text-6xl text-rouge mb-4 counter" id="counter1">0</div>
+                        <p class="text-slate-400 text-sm">Week-end complet<br>Les deux soirs à guichets
