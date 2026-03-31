@@ -705,100 +705,289 @@
     <!-- Progress Bar améliorée -->
     <div class="progress-bar" id="progressBar"></div>
     
-    <!-- Navigation améliorée inspirée de Lando Norris -->
-   <nav class="fixed top-0 left-0 right-0 z-50 bg-dark-green/95 backdrop-blur-md border-b border-lime/10 py-4 px-6">
-    <div class="max-w-7xl mx-auto flex justify-between items-center w-full px-6">
-        
-        <div class="flex items-center space-x-4 group cursor-pointer">
-            <img src="images/test.png" alt="Logo" class="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-            <!-- Logo header This is it Event -->
-            <div class="border-l border-white/20 pl-4">
-                <span class="font-bebas text-2xl text-white block leading-none">THIS IS IT EVENT</span>
-                <span class="font-dm-mono text-xs text-lime block uppercase mt-1">RÉCAP PARTENAIRES</span>
-            </div>
-            <!-- Menu pc du site -->
-        </div> <div class="hidden md:flex items-center space-x-1">
-            <a href="#cover" class="nav-link text-slate-300 hover:text-white font-medium px-3">Accueil</a>
-            <a href="#chiffres" class="nav-link text-slate-300 hover:text-white font-medium px-3">Chiffres</a>
-            <a href="#impact" class="nav-link text-slate-300 hover:text-white font-medium px-3">Impact</a>
-            <a href="#digital" class="nav-link text-slate-300 hover:text-white font-medium px-3">Digital</a>
-            <a href="#livraison" class="nav-link text-slate-300 hover:text-white font-medium px-3">Livraison</a>
-            <a href="#local" class="nav-link text-slate-300 hover:text-white font-medium px-3">Local</a>
-            <a href="#scene" class="nav-link text-slate-300 hover:text-white font-medium px-3">Scénographie</a>
-            <a href="#cta" class="ml-4 cta-button text-sm">2027</a>
-        </div>
-
-    </div>
-</nav>
+    <!-- Navigation F1 x Apple - Interface de Télémétrie -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-lg border-b border-zinc-800 py-3 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center w-full px-6">
             
-            <!-- Mobile Menu Button amélioré -->
-            <button id="mobileMenuButton" class="md:hidden text-lime w-10 h-10 flex items-center justify-center rounded-lg border border-lime/20 hover:border-lime/40 transition-colors">
-                <i class="fas fa-bars text-lg"></i>
+            <!-- Logo avec effet LED F1 -->
+            <div class="flex items-center space-x-3 group cursor-pointer">
+                <div class="relative">
+                    <img src="images/test.png" alt="Logo" class="h-12 w-auto object-contain">
+                    <!-- Effet LED lime-iris -->
+                    <div class="absolute -bottom-1 left-0 right-0 h-0.5 bg-lime-iris opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div class="border-l border-zinc-700 pl-3">
+                    <span class="font-geist text-xl text-white font-semibold block leading-none tracking-tight">THIS IS IT EVENT</span>
+                    <span class="font-geist text-xs text-zinc-500 block uppercase mt-0.5 tracking-[0.2em]">RÉCAP PARTENAIRES</span>
+                </div>
+            </div>
+            
+            <!-- Navigation Desktop - Interface de Dashboard -->
+            <div class="hidden md:flex items-center space-x-0">
+                <a href="#cover" class="px-4 py-2 text-zinc-400 hover:text-white font-geist text-sm tracking-[0.02em] transition-colors duration-300 relative group">
+                    <span>Accueil</span>
+                    <div class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-lime-iris transform -translate-x-1/2 group-hover:w-3/4 transition-all duration-300"></div>
+                </a>
+                <a href="#chiffres" class="px-4 py-2 text-zinc-400 hover:text-white font-geist text-sm tracking-[0.02em] transition-colors duration-300 relative group">
+                    <span>Chiffres</span>
+                    <div class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-cyan-iris transform -translate-x-1/2 group-hover:w-3/4 transition-all duration-300"></div>
+                </a>
+                <a href="#impact" class="px-4 py-2 text-zinc-400 hover:text-white font-geist text-sm tracking-[0.02em] transition-colors duration-300 relative group">
+                    <span>Impact</span>
+                    <div class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-lime-iris transform -translate-x-1/2 group-hover:w-3/4 transition-all duration-300"></div>
+                </a>
+                <a href="#digital" class="px-4 py-2 text-zinc-400 hover:text-white font-geist text-sm tracking-[0.02em] transition-colors duration-300 relative group">
+                    <span>Digital</span>
+                    <div class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-cyan-iris transform -translate-x-1/2 group-hover:w-3/4 transition-all duration-300"></div>
+                </a>
+                <a href="#livraison" class="px-4 py-2 text-zinc-400 hover:text-white font-geist text-sm tracking-[0.02em] transition-colors duration-300 relative group">
+                    <span>Livraison</span>
+                    <div class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-lime-iris transform -translate-x-1/2 group-hover:w-3/4 transition-all duration-300"></div>
+                </a>
+                <a href="#local" class="px-4 py-2 text-zinc-400 hover:text-white font-geist text-sm tracking-[0.02em] transition-colors duration-300 relative group">
+                    <span>Local</span>
+                    <div class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-cyan-iris transform -translate-x-1/2 group-hover:w-3/4 transition-all duration-300"></div>
+                </a>
+                <a href="#scene" class="px-4 py-2 text-zinc-400 hover:text-white font-geist text-sm tracking-[0.02em] transition-colors duration-300 relative group">
+                    <span>Scénographie</span>
+                    <div class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-lime-iris transform -translate-x-1/2 group-hover:w-3/4 transition-all duration-300"></div>
+                </a>
+                <a href="#cta" class="ml-4 px-6 py-2 bg-black border border-zinc-800 text-white font-geist text-sm tracking-[0.02em] hover:border-lime-iris hover:text-lime-iris transition-all duration-300">
+                    2027
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Button - Interface Technique -->
+            <button id="mobileMenuButton" class="md:hidden text-zinc-400 w-10 h-10 flex items-center justify-center border border-zinc-800 hover:border-zinc-600 hover:text-white transition-colors">
+                <i class="fas fa-bars text-base"></i>
             </button>
         </div>
         
-        <!-- Mobile Navigation améliorée -->
-        <div id="mobileMenu" class="md:hidden absolute top-full left-0 right-0 bg-dark-green/95 backdrop-blur-lg border-t border-lime/10 hidden">
-            <div class="flex flex-col space-y-1 p-4">
-                <a href="#cover" class="nav-link text-slate-300 hover:text-white py-3 px-4 rounded-lg hover:bg-lime/5">Accueil</a>
-                <a href="#chiffres" class="nav-link text-slate-300 hover:text-white py-3 px-4 rounded-lg hover:bg-lime/5">Chiffres</a>
-                <a href="#impact" class="nav-link text-slate-300 hover:text-white py-3 px-4 rounded-lg hover:bg-lime/5">Impact</a>
-                <a href="#digital" class="nav-link text-slate-300 hover:text-white py-3 px-4 rounded-lg hover:bg-lime/5">Digital</a>
-                <a href="#livraison" class="nav-link text-slate-300 hover:text-white py-3 px-4 rounded-lg hover:bg-lime/5">Livraison</a>
-                <a href="#local" class="nav-link text-slate-300 hover:text-white py-3 px-4 rounded-lg hover:bg-lime/5">Local</a>
-                <a href="#scene" class="nav-link text-slate-300 hover:text-white py-3 px-4 rounded-lg hover:bg-lime/5">Scénographie</a>
-                <a href="#cta" class="cta-button mt-2 text-center">2027</a>
+        <!-- Mobile Navigation - Interface Dashboard -->
+        <div id="mobileMenu" class="md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-lg border-t border-zinc-800 hidden">
+            <div class="flex flex-col space-y-0 p-4">
+                <a href="#cover" class="px-4 py-3 text-zinc-400 hover:text-white font-geist text-sm tracking-[0.02em] border-b border-zinc-800 hover:bg-zinc-900/50 transition-colors">Accueil</a>
+                <a href="#chiffres" class="px-4 py-3 text-zinc-400 hover:text-white font-geist text-sm tracking-[0.02em] border-b border-zinc-800 hover:bg-zinc-900/50 transition-colors">Chiffres</a>
+                <a href="#impact" class="px-4 py-3 text-zinc-400 hover:text-white font-geist text-sm tracking-[0.02em] border-b border-zinc-800 hover:bg-zinc-900/50 transition-colors">Impact</a>
+                <a href="#digital" class="px-4 py-3 text-zinc-400 hover:text-white font-geist text-sm tracking-[0.02em] border-b border-zinc-800 hover:bg-zinc-900/50 transition-colors">Digital</a>
+                <a href="#livraison" class="px-4 py-3 text-zinc-400 hover:text-white font-geist text-sm tracking-[0.02em] border-b border-zinc-800 hover:bg-zinc-900/50 transition-colors">Livraison</a>
+                <a href="#local" class="px-4 py-3 text-zinc-400 hover:text-white font-geist text-sm tracking-[0.02em] border-b border-zinc-800 hover:bg-zinc-900/50 transition-colors">Local</a>
+                <a href="#scene" class="px-4 py-3 text-zinc-400 hover:text-white font-geist text-sm tracking-[0.02em] border-b border-zinc-800 hover:bg-zinc-900/50 transition-colors">Scénographie</a>
+                <a href="#cta" class="px-4 py-3 mt-2 border border-zinc-800 text-white font-geist text-sm tracking-[0.02em] hover:border-lime-iris hover:text-lime-iris transition-all duration-300 text-center">
+                    2027
+                </a>
             </div>
         </div>
     </nav>
     
     <!-- Main Content -->
     <main class="pt-16">
-        <!-- Section 1: Cover améliorée -->
-        <section id="cover" class="min-h-screen flex items-center justify-center relative overflow-hidden section-spacing section-transition">
-            <!-- Background amélioré avec effet parallaxe -->
-            <div class="absolute inset-0 bg-gradient-to-br from-dark-green via-black to-gris-mid"></div>
-            <div class="absolute inset-0 parallax-bg" style="background-image: url('https://enjoylife-emx.fr/assets/images/image04.jpg?v=a549abeb'); opacity: 0.5;"></div>
+        <!-- Section 1: Interface de Lancement F1 x Apple -->
+        <section id="cover" class="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
+            <!-- Fond noir carbone absolu avec grille technique -->
+            <div class="absolute inset-0 bg-black"></div>
+            
+            <!-- Effets de grille technique F1 -->
+            <div class="absolute inset-0 opacity-[0.03]">
+                <!-- Grille de circuit F1 -->
+                <div class="absolute inset-0" style="
+                    background-image: 
+                        linear-gradient(to right, rgba(217, 255, 0, 0.08) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(55, 213, 214, 0.08) 1px, transparent 1px);
+                    background-size: 60px 60px;
+                "></div>
+                
+                <!-- Lignes de vitesse animées -->
+                <div class="absolute inset-0" style="
+                    background-image: 
+                        repeating-linear-gradient(
+                            45deg,
+                            transparent,
+                            transparent 15px,
+                            rgba(178, 39, 178, 0.05) 15px,
+                            rgba(178, 39, 178, 0.05) 30px
+                        );
+                    animation: slideGrid 20s linear infinite;
+                "></div>
+                
+                <!-- Points de données -->
+                <div class="absolute inset-0" style="
+                    background-image: 
+                        radial-gradient(circle at 20% 30%, rgba(217, 255, 0, 0.1) 0px, transparent 2px),
+                        radial-gradient(circle at 80% 70%, rgba(55, 213, 214, 0.1) 0px, transparent 2px),
+                        radial-gradient(circle at 40% 80%, rgba(178, 39, 178, 0.1) 0px, transparent 2px);
+                    background-size: 400px 400px;
+                "></div>
+            </div>
+            
+            <!-- Video background avec overlay technique -->
+            <div class="absolute inset-0 overflow-hidden">
+                <video autoplay muted loop playsinline preload="metadata" class="absolute inset-0 w-full h-full object-cover opacity-15">
+                    <source src="videos/testvideo.webm" type="video/webm">
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-br from-black via-transparent to-black/80"></div>
+            </div>
             
             <div class="container mx-auto px-4 relative z-10" data-aos="fade-up">
-                <div class="glass-card p-8 md:p-12 max-w-5xl mx-auto float-animation">
-                    <div class="mb-8 text-center">
-                        <span class="font-dm-mono text-sm tracking-widest text-lime uppercase">THIS IS IT EVENT — ASSOCIATION LOI 1901</span>
+                <!-- En-tête technique -->
+                <div class="mb-12 text-center">
+                    <div class="inline-flex items-center space-x-3 mb-6">
+                        <div class="w-2 h-2 bg-lime-iris rounded-full animate-pulse"></div>
+                        <span class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">INTERFACE DE LANCEMENT</span>
+                        <div class="w-2 h-2 bg-cyan-iris rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
                     </div>
                     
-                    <h1 class="font-bebas text-5xl md:text-7xl lg:text-8xl text-white leading-tight mb-6 text-center">
-                        RÉCAP<br>
-                        <span class="gradient-text-lime">PARTENAIRES</span>
-                        <div class="gradient-text-lime">2026</div>
+                    <h1 class="font-geist text-6xl md:text-8xl lg:text-9xl text-white font-light mb-8 tracking-tighter">
+                        <span class="font-semibold">RÉCAP</span><br>
+                        <span class="text-lime-iris font-semibold">PARTENAIRES</span><br>
+                        <span class="text-cyan-iris">2026</span>
                     </h1>
-                     <video autoplay muted loop playsinline preload="metadata" class="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none">
-                            <source src="videos/testvideo.webm" type="video/webm">
-                        </video>
                     
-                    <div class="mt-12 pt-8 border-t border-lime/20">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div>
-                                <p class="text-slate-300 font-medium mb-3"><span class="text-white font-bold text-lg">Enjoylife Edition 3</span> — Vendredi 20 Février 2026</p>
-                                <p class="text-slate-300 font-medium mb-3"><span class="text-white font-bold text-lg">La Nuit des Amateurs Edition 2</span> — Samedi 21 Février 2026</p>
-                                <p class="text-slate-300 font-medium">Centre Innovance · Villieu-Loyes-Mollon (01)</p>
+                    <p class="font-geist text-lg text-zinc-500 max-w-2xl mx-auto mb-12 tracking-[0.02em]">
+                        Interface de monitoring haute précision · Fusion F1 & Apple · Bilan Partenaires
+                    </p>
+                </div>
+                
+                <!-- Dashboard de lancement -->
+                <div class="max-w-6xl mx-auto">
+                    <div class="bg-black/60 border border-zinc-800 rounded-sm p-8 md:p-12 backdrop-blur-sm">
+                        <!-- Grille de données -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+                            <div class="text-center group">
+                                <div class="font-geist text-5xl md:text-6xl text-white font-semibold mb-3 tracking-tighter">1 500</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em] mb-2">Spectateurs</div>
+                                <div class="w-16 h-0.5 bg-lime-iris mx-auto group-hover:w-24 transition-all duration-300"></div>
+                                <p class="text-zinc-400 text-sm mt-3 font-geist">Double Sold Out · Week-end complet</p>
                             </div>
-                            <div class="md:text-right">
-                                <p class="text-lime font-bold text-lg md:text-xl leading-relaxed">DOUBLE SOLD OUT<br>1 500 SPECTATEURS<br>30 PARTENAIRES</p>
+                            
+                            <div class="text-center group">
+                                <div class="font-geist text-5xl md:text-6xl text-cyan-iris font-semibold mb-3 tracking-tighter">334 700</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em] mb-2">Personnes touchées</div>
+                                <div class="w-16 h-0.5 bg-cyan-iris mx-auto group-hover:w-24 transition-all duration-300"></div>
+                                <p class="text-zinc-400 text-sm mt-3 font-geist">Audience unique · 1,67M impressions</p>
+                            </div>
+                            
+                            <div class="text-center group">
+                                <div class="font-geist text-5xl md:text-6xl text-white font-semibold mb-3 tracking-tighter">30</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em] mb-2">Partenaires</div>
+                                <div class="w-16 h-0.5 bg-lime-iris mx-auto group-hover:w-24 transition-all duration-300"></div>
+                                <p class="text-zinc-400 text-sm mt-3 font-geist">Sponsors & mécènes · 3 niveaux</p>
                             </div>
                         </div>
+                        
+                        <!-- Informations événement -->
+                        <div class="border-t border-zinc-800 pt-10">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div>
+                                    <div class="flex items-center space-x-3 mb-4">
+                                        <div class="w-1 h-6 bg-lime-iris"></div>
+                                        <h3 class="font-geist text-xl text-white font-semibold">Événements 2026</h3>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <div class="flex items-start space-x-3">
+                                            <div class="w-2 h-2 bg-lime-iris rounded-full mt-2"></div>
+                                            <div>
+                                                <p class="font-geist text-white font-medium">Enjoylife Edition 3</p>
+                                                <p class="font-geist text-zinc-500 text-sm">Vendredi 20 Février 2026</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start space-x-3">
+                                            <div class="w-2 h-2 bg-cyan-iris rounded-full mt-2"></div>
+                                            <div>
+                                                <p class="font-geist text-white font-medium">La Nuit des Amateurs Edition 2</p>
+                                                <p class="font-geist text-zinc-500 text-sm">Samedi 21 Février 2026</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start space-x-3">
+                                            <div class="w-2 h-2 bg-magenta-iris rounded-full mt-2"></div>
+                                            <div>
+                                                <p class="font-geist text-white font-medium">Centre Innovance</p>
+                                                <p class="font-geist text-zinc-500 text-sm">Villieu-Loyes-Mollon (01)</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex items-center space-x-3 mb-4">
+                                        <div class="w-1 h-6 bg-cyan-iris"></div>
+                                        <h3 class="font-geist text-xl text-white font-semibold">Indicateurs Clés</h3>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
+                                            <span class="font-geist text-zinc-400 text-sm">Budget de production</span>
+                                            <span class="font-geist text-white font-semibold">31K€</span>
+                                        </div>
+                                        <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
+                                            <span class="font-geist text-zinc-400 text-sm">Visites web + billetterie</span>
+                                            <span class="font-geist text-white font-semibold">11 000</span>
+                                        </div>
+                                        <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
+                                            <span class="font-geist text-zinc-400 text-sm">Publications réseaux</span>
+                                            <span class="font-geist text-white font-semibold">408</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="font-geist text-zinc-400 text-sm">Renouvellement 2027</span>
+                                            <span class="font-geist text-cyan-iris font-semibold">100%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- CTA Technique -->
+                        <div class="mt-12 pt-8 border-t border-zinc-800 text-center">
+                            <a href="#chiffres" class="inline-flex items-center space-x-4 group">
+                                <span class="font-geist text-sm text-zinc-500 uppercase tracking-[0.3em] group-hover:text-white transition-colors duration-300">
+                                    ACCÉDER AU DASHBOARD COMPLET
+                                </span>
+                                <div class="relative">
+                                    <div class="w-10 h-[1px] bg-zinc-700 group-hover:bg-lime-iris transition-colors duration-300"></div>
+                                    <div class="absolute -right-1 top-1/2 transform -translate-y-1/2 w-2 h-2 border-r border-t border-zinc-700 group-hover:border-lime-iris rotate-45 transition-colors duration-300"></div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                    
-                    <div class="mt-12 flex justify-center">
-                        <a href="#chiffres" class="cta-button flex items-center space-x-3">
-                            <span>Découvrir les résultats</span>
-                            <i class="fas fa-arrow-down"></i>
-                        </a>
+                </div>
+                
+                <!-- Indicateurs de statut -->
+                <div class="mt-12 flex flex-wrap justify-center gap-6">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-2 h-2 bg-lime-iris rounded-full animate-pulse"></div>
+                        <span class="font-geist text-xs text-zinc-500 uppercase tracking-[0.2em]">SYSTÈME ACTIF</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-2 h-2 bg-cyan-iris rounded-full animate-pulse" style="animation-delay: 0.3s;"></div>
+                        <span class="font-geist text-xs text-zinc-500 uppercase tracking-[0.2em]">DONNÉES EN TEMPS RÉEL</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-2 h-2 bg-magenta-iris rounded-full animate-pulse" style="animation-delay: 0.6s;"></div>
+                        <span class="font-geist text-xs text-zinc-500 uppercase tracking-[0.2em]">INTERFACE OPTIMISÉE</span>
                     </div>
                 </div>
             </div>
             
-            <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-rouge via-lime to-vert-proof"></div>
+            <!-- Barre de progression technique -->
+            <div class="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-zinc-800 to-transparent">
+                <div class="h-full w-1/3 bg-gradient-to-r from-lime-iris via-cyan-iris to-magenta-iris animate-progress"></div>
+            </div>
         </section>
+        
+        <style>
+            @keyframes slideGrid {
+                0% { transform: translateX(0) translateY(0); }
+                100% { transform: translateX(-30px) translateY(-30px); }
+            }
+            
+            @keyframes progress {
+                0% { transform: translateX(-100%); }
+                100% { transform: translateX(400%); }
+            }
+            
+            .animate-progress {
+                animation: progress 3s ease-in-out infinite;
+            }
+        </style>
         
         <!-- Section 2: Interface de Télémétrie F1 x Apple -->
         <section id="chiffres" class="section-spacing bg-black relative overflow-hidden">
