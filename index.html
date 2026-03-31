@@ -27,6 +27,12 @@
                         'aged-gold': '#D4AF37',
                         'steel-blue': '#4682B4',
                         
+                        // Palette Irisée - Logo Anneau
+                        'lime-iris': '#D9FF00',      // Point clair
+                        'cyan-iris': '#37D5D6',      // Transition
+                        'magenta-iris': '#B227B2',   // Point sombre
+                        'fond-iris': '#030712',      // Noir de jais / Zinc-950
+                        
                         // Héritage pour compatibilité
                         'noir': '#0D0A05',
                         'blanc': '#F5F2EC',
@@ -594,6 +600,105 @@
             0%, 100% { opacity: 0.3; }
             50% { opacity: 0.8; }
         }
+        
+        /* Styles spécifiques pour l'interface F1 x Apple */
+        .f1-apple-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .f1-apple-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 0.5px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                currentColor, 
+                transparent
+            );
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .f1-apple-card:hover::before {
+            opacity: 0.5;
+        }
+        
+        /* Effet LED F1 pour les micro-barres */
+        .micro-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 0.5px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 8px currentColor;
+        }
+        
+        .f1-apple-card:hover .micro-bar {
+            filter: brightness(1.5) drop-shadow(0 0 4px currentColor);
+            height: 0.75px;
+        }
+        
+        /* Animation de pulsation subtile pour les indicateurs */
+        @keyframes pulse-subtle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .status-indicator {
+            animation: pulse-subtle 2s ease-in-out infinite;
+        }
+        
+        /* Effet de grille F1 amélioré */
+        .f1-grid {
+            background-image: 
+                linear-gradient(to right, rgba(217, 255, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(55, 213, 214, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        
+        /* Typographie Apple améliorée */
+        .apple-typography {
+            font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+        
+        /* Effet de survol minimaliste Apple */
+        .apple-hover {
+            transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .apple-hover:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+        
+        /* Animation de chargement des données F1 */
+        @keyframes data-load {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        .data-card {
+            animation: data-load 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            opacity: 0;
+        }
+        
+        .data-card:nth-child(1) { animation-delay: 0.1s; }
+        .data-card:nth-child(2) { animation-delay: 0.2s; }
+        .data-card:nth-child(3) { animation-delay: 0.3s; }
+        .data-card:nth-child(4) { animation-delay: 0.4s; }
+        .data-card:nth-child(5) { animation-delay: 0.5s; }
+        .data-card:nth-child(6) { animation-delay: 0.6s; }
+        .data-card:nth-child(7) { animation-delay: 0.7s; }
+        .data-card:nth-child(8) { animation-delay: 0.8s; }
     </style>
 </head>
 <body class="bg-dark-green text-white">
@@ -695,174 +800,471 @@
             <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-rouge via-lime to-vert-proof"></div>
         </section>
         
-        <!-- Section 2: Chiffres Clés améliorée -->
-        <section id="chiffres" class="section-spacing section-transition">
-            <div class="container mx-auto px-4">
-                <div class="mb-12 text-center" data-aos="fade-up">
-                    <div class="inline-block font-dm-mono text-sm tracking-widest text-lime uppercase mb-4">01</div>
-                    <h2 class="font-bebas text-4xl md:text-6xl text-white mb-4">Les chiffres qui parlent</h2>
-                    <p class="text-slate-400 max-w-2xl mx-auto">Week-end complet · Centre Innovance · Villieu-Loyes-Mollon</p>
+        <!-- Section 2: Interface de Télémétrie F1 x Apple -->
+        <section id="chiffres" class="section-spacing bg-black relative overflow-hidden">
+            <!-- Fond noir carbone absolu -->
+            <div class="absolute inset-0 bg-black"></div>
+            
+            <!-- Effets de grille technique F1 -->
+            <div class="absolute inset-0 opacity-[0.02]">
+                <!-- Grille de circuit F1 -->
+                <div class="absolute inset-0" style="
+                    background-image: 
+                        linear-gradient(to right, rgba(217, 255, 0, 0.05) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(55, 213, 214, 0.05) 1px, transparent 1px);
+                    background-size: 40px 40px;
+                "></div>
+                
+                <!-- Lignes de vitesse -->
+                <div class="absolute inset-0" style="
+                    background-image: 
+                        repeating-linear-gradient(
+                            45deg,
+                            transparent,
+                            transparent 10px,
+                            rgba(178, 39, 178, 0.03) 10px,
+                            rgba(178, 39, 178, 0.03) 20px
+                        );
+                "></div>
+            </div>
+            
+            <div class="container mx-auto px-4 relative z-10">
+                <!-- Titre Minimaliste Radical -->
+                <div class="mb-20 text-center" data-aos="fade-up">
+                    <h2 class="font-geist text-5xl md:text-7xl text-white font-light mb-6 tracking-tighter">
+                        LES <span class="font-semibold">CHIFFRES</span> CLÉS
+                    </h2>
+                    <p class="text-zinc-500 max-w-2xl mx-auto text-lg font-geist tracking-[0.02em]">
+                        Interface de monitoring haute précision · Fusion F1 & Apple
+                    </p>
+                    
+                    <!-- Séparateur technique -->
+                    <div class="mt-12 flex justify-center">
+                        <div class="w-48 h-[1px] bg-gradient-to-r from-transparent via-zinc-800 to-transparent"></div>
+                    </div>
                 </div>
                 
-                <!-- KPI Grid amélioré -->
-                <div class="kpi-grid">
-                    <!-- KPI 1 -->
-                    <div class="glass-card p-6 relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-                        <div class="absolute top-4 right-4 bg-rouge text-white text-xs font-dm-mono px-3 py-1 rounded-full">SOLD OUT</div>
-                        <div class="font-dm-mono text-xs tracking-widest text-slate-400 uppercase mb-4">Spectateurs</div>
-                        <div class="font-bebas text-5xl md:text-6xl text-rouge mb-4 kpi-counter" data-target="1500">0</div>
-                        <p class="text-slate-400 text-sm">Week-end complet<br>Les deux soirs à guichets fermés</p>
+                <!-- Grille Dashboard - 8 cartes rectangulaires -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Carte 1: Spectateurs -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="100">
+                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300">
+                            <!-- Micro-barre d'accent Lime -->
+                            <div class="absolute top-0 left-0 right-0 h-0.5 bg-lime-iris group-hover:brightness-150 transition-all duration-300"></div>
+                            
+                            <div class="mb-4">
+                                <div class="font-geist text-5xl md:text-6xl text-white font-semibold tracking-tighter mb-2">1 500</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Spectateurs</div>
+                            </div>
+                            <p class="text-zinc-400 text-sm font-geist">Week-end complet · Double Sold Out</p>
+                            
+                            <!-- Indicateur de statut -->
+                            <div class="mt-4 flex items-center">
+                                <div class="w-2 h-2 bg-lime-iris rounded-full mr-2"></div>
+                                <span class="text-xs text-zinc-500 font-geist">SOLD OUT</span>
+                            </div>
+                        </div>
                     </div>
                     
-                    <!-- KPI 2 -->
-                    <div class="glass-card p-6" data-aos="fade-up" data-aos-delay="150">
-                        <div class="font-dm-mono text-xs tracking-widest text-slate-400 uppercase mb-4">Personnes touchées</div>
-                        <div class="font-bebas text-5xl md:text-6xl text-lime mb-4 kpi-counter" data-target="334700">0</div>
-                        <p class="text-slate-400 text-sm">Audience unique Facebook & Instagram<br>1,67 M d'impressions publicitaires</p>
+                    <!-- Carte 2: Personnes touchées -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="150">
+                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300">
+                            <!-- Micro-barre d'accent Cyan -->
+                            <div class="absolute top-0 left-0 right-0 h-0.5 bg-cyan-iris group-hover:brightness-150 transition-all duration-300"></div>
+                            
+                            <div class="mb-4">
+                                <div class="font-geist text-5xl md:text-6xl text-cyan-iris font-semibold tracking-tighter mb-2">334 700</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Personnes touchées</div>
+                            </div>
+                            <p class="text-zinc-400 text-sm font-geist">Audience unique Facebook & Instagram</p>
+                            
+                            <!-- Indicateur de statut -->
+                            <div class="mt-4 flex items-center">
+                                <div class="w-2 h-2 bg-cyan-iris rounded-full mr-2"></div>
+                                <span class="text-xs text-zinc-500 font-geist">1,67M impressions</span>
+                            </div>
+                        </div>
                     </div>
                     
-                    <!-- KPI 3 -->
-                    <div class="glass-card p-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="font-dm-mono text-xs tracking-widest text-slate-400 uppercase mb-4">Budget de production</div>
-                        <div class="font-bebas text-5xl md:text-6xl text-white mb-4 kpi-counter" data-target="31000">0</div>
-                        <p class="text-slate-400 text-sm">Budget équilibré · Zéro dette<br>Gestion rigoureuse certifiée</p>
+                    <!-- Carte 3: Budget de production -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="200">
+                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300">
+                            <!-- Micro-barre d'accent Magenta -->
+                            <div class="absolute top-0 left-0 right-0 h-0.5 bg-magenta-iris group-hover:brightness-150 transition-all duration-300"></div>
+                            
+                            <div class="mb-4">
+                                <div class="font-geist text-5xl md:text-6xl text-white font-semibold tracking-tighter mb-2">31K€</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Budget de production</div>
+                            </div>
+                            <p class="text-zinc-400 text-sm font-geist">Budget équilibré · Zéro dette</p>
+                            
+                            <!-- Indicateur de statut -->
+                            <div class="mt-4 flex items-center">
+                                <div class="w-2 h-2 bg-magenta-iris rounded-full mr-2"></div>
+                                <span class="text-xs text-zinc-500 font-geist">Gestion certifiée</span>
+                            </div>
+                        </div>
                     </div>
                     
-                    <!-- KPI 4 -->
-                    <div class="glass-card p-6" data-aos="fade-up" data-aos-delay="250">
-                        <div class="font-dm-mono text-xs tracking-widest text-slate-400 uppercase mb-4">Incidents · Dettes</div>
-                        <div class="font-bebas text-5xl md:text-6xl text-vert-proof mb-4">ZÉRO</div>
-                        <p class="text-slate-400 text-sm">100% festif · Sécurisé<br>Moyenne d'âge : 36 ans</p>
+                    <!-- Carte 4: Incidents & Dettes -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="250">
+                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300">
+                            <!-- Micro-barre d'accent Lime -->
+                            <div class="absolute top-0 left-0 right-0 h-0.5 bg-lime-iris group-hover:brightness-150 transition-all duration-300"></div>
+                            
+                            <div class="mb-4">
+                                <div class="font-geist text-5xl md:text-6xl text-lime-iris font-semibold tracking-tighter mb-2">ZÉRO</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Incidents · Dettes</div>
+                            </div>
+                            <p class="text-zinc-400 text-sm font-geist">100% festif · Sécurisé</p>
+                            
+                            <!-- Indicateur de statut -->
+                            <div class="mt-4 flex items-center">
+                                <div class="w-2 h-2 bg-lime-iris rounded-full mr-2"></div>
+                                <span class="text-xs text-zinc-500 font-geist">Moyenne d'âge : 36 ans</span>
+                            </div>
+                        </div>
                     </div>
                     
-                    <!-- KPI 5 -->
-                    <div class="glass-card p-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="font-dm-mono text-xs tracking-widest text-slate-400 uppercase mb-4">Partenaires</div>
-                        <div class="font-bebas text-5xl md:text-6xl text-white mb-4 kpi-counter" data-target="30">0</div>
-                        <p class="text-slate-400 text-sm">Sponsors & mécènes<br>3 niveaux d'engagement</p>
+                    <!-- Carte 5: Partenaires -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="300">
+                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300">
+                            <!-- Micro-barre d'accent Cyan -->
+                            <div class="absolute top-0 left-0 right-0 h-0.5 bg-cyan-iris group-hover:brightness-150 transition-all duration-300"></div>
+                            
+                            <div class="mb-4">
+                                <div class="font-geist text-5xl md:text-6xl text-white font-semibold tracking-tighter mb-2">30</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Partenaires</div>
+                            </div>
+                            <p class="text-zinc-400 text-sm font-geist">Sponsors & mécènes</p>
+                            
+                            <!-- Indicateur de statut -->
+                            <div class="mt-4 flex items-center">
+                                <div class="w-2 h-2 bg-cyan-iris rounded-full mr-2"></div>
+                                <span class="text-xs text-zinc-500 font-geist">3 niveaux d'engagement</span>
+                            </div>
+                        </div>
                     </div>
                     
-                    <!-- KPI 6 -->
-                    <div class="glass-card p-6" data-aos="fade-up" data-aos-delay="350">
-                        <div class="font-dm-mono text-xs tracking-widest text-slate-400 uppercase mb-4">Visites web + billetterie</div>
-                        <div class="font-bebas text-5xl md:text-6xl text-white mb-4 kpi-counter" data-target="11000">0</div>
-                        <p class="text-slate-400 text-sm">Site officiel + Shotgun<br>durant la campagne</p>
+                    <!-- Carte 6: Visites web -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="350">
+                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300">
+                            <!-- Micro-barre d'accent Magenta -->
+                            <div class="absolute top-0 left-0 right-0 h-0.5 bg-magenta-iris group-hover:brightness-150 transition-all duration-300"></div>
+                            
+                            <div class="mb-4">
+                                <div class="font-geist text-5xl md:text-6xl text-white font-semibold tracking-tighter mb-2">11 000</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Visites web + billetterie</div>
+                            </div>
+                            <p class="text-zinc-400 text-sm font-geist">Site officiel + Shotgun</p>
+                            
+                            <!-- Indicateur de statut -->
+                            <div class="mt-4 flex items-center">
+                                <div class="w-2 h-2 bg-magenta-iris rounded-full mr-2"></div>
+                                <span class="text-xs text-zinc-500 font-geist">Durant la campagne</span>
+                            </div>
+                        </div>
                     </div>
                     
-                    <!-- KPI 7 -->
-                    <div class="glass-card p-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="font-dm-mono text-xs tracking-widest text-slate-400 uppercase mb-4">Publications réseaux</div>
-                        <div class="font-bebas text-5xl md:text-6xl text-white mb-4 kpi-counter" data-target="408">0</div>
-                        <p class="text-slate-400 text-sm">Sur 9 mois de campagne<br>Instagram & Facebook</p>
+                    <!-- Carte 7: Publications réseaux -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="400">
+                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300">
+                            <!-- Micro-barre d'accent Lime -->
+                            <div class="absolute top-0 left-0 right-0 h-0.5 bg-lime-iris group-hover:brightness-150 transition-all duration-300"></div>
+                            
+                            <div class="mb-4">
+                                <div class="font-geist text-5xl md:text-6xl text-white font-semibold tracking-tighter mb-2">408</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Publications réseaux</div>
+                            </div>
+                            <p class="text-zinc-400 text-sm font-geist">Sur 9 mois de campagne</p>
+                            
+                            <!-- Indicateur de statut -->
+                            <div class="mt-4 flex items-center">
+                                <div class="w-2 h-2 bg-lime-iris rounded-full mr-2"></div>
+                                <span class="text-xs text-zinc-500 font-geist">Instagram & Facebook</span>
+                            </div>
+                        </div>
                     </div>
                     
-                    <!-- KPI 8 -->
-                    <div class="glass-card p-6" data-aos="fade-up" data-aos-delay="450">
-                        <div class="font-dm-mono text-xs tracking-widest text-slate-400 uppercase mb-4">Renouvellement 2027</div>
-                        <div class="font-bebas text-5xl md:text-6xl text-vert-proof mb-4">100%</div>
-                        <p class="text-slate-400 text-sm">Des partenaires recroisés<br>ont confirmé leur retour</p>
+                    <!-- Carte 8: Renouvellement 2027 -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="450">
+                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300">
+                            <!-- Micro-barre d'accent Cyan -->
+                            <div class="absolute top-0 left-0 right-0 h-0.5 bg-cyan-iris group-hover:brightness-150 transition-all duration-300"></div>
+                            
+                            <div class="mb-4">
+                                <div class="font-geist text-5xl md:text-6xl text-cyan-iris font-semibold tracking-tighter mb-2">100%</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Renouvellement 2027</div>
+                            </div>
+                            <p class="text-zinc-400 text-sm font-geist">Des partenaires recroisés</p>
+                            
+                            <!-- Indicateur de statut -->
+                            <div class="mt-4 flex items-center">
+                                <div class="w-2 h-2 bg-cyan-iris rounded-full mr-2"></div>
+                                <span class="text-xs text-zinc-500 font-geist">Ont confirmé leur retour</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                
+                <!-- Légende technique -->
+                <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="500">
+                    <div class="inline-flex items-center space-x-6">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-0.5 bg-lime-iris"></div>
+                            <span class="text-xs text-zinc-500 font-geist tracking-[0.2em]">LIME · PERFORMANCE</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-0.5 bg-cyan-iris"></div>
+                            <span class="text-xs text-zinc-500 font-geist tracking-[0.2em]">CYAN · DONNÉES</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-0.5 bg-magenta-iris"></div>
+                            <span class="text-xs text-zinc-500 font-geist tracking-[0.2em]">MAGENTA · ALERTE</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-zinc-600 text-sm font-geist mt-6 max-w-2xl mx-auto">
+                        Interface de monitoring haute précision · Les couleurs sont des indicateurs, pas des décorations.
+                        Chaque micro-barre s'illumine au survol, comme un LED d'ingénierie F1.
+                    </p>
+                </div>
+                
+                <!-- Navigation vers la section suivante -->
+                <div class="mt-20 text-center" data-aos="fade-up" data-aos-delay="600">
+                    <a href="#impact" class="inline-flex items-center space-x-3 text-zinc-500 hover:text-white transition-colors duration-300 group">
+                        <span class="font-geist text-sm tracking-[0.3em] uppercase">DÉCOUVRIR L'IMPACT GLOBAL</span>
+                        <div class="w-8 h-[1px] bg-zinc-700 group-hover:bg-white transition-colors duration-300"></div>
+                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                </div>
             </div>
+            
+            <!-- Séparateur technique -->
+            <div class="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-zinc-900 to-transparent"></div>
         </section>
         
-        
-        <!-- Section 3: Impact Global améliorée -->
-        <section id="impact" class="section-spacing bg-gradient-to-b from-dark-green to-black section-transition">
-            <div class="container mx-auto px-4">
-                <div class="mb-12 text-center" data-aos="fade-up">
-                    <div class="inline-block font-dm-mono text-sm tracking-widest text-rouge uppercase mb-4">02</div>
-                    <h2 class="font-bebas text-4xl md:text-6xl text-white mb-4">Un succès qui dépasse les frontières</h2>
-                    <p class="text-slate-400 max-w-2xl mx-auto">Rayonnement territorial · Santé associative · Impact local</p>
+        <!-- Section 3: Impact Global - Interface Bento F1 x Apple -->
+        <section id="impact" class="section-spacing bg-black relative overflow-hidden">
+            <!-- Fond noir carbone absolu -->
+            <div class="absolute inset-0 bg-black"></div>
+            
+            <!-- Effets de grille technique F1 -->
+            <div class="absolute inset-0 opacity-[0.02]">
+                <!-- Grille de circuit F1 -->
+                <div class="absolute inset-0" style="
+                    background-image: 
+                        linear-gradient(to right, rgba(217, 255, 0, 0.05) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(55, 213, 214, 0.05) 1px, transparent 1px);
+                    background-size: 40px 40px;
+                "></div>
+                
+                <!-- Lignes de vitesse -->
+                <div class="absolute inset-0" style="
+                    background-image: 
+                        repeating-linear-gradient(
+                            45deg,
+                            transparent,
+                            transparent 10px,
+                            rgba(178, 39, 178, 0.03) 10px,
+                            rgba(178, 39, 178, 0.03) 20px
+                        );
+                "></div>
+            </div>
+            
+            <div class="container mx-auto px-4 relative z-10">
+                <!-- Titre Minimaliste Radical -->
+                <div class="mb-20 text-center" data-aos="fade-up">
+                    <h2 class="font-geist text-5xl md:text-7xl text-white font-light mb-6 tracking-tighter">
+                        IMPACT <span class="font-semibold">GLOBAL</span>
+                    </h2>
+                    <p class="text-zinc-500 max-w-2xl mx-auto text-lg font-geist tracking-[0.02em]">
+                        Interface de monitoring · Rayonnement territorial & santé associative
+                    </p>
+                    
+                    <!-- Séparateur technique -->
+                    <div class="mt-12 flex justify-center">
+                        <div class="w-48 h-[1px] bg-gradient-to-r from-transparent via-zinc-800 to-transparent"></div>
+                    </div>
                 </div>
                 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="glass-card p-8" data-aos="fade-right">
-                        <div class="font-dm-mono text-xs tracking-widest text-lime uppercase mb-6">Fréquentation & Rayonnement</div>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-start space-x-4">
-                                <div class="text-lime text-xl mt-1">▸</div>
-                                <div>
-                                    <p class="text-white font-medium">1 500 spectateurs réunis sur le week-end</p>
-                                    <p class="text-slate-400 text-sm mt-1">Double Sold Out les deux soirs</p>
+                <!-- Grille Bento - 4 cartes techniques -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Carte 1: Vues & Rayonnement -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="100">
+                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300">
+                            <!-- Micro-barre d'accent Vert Laser -->
+                            <div class="absolute top-0 left-0 right-0 h-0.5 bg-lime-iris group-hover:brightness-150 transition-all duration-300"></div>
+                            
+                            <div class="mb-4">
+                                <div class="font-geist text-5xl md:text-6xl text-white font-semibold tracking-tighter mb-2">1 500</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Spectateurs</div>
+                            </div>
+                            <p class="text-zinc-400 text-sm font-geist">Double Sold Out · Week-end complet</p>
+                            
+                            <!-- Indicateurs de performance -->
+                            <div class="mt-6 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-zinc-500 text-xs">Public local</span>
+                                    <span class="text-lime-iris text-sm font-medium">90%</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-zinc-500 text-xs">Liste d'attente</span>
+                                    <span class="text-lime-iris text-sm font-medium">+200</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-zinc-500 text-xs">Complet dès</span>
+                                    <span class="text-lime-iris text-sm font-medium">20h00</span>
                                 </div>
                             </div>
-                            <div class="flex items-start space-x-4">
-                                <div class="text-lime text-xl mt-1">▸</div>
-                                <div>
-                                    <p class="text-white font-medium">Enjoylife : guichets fermés 24h avant l'ouverture</p>
-                                    <p class="text-slate-400 text-sm mt-1">+ 200 personnes en liste d'attente</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-4">
-                                <div class="text-lime text-xl mt-1">▸</div>
-                                <div>
-                                    <p class="text-white font-medium">La Nuit des Amateurs : complet dès 20h00</p>
-                                    <p class="text-slate-400 text-sm mt-1">Au lancement du show</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-4">
-                                <div class="text-lime text-xl mt-1">▸</div>
-                                <div>
-                                    <p class="text-white font-medium">90% du public issu de la Plaine de l'Ain</p>
-                                    <p class="text-slate-400 text-sm mt-1">Votre clientèle naturelle</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-8 pt-6 border-t border-lime/20">
-                            <div class="font-dm-mono text-xs tracking-widest text-or uppercase mb-4">Santé associative</div>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="glass-card p-4">
-                                    <div class="text-vert-proof font-bold text-lg">31K€</div>
-                                    <p class="text-slate-400 text-sm">Budget de production · Zéro dette</p>
-                                </div>
-                                <div class="glass-card p-4">
-                                    <div class="text-or font-bold text-lg">95%</div>
-                                    <p class="text-slate-400 text-sm">Prestataires locaux dans l'Ain</p>
-                                </div>
-                                <div class="glass-card p-4">
-                                    <div class="text-white font-bold text-lg">80</div>
-                                    <p class="text-slate-400 text-sm">Bénévoles mobilisés</p>
-                                </div>
-                                <div class="glass-card p-4">
-                                    <div class="text-vert-proof font-bold text-lg">100%</div>
-                                    <p class="text-slate-400 text-sm">Reconduction des partenaires</p>
-                                </div>
+                            
+                            <!-- Indicateur de statut -->
+                            <div class="mt-4 flex items-center">
+                                <div class="w-2 h-2 bg-lime-iris rounded-full mr-2"></div>
+                                <span class="text-xs text-zinc-500 font-geist">SOLD OUT CONFIRMÉ</span>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="glass-card p-8" data-aos="fade-left">
-                        <div class="font-dm-mono text-xs tracking-widest text-or uppercase mb-6">Impact économique local</div>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-center justify-between border-b border-lime/10 pb-4">
-                                <span class="text-slate-300">Subvention CCPA</span>
-                                <span class="font-bebas text-xl text-rouge">3 500 €</span>
+                    <!-- Carte 2: Engagement Territorial -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="150">
+                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300">
+                            <!-- Micro-barre d'accent Bleu Neon -->
+                            <div class="absolute top-0 left-0 right-0 h-0.5 bg-cyan-iris group-hover:brightness-150 transition-all duration-300"></div>
+                            
+                            <div class="mb-4">
+                                <div class="font-geist text-5xl md:text-6xl text-cyan-iris font-semibold tracking-tighter mb-2">95%</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Économie locale</div>
                             </div>
-                            <div class="flex items-center justify-between border-b border-lime/10 pb-4">
-                                <span class="text-slate-300">Subvention Ville d'accueil VLM</span>
-                                <span class="font-bebas text-xl text-rouge">1 517 €</span>
+                            <p class="text-zinc-400 text-sm font-geist">Prestataires dans l'Ain · Impact circulaire</p>
+                            
+                            <!-- Grille d'engagement -->
+                            <div class="mt-6 grid grid-cols-2 gap-3">
+                                <div class="text-center">
+                                    <div class="font-geist text-xl text-white mb-1">80</div>
+                                    <div class="text-zinc-500 text-xs">Bénévoles</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="font-geist text-xl text-white mb-1">13</div>
+                                    <div class="text-zinc-500 text-xs">Communes</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="font-geist text-xl text-cyan-iris mb-1">31K€</div>
+                                    <div class="text-zinc-500 text-xs">Budget</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="font-geist text-xl text-cyan-iris mb-1">100%</div>
+                                    <div class="text-zinc-500 text-xs">Reconduction</div>
+                                </div>
                             </div>
-                            <div class="flex items-center justify-between border-b border-lime/10 pb-4">
-                                <span class="text-slate-300">Prestataires locaux</span>
-                                <span class="font-bebas text-xl text-or">95%</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-slate-300">Communes touchées</span>
-                                <span class="font-bebas text-xl text-white">13</span>
+                            
+                            <!-- Indicateur de statut -->
+                            <div class="mt-4 flex items-center">
+                                <div class="w-2 h-2 bg-cyan-iris rounded-full mr-2"></div>
+                                <span class="text-xs text-zinc-500 font-geist">IMPACT CERTIFIÉ</span>
                             </div>
                         </div>
-                        
-                        <div class="mt-8 p-6 bg-gradient-to-r from-rouge/10 to-lime/10 border border-lime/20 rounded-lg">
-                            <p class="text-white italic text-lg">"Tout ce qui était contractualisé a été livré. Sans exception. Et nous avons fait encore plus."</p>
-                            <p class="text-lime font-medium mt-3">This Is It Event — Bilan Partenaires 2026</p>
+                    </div>
+                    
+                    <!-- Carte 3: Croissance Économique -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="200">
+                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300">
+                            <!-- Micro-barre d'accent Vert Laser -->
+                            <div class="absolute top-0 left-0 right-0 h-0.5 bg-lime-iris group-hover:brightness-150 transition-all duration-300"></div>
+                            
+                            <div class="mb-4">
+                                <div class="font-geist text-5xl md:text-6xl text-white font-semibold tracking-tighter mb-2">5 017€</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Subventions</div>
+                            </div>
+                            <p class="text-zinc-400 text-sm font-geist">Soutien institutionnel · Territoire</p>
+                            
+                            <!-- Tableau technique -->
+                            <div class="mt-6 space-y-2">
+                                <div class="flex items-center justify-between border-b border-zinc-800 pb-2">
+                                    <span class="text-zinc-500 text-xs">CCPA</span>
+                                    <span class="text-lime-iris text-sm font-medium">3 500€</span>
+                                </div>
+                                <div class="flex items-center justify-between border-b border-zinc-800 pb-2">
+                                    <span class="text-zinc-500 text-xs">Ville VLM</span>
+                                    <span class="text-lime-iris text-sm font-medium">1 517€</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-zinc-500 text-xs">Prestations locales</span>
+                                    <span class="text-lime-iris text-sm font-medium">95%</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Indicateur de statut -->
+                            <div class="mt-4 flex items-center">
+                                <div class="w-2 h-2 bg-lime-iris rounded-full mr-2"></div>
+                                <span class="text-xs text-zinc-500 font-geist">CROISSANCE VÉRIFIÉE</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carte 4: Satisfaction & Bilan -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="250">
+                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300">
+                            <!-- Micro-barre d'accent Bleu Neon -->
+                            <div class="absolute top-0 left-0 right-0 h-0.5 bg-cyan-iris group-hover:brightness-150 transition-all duration-300"></div>
+                            
+                            <div class="mb-4">
+                                <div class="font-geist text-5xl md:text-6xl text-cyan-iris font-semibold tracking-tighter mb-2">100%</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Livraison</div>
+                            </div>
+                            <p class="text-zinc-400 text-sm font-geist">Engagements honorés · Zéro dette</p>
+                            
+                            <!-- Citation technique -->
+                            <div class="mt-6 p-4 bg-zinc-900/50 border border-zinc-800 rounded-sm">
+                                <p class="text-zinc-300 text-sm italic font-geist leading-relaxed">
+                                    "Tout ce qui était contractualisé a été livré. Sans exception. Et nous avons fait encore plus."
+                                </p>
+                                <div class="mt-3 flex items-center">
+                                    <div class="w-1 h-4 bg-cyan-iris mr-2"></div>
+                                    <span class="text-zinc-500 text-xs font-geist">This Is It Event — Bilan Partenaires 2026</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Indicateur de statut -->
+                            <div class="mt-4 flex items-center">
+                                <div class="w-2 h-2 bg-cyan-iris rounded-full mr-2"></div>
+                                <span class="text-xs text-zinc-500 font-geist">SATISFACTION MAXIMALE</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+                
+                <!-- Légende technique -->
+                <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="inline-flex items-center space-x-6">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-0.5 bg-lime-iris"></div>
+                            <span class="text-xs text-zinc-500 font-geist tracking-[0.2em]">VERT LASER · RÉUSSITE</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-0.5 bg-cyan-iris"></div>
+                            <span class="text-xs text-zinc-500 font-geist tracking-[0.2em]">BLEU NEON · DATA</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-zinc-600 text-sm font-geist mt-6 max-w-2xl mx-auto">
+                        Interface de monitoring haute précision · Chaque micro-barre représente un KPI clé.
+                        Vert Laser = Performance & Croissance · Bleu Neon = Données & Engagement.
+                    </p>
+                </div>
+                
+                <!-- Navigation vers la section suivante -->
+                <div class="mt-20 text-center" data-aos="fade-up" data-aos-delay="400">
+                    <a href="#digital" class="inline-flex items-center space-x-3 text-zinc-500 hover:text-white transition-colors duration-300 group">
+                        <span class="font-geist text-sm tracking-[0.3em] uppercase">DÉCOUVRIR LA PERFORMANCE DIGITALE</span>
+                        <div class="w-8 h-[1px] bg-zinc-700 group-hover:bg-white transition-colors duration-300"></div>
+                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                </div>
             </div>
+            
+            <!-- Séparateur technique -->
+            <div class="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-zinc-900 to-transparent"></div>
         </section>
         
         <!-- Section 4: Performance Digitale améliorée -->
