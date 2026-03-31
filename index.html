@@ -990,7 +990,8 @@
         </style>
         
         <!-- Section 2: Interface de Télémétrie F1 x Apple -->
-        <section id="chiffres" class="section-spacing bg-black relative overflow-hidden">
+        <section id="chiffres" class="section-spacing bg-gradient-to-b from-black via-zinc-950 to-black relative overflow-hidden">
+
             <!-- Fond noir carbone absolu -->
             <div class="absolute inset-0 bg-black"></div>
             
@@ -1702,132 +1703,203 @@
                     </div>
                 </div>
                 
-                <!-- Grille Bento - 2 cartes techniques -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <!-- Carte 1: Supports Contractuels -->
-                    <div class="group relative" data-aos="fade-up" data-aos-delay="100">
-                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300">
+                <!-- Structure asymétrique 66%/33% avec connecteurs LED verticaux -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Colonne principale (66%) - Liste technique avec connecteurs LED -->
+                    <div class="lg:col-span-2 group relative" data-aos="fade-up" data-aos-delay="100">
+                        <div class="bg-black border border-zinc-900 rounded-sm p-8 hover:border-zinc-800 transition-all duration-300">
                             <!-- Micro-barre d'accent Lime -->
                             <div class="absolute top-0 left-0 right-0 h-0.5 bg-lime-iris group-hover:brightness-150 transition-all duration-300"></div>
                             
-                            <div class="mb-4">
-                                <div class="font-geist text-4xl md:text-5xl text-white font-semibold tracking-tighter mb-2">Supports Contractuels</div>
-                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">15 livrables · 100% honorés</div>
+                            <div class="mb-8">
+                                <div class="font-geist text-4xl md:text-5xl text-white font-semibold tracking-tighter mb-2">Livrables 2026</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">21 supports · 100% honorés · +40% valeur ajoutée</div>
                             </div>
                             
-                            <!-- Liste technique -->
-                            <div class="space-y-2">
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-lime-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Réseaux sociaux (130K abonnés)</span>
+                            <!-- Grille de livrables avec connecteurs LED -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Colonne gauche -->
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3 group/item">
+                                        <!-- Connecteur LED vertical -->
+                                        <div class="relative flex flex-col items-center">
+                                            <div class="w-3 h-3 bg-lime-iris rounded-full mb-1 group-hover/item:scale-125 transition-transform duration-300"></div>
+                                            <div class="w-0.5 h-full bg-gradient-to-b from-lime-iris/50 to-transparent"></div>
+                                        </div>
+                                        <div>
+                                            <div class="font-geist text-white font-medium mb-1">Réseaux sociaux</div>
+                                            <div class="text-zinc-500 text-sm">130K abonnés · 408 publications</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3 group/item">
+                                        <div class="relative flex flex-col items-center">
+                                            <div class="w-3 h-3 bg-lime-iris rounded-full mb-1 group-hover/item:scale-125 transition-transform duration-300"></div>
+                                            <div class="w-0.5 h-full bg-gradient-to-b from-lime-iris/50 to-transparent"></div>
+                                        </div>
+                                        <div>
+                                            <div class="font-geist text-white font-medium mb-1">Affichage physique</div>
+                                            <div class="text-zinc-500 text-sm">15K flyers · 300 affiches A3</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3 group/item">
+                                        <div class="relative flex flex-col items-center">
+                                            <div class="w-3 h-3 bg-lime-iris rounded-full mb-1 group-hover/item:scale-125 transition-transform duration-300"></div>
+                                            <div class="w-0.5 h-full bg-gradient-to-b from-lime-iris/50 to-transparent"></div>
+                                        </div>
+                                        <div>
+                                            <div class="font-geist text-white font-medium mb-1">Signalétique</div>
+                                            <div class="text-zinc-500 text-sm">Entrée + 40 supports intérieurs</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3 group/item">
+                                        <div class="relative flex flex-col items-center">
+                                            <div class="w-3 h-3 bg-lime-iris rounded-full mb-1 group-hover/item:scale-125 transition-transform duration-300"></div>
+                                            <div class="w-0.5 h-full bg-gradient-to-b from-lime-iris/50 to-transparent"></div>
+                                        </div>
+                                        <div>
+                                            <div class="font-geist text-white font-medium mb-1">Toiles partenaires</div>
+                                            <div class="text-zinc-500 text-sm">5 totems · Exposition maximale</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3 group/item">
+                                        <div class="relative flex flex-col items-center">
+                                            <div class="w-3 h-3 bg-lime-iris rounded-full mb-1 group-hover/item:scale-125 transition-transform duration-300"></div>
+                                            <div class="w-0.5 h-full bg-gradient-to-b from-lime-iris/50 to-transparent"></div>
+                                        </div>
+                                        <div>
+                                            <div class="font-geist text-white font-medium mb-1">Écrans géants</div>
+                                            <div class="text-zinc-500 text-sm">Salle principale · 800 passages</div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-lime-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">15 000 affiches et flyers</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-lime-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Signalétique d'entrée</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-lime-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Toiles partenaires (5 totems)</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-lime-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Salle principale (écrans géants)</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-lime-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Signalétique intérieure (40 supports)</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-lime-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Photocall</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-lime-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Trophée La Nuit des Amateurs</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-lime-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Pancartes de vote (600 unités)</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-lime-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Brochures partenaires (600 unités)</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-lime-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Invitations balcon VIP (2 à 6 places)</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-lime-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">2 sites officiels</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-lime-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Invitations grand public</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-lime-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Éco-cups logotés</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-lime-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Stand hall d'accueil</span>
+                                
+                                <!-- Colonne droite -->
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3 group/item">
+                                        <div class="relative flex flex-col items-center">
+                                            <div class="w-3 h-3 bg-cyan-iris rounded-full mb-1 group-hover/item:scale-125 transition-transform duration-300"></div>
+                                            <div class="w-0.5 h-full bg-gradient-to-b from-cyan-iris/50 to-transparent"></div>
+                                        </div>
+                                        <div>
+                                            <div class="font-geist text-white font-medium mb-1">Photocall</div>
+                                            <div class="text-zinc-500 text-sm">Zone photo exclusive</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3 group/item">
+                                        <div class="relative flex flex-col items-center">
+                                            <div class="w-3 h-3 bg-cyan-iris rounded-full mb-1 group-hover/item:scale-125 transition-transform duration-300"></div>
+                                            <div class="w-0.5 h-full bg-gradient-to-b from-cyan-iris/50 to-transparent"></div>
+                                        </div>
+                                        <div>
+                                            <div class="font-geist text-white font-medium mb-1">Trophée LNDA</div>
+                                            <div class="text-zinc-500 text-sm">Logo sur trophée officiel</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3 group/item">
+                                        <div class="relative flex flex-col items-center">
+                                            <div class="w-3 h-3 bg-cyan-iris rounded-full mb-1 group-hover/item:scale-125 transition-transform duration-300"></div>
+                                            <div class="w-0.5 h-full bg-gradient-to-b from-cyan-iris/50 to-transparent"></div>
+                                        </div>
+                                        <div>
+                                            <div class="font-geist text-white font-medium mb-1">Brochures</div>
+                                            <div class="text-zinc-500 text-sm">600 unités · Encart dédié</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3 group/item">
+                                        <div class="relative flex flex-col items-center">
+                                            <div class="w-3 h-3 bg-cyan-iris rounded-full mb-1 group-hover/item:scale-125 transition-transform duration-300"></div>
+                                            <div class="w-0.5 h-full bg-gradient-to-b from-cyan-iris/50 to-transparent"></div>
+                                        </div>
+                                        <div>
+                                            <div class="font-geist text-white font-medium mb-1">Invitations VIP</div>
+                                            <div class="text-zinc-500 text-sm">Balcon · 2 à 6 places</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3 group/item">
+                                        <div class="relative flex flex-col items-center">
+                                            <div class="w-3 h-3 bg-cyan-iris rounded-full mb-1 group-hover/item:scale-125 transition-transform duration-300"></div>
+                                            <div class="w-0.5 h-full bg-gradient-to-b from-cyan-iris/50 to-transparent"></div>
+                                        </div>
+                                        <div>
+                                            <div class="font-geist text-white font-medium mb-1">Éco-cups logotés</div>
+                                            <div class="text-zinc-500 text-sm">Consommation responsable</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             
                             <!-- Indicateur de statut -->
-                            <div class="mt-4 flex items-center">
+                            <div class="mt-8 flex items-center">
                                 <div class="w-2 h-2 bg-lime-iris rounded-full mr-2"></div>
-                                <span class="text-xs text-zinc-500 font-geist">100% LIVRÉ · SANS EXCEPTION</span>
+                                <span class="text-xs text-zinc-500 font-geist">21 LIVRABLES · 100% HONORÉS</span>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Carte 2: Bonus Non Contractuels -->
+                    <!-- Colonne secondaire (33%) - Résumé & Bonus -->
                     <div class="group relative" data-aos="fade-up" data-aos-delay="150">
-                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300">
+                        <div class="bg-black border border-zinc-900 rounded-sm p-8 hover:border-zinc-800 transition-all duration-300">
                             <!-- Micro-barre d'accent Cyan -->
                             <div class="absolute top-0 left-0 right-0 h-0.5 bg-cyan-iris group-hover:brightness-150 transition-all duration-300"></div>
                             
-                            <div class="mb-4">
-                                <div class="font-geist text-4xl md:text-5xl text-cyan-iris font-semibold tracking-tighter mb-2">Bonus Non Contractuels</div>
-                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">6 livrables bonus · Car vous le méritez</div>
+                            <div class="mb-8">
+                                <div class="font-geist text-4xl md:text-5xl text-cyan-iris font-semibold tracking-tighter mb-2">+40%</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Valeur ajoutée · Bonus exclusifs</div>
                             </div>
                             
-                            <!-- Liste technique -->
-                            <div class="space-y-2">
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-cyan-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Affiche abribus McDonald's Drive — 30 000 clients/mois</span>
+                            <!-- Résumé des bonus -->
+                            <div class="space-y-4 mb-8">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-cyan-iris rounded-full mt-2"></div>
+                                    <div>
+                                        <div class="font-geist text-white font-medium mb-1">Abribus McDonald's Drive</div>
+                                        <div class="text-zinc-500 text-sm">30 000 clients/mois · 1 mois d'affichage</div>
+                                    </div>
                                 </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-cyan-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Écran Cinéma l'Horloge de Meximieux</span>
+                                
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-cyan-iris rounded-full mt-2"></div>
+                                    <div>
+                                        <div class="font-geist text-white font-medium mb-1">Écran Cinéma l'Horloge</div>
+                                        <div class="text-zinc-500 text-sm">Meximieux · Avant chaque séance</div>
+                                    </div>
                                 </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-cyan-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Visuel dans les reportages médias (La Cotière, NRJ...)</span>
+                                
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-cyan-iris rounded-full mt-2"></div>
+                                    <div>
+                                        <div class="font-geist text-white font-medium mb-1">Reportages médias</div>
+                                        <div class="text-zinc-500 text-sm">La Cotière, NRJ, Le Progrès</div>
+                                    </div>
                                 </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-cyan-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Bracelets d'accès logotés Partenaires Majeurs (500 unités)</span>
+                                
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-cyan-iris rounded-full mt-2"></div>
+                                    <div>
+                                        <div class="font-geist text-white font-medium mb-1">Bracelets Partenaires Majeurs</div>
+                                        <div class="text-zinc-500 text-sm">500 unités · Accès VIP</div>
+                                    </div>
                                 </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-cyan-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Bâche individuelle accrochée dans la salle</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-cyan-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Remerciements nominatifs sur scène devant 750 spectateurs</span>
+                                
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-cyan-iris rounded-full mt-2"></div>
+                                    <div>
+                                        <div class="font-geist text-white font-medium mb-1">Remerciements nominatifs</div>
+                                        <div class="text-zinc-500 text-sm">Devant 750 spectateurs</div>
+                                    </div>
                                 </div>
                             </div>
                             
                             <!-- Citation technique -->
-                            <div class="mt-6 p-4 bg-zinc-900/50 border border-zinc-800 rounded-sm">
+                            <div class="p-4 bg-zinc-900/50 border border-zinc-800 rounded-sm">
                                 <p class="text-zinc-300 text-sm italic font-geist leading-relaxed">
                                     "Vous avez reçu <span class="text-lime-iris font-semibold">21 livrables</span> pour le prix de <span class="text-cyan-iris font-semibold">15</span>. C'est notre façon de dire merci pour votre confiance."
                                 </p>
@@ -1838,7 +1910,7 @@
                             </div>
                             
                             <!-- Indicateur de statut -->
-                            <div class="mt-4 flex items-center">
+                            <div class="mt-8 flex items-center">
                                 <div class="w-2 h-2 bg-cyan-iris rounded-full mr-2"></div>
                                 <span class="text-xs text-zinc-500 font-geist">VALEUR AJOUTÉE · +40%</span>
                             </div>
@@ -1861,7 +1933,7 @@
                     
                     <p class="text-zinc-600 text-sm font-geist mt-6 max-w-2xl mx-auto">
                         Interface de monitoring haute précision · 21 livrables pour le prix de 15.
-                        Chaque micro-barre représente un niveau d'engagement distinct.
+                        Chaque connecteur LED vertical représente un support distinct.
                     </p>
                 </div>
                 
@@ -1873,6 +1945,7 @@
                         <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform duration-300"></i>
                     </a>
                 </div>
+
             </div>
             
             <!-- Séparateur technique -->
@@ -1923,123 +1996,128 @@
                     </div>
                 </div>
                 
-                <!-- Grille Bento - 2 cartes techniques -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <!-- Carte 1: Affichage Physique -->
-                    <div class="group relative" data-aos="fade-up" data-aos-delay="100">
-                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300">
-                            <!-- Micro-barre d'accent Lime -->
-                            <div class="absolute top-0 left-0 right-0 h-0.5 bg-lime-iris group-hover:brightness-150 transition-all duration-300"></div>
-                            
-                            <div class="mb-4">
-                                <div class="font-geist text-4xl md:text-5xl text-white font-semibold tracking-tighter mb-2">Affichage Physique</div>
-                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Portée directe · Territoire Ain</div>
+                <!-- Large Card Full Width - Point focal sur le 95% Local -->
+                <div class="group relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-black border border-zinc-900 rounded-sm p-8 hover:border-zinc-800 transition-all duration-300">
+                        <!-- Micro-barre d'accent Lime -->
+                        <div class="absolute top-0 left-0 right-0 h-0.5 bg-lime-iris group-hover:brightness-150 transition-all duration-300"></div>
+                        
+                        <!-- En-tête avec point focal -->
+                        <div class="mb-8 text-center">
+                            <div class="font-geist text-6xl md:text-8xl text-lime-iris font-semibold tracking-tighter mb-4">95%</div>
+                            <div class="font-geist text-2xl md:text-3xl text-white font-semibold tracking-tighter mb-2">Économie Locale · Impact Circulaire</div>
+                            <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Votre investissement reste dans l'Ain</div>
+                        </div>
+                        
+                        <!-- Grille de données -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                            <!-- Colonne 1: Affichage Physique -->
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-3 mb-4">
+                                    <div class="w-1 h-6 bg-lime-iris"></div>
+                                    <h3 class="font-geist text-lg text-white font-semibold">Affichage Physique</h3>
+                                </div>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
+                                        <span class="text-zinc-400 text-sm">Abribus McDonald's Drive</span>
+                                        <span class="font-geist text-sm text-lime-iris font-semibold">40K/mois</span>
+                                    </div>
+                                    <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
+                                        <span class="text-zinc-400 text-sm">Cinéma l'Horloge</span>
+                                        <span class="font-geist text-sm text-lime-iris font-semibold">1 mois</span>
+                                    </div>
+                                    <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
+                                        <span class="text-zinc-400 text-sm">Flyers A4</span>
+                                        <span class="font-geist text-sm text-white font-semibold">15K</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-zinc-400 text-sm">Affiches A3</span>
+                                        <span class="font-geist text-sm text-white font-semibold">300</span>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <!-- Tableau technique -->
-                            <div class="space-y-3">
-                                <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
-                                    <span class="text-zinc-400 text-sm">Abribus Drive McDonald's</span>
-                                    <span class="font-geist text-lg text-lime-iris font-semibold">40K/mois</span>
+                            <!-- Colonne 2: Économie Circulaire -->
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-3 mb-4">
+                                    <div class="w-1 h-6 bg-cyan-iris"></div>
+                                    <h3 class="font-geist text-lg text-white font-semibold">Économie Circulaire</h3>
                                 </div>
-                                <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
-                                    <span class="text-zinc-400 text-sm">Cinéma l'Horloge</span>
-                                    <span class="font-geist text-lg text-lime-iris font-semibold">1 mois</span>
-                                </div>
-                                <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
-                                    <span class="text-zinc-400 text-sm">Flyers A4</span>
-                                    <span class="font-geist text-lg text-white font-semibold">15K</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-zinc-400 text-sm">Affiches A3</span>
-                                    <span class="font-geist text-lg text-white font-semibold">300</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Grille économique -->
-                            <div class="mt-6">
-                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em] mb-3">Économie circulaire locale</div>
-                                <div class="grid grid-cols-2 gap-2">
-                                    <div class="text-center p-3 border border-zinc-800 rounded-sm">
-                                        <div class="font-geist text-2xl text-lime-iris mb-1">95%</div>
+                                
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="text-center p-3 border border-zinc-800 rounded-sm hover:border-zinc-700 transition-colors">
+                                        <div class="font-geist text-3xl text-lime-iris mb-1">95%</div>
                                         <div class="text-zinc-500 text-xs">Prestataires locaux</div>
                                     </div>
-                                    <div class="text-center p-3 border border-zinc-800 rounded-sm">
-                                        <div class="font-geist text-2xl text-white mb-1">80</div>
+                                    <div class="text-center p-3 border border-zinc-800 rounded-sm hover:border-zinc-700 transition-colors">
+                                        <div class="font-geist text-3xl text-white mb-1">80</div>
                                         <div class="text-zinc-500 text-xs">Bénévoles</div>
                                     </div>
-                                    <div class="text-center p-3 border border-zinc-800 rounded-sm">
-                                        <div class="font-geist text-2xl text-white mb-1">13</div>
+                                    <div class="text-center p-3 border border-zinc-800 rounded-sm hover:border-zinc-700 transition-colors">
+                                        <div class="font-geist text-3xl text-white mb-1">13</div>
                                         <div class="text-zinc-500 text-xs">Communes</div>
                                     </div>
-                                    <div class="text-center p-3 border border-zinc-800 rounded-sm">
-                                        <div class="font-geist text-2xl text-lime-iris mb-1">90%</div>
+                                    <div class="text-center p-3 border border-zinc-800 rounded-sm hover:border-zinc-700 transition-colors">
+                                        <div class="font-geist text-3xl text-lime-iris mb-1">90%</div>
                                         <div class="text-zinc-500 text-xs">Public local</div>
                                     </div>
                                 </div>
                             </div>
                             
-                            <!-- Indicateur de statut -->
-                            <div class="mt-4 flex items-center">
-                                <div class="w-2 h-2 bg-lime-iris rounded-full mr-2"></div>
-                                <span class="text-xs text-zinc-500 font-geist">IMPACT TERRITORIAL</span>
+                            <!-- Colonne 3: RSE & Accessibilité -->
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-3 mb-4">
+                                    <div class="w-1 h-6 bg-magenta-iris"></div>
+                                    <h3 class="font-geist text-lg text-white font-semibold">RSE & Accessibilité</h3>
+                                </div>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
+                                        <span class="text-zinc-400 text-sm">Prix réel de production</span>
+                                        <span class="font-geist text-sm text-zinc-500 line-through">29,47€</span>
+                                    </div>
+                                    <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
+                                        <span class="text-zinc-400 text-sm">Prix payé par le public</span>
+                                        <span class="font-geist text-lg text-cyan-iris font-semibold">15€</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-zinc-400 text-sm">Réduction grâce aux partenaires</span>
+                                        <span class="font-geist text-lg text-lime-iris font-semibold">-49%</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Carte 2: RSE & Accessibilité -->
-                    <div class="group relative" data-aos="fade-up" data-aos-delay="150">
-                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300">
-                            <!-- Micro-barre d'accent Cyan -->
-                            <div class="absolute top-0 left-0 right-0 h-0.5 bg-cyan-iris group-hover:brightness-150 transition-all duration-300"></div>
-                            
-                            <div class="mb-4">
-                                <div class="font-geist text-4xl md:text-5xl text-cyan-iris font-semibold tracking-tighter mb-2">RSE & Accessibilité</div>
-                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Culture accessible · Valeurs positives</div>
+                        
+                        <!-- Citation centrale -->
+                        <div class="mb-8 p-6 bg-zinc-900/50 border border-zinc-800 rounded-sm text-center">
+                            <p class="text-zinc-300 text-lg font-geist leading-relaxed mb-4">
+                                "Grâce à vous, la culture est accessible à tous. Votre logo sur chaque billet vendu."
+                            </p>
+                            <div class="flex items-center justify-center space-x-2">
+                                <div class="w-1 h-4 bg-cyan-iris"></div>
+                                <span class="text-zinc-500 text-sm font-geist">This Is It Event — Impact Social 2026</span>
                             </div>
-                            
-                            <!-- Citation technique -->
-                            <div class="mb-6 p-4 bg-zinc-900/50 border border-zinc-800 rounded-sm">
-                                <p class="text-zinc-300 text-sm italic font-geist leading-relaxed">
-                                    "Grâce à vous, la culture est accessible à tous. Votre logo sur chaque billet vendu."
-                                </p>
-                                <div class="mt-3 flex items-center">
-                                    <div class="w-1 h-4 bg-cyan-iris mr-2"></div>
-                                    <span class="text-zinc-500 text-xs font-geist">This Is It Event — Impact Social 2026</span>
-                                </div>
+                        </div>
+                        
+                        <!-- Indicateurs de statut -->
+                        <div class="flex flex-wrap justify-center gap-6">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-lime-iris rounded-full animate-pulse"></div>
+                                <span class="text-xs text-zinc-500 font-geist">IMPACT TERRITORIAL</span>
                             </div>
-                            
-                            <!-- Tableau technique -->
-                            <div class="space-y-3">
-                                <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
-                                    <span class="text-zinc-400 text-sm">Prix réel de production</span>
-                                    <span class="font-geist text-lg text-zinc-500 line-through">29,47€</span>
-                                </div>
-                                <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
-                                    <span class="text-zinc-400 text-sm">Prix payé par le public</span>
-                                    <span class="font-geist text-2xl text-cyan-iris font-semibold">15€</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-zinc-400 text-sm">Réduction grâce aux partenaires</span>
-                                    <span class="font-geist text-lg text-lime-iris font-semibold">-49%</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Citation finale -->
-                            <div class="mt-6 p-4 bg-zinc-900/50 border border-zinc-800 rounded-sm">
-                                <p class="text-zinc-300 text-sm font-geist leading-relaxed">
-                                    En soutenant This Is It Event, votre entreprise s'associe à des valeurs positives : <span class="text-lime-iris font-semibold">culture, jeunesse, territoire</span>. Un investissement qui valorise votre image RSE auprès de <span class="text-cyan-iris font-semibold">90% de vos clients locaux</span>.
-                                </p>
-                            </div>
-                            
-                            <!-- Indicateur de statut -->
-                            <div class="mt-4 flex items-center">
-                                <div class="w-2 h-2 bg-cyan-iris rounded-full mr-2"></div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-cyan-iris rounded-full animate-pulse" style="animation-delay: 0.3s;"></div>
                                 <span class="text-xs text-zinc-500 font-geist">VALEURS POSITIVES</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-magenta-iris rounded-full animate-pulse" style="animation-delay: 0.6s;"></div>
+                                <span class="text-xs text-zinc-500 font-geist">ÉCONOMIE CIRCULAIRE</span>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 
                 <!-- Légende technique -->
                 <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="200">
@@ -2118,11 +2196,11 @@
                     </div>
                 </div>
                 
-                <!-- Grille Bento - 2 cartes techniques -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <!-- Carte 1: Supports Scénographiques -->
-                    <div class="group relative" data-aos="fade-up" data-aos-delay="100">
-                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300">
+                <!-- Layout Mosaïque Apple - 4 cartes de différentes tailles -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Carte 1: Grande - Supports Scénographiques -->
+                    <div class="lg:col-span-2 group relative" data-aos="fade-up" data-aos-delay="100">
+                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300 h-full">
                             <!-- Micro-barre d'accent Lime -->
                             <div class="absolute top-0 left-0 right-0 h-0.5 bg-lime-iris group-hover:brightness-150 transition-all duration-300"></div>
                             
@@ -2131,41 +2209,29 @@
                                 <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Immersion totale · Exposition maximale</div>
                             </div>
                             
-                            <!-- Tableau technique -->
-                            <div class="space-y-3">
-                                <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
-                                    <span class="text-zinc-400 text-sm">Totems (toiles sur cadres bois)</span>
-                                    <span class="font-geist text-lg text-lime-iris font-semibold">5</span>
+                            <!-- Grille de données -->
+                            <div class="grid grid-cols-2 gap-4 mb-6">
+                                <div class="text-center p-3 border border-zinc-800 rounded-sm">
+                                    <div class="font-geist text-3xl text-lime-iris mb-1">5</div>
+                                    <div class="text-zinc-500 text-xs">Totems</div>
                                 </div>
-                                <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
-                                    <span class="text-zinc-400 text-sm">Pancartes de vote logotées</span>
-                                    <span class="font-geist text-lg text-white font-semibold">600</span>
+                                <div class="text-center p-3 border border-zinc-800 rounded-sm">
+                                    <div class="font-geist text-3xl text-white mb-1">600</div>
+                                    <div class="text-zinc-500 text-xs">Pancartes</div>
                                 </div>
-                                <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
-                                    <span class="text-zinc-400 text-sm">Brochures avec encart dédié</span>
-                                    <span class="font-geist text-lg text-white font-semibold">600</span>
+                                <div class="text-center p-3 border border-zinc-800 rounded-sm">
+                                    <div class="font-geist text-3xl text-white mb-1">500</div>
+                                    <div class="text-zinc-500 text-xs">Bracelets</div>
                                 </div>
-                                <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
-                                    <span class="text-zinc-400 text-sm">Bracelets d'accès marqués</span>
-                                    <span class="font-geist text-lg text-white font-semibold">500</span>
-                                </div>
-                                <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
-                                    <span class="text-zinc-400 text-sm">Supports signalétique salle</span>
-                                    <span class="font-geist text-lg text-white font-semibold">40</span>
-                                </div>
-                                <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
-                                    <span class="text-zinc-400 text-sm">Bâche individuelle exclusive</span>
-                                    <span class="font-geist text-lg text-lime-iris font-semibold">1</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-zinc-400 text-sm">Logo sur trophée officiel LNDA</span>
-                                    <span class="font-geist text-lg text-lime-iris font-semibold">1</span>
+                                <div class="text-center p-3 border border-zinc-800 rounded-sm">
+                                    <div class="font-geist text-3xl text-lime-iris mb-1">40</div>
+                                    <div class="text-zinc-500 text-xs">Supports</div>
                                 </div>
                             </div>
                             
                             <!-- Citation technique -->
-                            <div class="mt-6 p-4 bg-zinc-900/50 border border-zinc-800 rounded-sm">
-                                <div class="font-geist text-4xl text-lime-iris text-center mb-2">800</div>
+                            <div class="p-4 bg-zinc-900/50 border border-zinc-800 rounded-sm">
+                                <div class="font-geist text-5xl text-lime-iris text-center mb-2">800</div>
                                 <p class="text-zinc-300 text-sm text-center font-geist leading-relaxed">
                                     passages de votre logo sur les écrans géants de scène — l'élément le plus photographié de la soirée
                                 </p>
@@ -2179,49 +2245,29 @@
                         </div>
                     </div>
                     
-                    <!-- Carte 2: Expérience VIP -->
+                    <!-- Carte 2: Petite - VIP Balcon -->
                     <div class="group relative" data-aos="fade-up" data-aos-delay="150">
-                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300">
+                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300 h-full">
                             <!-- Micro-barre d'accent Cyan -->
                             <div class="absolute top-0 left-0 right-0 h-0.5 bg-cyan-iris group-hover:brightness-150 transition-all duration-300"></div>
                             
                             <div class="mb-4">
-                                <div class="font-geist text-4xl md:text-5xl text-cyan-iris font-semibold tracking-tighter mb-2">Expérience VIP</div>
-                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Balcon privatif · Service exclusif</div>
+                                <div class="font-geist text-4xl md:text-5xl text-cyan-iris font-semibold tracking-tighter mb-2">VIP Balcon</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">250 invités · Vue exclusive</div>
                             </div>
                             
-                            <!-- Citation technique -->
-                            <div class="mb-6 p-4 bg-zinc-900/50 border border-zinc-800 rounded-sm">
-                                <p class="text-zinc-300 text-sm italic font-geist leading-relaxed">
-                                    "250 invités partenaires accueillis avec service traiteur local. Vue exclusive sur la scène."
-                                </p>
-                                <div class="mt-3 flex items-center">
-                                    <div class="w-1 h-4 bg-cyan-iris mr-2"></div>
-                                    <span class="text-zinc-500 text-xs font-geist">This Is It Event — Expérience Partenaires 2026</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Liste technique -->
-                            <div class="space-y-2">
+                            <div class="space-y-2 mb-4">
                                 <div class="flex items-center space-x-2">
                                     <div class="w-2 h-2 bg-cyan-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">250 invités partenaires sur balcon privatif</span>
+                                    <span class="text-zinc-400 text-sm">Service traiteur local</span>
                                 </div>
                                 <div class="flex items-center space-x-2">
                                     <div class="w-2 h-2 bg-cyan-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">2 bières Ninkasi offertes par invité</span>
+                                    <span class="text-zinc-400 text-sm">2 bières Ninkasi offertes</span>
                                 </div>
                                 <div class="flex items-center space-x-2">
                                     <div class="w-2 h-2 bg-cyan-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">T-shirt "Partenaire" This Is It Event</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-cyan-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Remerciements nominatifs devant 750 spectateurs</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-cyan-iris rounded-full"></div>
-                                    <span class="text-zinc-400 text-sm">Espace privatisé, WC dédié, bar partenaires</span>
+                                    <span class="text-zinc-400 text-sm">T-shirt "Partenaire"</span>
                                 </div>
                             </div>
                             
@@ -2229,6 +2275,86 @@
                             <div class="mt-4 flex items-center">
                                 <div class="w-2 h-2 bg-cyan-iris rounded-full mr-2"></div>
                                 <span class="text-xs text-zinc-500 font-geist">EXPÉRIENCE EXCLUSIVE</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carte 3: Petite - Remerciements -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="200">
+                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300 h-full">
+                            <!-- Micro-barre d'accent Magenta -->
+                            <div class="absolute top-0 left-0 right-0 h-0.5 bg-magenta-iris group-hover:brightness-150 transition-all duration-300"></div>
+                            
+                            <div class="mb-4">
+                                <div class="font-geist text-4xl md:text-5xl text-magenta-iris font-semibold tracking-tighter mb-2">Remerciements</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Devant 750 spectateurs</div>
+                            </div>
+                            
+                            <div class="space-y-2 mb-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2 h-2 bg-magenta-iris rounded-full"></div>
+                                    <span class="text-zinc-400 text-sm">Nominatifs sur scène</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2 h-2 bg-magenta-iris rounded-full"></div>
+                                    <span class="text-zinc-400 text-sm">Applaudissements publics</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2 h-2 bg-magenta-iris rounded-full"></div>
+                                    <span class="text-zinc-400 text-sm">Reconnaissance officielle</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Indicateur de statut -->
+                            <div class="mt-4 flex items-center">
+                                <div class="w-2 h-2 bg-magenta-iris rounded-full mr-2"></div>
+                                <span class="text-xs text-zinc-500 font-geist">RECONNAISSANCE PUBLIQUE</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carte 4: Grande - Infrastructure VIP -->
+                    <div class="lg:col-span-2 group relative" data-aos="fade-up" data-aos-delay="250">
+                        <div class="bg-black border border-zinc-900 rounded-sm p-6 hover:border-zinc-800 transition-all duration-300 h-full">
+                            <!-- Micro-barre d'accent Lime -->
+                            <div class="absolute top-0 left-0 right-0 h-0.5 bg-lime-iris group-hover:brightness-150 transition-all duration-300"></div>
+                            
+                            <div class="mb-4">
+                                <div class="font-geist text-4xl md:text-5xl text-white font-semibold tracking-tighter mb-2">Infrastructure VIP</div>
+                                <div class="font-geist text-xs text-zinc-500 uppercase tracking-[0.3em]">Espace privatisé · Service dédié</div>
+                            </div>
+                            
+                            <!-- Grille de services -->
+                            <div class="grid grid-cols-2 gap-4 mb-6">
+                                <div class="text-center p-3 border border-zinc-800 rounded-sm">
+                                    <div class="font-geist text-2xl text-lime-iris mb-1">WC</div>
+                                    <div class="text-zinc-500 text-xs">Dédiés partenaires</div>
+                                </div>
+                                <div class="text-center p-3 border border-zinc-800 rounded-sm">
+                                    <div class="font-geist text-2xl text-white mb-1">Bar</div>
+                                    <div class="text-zinc-500 text-xs">Exclusif partenaires</div>
+                                </div>
+                                <div class="text-center p-3 border border-zinc-800 rounded-sm">
+                                    <div class="font-geist text-2xl text-white mb-1">Espace</div>
+                                    <div class="text-zinc-500 text-xs">Privatisé balcon</div>
+                                </div>
+                                <div class="text-center p-3 border border-zinc-800 rounded-sm">
+                                    <div class="font-geist text-2xl text-lime-iris mb-1">Vue</div>
+                                    <div class="text-zinc-500 text-xs">Exclusive scène</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Citation technique -->
+                            <div class="p-4 bg-zinc-900/50 border border-zinc-800 rounded-sm">
+                                <p class="text-zinc-300 text-sm text-center font-geist leading-relaxed">
+                                    Espace privatisé avec WC dédié, bar exclusif et vue panoramique sur la scène.
+                                </p>
+                            </div>
+                            
+                            <!-- Indicateur de statut -->
+                            <div class="mt-4 flex items-center">
+                                <div class="w-2 h-2 bg-lime-iris rounded-full mr-2"></div>
+                                <span class="text-xs text-zinc-500 font-geist">INFRASTRUCTURE PREMIUM</span>
                             </div>
                         </div>
                     </div>
@@ -2245,6 +2371,10 @@
                             <div class="w-3 h-0.5 bg-cyan-iris"></div>
                             <span class="text-xs text-zinc-500 font-geist tracking-[0.2em]">BLEU NEON · VIP</span>
                         </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-0.5 bg-magenta-iris"></div>
+                            <span class="text-xs text-zinc-500 font-geist tracking-[0.2em]">MAGENTA · RECONNAISSANCE</span>
+                        </div>
                     </div>
                     
                     <p class="text-zinc-600 text-sm font-geist mt-6 max-w-2xl mx-auto">
@@ -2252,6 +2382,7 @@
                         Chaque micro-barre représente un niveau d'expérience distinct.
                     </p>
                 </div>
+
                 
                 <!-- Navigation vers la section suivante -->
                 <div class="mt-20 text-center" data-aos="fade-up" data-aos-delay="300">
