@@ -1,0 +1,2188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This Is It Event · 2027</title>
+    <meta name="description" content="334 700 personnes touchées · 30 partenaires · Bilan certifié 2026 · Enjoylife · Plaine de l'Ain · Partenariats 2027">
+    <meta property="og:title" content="This Is It Event · 334 700 personnes touchées · Partenariats 2027">
+    <meta property="og:description" content="Double Sold Out · 30 partenaires · 21 supports livrés pour 15 contractualisés · L'événement de la Plaine de l'Ain · Édition 4 en préparation">
+    <meta property="og:image" content="assets/images/hero/hero-salle-comble.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'lime-iris': '#D9FF00',
+                        'cyan-iris': '#37D5D6',
+                        'magenta-iris': '#B227B2',
+                        'cream': '#FBFBFD',
+                    },
+                    fontFamily: {
+                        'geist': ['Geist', 'system-ui', 'sans-serif'],
+                        'bebas': ['Bebas Neue', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'bento': '0 8px 30px rgb(0,0,0,0.04)',
+                        'bento-hover': '0 16px 48px rgb(0,0,0,0.08)',
+                        'card': '0 2px 12px rgb(0,0,0,0.06)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Geist:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --lime: #D9FF00;
+            --cyan: #37D5D6;
+            --magenta: #B227B2;
+            --cream: #FBFBFD;
+            --zinc-900: #18181b;
+            --zinc-700: #3f3f46;
+            --zinc-500: #71717a;
+            --zinc-400: #a1a1aa;
+            --zinc-200: #e4e4e7;
+            --zinc-100: #f4f4f5;
+            --cubic: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Geist', system-ui, sans-serif;
+            background: var(--cream);
+            color: var(--zinc-900);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── PROGRESS BAR ── */
+        .progress-bar {
+            height: 3px;
+            background: linear-gradient(90deg, #D9FF00, #37D5D6, #B227B2);
+            position: fixed;
+            top: 0; left: 0;
+            z-index: 9999;
+            transition: width 0.15s ease;
+            box-shadow: 0 0 8px rgba(217,255,0,0.4);
+        }
+
+        /* ── NAV ── */
+        nav {
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--zinc-100);
+        }
+
+        .nav-link {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--zinc-500);
+            padding: 0.375rem 0.625rem;
+            letter-spacing: 0.01em;
+            white-space: nowrap;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -1px; left: 0; right: 0;
+            height: 2px;
+            background: var(--lime);
+            transform: scaleX(0);
+            transition: transform 0.2s ease;
+        }
+        .nav-link:hover { color: var(--zinc-900); }
+        .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+        .nav-link.active { color: var(--zinc-900); font-weight: 600; }
+
+        /* ── SECTION SPACING ── */
+        .section-spacing { padding-top: 7rem; padding-bottom: 7rem; }
+        @media (max-width: 768px) { .section-spacing { padding-top: 4rem; padding-bottom: 4rem; } }
+
+        /* ── BENTO CARD ── */
+        .bento {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgb(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.04);
+            position: relative;
+            overflow: hidden;
+            transition: box-shadow 0.3s var(--cubic), transform 0.3s var(--cubic);
+        }
+        .bento:hover {
+            box-shadow: 0 16px 48px rgb(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        .bento-accent {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+        }
+        .accent-lime { background: var(--lime); }
+        .accent-cyan { background: var(--cyan); }
+        .accent-magenta { background: var(--magenta); }
+
+        /* ── SECTION LABEL ── */
+        .section-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--zinc-400);
+            font-family: 'Geist', sans-serif;
+        }
+
+        /* ── HERO ── */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: #000;
+        }
+        .hero-bg video, .hero-bg img.hero-img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.35;
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%);
+        }
+
+        /* ── COUNTER ANIMATION ── */
+        .counter { font-variant-numeric: tabular-nums; }
+
+        /* ── SEPARATOR ── */
+        .sep {
+            height: 1px;
+            background: var(--zinc-100);
+        }
+
+        /* ── KPI CARD ── */
+        .kpi-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 12px rgb(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.3s var(--cubic);
+        }
+        .kpi-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgb(0,0,0,0.1); }
+
+        /* ── TAG ── */
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .tag-lime { background: rgba(217,255,0,0.15); color: #5a6600; }
+        .tag-cyan { background: rgba(55,213,214,0.12); color: #0a7a7b; }
+        .tag-magenta { background: rgba(178,39,178,0.1); color: #7a0a7a; }
+        .tag-green { background: rgba(34,197,94,0.12); color: #15803d; }
+
+        /* ── CITATION ── */
+        .citation {
+            border-left: 3px solid var(--cyan);
+            padding-left: 1.25rem;
+            font-style: italic;
+            color: var(--zinc-500);
+            line-height: 1.75;
+        }
+
+        /* ── CHECKLIST ── */
+        .checklist li {
+            display: flex;
+            gap: 0.625rem;
+            padding: 0.5rem 0;
+            font-size: 0.8rem;
+            color: var(--zinc-700);
+            border-bottom: 1px solid var(--zinc-100);
+            align-items: flex-start;
+            line-height: 1.5;
+        }
+        .checklist li:last-child { border-bottom: none; }
+        .check-icon { color: var(--lime); font-size: 0.75rem; margin-top: 2px; flex-shrink: 0; filter: brightness(0.6); }
+        .star-icon { color: var(--cyan); font-size: 0.75rem; margin-top: 2px; flex-shrink: 0; }
+
+        /* ── LOGO GRID ── */
+        .logo-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 1.25rem;
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid var(--zinc-100);
+            box-shadow: 0 2px 8px rgb(0,0,0,0.04);
+            filter: grayscale(100%) opacity(0.6);
+            transition: all 0.3s var(--cubic);
+            cursor: pointer;
+            position: relative;
+        }
+        .logo-item:hover {
+            filter: grayscale(0%) opacity(1);
+            box-shadow: 0 8px 24px rgb(0,0,0,0.1);
+            transform: translateY(-2px);
+            border-color: var(--zinc-200);
+        }
+        .logo-item img {
+            max-height: 36px;
+            max-width: 110px;
+            object-fit: contain;
+        }
+        .logo-item-major img { max-height: 48px; max-width: 140px; }
+
+        /* Partner popup */
+        .partner-popup {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .partner-popup.open { display: flex; }
+        .partner-popup-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(4px);
+        }
+        .partner-popup-content {
+            position: relative;
+            background: #fff;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 24px 80px rgb(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        /* ── PRESSE CARD ── */
+        .presse-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 12px 12px 0 0;
+            transition: transform 0.3s ease;
+        }
+        .presse-card:hover img { transform: scale(1.02); }
+
+        /* ── PRICING CARD ── */
+        .pricing-card {
+            background: #fff;
+            border-radius: 20px;
+            border: 1.5px solid var(--zinc-200);
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s var(--cubic);
+        }
+        .pricing-card:hover { border-color: var(--zinc-400); box-shadow: 0 16px 48px rgb(0,0,0,0.08); }
+        .pricing-card.featured {
+            border-color: var(--zinc-900);
+            box-shadow: 0 16px 48px rgb(0,0,0,0.12);
+        }
+        .pricing-card.featured:hover { box-shadow: 0 24px 64px rgb(0,0,0,0.16); }
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--zinc-900);
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.25rem 1rem;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+        .pricing-level-includes {
+            background: var(--zinc-100);
+            border-radius: 8px;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--zinc-700);
+            letter-spacing: 0.03em;
+            margin-bottom: 0.75rem;
+        }
+
+        /* ── FORM ── */
+        .form-input {
+            width: 100%;
+            background: var(--cream);
+            border: 1.5px solid var(--zinc-200);
+            border-radius: 10px;
+            color: var(--zinc-900);
+            padding: 0.75rem 1rem;
+            font-family: 'Geist', sans-serif;
+            font-size: 0.875rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            outline: none;
+        }
+        .form-input:focus {
+            border-color: var(--zinc-900);
+            box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+        }
+        .form-input::placeholder { color: var(--zinc-400); }
+        select.form-input { cursor: pointer; }
+
+        /* ── BUTTONS ── */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: var(--zinc-900);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 0.875rem 2rem;
+            font-family: 'Geist', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+        .btn-primary:hover { background: #000; transform: translateY(-1px); box-shadow: 0 8px 24px rgb(0,0,0,0.2); }
+
+        .btn-lime {
+            background: var(--lime);
+            color: #000;
+        }
+        .btn-lime:hover { background: #c8ee00; box-shadow: 0 8px 24px rgba(217,255,0,0.3); }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: #25D366;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 0.875rem 2rem;
+            font-family: 'Geist', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+        .btn-whatsapp:hover { background: #20bd5a; transform: translateY(-1px); }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--zinc-700);
+            border: 1.5px solid var(--zinc-200);
+            border-radius: 10px;
+            padding: 0.75rem 1.25rem;
+            font-family: 'Geist', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+        .btn-outline:hover { border-color: var(--zinc-900); color: var(--zinc-900); background: var(--zinc-100); }
+
+        /* ── SLIDER ── */
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%; height: 6px;
+            background: var(--zinc-200);
+            border-radius: 3px;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            background: var(--zinc-900);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* ── TESTIMONIAL ── */
+        .testimonial {
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.75rem;
+            box-shadow: 0 4px 20px rgb(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.04);
+            position: relative;
+        }
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 1rem; right: 1.5rem;
+            font-size: 5rem;
+            color: var(--zinc-100);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        /* ── MOBILE MENU ── */
+        #mobileMenu { display: none; }
+        #mobileMenu.open { display: flex; }
+
+        /* ── AOS OVERRIDE ── */
+        [data-aos] { opacity: 1 !important; visibility: visible !important; }
+
+        /* ── PULSE DOT ── */
+        .dot-pulse {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.7); }
+        }
+
+        /* ── SCROLL INDICATOR ── */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+        .bounce { animation: bounce 2s ease-in-out infinite; }
+
+        /* ── STAT BAR ── */
+        .stat-bar-bg {
+            height: 6px;
+            background: var(--zinc-100);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .stat-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 1.5s ease;
+            width: 0;
+        }
+
+        /* ── RESPONSIVE FIXES ── */
+        @media (max-width: 640px) {
+            .hero-kpi-grid { grid-template-columns: 1fr 1fr; }
+            .section-title { font-size: clamp(2rem, 10vw, 5rem) !important; }
+        }
+
+        /* ── PDF DOWNLOAD BUTTON ── */
+        #pdf-btn {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 500;
+            background: var(--zinc-900);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 0.75rem 1.25rem;
+            font-family: 'Geist', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 20px rgb(0,0,0,0.2);
+            transition: all 0.2s ease;
+        }
+        #pdf-btn:hover { background: #000; transform: translateY(-2px); box-shadow: 0 8px 32px rgb(0,0,0,0.3); }
+        @media print {
+            #pdf-btn, nav, .progress-bar { display: none !important; }
+            body { background: #fff; }
+            .section-spacing { padding-top: 3rem; padding-bottom: 3rem; }
+        }
+
+        /* ── MEDIA LOGO GRID ── */
+        .media-logo-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1rem;
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid var(--zinc-100);
+            filter: grayscale(100%) opacity(0.5);
+            transition: all 0.3s ease;
+        }
+        .media-logo-item:hover { filter: grayscale(0%) opacity(1); }
+        .media-logo-item img { max-height: 28px; max-width: 80px; object-fit: contain; }
+
+        /* ── TABLE ── */
+        .compare-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        .compare-table th {
+            padding: 0.75rem 1rem;
+            text-align: center;
+            font-weight: 600;
+            color: var(--zinc-700);
+            border-bottom: 2px solid var(--zinc-200);
+        }
+        .compare-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--zinc-100);
+            color: var(--zinc-700);
+        }
+        .compare-table td:first-child { color: var(--zinc-500); font-size: 0.8rem; }
+        .compare-table tr:last-child td { border-bottom: none; }
+
+        /* ── GRADIENT TEXT ── */
+        .text-gradient-lime {
+            background: linear-gradient(135deg, #8a9900 0%, #37D5D6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Accordéon mécénat */
+        .accordion-content { display: none; }
+        .accordion-content.open { display: block; }
+
+        /* ── HERO DARK OVERRIDES ── */
+        .hero-section * { color: inherit; }
+    </style>
+</head>
+
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-bar" id="progressBar" style="width:0%"></div>
+
+<!-- PDF Button -->
+<button id="pdf-btn" onclick="downloadPDF()">
+    <i class="fas fa-download text-xs"></i>
+    Télécharger en PDF
+</button>
+
+<!-- ================================================================
+     NAVIGATION
+================================================================ -->
+<nav class="fixed top-0 left-0 right-0 z-50 py-2.5 px-4">
+    <div class="max-w-[1400px] mx-auto flex justify-between items-center gap-4">
+
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center gap-2.5 flex-shrink-0">
+            <img src="images/test.png" alt="Logo This Is It Event" class="h-9 w-auto object-contain">
+            <div class="border-l border-zinc-200 pl-2.5">
+                <span class="font-geist text-sm text-zinc-900 font-semibold block leading-none tracking-tight">THIS IS IT EVENT</span>
+                <span class="font-geist text-[10px] text-zinc-400 uppercase tracking-[0.15em]">Plateforme partenaire</span>
+            </div>
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden xl:flex items-center gap-0 flex-shrink-0">
+            <a href="#hero" class="nav-link">Accueil</a>
+            <a href="#succes" class="nav-link">Succès</a>
+            <a href="#visibilite" class="nav-link">Visibilité</a>
+            <a href="#livrables" class="nav-link">Livrables</a>
+            <a href="#local" class="nav-link">Local</a>
+            <a href="#integration" class="nav-link">Intégration</a>
+            <a href="#partenaires-2026" class="nav-link">Confiance</a>
+            <a href="#presse" class="nav-link">Presse</a>
+            <a href="#partenariats-2027" class="nav-link">2027</a>
+            <a href="#contact" class="nav-link ml-2 px-4 py-1.5 bg-zinc-900 text-white rounded-lg text-[11px] font-semibold hover:bg-black whitespace-nowrap" style="color:white;">
+                Nous rejoindre
+            </a>
+        </div>
+
+        <!-- Mobile button -->
+        <button id="mobileMenuBtn" class="xl:hidden w-9 h-9 flex items-center justify-center border border-zinc-200 rounded-lg text-zinc-500 hover:text-zinc-900 hover:border-zinc-400 transition-colors">
+            <i class="fas fa-bars text-sm"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="xl:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-zinc-100 flex-col shadow-lg">
+        <a href="#hero" class="px-6 py-3 text-zinc-600 text-sm border-b border-zinc-100 hover:text-zinc-900 hover:bg-zinc-50 transition-colors">Accueil</a>
+        <a href="#succes" class="px-6 py-3 text-zinc-600 text-sm border-b border-zinc-100 hover:text-zinc-900 hover:bg-zinc-50 transition-colors">Succès</a>
+        <a href="#visibilite" class="px-6 py-3 text-zinc-600 text-sm border-b border-zinc-100 hover:text-zinc-900 hover:bg-zinc-50 transition-colors">Visibilité</a>
+        <a href="#livrables" class="px-6 py-3 text-zinc-600 text-sm border-b border-zinc-100 hover:text-zinc-900 hover:bg-zinc-50 transition-colors">Livrables</a>
+        <a href="#local" class="px-6 py-3 text-zinc-600 text-sm border-b border-zinc-100 hover:text-zinc-900 hover:bg-zinc-50 transition-colors">Local</a>
+        <a href="#integration" class="px-6 py-3 text-zinc-600 text-sm border-b border-zinc-100 hover:text-zinc-900 hover:bg-zinc-50 transition-colors">Intégration</a>
+        <a href="#partenaires-2026" class="px-6 py-3 text-zinc-600 text-sm border-b border-zinc-100 hover:text-zinc-900 hover:bg-zinc-50 transition-colors">Confiance</a>
+        <a href="#presse" class="px-6 py-3 text-zinc-600 text-sm border-b border-zinc-100 hover:text-zinc-900 hover:bg-zinc-50 transition-colors">Presse</a>
+        <a href="#partenariats-2027" class="px-6 py-3 text-zinc-600 text-sm border-b border-zinc-100 hover:text-zinc-900 hover:bg-zinc-50 transition-colors">2027</a>
+        <a href="#contact" class="px-6 py-4 text-zinc-900 text-sm font-semibold bg-zinc-50 hover:bg-zinc-100 transition-colors">Nous rejoindre →</a>
+    </div>
+</nav>
+
+<main class="pt-16">
+
+<!-- ================================================================
+     SECTION 01 — HERO
+================================================================ -->
+<section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden" style="background:#000;">
+
+    <div class="hero-bg">
+        <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;opacity:0.35;">
+            <source src="assets/videos/hero-ambiance-loop.webm" type="video/webm">
+            <source src="assets/videos/hero-ambiance-loop.mp4" type="video/mp4">
+        </video>
+        <img src="assets/images/hero/hero-salle-comble.jpg" alt="Salle comble Enjoylife" class="hero-img absolute inset-0" style="display:none;" id="heroFallback">
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.55) 100%);"></div>
+    </div>
+
+    <!-- Grille subtile -->
+    <div style="position:absolute;inset:0;background-image:linear-gradient(to right,rgba(217,255,0,0.03) 1px,transparent 1px),linear-gradient(to bottom,rgba(55,213,214,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;"></div>
+
+    <div class="container mx-auto px-6 relative z-10 text-center py-20" data-aos="fade-up" data-aos-duration="900">
+
+        <!-- Badge événement -->
+        <div class="inline-flex items-center gap-2.5 mb-8 px-4 py-2 rounded-full" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);backdrop-filter:blur(10px);">
+            <span class="dot-pulse" style="background:var(--lime);"></span>
+            <span style="font-size:0.7rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.8);">Enjoylife Ed.3 · La Nuit des Amateurs Ed.2 · 20–21 Fév. 2026 · Centre Innovance</span>
+        </div>
+
+        <!-- Headline principale -->
+        <h1 class="font-bebas leading-none mb-4" style="font-size:clamp(3.5rem,12vw,9rem);color:#fff;">
+            334 700 PERSONNES
+        </h1>
+        <h2 class="font-bebas leading-none mb-6" style="font-size:clamp(2rem,7vw,5.5rem);background:linear-gradient(90deg,#D9FF00,#37D5D6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+            ONT VU NOS CAMPAGNES.
+        </h2>
+        <p style="color:rgba(255,255,255,0.65);font-size:1rem;max-width:42rem;margin:0 auto 3rem;line-height:1.6;">
+            Audience unique certifiée · Dépassement de nos engagements initiaux (100K–300K estimés) · 
+            1 670 000 impressions générées · Double Sold Out · 30 partenaires
+        </p>
+
+        <!-- KPIs hero -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-10">
+            <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:1.25rem;backdrop-filter:blur(10px);">
+                <div class="font-bebas counter" style="font-size:2.8rem;color:#D9FF00;" data-target="1500">0</div>
+                <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:0.25rem;">Spectateurs</div>
+                <p style="font-size:0.7rem;color:rgba(255,255,255,0.4);margin-top:0.375rem;">Double Sold Out</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:1.25rem;backdrop-filter:blur(10px);">
+                <div class="font-bebas counter" style="font-size:2.8rem;color:#37D5D6;" data-target="334700">0</div>
+                <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:0.25rem;">Pers. touchées</div>
+                <p style="font-size:0.7rem;color:rgba(255,255,255,0.4);margin-top:0.375rem;">Certifié Meta</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:1.25rem;backdrop-filter:blur(10px);">
+                <div class="font-bebas counter" style="font-size:2.8rem;color:#fff;" data-target="30">0</div>
+                <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:0.25rem;">Partenaires</div>
+                <p style="font-size:0.7rem;color:rgba(255,255,255,0.4);margin-top:0.375rem;">3 niveaux</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:1.25rem;backdrop-filter:blur(10px);">
+                <div class="font-bebas" style="font-size:2.8rem;color:#D9FF00;">ZÉRO</div>
+                <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:0.25rem;">Dette · Incident</div>
+                <p style="font-size:0.7rem;color:rgba(255,255,255,0.4);margin-top:0.375rem;">100% livré</p>
+            </div>
+        </div>
+
+        <!-- Indicateurs secondaires -->
+        <div class="flex flex-wrap justify-center gap-3 mb-10">
+            <div class="tag" style="background:rgba(217,255,0,0.15);color:#D9FF00;"><span class="dot-pulse" style="background:var(--lime);"></span>SOLD OUT</div>
+            <div class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);">Budget 30 913 €</div>
+            <div class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);">408 publications</div>
+            <div class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);">11 000 visites web</div>
+            <div class="tag" style="background:rgba(55,213,214,0.15);color:#37D5D6;">100% renouvelé 2027</div>
+        </div>
+
+        <a href="#succes" class="inline-flex items-center gap-2 bounce" style="color:rgba(255,255,255,0.4);font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;">
+            DÉCOUVRIR <i class="fas fa-chevron-down text-xs"></i>
+        </a>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     SECTION 02 — SUCCÈS
+================================================================ -->
+<section id="succes" class="section-spacing" style="background:var(--cream);">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="mb-12" data-aos="fade-up">
+            <span class="section-label">02 · Succès</span>
+            <h2 class="font-bebas mt-2 section-title" style="font-size:clamp(2.5rem,6vw,5rem);color:var(--zinc-900);line-height:1.05;">
+                DOUBLE SOLD OUT.<br>
+                <span style="color:#18181b;opacity:0.45;">LES DEUX SOIRS.</span>
+            </h2>
+            <p style="color:var(--zinc-500);margin-top:0.75rem;">Vendredi 20 · Samedi 21 · Février 2026 · Centre Innovance · Villieu-Loyes-Mollon</p>
+        </div>
+
+        <!-- Photo salle -->
+        <div class="mb-8 overflow-hidden rounded-2xl" data-aos="fade-up" data-aos-delay="80">
+            <div style="position:relative;height:420px;background:#111;border-radius:20px;overflow:hidden;">
+                <img src="assets/images/events/enjoylife-salle-pleine.jpg" alt="Salle comble Enjoylife 2026" style="width:100%;height:100%;object-fit:cover;opacity:0.9;">
+                <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.5) 0%,transparent 50%);"></div>
+                <div style="position:absolute;bottom:1.5rem;left:1.5rem;">
+                    <span style="background:rgba(0,0,0,0.6);color:rgba(255,255,255,0.8);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.375rem 0.875rem;border-radius:100px;backdrop-filter:blur(8px);">
+                        Centre Innovance · Villieu-Loyes-Mollon · Février 2026
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deux événements -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8" data-aos="fade-up" data-aos-delay="120">
+
+            <div class="bento p-7">
+                <div class="bento-accent accent-lime"></div>
+                <div class="flex items-center gap-3 mb-5">
+                    <img src="assets/images/logos-events/logo-enjoylife.png" alt="Enjoylife" style="height:32px;object-fit:contain;" onerror="this.style.display='none'">
+                    <div>
+                        <div class="section-label">Vendredi 20 Février 2026</div>
+                        <div class="font-bebas" style="font-size:1.75rem;color:var(--zinc-900);line-height:1;">ENJOYLIFE ED.3</div>
+                    </div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:0.625rem;">
+                    <div style="display:flex;align-items:flex-start;gap:0.5rem;">
+                        <i class="fas fa-check-circle text-xs mt-0.5 flex-shrink-0" style="color:var(--lime);filter:brightness(0.6);"></i>
+                        <p style="font-size:0.85rem;color:var(--zinc-700);">Guichets fermés <strong style="color:var(--zinc-900);">24h avant</strong> le show</p>
+                    </div>
+                    <div style="display:flex;align-items:flex-start;gap:0.5rem;">
+                        <i class="fas fa-check-circle text-xs mt-0.5 flex-shrink-0" style="color:var(--lime);filter:brightness(0.6);"></i>
+                        <p style="font-size:0.85rem;color:var(--zinc-700);"><strong style="color:var(--zinc-900);">+200 personnes</strong> en liste d'attente sur Shotgun</p>
+                    </div>
+                    <div style="display:flex;align-items:flex-start;gap:0.5rem;">
+                        <i class="fas fa-check-circle text-xs mt-0.5 flex-shrink-0" style="color:var(--lime);filter:brightness(0.6);"></i>
+                        <p style="font-size:0.85rem;color:var(--zinc-700);">Zéro vente sur place</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento p-7">
+                <div class="bento-accent accent-cyan"></div>
+                <div class="flex items-center gap-3 mb-5">
+                    <img src="assets/images/logos-events/logo-nuit-amateurs.png" alt="La Nuit des Amateurs" style="height:32px;object-fit:contain;" onerror="this.style.display='none'">
+                    <div>
+                        <div class="section-label">Samedi 21 Février 2026</div>
+                        <div class="font-bebas" style="font-size:1.75rem;color:var(--zinc-900);line-height:1;">LA NUIT DES AMATEURS ED.2</div>
+                    </div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:0.625rem;">
+                    <div style="display:flex;align-items:flex-start;gap:0.5rem;">
+                        <i class="fas fa-check-circle text-xs mt-0.5 flex-shrink-0" style="color:var(--cyan);"></i>
+                        <p style="font-size:0.85rem;color:var(--zinc-700);">Complet dès <strong style="color:var(--zinc-900);">20h00</strong> — au lancement du show</p>
+                    </div>
+                    <div style="display:flex;align-items:flex-start;gap:0.5rem;">
+                        <i class="fas fa-check-circle text-xs mt-0.5 flex-shrink-0" style="color:var(--cyan);"></i>
+                        <p style="font-size:0.85rem;color:var(--zinc-700);">Zéro place disponible dès l'ouverture des portes</p>
+                    </div>
+                    <div style="display:flex;align-items:flex-start;gap:0.5rem;">
+                        <i class="fas fa-check-circle text-xs mt-0.5 flex-shrink-0" style="color:var(--cyan);"></i>
+                        <p style="font-size:0.85rem;color:var(--zinc-700);">750 spectateurs · ambiance 100% festive</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KPIs + Rayonnement -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8" data-aos="fade-up" data-aos-delay="160">
+            <div class="kpi-card text-center">
+                <div class="font-bebas counter" style="font-size:3rem;color:var(--zinc-900);" data-target="1500">0</div>
+                <div class="section-label mt-1">Spectateurs</div>
+                <p style="font-size:0.7rem;color:var(--zinc-400);margin-top:0.25rem;">Week-end complet</p>
+            </div>
+            <div class="kpi-card text-center">
+                <div class="font-bebas" style="font-size:3rem;color:var(--zinc-900);">36 ans</div>
+                <div class="section-label mt-1">Âge moyen</div>
+                <p style="font-size:0.7rem;color:var(--zinc-400);margin-top:0.25rem;">Public mature & stable</p>
+            </div>
+            <div class="kpi-card text-center">
+                <div class="font-bebas counter" style="font-size:3rem;" data-target="80" data-suffix="%">0</div>
+                <div class="section-label mt-1" style="color:#5a6600;">Public local</div>
+                <p style="font-size:0.7rem;color:var(--zinc-400);margin-top:0.25rem;">Plaine de l'Ain</p>
+            </div>
+            <div class="kpi-card text-center">
+                <div class="font-bebas" style="font-size:3rem;color:#15803d;">ZÉRO</div>
+                <div class="section-label mt-1" style="color:#15803d;">Incident · Dette</div>
+                <p style="font-size:0.7rem;color:var(--zinc-400);margin-top:0.25rem;">100% sécurisé</p>
+            </div>
+        </div>
+
+        <!-- Rayonnement + Citation -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5" data-aos="fade-up" data-aos-delay="200">
+            <div class="bento p-7">
+                <div class="bento-accent accent-lime"></div>
+                <div class="section-label mb-4">Rayonnement territorial</div>
+                <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:0.625rem;border-bottom:1px solid var(--zinc-100);">
+                        <span style="font-size:0.85rem;color:var(--zinc-500);">Top 3 des villes</span>
+                        <span style="font-size:0.8rem;color:var(--zinc-900);font-weight:500;">Ambérieu · Lagnieu · Meximieux</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:0.625rem;border-bottom:1px solid var(--zinc-100);">
+                        <span style="font-size:0.85rem;color:var(--zinc-500);">80 bénévoles mobilisés</span>
+                        <span class="tag tag-lime">T-shirts logotés</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:0.625rem;border-bottom:1px solid var(--zinc-100);">
+                        <span style="font-size:0.85rem;color:var(--zinc-500);">Prestataires locaux</span>
+                        <span style="font-size:1rem;font-weight:700;color:var(--zinc-900);">95%</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;">
+                        <span style="font-size:0.85rem;color:var(--zinc-500);">Reconduction 2027</span>
+                        <span class="tag tag-green"><i class="fas fa-check text-xs"></i> 100%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento p-7 flex flex-col justify-center">
+                <div class="bento-accent accent-cyan"></div>
+                <div class="citation text-base leading-relaxed mb-6">
+                    "Tout ce qui était contractualisé a été livré. Sans exception. Et nous avons fait encore plus."
+                </div>
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                    <div style="width:3px;height:2.5rem;background:var(--cyan);border-radius:2px;flex-shrink:0;"></div>
+                    <div>
+                        <p style="font-size:0.85rem;font-weight:600;color:var(--zinc-900);">This Is It Event</p>
+                        <p style="font-size:0.75rem;color:var(--zinc-400);">Bilan Partenaires 2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     SECTION 03 — VISIBILITÉ
+================================================================ -->
+<section id="visibilite" class="section-spacing" style="background:#fff;">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="mb-12" data-aos="fade-up">
+            <span class="section-label">03 · Visibilité</span>
+            <h2 class="font-bebas mt-2 section-title" style="font-size:clamp(2.5rem,6vw,5rem);color:var(--zinc-900);line-height:1.05;">
+                UNE CAMPAGNE À<br>
+                <span class="text-gradient-lime">1 670 000 IMPRESSIONS.</span>
+            </h2>
+            <p style="color:var(--zinc-500);margin-top:0.75rem;">
+                Septembre 2025 → aujourd'hui · et jusqu'en septembre 2026 · Facebook, Instagram, sites web, plateforme partenaire · Rien n'est supprimé.
+            </p>
+        </div>
+
+        <!-- Encart contextuel -->
+        <div class="bento p-5 mb-8 flex items-start gap-4" data-aos="fade-up" data-aos-delay="60" style="border-left:4px solid var(--lime);">
+            <div style="width:36px;height:36px;background:rgba(217,255,0,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <i class="fas fa-info-circle text-sm" style="color:#5a6600;"></i>
+            </div>
+            <div>
+                <p style="font-size:0.85rem;font-weight:600;color:var(--zinc-900);margin-bottom:0.25rem;">Ce que représente ce chiffre</p>
+                <p style="font-size:0.8rem;color:var(--zinc-500);line-height:1.6;">
+                    <strong>1 670 000</strong> c'est le nombre total d'affichages de nos publications sur Facebook et Instagram depuis septembre 2025. 
+                    <strong>334 700 personnes uniques</strong> ont vu nos campagnes — soit plus du double de notre engagement initial de 100K–300K. 
+                    Vos logos étaient présents sur une large partie de ces contenus.
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8" data-aos="fade-up" data-aos-delay="100">
+
+            <!-- Meta Ads -->
+            <div class="bento p-7">
+                <div class="bento-accent accent-cyan"></div>
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <div class="section-label mb-1">Performances publicitaires</div>
+                        <div class="font-bebas" style="font-size:1.5rem;color:var(--zinc-900);">Meta Ads · Sept 2025 → Fév 2026</div>
+                    </div>
+                    <span class="tag tag-cyan">Certifié Meta</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:0.875rem;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:0.625rem;border-bottom:1px solid var(--zinc-100);">
+                        <span style="font-size:0.85rem;color:var(--zinc-500);">Impressions totales générées</span>
+                        <span style="font-size:1.1rem;font-weight:700;color:var(--zinc-900);">1 670 000</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:0.625rem;border-bottom:1px solid var(--zinc-100);">
+                        <span style="font-size:0.85rem;color:var(--zinc-500);">Personnes uniques touchées</span>
+                        <span style="font-size:1.1rem;font-weight:700;color:var(--cyan);">334 700</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:0.625rem;border-bottom:1px solid var(--zinc-100);">
+                        <span style="font-size:0.85rem;color:var(--zinc-500);">Clics vers la billetterie</span>
+                        <span style="font-size:1rem;font-weight:600;color:var(--zinc-900);">11 000</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:0.625rem;border-bottom:1px solid var(--zinc-100);">
+                        <span style="font-size:0.85rem;color:var(--zinc-500);">CPM · coût / 1 000 personnes</span>
+                        <div style="text-align:right;">
+                            <span style="font-size:1rem;font-weight:700;color:#5a6600;">1,92 €</span>
+                            <span style="display:block;font-size:0.68rem;color:var(--zinc-400);">secteur événementiel : 5–8 €</span>
+                        </div>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;">
+                        <span style="font-size:0.85rem;color:var(--zinc-500);">Coût moyen par clic</span>
+                        <div style="text-align:right;">
+                            <span style="font-size:1rem;font-weight:700;color:#5a6600;">0,41 €</span>
+                            <span style="display:block;font-size:0.68rem;color:var(--zinc-400);">secteur : 0,50 €</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top:1.25rem;padding:1rem;background:rgba(55,213,214,0.07);border-radius:10px;border:1px solid rgba(55,213,214,0.15);">
+                    <p style="font-size:0.8rem;color:var(--zinc-600);line-height:1.6;">
+                        CPM à <strong>1,92 €</strong> · moyenne du secteur <strong>5–8 €</strong>.
+                        Chaque euro investi a généré <strong>4× plus de visibilité</strong> qu'une campagne standard.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Volume organique -->
+            <div class="bento p-7">
+                <div class="bento-accent accent-lime"></div>
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <div class="section-label mb-1">Présence organique</div>
+                        <div class="font-bebas" style="font-size:1.5rem;color:var(--zinc-900);">Septembre 2025 → Septembre 2026</div>
+                    </div>
+                    <span class="tag tag-lime">En cours</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:0.875rem;margin-bottom:1.5rem;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:0.625rem;border-bottom:1px solid var(--zinc-100);">
+                        <span style="font-size:0.85rem;color:var(--zinc-500);">Publications cumulées</span>
+                        <span style="font-size:1.1rem;font-weight:700;color:var(--zinc-900);">408</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:0.625rem;border-bottom:1px solid var(--zinc-100);">
+                        <span style="font-size:0.85rem;color:var(--zinc-500);">Annonces partenaires individuelles</span>
+                        <span style="font-size:1rem;font-weight:600;color:var(--zinc-900);">144</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:0.625rem;border-bottom:1px solid var(--zinc-100);">
+                        <span style="font-size:0.85rem;color:var(--zinc-500);">Repartages stories partenaires</span>
+                        <span style="font-size:1rem;font-weight:600;color:var(--zinc-900);">120</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:0.625rem;border-bottom:1px solid var(--zinc-100);">
+                        <span style="font-size:0.85rem;color:var(--zinc-500);">Abonnés réseaux Meta cumulés</span>
+                        <span style="font-size:1rem;font-weight:600;color:var(--zinc-900);">6 581</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;">
+                        <span style="font-size:0.85rem;color:var(--zinc-500);">Top post</span>
+                        <span style="font-size:1rem;font-weight:600;color:var(--cyan);">18 615 vues</span>
+                    </div>
+                </div>
+
+                <!-- Relais médias avec logos -->
+                <div class="section-label mb-3">Relais médias</div>
+                <div class="grid grid-cols-3 gap-2">
+                    <div class="media-logo-item">
+                        <img src="assets/images/partners/logo-nrj.png" alt="NRJ" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.7rem;font-weight:700;color:var(--zinc-400);\'>NRJ</span>'">
+                    </div>
+                    <div class="media-logo-item">
+                        <img src="assets/images/partners/logo-beb-media.png" alt="BEB Media" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.65rem;font-weight:600;color:var(--zinc-400);\'>BEB Media</span>'">
+                    </div>
+                    <div class="media-logo-item">
+                        <img src="assets/images/partners/logo-lacotiere.png" alt="J'aime La Cotière" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.65rem;font-weight:600;color:var(--zinc-400);\'>La Cotière</span>'">
+                    </div>
+                    <div class="media-logo-item">
+                        <img src="assets/images/partners/logo-cinema-horloge.png" alt="Cinéma l'Horloge" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.65rem;font-weight:600;color:var(--zinc-400);\'>Cinéma Horloge</span>'">
+                    </div>
+                    <div class="media-logo-item">
+                        <img src="assets/images/partners/logo-cine-festival.png" alt="Ciné Festival" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.65rem;font-weight:600;color:var(--zinc-400);\'>Ciné Festival</span>'">
+                    </div>
+                    <div class="media-logo-item">
+                        <img src="assets/images/partners/logo-voix-ain.png" alt="Voix de l'Ain" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.65rem;font-weight:600;color:var(--zinc-400);\'>Voix de l\'Ain</span>'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     SECTION 04 — LIVRABLES
+================================================================ -->
+<section id="livrables" class="section-spacing" style="background:var(--cream);">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="mb-12" data-aos="fade-up">
+            <span class="section-label">04 · Livrables</span>
+            <h2 class="font-bebas mt-2 section-title" style="font-size:clamp(2.5rem,6vw,5rem);color:var(--zinc-900);line-height:1.05;">
+                VOUS AVEZ REÇU 21 SUPPORTS.<br>
+                <span style="color:var(--zinc-900);opacity:0.4;">VOUS EN AVIEZ PAYÉ 15.</span>
+            </h2>
+            <p style="color:var(--zinc-500);margin-top:0.75rem;">15 supports contractuels · 6 livrables bonus offerts · 0 manquant · 0 incident · 0 dette</p>
+        </div>
+
+        <!-- Photos -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8" data-aos="fade-up" data-aos-delay="60">
+            <img src="assets/images/events/enjoylife-ecran-geant.jpg" alt="Écran géant" class="rounded-xl w-full h-44 object-cover" style="box-shadow:0 4px 20px rgb(0,0,0,0.08);">
+            <img src="assets/images/events/enjoylife-pancartes-vote.jpg" alt="Pancartes" class="rounded-xl w-full h-44 object-cover" style="box-shadow:0 4px 20px rgb(0,0,0,0.08);">
+            <img src="assets/images/events/enjoylife-photocall.jpg" alt="Photocall" class="rounded-xl w-full h-44 object-cover" style="box-shadow:0 4px 20px rgb(0,0,0,0.08);">
+            <img src="assets/images/events/enjoylife-scene-ambiance.jpg" alt="Scène" class="rounded-xl w-full h-44 object-cover" style="box-shadow:0 4px 20px rgb(0,0,0,0.08);">
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8" data-aos="fade-up" data-aos-delay="100">
+
+            <!-- 15 contractuels -->
+            <div class="bento p-7">
+                <div class="bento-accent accent-lime"></div>
+                <div class="flex items-center justify-between mb-5">
+                    <div>
+                        <div class="section-label mb-1">Supports contractuels</div>
+                        <div class="font-bebas" style="font-size:1.5rem;color:var(--zinc-900);">15 SUPPORTS · 100% HONORÉS</div>
+                    </div>
+                    <span class="tag tag-green"><i class="fas fa-check text-xs"></i> Tout livré</span>
+                </div>
+                <ul class="checklist">
+                    <li><span class="check-icon">✓</span><span>Réseaux sociaux · 130K abonnés cumulés · 408 publications</span></li>
+                    <li><span class="check-icon">✓</span><span>15 000 affiches et flyers · distribution physique sur le territoire</span></li>
+                    <li><span class="check-icon">✓</span><span>Signalétique d'entrée · visible dès l'arrivée</span></li>
+                    <li><span class="check-icon">✓</span><span>5 toiles tendues sur mesure · 2m × 2m · hall + zone VIP</span></li>
+                    <li><span class="check-icon">✓</span><span>Écrans géants salle principale · <strong>800 passages logo</strong> par soirée</span></li>
+                    <li><span class="check-icon">✓</span><span>Signalétique intérieure · 40 supports en salle</span></li>
+                    <li><span class="check-icon">✓</span><span>Photocall · zone photo exclusive</span></li>
+                    <li><span class="check-icon">✓</span><span>Trophée La Nuit des Amateurs · logo officiel</span></li>
+                    <li><span class="check-icon">✓</span><span>600 pancartes de vote logotées · distribuées avec les pancartes</span></li>
+                    <li><span class="check-icon">✓</span><span>600 brochures avec encart dédié · distribuées avec les pancartes</span></li>
+                    <li><span class="check-icon">✓</span><span>Invitations balcon VIP · 2 à 6 places <em>par soir</em> selon niveau</span></li>
+                    <li><span class="check-icon">✓</span><span>Logos sur nos 2 sites web officiels des événements</span></li>
+                    <li><span class="check-icon">✓</span><span>Invitations grand public · visibilité élargie</span></li>
+                    <li><span class="check-icon">✓</span><span>Éco-cups logotés · sur chaque consommation</span></li>
+                    <li><span class="check-icon">✓</span><span>Stand hall d'accueil · espace dédié dès l'entrée</span></li>
+                </ul>
+                <!-- Compteur -->
+                <div style="margin-top:1.25rem;padding:0.875rem;background:rgba(217,255,0,0.08);border-radius:10px;border:1px solid rgba(217,255,0,0.2);display:flex;align-items:center;justify-content:center;gap:1.5rem;">
+                    <div style="text-align:center;"><span class="font-bebas" style="font-size:2rem;color:var(--zinc-900);">15</span><p style="font-size:0.65rem;color:var(--zinc-500);letter-spacing:0.1em;text-transform:uppercase;">Contractuels</p></div>
+                    <div style="width:1px;height:2rem;background:var(--zinc-200);"></div>
+                    <div style="text-align:center;"><span class="font-bebas" style="font-size:2rem;color:#15803d;">0</span><p style="font-size:0.65rem;color:var(--zinc-500);letter-spacing:0.1em;text-transform:uppercase;">Manquant</p></div>
+                    <div style="width:1px;height:2rem;background:var(--zinc-200);"></div>
+                    <div style="text-align:center;"><span class="font-bebas" style="font-size:2rem;color:#15803d;">0</span><p style="font-size:0.65rem;color:var(--zinc-500);letter-spacing:0.1em;text-transform:uppercase;">Incident</p></div>
+                </div>
+            </div>
+
+            <!-- 6 bonus -->
+            <div class="bento p-7">
+                <div class="bento-accent accent-cyan"></div>
+                <div class="flex items-center justify-between mb-5">
+                    <div>
+                        <div class="section-label mb-1">Livrables bonus offerts</div>
+                        <div class="font-bebas" style="font-size:1.5rem;color:var(--zinc-900);">6 BONUS · NON CONTRACTUELS</div>
+                    </div>
+                    <span class="tag tag-cyan">Offerts</span>
+                </div>
+                <ul class="checklist mb-5">
+                    <li><span class="star-icon">★</span>
+                        <div><strong style="font-size:0.82rem;color:var(--zinc-900);">Affiche abribus + affiche grand format McDonald's Drive</strong>
+                        <span style="display:block;font-size:0.72rem;color:var(--zinc-400);margin-top:0.125rem;">Format recto-verso dans les restaurants + abribus · 40 000 clients/mois · Ambérieu & Meximieux</span></div>
+                    </li>
+                    <li><span class="star-icon">★</span>
+                        <div><strong style="font-size:0.82rem;color:var(--zinc-900);">Écran Cinéma l'Horloge · Meximieux</strong>
+                        <span style="display:block;font-size:0.72rem;color:var(--zinc-400);margin-top:0.125rem;">1 mois d'affichage · avant chaque séance</span></div>
+                    </li>
+                    <li><span class="star-icon">★</span>
+                        <div><strong style="font-size:0.82rem;color:var(--zinc-900);">Visuel dans reportages médias</strong>
+                        <span style="display:block;font-size:0.72rem;color:var(--zinc-400);margin-top:0.125rem;">NRJ · J'aime La Cotière · BEB Media</span></div>
+                    </li>
+                    <li><span class="star-icon">★</span>
+                        <div><strong style="font-size:0.82rem;color:var(--zinc-900);">500 bracelets d'accès logotés</strong>
+                        <span style="display:block;font-size:0.72rem;color:var(--zinc-400);margin-top:0.125rem;">Contrôle d'entrée · Partenaires Majeurs</span></div>
+                    </li>
+                    <li><span class="star-icon">★</span>
+                        <div><strong style="font-size:0.82rem;color:var(--zinc-900);">Bâche individuelle exclusive</strong>
+                        <span style="display:block;font-size:0.72rem;color:var(--zinc-400);margin-top:0.125rem;">Le partenaire apporte sa bâche · placée dans des zones de forte visibilité en salle</span></div>
+                    </li>
+                    <li><span class="star-icon">★</span>
+                        <div><strong style="font-size:0.82rem;color:var(--zinc-900);">Remerciements nominatifs sur scène</strong>
+                        <span style="display:block;font-size:0.72rem;color:var(--zinc-400);margin-top:0.125rem;">Devant 750 spectateurs · les deux soirs</span></div>
+                    </li>
+                </ul>
+
+                <!-- Compteur bonus -->
+                <div style="padding:0.875rem;background:rgba(55,213,214,0.07);border-radius:10px;border:1px solid rgba(55,213,214,0.2);display:flex;align-items:center;justify-content:center;gap:1.5rem;">
+                    <div style="text-align:center;"><span class="font-bebas" style="font-size:2rem;color:var(--cyan);">6</span><p style="font-size:0.65rem;color:var(--zinc-500);letter-spacing:0.1em;text-transform:uppercase;">Bonus offerts</p></div>
+                    <div style="width:1px;height:2rem;background:var(--zinc-200);"></div>
+                    <div style="text-align:center;"><span class="font-bebas" style="font-size:2rem;color:var(--zinc-900);">21</span><p style="font-size:0.65rem;color:var(--zinc-500);letter-spacing:0.1em;text-transform:uppercase;">Total supports</p></div>
+                    <div style="width:1px;height:2rem;background:var(--zinc-200);"></div>
+                    <div style="text-align:center;"><span class="font-bebas" style="font-size:2rem;color:var(--zinc-900);">+40%</span><p style="font-size:0.65rem;color:var(--zinc-500);letter-spacing:0.1em;text-transform:uppercase;">Valeur ajoutée</p></div>
+                </div>
+
+                <div class="citation mt-5" style="font-size:0.85rem;">
+                    "Ces supports n'étaient pas dans votre contrat. Nous les avons ajoutés parce que vous le méritez. C'est notre façon de travailler."
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     SECTION 05 — LOCAL
+================================================================ -->
+<section id="local" class="section-spacing" style="background:#fff;">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="mb-12" data-aos="fade-up">
+            <span class="section-label">05 · Impact Local</span>
+            <h2 class="font-bebas mt-2 section-title" style="font-size:clamp(2.5rem,6vw,5rem);color:var(--zinc-900);line-height:1.05;">
+                95% DE VOTRE INVESTISSEMENT<br>
+                <span style="opacity:0.4;">RESTE DANS L'AIN.</span>
+            </h2>
+            <p style="color:var(--zinc-500);margin-top:0.75rem;">Économie circulaire · Ancrage RSE · 80% de public local · Votre clientèle directe</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8" data-aos="fade-up" data-aos-delay="80">
+
+            <!-- Chiffre focal -->
+            <div class="bento p-8 flex flex-col items-center justify-center text-center">
+                <div class="bento-accent accent-lime"></div>
+                <div class="font-bebas mb-1" style="font-size:6rem;line-height:1;color:var(--zinc-900);">−49%</div>
+                <div class="section-label mb-3" style="color:#5a6600;">Sur le prix du billet</div>
+                <p style="font-size:0.85rem;color:var(--zinc-500);line-height:1.6;margin-bottom:1rem;">
+                    Prix réel de production : <span style="text-decoration:line-through;color:var(--zinc-400);">29,47 €</span><br>
+                    Prix payé par le public : <strong style="color:var(--zinc-900);font-size:1.1rem;">15 €</strong>
+                </p>
+                <div style="padding:0.875rem;background:rgba(217,255,0,0.1);border-radius:10px;border:1px solid rgba(217,255,0,0.2);width:100%;">
+                    <p style="font-size:0.8rem;color:#5a6600;line-height:1.5;">
+                        Grâce au soutien de vos entreprises, le public accède à un événement de qualité à un tarif 49% inférieur au coût réel de production.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Affichage physique -->
+            <div class="bento p-7">
+                <div class="bento-accent accent-cyan"></div>
+                <div class="section-label mb-4">Affichage physique</div>
+                <div style="display:flex;flex-direction:column;gap:0.875rem;">
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:0.75rem;border-bottom:1px solid var(--zinc-100);">
+                        <span style="font-size:0.82rem;color:var(--zinc-600);">Abribus Drive McDonald's<br><span style="font-size:0.72rem;color:var(--zinc-400);">Ambérieu & Meximieux</span></span>
+                        <span style="font-size:0.95rem;font-weight:700;color:var(--zinc-900);white-space:nowrap;">40 000<span style="font-size:0.65rem;font-weight:400;color:var(--zinc-400);display:block;text-align:right;">clients/mois</span></span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:0.75rem;border-bottom:1px solid var(--zinc-100);">
+                        <span style="font-size:0.82rem;color:var(--zinc-600);">Cinéma l'Horloge<br><span style="font-size:0.72rem;color:var(--zinc-400);">Meximieux</span></span>
+                        <span style="font-size:0.95rem;font-weight:700;color:var(--zinc-900);white-space:nowrap;">1 mois<span style="font-size:0.65rem;font-weight:400;color:var(--zinc-400);display:block;text-align:right;">avant séance</span></span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:0.75rem;border-bottom:1px solid var(--zinc-100);">
+                        <span style="font-size:0.82rem;color:var(--zinc-600);">Flyers A4<br><span style="font-size:0.72rem;color:var(--zinc-400);">Boîtes aux lettres & commerces</span></span>
+                        <span style="font-size:0.95rem;font-weight:700;color:var(--zinc-900);">15 000<span style="font-size:0.65rem;font-weight:400;color:var(--zinc-400);display:block;text-align:right;">foyers</span></span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                        <span style="font-size:0.82rem;color:var(--zinc-600);">Affiches A3<br><span style="font-size:0.72rem;color:var(--zinc-400);">Vitrines commerçants</span></span>
+                        <span style="font-size:0.95rem;font-weight:700;color:var(--zinc-900);">300<span style="font-size:0.65rem;font-weight:400;color:var(--zinc-400);display:block;text-align:right;">points d'affichage</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Économie circulaire -->
+            <div class="bento p-7">
+                <div class="bento-accent accent-magenta"></div>
+                <div class="section-label mb-4">Économie circulaire</div>
+                <div class="grid grid-cols-2 gap-3 mb-5">
+                    <div style="padding:1rem;background:var(--cream);border-radius:12px;text-align:center;">
+                        <div class="font-bebas" style="font-size:2.5rem;color:var(--zinc-900);">95%</div>
+                        <div style="font-size:0.7rem;color:var(--zinc-400);margin-top:0.125rem;">Prestataires locaux</div>
+                    </div>
+                    <div style="padding:1rem;background:var(--cream);border-radius:12px;text-align:center;">
+                        <div class="font-bebas" style="font-size:2.5rem;color:var(--zinc-900);">80</div>
+                        <div style="font-size:0.7rem;color:var(--zinc-400);margin-top:0.125rem;">Bénévoles logotés</div>
+                    </div>
+                    <div style="padding:1rem;background:var(--cream);border-radius:12px;text-align:center;">
+                        <div class="font-bebas" style="font-size:2.5rem;color:var(--zinc-900);">80%</div>
+                        <div style="font-size:0.7rem;color:var(--zinc-400);margin-top:0.125rem;">Public local</div>
+                    </div>
+                    <div style="padding:1rem;background:var(--cream);border-radius:12px;text-align:center;">
+                        <div class="font-bebas" style="font-size:2.5rem;color:var(--zinc-900);">90%</div>
+                        <div style="font-size:0.7rem;color:var(--zinc-400);margin-top:0.125rem;">Clientèle directe</div>
+                    </div>
+                </div>
+                <div style="padding:1rem;background:var(--cream);border-radius:10px;">
+                    <p style="font-size:0.8rem;color:var(--zinc-500);line-height:1.5;">
+                        En soutenant This Is It Event, votre image RSE est renforcée auprès de <strong style="color:var(--zinc-900);">votre propre clientèle locale</strong>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     SECTION 06 — INTÉGRATION (ex-Scénographie)
+================================================================ -->
+<section id="integration" class="section-spacing" style="background:var(--cream);">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="mb-12" data-aos="fade-up">
+            <span class="section-label">06 · Intégration</span>
+            <h2 class="font-bebas mt-2 section-title" style="font-size:clamp(2.5rem,6vw,5rem);color:var(--zinc-900);line-height:1.05;">
+                VOTRE MARQUE<br>
+                <span style="opacity:0.4;">AU CŒUR DU SHOW.</span>
+            </h2>
+            <p style="color:var(--zinc-500);margin-top:0.75rem;">250 invités partenaires · Balcon privatif · Vue exclusive sur la scène · Les deux soirs</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8" data-aos="fade-up" data-aos-delay="80">
+
+            <!-- Chiffre focal + liste -->
+            <div class="bento p-8">
+                <div class="bento-accent accent-cyan"></div>
+                <div style="text-align:center;margin-bottom:1.5rem;">
+                    <div class="font-bebas" style="font-size:7rem;line-height:1;color:var(--zinc-900);">800</div>
+                    <p style="font-size:0.85rem;color:var(--zinc-500);line-height:1.6;">passages de votre logo sur les deux écrans géants encadrant la scène.<br>
+                    <em style="font-size:0.75rem;color:var(--zinc-400);">L'élément le plus photographié de la soirée.</em></p>
+                </div>
+                <div class="sep mb-5"></div>
+                <div class="section-label mb-3">Expérience partenaires</div>
+                <div style="display:flex;flex-direction:column;gap:0.625rem;">
+                    <div style="display:flex;gap:0.5rem;align-items:flex-start;"><i class="fas fa-circle text-xs mt-1 flex-shrink-0" style="color:var(--cyan);font-size:0.4rem;"></i><p style="font-size:0.85rem;color:var(--zinc-600);">Balcon privatif · vue panoramique exclusive sur la scène</p></div>
+                    <div style="display:flex;gap:0.5rem;align-items:flex-start;"><i class="fas fa-circle text-xs mt-1 flex-shrink-0" style="color:var(--cyan);font-size:0.4rem;"></i><p style="font-size:0.85rem;color:var(--zinc-600);">Service traiteur local · 2 bières Ninkasi offertes par invité</p></div>
+                    <div style="display:flex;gap:0.5rem;align-items:flex-start;"><i class="fas fa-circle text-xs mt-1 flex-shrink-0" style="color:var(--cyan);font-size:0.4rem;"></i><p style="font-size:0.85rem;color:var(--zinc-600);">T-shirt "Partenaire" This Is It Event remis à chaque invité</p></div>
+                    <div style="display:flex;gap:0.5rem;align-items:flex-start;"><i class="fas fa-circle text-xs mt-1 flex-shrink-0" style="color:var(--cyan);font-size:0.4rem;"></i><p style="font-size:0.85rem;color:var(--zinc-600);">WC dédiés · bar partenaires exclusif · accès sécurisé</p></div>
+                    <div style="display:flex;gap:0.5rem;align-items:flex-start;"><i class="fas fa-circle text-xs mt-1 flex-shrink-0" style="color:var(--cyan);font-size:0.4rem;"></i><p style="font-size:0.85rem;color:var(--zinc-600);">Remerciements nominatifs au micro · devant 750 spectateurs · les deux soirs</p></div>
+                </div>
+            </div>
+
+            <!-- Photos grille -->
+            <div class="grid grid-cols-2 gap-3">
+                <img src="assets/images/events/enjoylife-balcon-vip.jpg" alt="Balcon VIP" class="col-span-2 w-full rounded-xl object-cover" style="height:220px;box-shadow:0 4px 20px rgb(0,0,0,0.1);">
+                <img src="assets/images/events/enjoylife-pancartes-vote.jpg" alt="Pancartes" class="w-full rounded-xl object-cover" style="height:150px;box-shadow:0 4px 20px rgb(0,0,0,0.1);">
+                <img src="assets/images/events/enjoylife-photocall.jpg" alt="Photocall" class="w-full rounded-xl object-cover" style="height:150px;box-shadow:0 4px 20px rgb(0,0,0,0.1);">
+            </div>
+        </div>
+
+        <!-- Vidéo highlights -->
+        <div class="bento overflow-hidden mb-8" data-aos="fade-up" data-aos-delay="120">
+            <div style="position:relative;height:320px;background:#111;border-radius:20px;overflow:hidden;">
+                <video controls poster="assets/images/events/enjoylife-scene-ambiance.jpg" style="width:100%;height:100%;object-fit:cover;">
+                    <source src="assets/videos/enjoylife-recap-highlights.webm" type="video/webm">
+                    <source src="assets/videos/enjoylife-recap-highlights.mp4" type="video/mp4">
+                </video>
+                <div style="position:absolute;top:1rem;left:1rem;pointer-events:none;">
+                    <span style="background:rgba(0,0,0,0.7);color:rgba(255,255,255,0.8);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.375rem 0.875rem;border-radius:100px;backdrop-filter:blur(8px);">
+                        Highlights Enjoylife 2026
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Supports compteurs -->
+        <div class="grid grid-cols-3 md:grid-cols-6 gap-4" data-aos="fade-up" data-aos-delay="160">
+            <div class="kpi-card text-center"><div class="font-bebas" style="font-size:2.5rem;color:var(--zinc-900);">5</div><div style="font-size:0.68rem;color:var(--zinc-400);margin-top:0.125rem;">Toiles tendues</div></div>
+            <div class="kpi-card text-center"><div class="font-bebas" style="font-size:2.5rem;color:var(--zinc-900);">500</div><div style="font-size:0.68rem;color:var(--zinc-400);margin-top:0.125rem;">Bracelets logotés</div></div>
+            <div class="kpi-card text-center"><div class="font-bebas" style="font-size:2.5rem;color:var(--zinc-900);">40</div><div style="font-size:0.68rem;color:var(--zinc-400);margin-top:0.125rem;">Supports salle</div></div>
+            <div class="kpi-card text-center"><div class="font-bebas" style="font-size:2.5rem;color:var(--cyan);">250</div><div style="font-size:0.68rem;color:var(--zinc-400);margin-top:0.125rem;">Invités VIP</div></div>
+            <div class="kpi-card text-center"><div class="font-bebas" style="font-size:2.5rem;color:var(--zinc-900);">800</div><div style="font-size:0.68rem;color:var(--zinc-400);margin-top:0.125rem;">Passages logo</div></div>
+            <div class="kpi-card text-center"><div class="font-bebas" style="font-size:2.5rem;color:#15803d;">ZÉRO</div><div style="font-size:0.68rem;color:var(--zinc-400);margin-top:0.125rem;">Incident</div></div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     SECTION 07 — PARTENAIRES 2026
+================================================================ -->
+<section id="partenaires-2026" class="section-spacing" style="background:#fff;">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="mb-12" data-aos="fade-up">
+            <span class="section-label">07 · Confiance</span>
+            <h2 class="font-bebas mt-2 section-title" style="font-size:clamp(2.5rem,6vw,5rem);color:var(--zinc-900);line-height:1.05;">
+                ILS NOUS ONT<br>
+                <span style="opacity:0.4;">FAIT CONFIANCE.</span>
+            </h2>
+            <p style="color:var(--zinc-500);margin-top:0.75rem;">30 entreprises et institutions · Plaine de l'Ain · Édition 2026 · Cliquez sur un logo pour en savoir plus</p>
+        </div>
+
+        <!-- MAJEURS -->
+        <div class="mb-8" data-aos="fade-up" data-aos-delay="60">
+            <div class="section-label mb-4 text-center">Partenaires Majeurs</div>
+            <div class="grid grid-cols-3 gap-4 max-w-2xl mx-auto">
+                <div class="logo-item logo-item-major" onclick="openPartner('credit-agricole')" title="Voir la fiche partenaire">
+                    <img src="assets/images/partners/logo-credit-agricole.png" alt="Crédit Agricole Centre-Est" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.75rem;font-weight:700;color:var(--zinc-500);\'>Crédit Agricole</span>'">
+                    <div style="position:absolute;top:6px;right:6px;width:16px;height:16px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.4;transition:opacity 0.2s;"><i class="fas fa-plus text-white" style="font-size:0.5rem;"></i></div>
+                </div>
+                <div class="logo-item logo-item-major" onclick="openPartner('mcdonalds')" title="Voir la fiche partenaire">
+                    <img src="assets/images/partners/logo-mcdonalds.png" alt="McDonald's" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.75rem;font-weight:700;color:var(--zinc-500);\'>McDonald\'s</span>'">
+                    <div style="position:absolute;top:6px;right:6px;width:16px;height:16px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.4;transition:opacity 0.2s;"><i class="fas fa-plus text-white" style="font-size:0.5rem;"></i></div>
+                </div>
+                <div class="logo-item logo-item-major" onclick="openPartner('cer-francine')" title="Voir la fiche partenaire">
+                    <img src="assets/images/partners/logo-cer-francine.png" alt="Auto-École CER by Francine" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.75rem;font-weight:700;color:var(--zinc-500);\'>CER by Francine</span>'">
+                    <div style="position:absolute;top:6px;right:6px;width:16px;height:16px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.4;transition:opacity 0.2s;"><i class="fas fa-plus text-white" style="font-size:0.5rem;"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sep mb-8"></div>
+
+        <!-- OFFICIELS -->
+        <div class="mb-8" data-aos="fade-up" data-aos-delay="80">
+            <div class="section-label mb-4 text-center">Partenaires Officiels</div>
+            <div class="grid grid-cols-3 md:grid-cols-6 gap-3 max-w-3xl mx-auto">
+                <div class="logo-item" onclick="openPartner('marinelli')"><img src="assets/images/partners/logo-marinelli.png" alt="Marinelli Automobiles" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.65rem;font-weight:600;color:var(--zinc-500);\'>Marinelli</span>'"><div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.35;"><i class="fas fa-plus text-white" style="font-size:0.45rem;"></i></div></div>
+                <div class="logo-item" onclick="openPartner('pixelchrom')"><img src="assets/images/partners/logo-pixelchrom.png" alt="Pixel Chrom" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.65rem;font-weight:600;color:var(--zinc-500);\'>Pixel Chrom</span>'"><div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.35;"><i class="fas fa-plus text-white" style="font-size:0.45rem;"></i></div></div>
+                <div class="logo-item" onclick="openPartner('rituel-sport')"><img src="assets/images/partners/logo-rituel-sport.png" alt="Rituel Sport Club" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.65rem;font-weight:600;color:var(--zinc-500);\'>Rituel Sport</span>'"><div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.35;"><i class="fas fa-plus text-white" style="font-size:0.45rem;"></i></div></div>
+                <div class="logo-item" onclick="openPartner('aux-delicatesses')"><img src="assets/images/partners/logo-aux-delicatesses.png" alt="Aux Délicatesses" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.65rem;font-weight:600;color:var(--zinc-500);\'>Aux Délicatesses</span>'"><div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.35;"><i class="fas fa-plus text-white" style="font-size:0.45rem;"></i></div></div>
+                <div class="logo-item" onclick="openPartner('siligreen')"><img src="assets/images/partners/logo-siligreen.png" alt="Siligreen" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.65rem;font-weight:600;color:var(--zinc-500);\'>Siligreen</span>'"><div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.35;"><i class="fas fa-plus text-white" style="font-size:0.45rem;"></i></div></div>
+                <div class="logo-item" onclick="openPartner('night-animation')"><img src="assets/images/partners/logo-night-animation.png" alt="Night Animation" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.65rem;font-weight:600;color:var(--zinc-500);\'>Night Animation</span>'"><div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.35;"><i class="fas fa-plus text-white" style="font-size:0.45rem;"></i></div></div>
+            </div>
+        </div>
+
+        <div class="sep mb-8"></div>
+
+        <!-- PARTENAIRES -->
+        <div class="mb-8" data-aos="fade-up" data-aos-delay="100">
+            <div class="section-label mb-4 text-center">Partenaires</div>
+            <div class="grid grid-cols-4 md:grid-cols-7 gap-3 max-w-3xl mx-auto">
+                <div class="logo-item" onclick="openPartner('marie-blachere')"><img src="assets/images/partners/logo-marie-bachere.png" alt="Marie Blachère" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.6rem;font-weight:600;color:var(--zinc-500);\'>Marie Blachère</span>'"><div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.35;"><i class="fas fa-plus text-white" style="font-size:0.45rem;"></i></div></div>
+                <div class="logo-item" onclick="openPartner('but')"><img src="assets/images/partners/logo-but-amberieu.png" alt="BUT" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.6rem;font-weight:600;color:var(--zinc-500);\'>BUT</span>'"><div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.35;"><i class="fas fa-plus text-white" style="font-size:0.45rem;"></i></div></div>
+                <div class="logo-item" onclick="openPartner('safti')"><img src="assets/images/partners/logo-safti.png" alt="SAFTI" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.6rem;font-weight:600;color:var(--zinc-500);\'>SAFTI</span>'"><div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.35;"><i class="fas fa-plus text-white" style="font-size:0.45rem;"></i></div></div>
+                <div class="logo-item" onclick="openPartner('ronzat')"><img src="assets/images/partners/logo-ronzat.png" alt="Ronzat" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.6rem;font-weight:600;color:var(--zinc-500);\'>Ronzat</span>'"><div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.35;"><i class="fas fa-plus text-white" style="font-size:0.45rem;"></i></div></div>
+                <div class="logo-item" onclick="openPartner('girel')"><img src="assets/images/partners/logo-girel.png" alt="Girel" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.6rem;font-weight:600;color:var(--zinc-500);\'>Girel</span>'"><div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.35;"><i class="fas fa-plus text-white" style="font-size:0.45rem;"></i></div></div>
+                <div class="logo-item" onclick="openPartner('atol')"><img src="assets/images/partners/logo-atol.png" alt="Atol" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.6rem;font-weight:600;color:var(--zinc-500);\'>Atol</span>'"><div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.35;"><i class="fas fa-plus text-white" style="font-size:0.45rem;"></i></div></div>
+                <div class="logo-item" onclick="openPartner('sttp')"><img src="assets/images/partners/logo-sttp.png" alt="STTP" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.6rem;font-weight:600;color:var(--zinc-500);\'>STTP</span>'"><div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.35;"><i class="fas fa-plus text-white" style="font-size:0.45rem;"></i></div></div>
+            </div>
+        </div>
+
+        <div class="sep mb-8"></div>
+
+        <!-- MÉCÈNES + TECHNIQUES + MÉDIAS -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="120">
+            <div>
+                <div class="section-label mb-4 text-center">Mécènes & Institutions</div>
+                <div class="grid grid-cols-3 gap-2">
+                    <div class="logo-item" onclick="openPartner('nowbrains')"><img src="assets/images/partners/logo-nowbrains.png" alt="Nowbrains" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.6rem;font-weight:600;color:var(--zinc-500);\'>Nowbrains</span>'"><div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.35;"><i class="fas fa-plus text-white" style="font-size:0.45rem;"></i></div></div>
+                    <div class="logo-item" onclick="openPartner('mairie-vlm')"><img src="assets/images/partners/logo-mairie-vlm.png" alt="Mairie VLM" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.6rem;font-weight:600;color:var(--zinc-500);\'>Mairie VLM</span>'"><div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.35;"><i class="fas fa-plus text-white" style="font-size:0.45rem;"></i></div></div>
+                    <div class="logo-item" onclick="openPartner('ccpa')"><img src="assets/images/partners/logo-ccpa.png" alt="CCPA" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.6rem;font-weight:600;color:var(--zinc-500);\'>CCPA</span>'"><div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.35;"><i class="fas fa-plus text-white" style="font-size:0.45rem;"></i></div></div>
+                </div>
+            </div>
+            <div>
+                <div class="section-label mb-4 text-center">Partenaires Techniques</div>
+                <div class="grid grid-cols-3 gap-2">
+                    <div class="logo-item" onclick="openPartner('neon-live')"><img src="assets/images/partners/logo-neon-live.png" alt="NEON Live" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.6rem;font-weight:600;color:var(--zinc-500);\'>NEON Live</span>'"><div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.35;"><i class="fas fa-plus text-white" style="font-size:0.45rem;"></i></div></div>
+                    <div class="logo-item" onclick="openPartner('svprod')"><img src="assets/images/partners/logo-svprod.png" alt="SVPROD" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.6rem;font-weight:600;color:var(--zinc-500);\'>SVPROD</span>'"><div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.35;"><i class="fas fa-plus text-white" style="font-size:0.45rem;"></i></div></div>
+                    <div class="logo-item" onclick="openPartner('dmc')"><img src="assets/images/partners/logo-dmc-animations.png" alt="DMC Animations" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.6rem;font-weight:600;color:var(--zinc-500);\'>DMC</span>'"><div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--zinc-900);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0.35;"><i class="fas fa-plus text-white" style="font-size:0.45rem;"></i></div></div>
+                </div>
+            </div>
+            <div>
+                <div class="section-label mb-4 text-center">Partenaires Médias</div>
+                <div class="grid grid-cols-4 gap-2">
+                    <div class="logo-item"><img src="assets/images/partners/logo-beb-media.png" alt="BEB Media" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.55rem;font-weight:600;color:var(--zinc-500);\'>BEB</span>'"></div>
+                    <div class="logo-item"><img src="assets/images/partners/logo-lacotiere.png" alt="La Cotière" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.55rem;font-weight:600;color:var(--zinc-500);\'>La Cotière</span>'"></div>
+                    <div class="logo-item"><img src="assets/images/partners/logo-cinema-horloge.png" alt="Cinéma l'Horloge" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.55rem;font-weight:600;color:var(--zinc-500);\'>Cinéma</span>'"></div>
+                    <div class="logo-item"><img src="assets/images/partners/logo-cine-festival.png" alt="Ciné Festival" onerror="this.parentElement.innerHTML='<span style=\'font-size:0.55rem;font-weight:600;color:var(--zinc-500);\'>Ciné Fest.</span>'"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-10 text-center" data-aos="fade-up" data-aos-delay="140">
+            <p style="font-size:0.85rem;color:var(--zinc-400);font-style:italic;">100% des partenaires recroisés ont confirmé leur retour pour 2027. Spontanément. Sans qu'on leur demande.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- Partner Popup -->
+<div class="partner-popup" id="partnerPopup">
+    <div class="partner-popup-overlay" onclick="closePartner()"></div>
+    <div class="partner-popup-content">
+        <button onclick="closePartner()" style="position:absolute;top:1rem;right:1rem;width:28px;height:28px;border-radius:50%;background:var(--zinc-100);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--zinc-500);font-size:0.75rem;">
+            <i class="fas fa-times"></i>
+        </button>
+        <div id="partnerPopupContent"></div>
+    </div>
+</div>
+
+
+<!-- ================================================================
+     SECTION 08 — TÉMOIGNAGES
+================================================================ -->
+<section class="section-spacing" style="background:var(--cream);">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="mb-12" data-aos="fade-up">
+            <span class="section-label">08 · Témoignages</span>
+            <h2 class="font-bebas mt-2 section-title" style="font-size:clamp(2.5rem,6vw,5rem);color:var(--zinc-900);line-height:1.05;">
+                CE QU'ILS <span style="opacity:0.4;">EN DISENT.</span>
+            </h2>
+            <p style="color:var(--zinc-500);margin-top:0.75rem;">Partenaires 2026 · Retours spontanés · Non sollicités</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5" data-aos="fade-up" data-aos-delay="80">
+            <div class="testimonial">
+                <p style="font-size:0.9rem;color:var(--zinc-600);line-height:1.75;margin-bottom:1.5rem;margin-top:0.5rem;">"On a été franchement étonnés dans le bon sens de notre visibilité. Tu nous l'avais dit à la rencontre, mais là on a été agréablement surpris."</p>
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                    <div style="width:3px;height:2.5rem;background:var(--lime);border-radius:2px;filter:brightness(0.7);flex-shrink:0;"></div>
+                    <div><p style="font-size:0.875rem;font-weight:600;color:var(--zinc-900);">Alexandra</p><p style="font-size:0.75rem;color:var(--zinc-400);">SAFTI Immobilier</p></div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <p style="font-size:0.9rem;color:var(--zinc-600);line-height:1.75;margin-bottom:1.5rem;margin-top:0.5rem;">"C'était franchement bien organisé. On vous suivra pour la suite."</p>
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                    <div style="width:3px;height:2.5rem;background:var(--cyan);border-radius:2px;flex-shrink:0;"></div>
+                    <div><p style="font-size:0.875rem;font-weight:600;color:var(--zinc-900);">Elsa</p><p style="font-size:0.75rem;color:var(--zinc-400);">Ronzat Menuiseries Extérieures</p></div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <p style="font-size:0.9rem;color:var(--zinc-600);line-height:1.75;margin-bottom:1.5rem;margin-top:0.5rem;">"C'était top. On vous suit."</p>
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                    <div style="width:3px;height:2.5rem;background:var(--lime);border-radius:2px;filter:brightness(0.7);flex-shrink:0;"></div>
+                    <div><p style="font-size:0.875rem;font-weight:600;color:var(--zinc-900);">Laurie</p><p style="font-size:0.75rem;color:var(--zinc-400);">Atol Ambérieu-Lagnieu</p></div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <p style="font-size:0.9rem;color:var(--zinc-600);line-height:1.75;margin-bottom:1.5rem;margin-top:0.5rem;">"Vous avez tellement assuré. Vous pouvez être fiers de vous. Ça nous a fait plaisir de contribuer à vos projets. Vous êtes plein d'ambition et on adore ça. Ça nous ressemble beaucoup."</p>
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                    <div style="width:3px;height:2.5rem;background:var(--cyan);border-radius:2px;flex-shrink:0;"></div>
+                    <div><p style="font-size:0.875rem;font-weight:600;color:var(--zinc-900);">Sophie & David</p><p style="font-size:0.75rem;color:var(--zinc-400);">Siligreen by Puissanc'Elec</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     SECTION 09 — PRESSE
+================================================================ -->
+<section id="presse" class="section-spacing" style="background:#fff;">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="mb-12" data-aos="fade-up">
+            <span class="section-label">09 · Presse</span>
+            <h2 class="font-bebas mt-2 section-title" style="font-size:clamp(2.5rem,6vw,5rem);color:var(--zinc-900);line-height:1.05;">
+                ILS EN ONT PARLÉ.<br>
+                <span style="opacity:0.4;">AVANT ET APRÈS.</span>
+            </h2>
+            <p style="color:var(--zinc-500);margin-top:0.75rem;">4 médias locaux · 2 périodes de couverture</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8" data-aos="fade-up" data-aos-delay="80">
+            <div class="presse-card bento overflow-hidden">
+                <div style="overflow:hidden;border-radius:20px 20px 0 0;">
+                    <img src="assets/images/presse/presse-leprogres-oct2025.jpg" alt="Le Progrès Octobre 2025">
+                </div>
+                <div style="padding:1.25rem;">
+                    <div class="section-label mb-2">Le Progrès · 28 octobre 2025</div>
+                    <p style="font-size:0.85rem;font-weight:500;color:var(--zinc-900);margin-bottom:0.5rem;line-height:1.4;">"Soirée électro et tremplin musical, cette association revient avec deux événements"</p>
+                    <span class="tag tag-cyan">J-120 · Couverture anticipée</span>
+                </div>
+            </div>
+            <div class="presse-card bento overflow-hidden">
+                <div style="overflow:hidden;border-radius:20px 20px 0 0;">
+                    <img src="assets/images/presse/presse-lacotiere-fev2026.jpg" alt="La Cotière Février 2026">
+                </div>
+                <div style="padding:1.25rem;">
+                    <div class="section-label mb-2">La Cotière · 12 février 2026</div>
+                    <p style="font-size:0.85rem;font-weight:500;color:var(--zinc-900);margin-bottom:0.5rem;line-height:1.4;">"On veut aller au bout du projet : une association locale crée son festival"</p>
+                    <span class="tag tag-lime">J-8 · Portrait d'équipe</span>
+                </div>
+            </div>
+            <div class="presse-card bento overflow-hidden">
+                <div style="overflow:hidden;border-radius:20px 20px 0 0;">
+                    <img src="assets/images/presse/presse-lavoixdelain-fev2026.jpg" alt="La Voix de l'Ain Février 2026">
+                </div>
+                <div style="padding:1.25rem;">
+                    <div class="section-label mb-2">La Voix de l'Ain · 13 février 2026</div>
+                    <p style="font-size:0.85rem;font-weight:500;color:var(--zinc-900);margin-bottom:0.5rem;line-height:1.4;">"Deux soirées, deux univers à Villieu-Loyes-Mollon"</p>
+                    <span class="tag tag-cyan">J-7 · Page Sortir</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     SECTION 10 — QUI SOMMES-NOUS
+================================================================ -->
+<section class="section-spacing" style="background:var(--cream);">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="mb-12" data-aos="fade-up">
+            <span class="section-label">10 · L'Association</span>
+            <h2 class="font-bebas mt-2 section-title" style="font-size:clamp(2.5rem,6vw,5rem);color:var(--zinc-900);line-height:1.05;">THIS IS IT EVENT.</h2>
+            <p style="color:var(--zinc-500);margin-top:0.75rem;">L'association derrière l'événement · Plaine de l'Ain · Depuis 2016</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start" data-aos="fade-up" data-aos-delay="80">
+
+            <div>
+                <div style="border-radius:20px;overflow:hidden;margin-bottom:1.25rem;box-shadow:0 8px 30px rgb(0,0,0,0.08);">
+                    <img src="assets/images/team/team-morgan-laurie.jpg" alt="Morgan Spirli & Laurie Daussy" style="width:100%;height:380px;object-fit:cover;">
+                </div>
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                    <div style="width:3px;height:3rem;background:var(--lime);border-radius:2px;filter:brightness(0.7);flex-shrink:0;"></div>
+                    <div>
+                        <p style="font-size:0.9rem;font-weight:600;color:var(--zinc-900);">Morgan Spirli & Laurie Daussy</p>
+                        <p style="font-size:0.78rem;color:var(--zinc-400);">Président & Trésorière · This Is It Event</p>
+                        <p style="font-size:0.7rem;color:var(--zinc-300);font-style:italic;margin-top:0.125rem;">Photo : La Cotière · Février 2026</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:1.25rem;">
+
+                <!-- Équipe -->
+                <div class="bento p-6">
+                    <div class="bento-accent accent-lime"></div>
+                    <div class="section-label mb-3">L'équipe dirigeante</div>
+                    <div style="display:flex;flex-direction:column;gap:0.875rem;">
+                        <div style="padding:1rem;background:var(--cream);border-radius:12px;">
+                            <p style="font-size:0.875rem;font-weight:600;color:var(--zinc-900);margin-bottom:0.25rem;">Morgan Spirli · Président</p>
+                            <p style="font-size:0.78rem;color:var(--zinc-500);margin-bottom:0.625rem;">Chef de Projet Événementiel & Régisseur de Production</p>
+                            <div style="display:flex;flex-wrap:wrap;gap:0.375rem;">
+                                <span class="tag" style="background:rgba(0,0,0,0.06);color:var(--zinc-600);">Olympique Lyonnais</span>
+                                <span class="tag" style="background:rgba(0,0,0,0.06);color:var(--zinc-600);">Taylor Swift</span>
+                                <span class="tag" style="background:rgba(0,0,0,0.06);color:var(--zinc-600);">Coldplay</span>
+                                <span class="tag" style="background:rgba(0,0,0,0.06);color:var(--zinc-600);">JO Paris 2024</span>
+                                <span class="tag" style="background:rgba(0,0,0,0.06);color:var(--zinc-600);">Rugby World Cup 2023</span>
+                            </div>
+                        </div>
+                        <div style="padding:1rem;background:var(--cream);border-radius:12px;">
+                            <p style="font-size:0.875rem;font-weight:600;color:var(--zinc-900);margin-bottom:0.25rem;">Laurie Daussy · Trésorière</p>
+                            <p style="font-size:0.78rem;color:var(--zinc-500);">Gestion financière & administrative</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chiffres cumulés -->
+                <div class="bento p-6">
+                    <div class="bento-accent accent-cyan"></div>
+                    <div class="section-label mb-3">This Is It Event · Depuis 2012</div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div style="padding:0.875rem;background:var(--cream);border-radius:10px;text-align:center;">
+                            <div class="font-bebas" style="font-size:1.75rem;color:var(--zinc-900);">255 000 €</div>
+                            <div style="font-size:0.68rem;color:var(--zinc-400);margin-top:0.125rem;">CA cumulé géré</div>
+                        </div>
+                        <div style="padding:0.875rem;background:var(--cream);border-radius:10px;text-align:center;">
+                            <div class="font-bebas" style="font-size:1.75rem;color:var(--zinc-900);">150</div>
+                            <div style="font-size:0.68rem;color:var(--zinc-400);margin-top:0.125rem;">Partenaires privés</div>
+                        </div>
+                        <div style="padding:0.875rem;background:var(--cream);border-radius:10px;text-align:center;">
+                            <div class="font-bebas" style="font-size:1.75rem;color:var(--zinc-900);">200</div>
+                            <div style="font-size:0.68rem;color:var(--zinc-400);margin-top:0.125rem;">Artistes accueillis</div>
+                        </div>
+                        <div style="padding:0.875rem;background:var(--cream);border-radius:10px;text-align:center;">
+                            <div class="font-bebas" style="font-size:1.75rem;color:var(--cyan);">15 000</div>
+                            <div style="font-size:0.68rem;color:var(--zinc-400);margin-top:0.125rem;">Spectateurs cumulés</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Historique -->
+                <div class="bento p-6">
+                    <div class="bento-accent" style="background:var(--magenta);"></div>
+                    <div class="section-label mb-3">Historique Enjoylife</div>
+                    <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:0.5rem;border-bottom:1px solid var(--zinc-100);">
+                            <span style="font-size:0.82rem;color:var(--zinc-500);">Enjoylife Ed.1</span>
+                            <span style="font-size:0.78rem;color:var(--zinc-400);">2016 · Ambérieu-en-Bugey</span>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:0.5rem;border-bottom:1px solid var(--zinc-100);">
+                            <span style="font-size:0.82rem;color:var(--zinc-500);">Enjoylife Ed.2</span>
+                            <span style="font-size:0.78rem;color:var(--zinc-400);">2017 · Ambérieu-en-Bugey</span>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:0.5rem;border-bottom:1px solid var(--zinc-100);">
+                            <span style="font-size:0.82rem;font-weight:600;color:var(--zinc-900);">Enjoylife Ed.3</span>
+                            <span class="tag tag-lime" style="font-size:0.68rem;">2026 · Villieu-Loyes-Mollon</span>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                            <span style="font-size:0.82rem;color:var(--zinc-500);">Enjoylife Ed.4</span>
+                            <span class="tag tag-cyan" style="font-size:0.68rem;">2027 · En préparation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Légal -->
+                <div style="padding:1rem;background:#fff;border-radius:12px;border:1px solid var(--zinc-100);">
+                    <p style="font-size:0.75rem;color:var(--zinc-400);line-height:1.7;">
+                        Association loi 1901 · SIRET 889 266 037 00023 · Code APE 90.01Z<br>
+                        7 Rue Pierre Bernin · 01800 Meximieux<br>
+                        <span style="color:#5a6600;font-weight:500;">Éligible au régime du mécénat d'intérêt général · Confirmation administration fiscale</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     SECTION 11 — PARTENARIATS 2027
+================================================================ -->
+<section id="partenariats-2027" class="section-spacing" style="background:#fff;">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="mb-8" data-aos="fade-up">
+            <span class="section-label">11 · Partenariats 2027</span>
+            <h2 class="font-bebas mt-2 section-title" style="font-size:clamp(2.5rem,6vw,5rem);color:var(--zinc-900);line-height:1.05;">
+                VOTRE VISIBILITÉ.<br>
+                <span style="opacity:0.4;">ÉDITION 4.</span>
+            </h2>
+            <p style="color:var(--zinc-500);margin-top:0.75rem;max-width:42rem;">
+                Enjoylife revient pour une nouvelle édition en 2027. Un partenariat 2027, c'est votre marque au cœur d'un événement qui grandit chaque année.
+            </p>
+        </div>
+
+        <!-- Offre de lancement -->
+        <div class="bento p-5 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4" data-aos="fade-up" data-aos-delay="60" style="border:1.5px solid rgba(217,255,0,0.4);background:rgba(217,255,0,0.04);">
+            <div style="display:flex;align-items:center;gap:0.875rem;">
+                <div style="width:40px;height:40px;background:rgba(217,255,0,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <i class="fas fa-bolt text-sm" style="color:#5a6600;"></i>
+                </div>
+                <div>
+                    <p style="font-size:0.85rem;font-weight:700;color:var(--zinc-900);">Offre de lancement · Tarifs actuels garantis jusqu'au 31 août 2026</p>
+                    <p style="font-size:0.78rem;color:var(--zinc-500);margin-top:0.125rem;">Les premiers partenaires à confirmer obtiennent la priorité de placement sur tous les supports.</p>
+                </div>
+            </div>
+            <a href="#contact" class="btn-lime btn-primary flex-shrink-0" style="white-space:nowrap;font-size:0.75rem;">
+                Réserver ma place <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+
+        <!-- 3 cartes -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10" data-aos="fade-up" data-aos-delay="100">
+
+            <!-- Partenaire -->
+            <div class="pricing-card">
+                <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--cyan);border-radius:20px 20px 0 0;"></div>
+                <div class="section-label mb-1">Niveau 1</div>
+                <div class="font-bebas" style="font-size:1.75rem;color:var(--zinc-900);margin-bottom:0.375rem;">Partenaire</div>
+                <div style="margin-bottom:1.25rem;">
+                    <div style="display:flex;align-items:baseline;gap:0.5rem;">
+                        <span class="font-bebas" style="font-size:3rem;color:var(--zinc-900);">500 €</span>
+                        <span class="tag tag-lime" style="font-size:0.65rem;">Tarif actuel</span>
+                    </div>
+                    <p style="font-size:0.72rem;color:var(--zinc-400);">600 € après le 31 août 2026</p>
+                </div>
+                <div class="sep mb-4"></div>
+                <ul style="display:flex;flex-direction:column;gap:0.5rem;">
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--cyan);flex-shrink:0;">·</span> Réseaux sociaux Enjoylife · Instagram & Facebook</li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--cyan);flex-shrink:0;">·</span> Logo affiches & flyers · campagne annuelle</li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--cyan);flex-shrink:0;">·</span> Toile tendue · format Medium</li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--cyan);flex-shrink:0;">·</span> Signalétique intérieure · format standard</li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--cyan);flex-shrink:0;">·</span> Logo page billetterie Shotgun Enjoylife</li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--cyan);flex-shrink:0;">·</span> Hospitalité partenaires · format confirmé à la signature</li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--cyan);flex-shrink:0;">·</span> Invitations grand public</li>
+                </ul>
+            </div>
+
+            <!-- Partenaire Officiel — featured -->
+            <div class="pricing-card featured" style="position:relative;">
+                <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--zinc-900);border-radius:20px 20px 0 0;"></div>
+                <div class="pricing-badge">Le plus choisi</div>
+                <div class="section-label mb-1">Niveau 2</div>
+                <div class="font-bebas" style="font-size:1.75rem;color:var(--zinc-900);margin-bottom:0.375rem;">Partenaire Officiel</div>
+                <div style="margin-bottom:1.25rem;">
+                    <div style="display:flex;align-items:baseline;gap:0.5rem;">
+                        <span class="font-bebas" style="font-size:3rem;color:var(--zinc-900);">1 000 €</span>
+                        <span class="tag tag-lime" style="font-size:0.65rem;">Tarif actuel</span>
+                    </div>
+                    <p style="font-size:0.72rem;color:var(--zinc-400);">1 200 € après le 31 août 2026</p>
+                </div>
+                <div class="sep mb-4"></div>
+                <div class="pricing-level-includes">✓ Tout le niveau Partenaire, plus :</div>
+                <ul style="display:flex;flex-direction:column;gap:0.5rem;">
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-700);font-weight:500;"><span style="color:var(--zinc-900);flex-shrink:0;">·</span> Logo <strong>grand format</strong> · priorité sur tous les supports</li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-700);"><span style="color:var(--zinc-900);flex-shrink:0;">·</span> Toile tendue · format Large · zone hall</li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-700);"><span style="color:var(--zinc-900);flex-shrink:0;">·</span> Signalétique entrée · format Large</li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-700);"><span style="color:var(--zinc-900);flex-shrink:0;">·</span> Stand hall d'accueil · espace dédié</li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-700);"><span style="color:var(--zinc-900);flex-shrink:0;">·</span> Hospitalité partenaires · format confirmé à la signature</li>
+                </ul>
+            </div>
+
+            <!-- Partenaire Majeur -->
+            <div class="pricing-card">
+                <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--magenta);border-radius:20px 20px 0 0;"></div>
+                <div class="section-label mb-1">Niveau 3</div>
+                <div class="font-bebas" style="font-size:1.75rem;color:var(--zinc-900);margin-bottom:0.375rem;">Partenaire Majeur</div>
+                <div style="margin-bottom:1.25rem;">
+                    <div style="display:flex;align-items:baseline;gap:0.5rem;">
+                        <span class="font-bebas" style="font-size:3rem;color:var(--zinc-900);">2 500 €</span>
+                        <span class="tag tag-lime" style="font-size:0.65rem;">Tarif actuel</span>
+                    </div>
+                    <p style="font-size:0.72rem;color:var(--zinc-400);">3 000 € après le 31 août 2026</p>
+                </div>
+                <div class="sep mb-4"></div>
+                <div class="pricing-level-includes">✓ Tout le niveau Officiel, plus :</div>
+                <ul style="display:flex;flex-direction:column;gap:0.5rem;">
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--magenta);flex-shrink:0;">·</span> Logo <strong>Extra Large</strong> · meilleur emplacement · tous supports</li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--magenta);flex-shrink:0;">·</span> Toile tendue · format XL · zone premium</li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--magenta);flex-shrink:0;">·</span> Écrans principaux · logo XL</li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--magenta);flex-shrink:0;">·</span> Photocall · format XL</li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--magenta);flex-shrink:0;">·</span> Bracelets d'accès logotés · 500 unités</li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--magenta);flex-shrink:0;">·</span> Stand hall d'accueil · espace premium</li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--magenta);flex-shrink:0;">·</span> Remerciements nominatifs sur scène</li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--magenta);flex-shrink:0;">·</span> Hospitalité partenaires · format confirmé à la signature</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Options + Note bonus -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5" data-aos="fade-up" data-aos-delay="140">
+            <div class="bento p-5">
+                <div class="bento-accent accent-lime"></div>
+                <div class="section-label mb-2">Option · Éco-cups logotés</div>
+                <p style="font-size:0.82rem;color:var(--zinc-500);line-height:1.6;">Disponible tous niveaux · Budget selon quantité souhaitée · Votre logo sur chaque consommation · toute la soirée.</p>
+                <p style="font-size:0.72rem;color:var(--zinc-400);margin-top:0.5rem;font-style:italic;">Nous contacter pour un devis.</p>
+            </div>
+            <div class="bento p-5">
+                <div class="bento-accent accent-cyan"></div>
+                <div class="section-label mb-2">Notre façon de travailler</div>
+                <p style="font-size:0.82rem;color:var(--zinc-500);line-height:1.6;font-style:italic;">"En 2026, nous avons livré 21 supports pour 15 contractualisés. 6 bonus non prévus, offerts. C'est notre façon de travailler."</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     SECTION 12 — MÉCÉNAT
+================================================================ -->
+<section id="mecenat" class="section-spacing" style="background:var(--cream);">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="mb-12" data-aos="fade-up">
+            <span class="section-label">12 · Mécénat</span>
+            <h2 class="font-bebas mt-2 section-title" style="font-size:clamp(2.5rem,6vw,5rem);color:var(--zinc-900);line-height:1.05;">
+                MÉCÉNAT.<br>
+                <span style="opacity:0.4;">DONNEZ MOINS QUE VOUS NE CROYEZ.</span>
+            </h2>
+            <p style="color:var(--zinc-500);margin-top:0.75rem;">This Is It Event est éligible au régime de l'intérêt général · Confirmation administration fiscale disponible sur demande</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10" data-aos="fade-up" data-aos-delay="80">
+
+            <!-- Distinction -->
+            <div>
+                <div class="section-label mb-5">Partenariat vs Mécénat — quelle différence ?</div>
+                <div class="bento p-0 overflow-hidden mb-5">
+                    <table class="compare-table">
+                        <thead>
+                            <tr>
+                                <th style="text-align:left;padding-left:1.25rem;"></th>
+                                <th>Partenariat</th>
+                                <th style="color:var(--cyan);">Mécénat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding-left:1.25rem;">Nature</td>
+                                <td style="text-align:center;">Contrat commercial</td>
+                                <td style="text-align:center;">Don</td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left:1.25rem;">Contrepartie</td>
+                                <td style="text-align:center;">Visibilité · logo · supports</td>
+                                <td style="text-align:center;">Aucune contrepartie pub.</td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left:1.25rem;">Avantage fiscal</td>
+                                <td style="text-align:center;">TVA selon régime</td>
+                                <td style="text-align:center;font-weight:700;color:var(--cyan);">Réduction 60%</td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left:1.25rem;">Interlocuteur</td>
+                                <td style="text-align:center;">Direction marketing</td>
+                                <td style="text-align:center;">Direction financière</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bento p-5" style="background:rgba(217,255,0,0.05);border:1px solid rgba(217,255,0,0.2);">
+                    <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+                        <i class="fas fa-shield-alt text-sm mt-0.5 flex-shrink-0" style="color:#5a6600;"></i>
+                        <div>
+                            <p style="font-size:0.82rem;font-weight:600;color:var(--zinc-900);margin-bottom:0.25rem;">Attestation disponible</p>
+                            <p style="font-size:0.78rem;color:var(--zinc-500);line-height:1.5;">
+                                Notre éligibilité au mécénat d'intérêt général est confirmée par l'administration fiscale. Le document est disponible sur simple demande.
+                            </p>
+                            <a href="mailto:thisisit-event@outlook.com" style="font-size:0.75rem;color:#5a6600;font-weight:500;margin-top:0.375rem;display:inline-block;">thisisit-event@outlook.com →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simulateur -->
+            <div class="bento p-7">
+                <div class="bento-accent accent-cyan"></div>
+                <div class="section-label mb-2">Simulateur fiscal</div>
+                <div class="font-bebas mb-6" style="font-size:1.5rem;color:var(--zinc-900);">Calculez votre coût réel</div>
+
+                <div style="margin-bottom:2rem;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+                        <span style="font-size:0.85rem;color:var(--zinc-500);">Montant du don</span>
+                        <span class="font-bebas" style="font-size:1.5rem;color:var(--zinc-900);" id="donAmount">1 000 €</span>
+                    </div>
+                    <input type="range" id="donSlider" min="100" max="5000" step="50" value="1000" oninput="updateSim(this.value)" style="margin-bottom:0.375rem;">
+                    <div style="display:flex;justify-content:space-between;">
+                        <span style="font-size:0.68rem;color:var(--zinc-400);">100 €</span>
+                        <span style="font-size:0.68rem;color:var(--zinc-400);">5 000 €</span>
+                    </div>
+                </div>
+
+                <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.5rem;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding:0.875rem 1rem;background:var(--cream);border-radius:10px;">
+                        <span style="font-size:0.82rem;color:var(--zinc-500);">Montant du don</span>
+                        <span style="font-size:0.95rem;font-weight:600;color:var(--zinc-900);" id="simDon">1 000 €</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding:0.875rem 1rem;background:var(--cream);border-radius:10px;">
+                        <span style="font-size:0.82rem;color:var(--zinc-500);">Réduction d'impôt (60%)</span>
+                        <span style="font-size:0.95rem;font-weight:600;color:#5a6600;" id="simReduction">600 €</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding:1rem;background:var(--zinc-900);border-radius:10px;">
+                        <span style="font-size:0.9rem;font-weight:600;color:#fff;">Votre coût réel</span>
+                        <span class="font-bebas" style="font-size:2rem;color:var(--lime);" id="simCout">400 €</span>
+                    </div>
+                </div>
+
+                <p style="font-size:0.72rem;color:var(--zinc-400);line-height:1.6;font-style:italic;">
+                    Réduction calculée sur la base de 60% du don · Plafond : 0,5% du CA HT · Report possible sur 5 exercices · Ce simulateur est indicatif — vérifiez avec votre comptable.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     SECTION 13 — CONTACT
+================================================================ -->
+<section id="contact" class="section-spacing" style="background:#fff;">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="mb-12" data-aos="fade-up">
+            <span class="section-label">13 · Contact</span>
+            <h2 class="font-bebas mt-2 section-title" style="font-size:clamp(2.5rem,6vw,5rem);color:var(--zinc-900);line-height:1.05;">
+                L'ÉDITION 4<br>
+                <span style="opacity:0.4;">EST EN PRÉPARATION.</span>
+            </h2>
+            <p style="color:var(--zinc-500);margin-top:0.75rem;">Les meilleures places de visibilité sont confirmées en premier.</p>
+        </div>
+
+        <!-- 5 raisons -->
+        <div class="grid grid-cols-1 sm:grid-cols-5 gap-4 mb-12" data-aos="fade-up" data-aos-delay="60">
+            <div class="kpi-card text-center"><div class="font-bebas" style="font-size:2.5rem;color:var(--zinc-900);opacity:0.3;">01</div><p style="font-size:0.75rem;color:var(--zinc-600);line-height:1.5;margin-top:0.25rem;">100% livré · 21 supports pour 15</p></div>
+            <div class="kpi-card text-center"><div class="font-bebas" style="font-size:2.5rem;color:var(--zinc-900);opacity:0.3;">02</div><p style="font-size:0.75rem;color:var(--zinc-600);line-height:1.5;margin-top:0.25rem;">1 500 spectateurs · votre clientèle locale</p></div>
+            <div class="kpi-card text-center"><div class="font-bebas" style="font-size:2.5rem;color:var(--zinc-900);opacity:0.3;">03</div><p style="font-size:0.75rem;color:var(--zinc-600);line-height:1.5;margin-top:0.25rem;">334 700 personnes touchées · CPM 1,92 €</p></div>
+            <div class="kpi-card text-center"><div class="font-bebas" style="font-size:2.5rem;color:var(--zinc-900);opacity:0.3;">04</div><p style="font-size:0.75rem;color:var(--zinc-600);line-height:1.5;margin-top:0.25rem;">95% dans l'Ain · RSE · territoire</p></div>
+            <div class="kpi-card text-center"><div class="font-bebas" style="font-size:2.5rem;color:var(--zinc-900);opacity:0.3;">05</div><p style="font-size:0.75rem;color:var(--zinc-600);line-height:1.5;margin-top:0.25rem;">100% des partenaires recroisés reviennent</p></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10" data-aos="fade-up" data-aos-delay="100">
+
+            <!-- Formulaire -->
+            <div>
+                <div class="section-label mb-5">Formulaire de contact</div>
+                <form onsubmit="handleSubmit(event)" style="display:flex;flex-direction:column;gap:0.875rem;">
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" name="prenom" placeholder="Prénom *" class="form-input" required>
+                        <input type="text" name="entreprise" placeholder="Entreprise *" class="form-input" required>
+                    </div>
+                    <input type="email" name="email" placeholder="Email *" class="form-input" required>
+                    <input type="tel" name="telephone" placeholder="Téléphone" class="form-input">
+                    <select name="niveau" class="form-input">
+                        <option value="" disabled selected>Niveau qui m'intéresse</option>
+                        <option>Partenaire · 500 € (tarif actuel)</option>
+                        <option>Partenaire Officiel · 1 000 € (tarif actuel)</option>
+                        <option>Partenaire Majeur · 2 500 € (tarif actuel)</option>
+                        <option>Mécénat</option>
+                        <option>Je ne sais pas encore · je veux en discuter</option>
+                    </select>
+                    <textarea name="message" placeholder="Message (optionnel)" rows="4" class="form-input" style="resize:none;"></textarea>
+                    <button type="submit" class="btn-primary btn-lime w-full">
+                        Envoyer ma demande <i class="fas fa-arrow-right text-xs"></i>
+                    </button>
+                    <div id="formSuccess" style="display:none;padding:0.875rem;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);border-radius:10px;text-align:center;">
+                        <p style="font-size:0.85rem;font-weight:600;color:#15803d;">Message envoyé. On vous répond rapidement.</p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Contacts directs + réseaux -->
+            <div style="display:flex;flex-direction:column;gap:1rem;">
+                <div class="section-label">Ou directement</div>
+                <a href="https://wa.me/33744980015" target="_blank" class="btn-whatsapp" style="justify-content:center;">
+                    <i class="fab fa-whatsapp text-lg"></i> Écrire à Morgan sur WhatsApp
+                </a>
+                <a href="mailto:thisisit-event@outlook.com" class="btn-outline">
+                    <i class="fas fa-envelope text-sm"></i> thisisit-event@outlook.com
+                </a>
+                <a href="tel:0744980015" class="btn-outline">
+                    <i class="fas fa-phone text-sm"></i> 07 44 98 00 15
+                </a>
+
+                <div style="height:1px;background:var(--zinc-100);margin:0.5rem 0;"></div>
+
+                <div class="section-label">Suivre Enjoylife</div>
+                <div class="grid grid-cols-2 gap-3">
+                    <a href="https://www.instagram.com/enjoylife.emx" target="_blank" class="btn-outline" style="justify-content:flex-start;gap:0.75rem;">
+                        <i class="fab fa-instagram"></i>
+                        <div style="text-align:left;"><div style="font-size:0.75rem;font-weight:600;">Instagram</div><div style="font-size:0.65rem;color:var(--zinc-400);">@enjoylife.emx</div></div>
+                    </a>
+                    <a href="#" target="_blank" class="btn-outline" style="justify-content:flex-start;gap:0.75rem;">
+                        <i class="fab fa-facebook"></i>
+                        <div style="text-align:left;"><div style="font-size:0.75rem;font-weight:600;">Facebook</div><div style="font-size:0.65rem;color:var(--zinc-400);">Enjoylife</div></div>
+                    </a>
+                    <a href="#" target="_blank" class="btn-outline" style="justify-content:flex-start;gap:0.75rem;">
+                        <i class="fab fa-youtube"></i>
+                        <div style="text-align:left;"><div style="font-size:0.75rem;font-weight:600;">YouTube</div><div style="font-size:0.65rem;color:var(--zinc-400);">This Is It Event</div></div>
+                    </a>
+                    <a href="#" target="_blank" class="btn-outline" style="justify-content:flex-start;gap:0.75rem;">
+                        <i class="fab fa-linkedin"></i>
+                        <div style="text-align:left;"><div style="font-size:0.75rem;font-weight:600;">LinkedIn</div><div style="font-size:0.65rem;color:var(--zinc-400);">This Is It Event</div></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     FOOTER
+================================================================ -->
+<footer style="background:var(--zinc-900);padding:3rem 0;">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+                    <img src="images/test.png" alt="Logo" style="height:32px;width:auto;object-fit:contain;filter:brightness(0) invert(1);">
+                    <div>
+                        <span style="font-size:0.875rem;font-weight:600;color:#fff;display:block;">THIS IS IT EVENT</span>
+                        <span style="font-size:0.65rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.15em;">Plateforme partenaire</span>
+                    </div>
+                </div>
+                <p style="font-size:0.75rem;color:rgba(255,255,255,0.4);line-height:1.7;">
+                    Association loi 1901 · SIRET 889 266 037 00023<br>
+                    7 Rue Pierre Bernin · 01800 Meximieux<br>
+                    Éligible mécénat d'intérêt général
+                </p>
+            </div>
+            <div>
+                <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1rem;">Navigation</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.375rem 1rem;">
+                    <a href="#hero" style="font-size:0.78rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Accueil</a>
+                    <a href="#succes" style="font-size:0.78rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Succès</a>
+                    <a href="#visibilite" style="font-size:0.78rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Visibilité</a>
+                    <a href="#livrables" style="font-size:0.78rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Livrables</a>
+                    <a href="#local" style="font-size:0.78rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Local</a>
+                    <a href="#integration" style="font-size:0.78rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Intégration</a>
+                    <a href="#partenaires-2026" style="font-size:0.78rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Confiance</a>
+                    <a href="#presse" style="font-size:0.78rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Presse</a>
+                    <a href="#partenariats-2027" style="font-size:0.78rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">2027</a>
+                    <a href="#mecenat" style="font-size:0.78rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Mécénat</a>
+                </div>
+            </div>
+            <div>
+                <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1rem;">Contact</div>
+                <div style="display:flex;flex-direction:column;gap:0.625rem;">
+                    <div><div style="font-size:0.65rem;color:rgba(255,255,255,0.3);margin-bottom:0.125rem;">Partenariats</div><a href="mailto:thisisit-event@outlook.com" style="font-size:0.78rem;color:rgba(255,255,255,0.6);text-decoration:none;">thisisit-event@outlook.com</a></div>
+                    <div><div style="font-size:0.65rem;color:rgba(255,255,255,0.3);margin-bottom:0.125rem;">Grand public Enjoylife</div><a href="mailto:contact@enjoylife-emx.fr" style="font-size:0.78rem;color:rgba(255,255,255,0.6);text-decoration:none;">contact@enjoylife-emx.fr</a></div>
+                    <div><div style="font-size:0.65rem;color:rgba(255,255,255,0.3);margin-bottom:0.125rem;">Téléphone</div><a href="tel:0744980015" style="font-size:0.78rem;color:rgba(255,255,255,0.6);text-decoration:none;">07 44 98 00 15</a></div>
+                    <div style="display:flex;gap:0.75rem;margin-top:0.375rem;">
+                        <a href="https://www.instagram.com/enjoylife.emx" target="_blank" style="color:rgba(255,255,255,0.4);font-size:1rem;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color:rgba(255,255,255,0.4);font-size:1rem;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color:rgba(255,255,255,0.4);font-size:1rem;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'"><i class="fab fa-youtube"></i></a>
+                        <a href="#" style="color:rgba(255,255,255,0.4);font-size:1rem;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="height:1px;background:rgba(255,255,255,0.08);margin-bottom:1.5rem;"></div>
+        <div style="display:flex;flex-direction:column;gap:0.375rem;align-items:center;text-align:center;">
+            <span style="font-size:0.72rem;color:rgba(255,255,255,0.3);">© 2026 This Is It Event · Tous droits réservés</span>
+        </div>
+    </div>
+</footer>
+
+</main>
+
+
+<!-- ================================================================
+     SCRIPTS
+================================================================ -->
+<script>
+// ── AOS ──
+AOS.init({ duration: 700, once: true, offset: 60 });
+
+// ── Progress bar ──
+const pb = document.getElementById('progressBar');
+window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    pb.style.width = (window.scrollY / h * 100) + '%';
+});
+
+// ── Mobile menu ──
+const mBtn = document.getElementById('mobileMenuBtn');
+const mMenu = document.getElementById('mobileMenu');
+mBtn.addEventListener('click', () => mMenu.classList.toggle('open'));
+mMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mMenu.classList.remove('open')));
+
+// ── Nav active ──
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('a.nav-link[href^="#"]');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            const active = document.querySelector(`a.nav-link[href="#${e.target.id}"]`);
+            if (active) active.classList.add('active');
+        }
+    });
+}, { threshold: 0.3 });
+sections.forEach(s => observer.observe(s));
+
+// ── Animated Counters ──
+const counters = document.querySelectorAll('.counter[data-target]');
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting && !e.target.dataset.done) {
+            e.target.dataset.done = '1';
+            const target = parseInt(e.target.dataset.target);
+            const suffix = e.target.dataset.suffix || '';
+            const duration = 1500;
+            const step = target / (duration / 16);
+            let current = 0;
+            const tick = () => {
+                current = Math.min(current + step, target);
+                e.target.textContent = Math.floor(current).toLocaleString('fr-FR') + suffix;
+                if (current < target) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+        }
+    });
+}, { threshold: 0.5 });
+counters.forEach(c => counterObserver.observe(c));
+
+// ── Video fallback ──
+document.querySelectorAll('video').forEach(v => {
+    v.addEventListener('error', function() {
+        const img = this.parentElement.querySelector('img[id]');
+        if (img) { img.style.display = 'block'; this.style.display = 'none'; }
+    });
+});
+// Hero fallback
+const heroVid = document.querySelector('#hero video');
+if (heroVid) {
+    heroVid.addEventListener('error', () => {
+        document.getElementById('heroFallback').style.display = 'block';
+        heroVid.style.display = 'none';
+    });
+    if (heroVid.readyState === 0) {
+        setTimeout(() => {
+            if (heroVid.readyState === 0) {
+                document.getElementById('heroFallback').style.display = 'block';
+            }
+        }, 3000);
+    }
+}
+
+// ── Simulateur mécénat ──
+function updateSim(val) {
+    const v = parseInt(val);
+    const red = Math.round(v * 0.6);
+    const cout = v - red;
+    const fmt = n => n.toLocaleString('fr-FR') + ' €';
+    document.getElementById('donAmount').textContent = fmt(v);
+    document.getElementById('simDon').textContent = fmt(v);
+    document.getElementById('simReduction').textContent = fmt(red);
+    document.getElementById('simCout').textContent = fmt(cout);
+}
+updateSim(1000);
+
+// ── Formulaire ──
+function handleSubmit(e) {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const sub = encodeURIComponent('Demande partenariat 2027 — ' + (fd.get('entreprise') || ''));
+    const body = encodeURIComponent(
+        'Prénom : ' + fd.get('prenom') + '\nEntreprise : ' + fd.get('entreprise') +
+        '\nEmail : ' + fd.get('email') + '\nTéléphone : ' + (fd.get('telephone') || '-') +
+        '\nNiveau : ' + (fd.get('niveau') || '-') + '\n\nMessage :\n' + (fd.get('message') || '-')
+    );
+    window.location.href = 'mailto:thisisit-event@outlook.com?subject=' + sub + '&body=' + body;
+    document.getElementById('formSuccess').style.display = 'block';
+    e.target.reset();
+}
+
+// ── Partner popup data ──
+const partnerData = {
+    'credit-agricole': { name: 'Crédit Agricole Centre-Est', type: 'Banque & Services financiers', description: 'Partenaire Majeur de l\'édition 2026. Premier établissement bancaire coopératif de France.', email: '', phone: '', website: 'www.ca-centrest.fr' },
+    'mcdonalds': { name: 'McDonald\'s Ambérieu & Meximieux', type: 'Restauration rapide', description: 'Partenaire Majeur · Double restaurant local indépendant, franchise McDonald\'s dans la Plaine de l\'Ain.', email: '', phone: '', website: '' },
+    'cer-francine': { name: 'Auto-École CER by Francine', type: 'Auto-école', description: 'Partenaire Majeur · Formation à la conduite dans la Plaine de l\'Ain.', email: '', phone: '', website: '' },
+    'marinelli': { name: 'Marinelli Automobiles', type: 'Concession automobile', description: 'Partenaire Officiel · Vente et entretien de véhicules.', email: '', phone: '', website: '' },
+    'pixelchrom': { name: 'Pixel Chrom', type: 'Imprimerie · Marquage textile', description: 'Partenaire Officiel · Prestataire des T-shirts logotés bénévoles 2026.', email: '', phone: '', website: '' },
+    'rituel-sport': { name: 'Rituel Sport Club', type: 'Salle de sport & bien-être', description: 'Partenaire Officiel · Centre de fitness et coaching sportif.', email: '', phone: '', website: '' },
+    'aux-delicatesses': { name: 'Aux Délicatesses Traiteur', type: 'Traiteur local', description: 'Partenaire Officiel · Prestataire traiteur local pour les événements.', email: '', phone: '', website: '' },
+    'siligreen': { name: 'Siligreen by Puissanc\'Elec', type: 'Énergie verte · Photovoltaïque', description: 'Partenaire Officiel · Solutions d\'énergie renouvelable pour les particuliers et professionnels.', email: '', phone: '', website: '' },
+    'night-animation': { name: 'Night Animation Events', type: 'Animation événementielle', description: 'Partenaire Officiel · Spécialiste de l\'animation festive et événementielle.', email: '', phone: '', website: '' },
+    'marie-blachere': { name: 'Marie Blachère', type: 'Boulangerie artisanale', description: 'Partenaire · Boulangeries à Meximieux et Ambérieu-en-Bugey.', email: '', phone: '', website: '' },
+    'but': { name: 'BUT Ambérieu', type: 'Mobilier · Électroménager', description: 'Partenaire · Grande surface spécialisée mobilier et électroménager.', email: '', phone: '', website: '' },
+    'safti': { name: 'SAFTI Immobilier', type: 'Agence immobilière indépendante', description: 'Partenaire · Alexandra gère son agence SAFTI en indépendante sur la Plaine de l\'Ain.', email: '', phone: '', website: '' },
+    'ronzat': { name: 'Ronzat Menuiseries Extérieures', type: 'Menuiserie · Fermetures', description: 'Partenaire · Entreprise familiale spécialisée dans les menuiseries extérieures. Elsa et son mari à la tête de l\'entreprise.', email: '', phone: '', website: '' },
+    'girel': { name: 'Girel Horlogerie', type: 'Horlogerie · Bijouterie', description: 'Partenaire · Horlogerie et bijouterie locale dans la Plaine de l\'Ain.', email: '', phone: '', website: '' },
+    'atol': { name: 'Atol Ambérieu-Lagnieu', type: 'Optique', description: 'Partenaire · Laurie est à la tête de ses boutiques Atol + une boutique indépendante.', email: '', phone: '', website: '' },
+    'sttp': { name: 'STTP Environnement', type: 'Environnement · Collecte', description: 'Partenaire · Services environnementaux et collecte.', email: '', phone: '', website: '' },
+    'nowbrains': { name: 'Nowbrains', type: 'Mécène', description: 'Mécène de l\'édition 2026. Soutien à la culture locale dans la Plaine de l\'Ain.', email: '', phone: '', website: '' },
+    'mairie-vlm': { name: 'Mairie de Villieu-Loyes-Mollon', type: 'Institution publique', description: 'Ville d\'accueil et partenaire institutionnel de l\'édition 2026.', email: '', phone: '', website: 'www.villieu-loyes-mollon.fr' },
+    'ccpa': { name: 'Communauté de Communes de la Plaine de l\'Ain', type: 'Institution publique', description: 'Partenaire institutionnel et soutien subventionnel de l\'association.', email: '', phone: '', website: 'www.plaine-ain.fr' },
+    'neon-live': { name: 'NEON Live', type: 'Prestataire technique son & lumière', description: 'Partenaire technique · Scénographie et technique son/lumière des éditions 2026.', email: '', phone: '', website: '' },
+    'svprod': { name: 'SVPROD', type: 'Production événementielle', description: 'Partenaire technique · Production et captation des événements.', email: '', phone: '', website: '' },
+    'dmc': { name: 'DMC Animations', type: 'Animation & technique', description: 'Partenaire technique · Animation et coordination technique.', email: '', phone: '', website: '' },
+};
+
+function openPartner(id) {
+    const p = partnerData[id];
+    if (!p) return;
+    const c = document.getElementById('partnerPopupContent');
+    c.innerHTML = `
+        <div style="margin-bottom:1.25rem;">
+            <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--zinc-400);margin-bottom:0.375rem;">${p.type}</div>
+            <div style="font-size:1.25rem;font-weight:700;color:var(--zinc-900);line-height:1.2;">${p.name}</div>
+        </div>
+        <div style="height:1px;background:var(--zinc-100);margin-bottom:1.25rem;"></div>
+        <p style="font-size:0.85rem;color:var(--zinc-600);line-height:1.65;margin-bottom:1.25rem;">${p.description}</p>
+        ${p.website ? `<div style="display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:var(--zinc-500);margin-bottom:0.5rem;"><i class="fas fa-globe text-xs" style="color:var(--zinc-300);"></i><a href="https://${p.website}" target="_blank" style="color:var(--zinc-700);text-decoration:none;">${p.website}</a></div>` : ''}
+        ${p.email ? `<div style="display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:var(--zinc-500);margin-bottom:0.5rem;"><i class="fas fa-envelope text-xs" style="color:var(--zinc-300);"></i><a href="mailto:${p.email}" style="color:var(--zinc-700);text-decoration:none;">${p.email}</a></div>` : ''}
+        ${p.phone ? `<div style="display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:var(--zinc-500);"><i class="fas fa-phone text-xs" style="color:var(--zinc-300);"></i><a href="tel:${p.phone}" style="color:var(--zinc-700);text-decoration:none;">${p.phone}</a></div>` : ''}
+        <p style="font-size:0.7rem;color:var(--zinc-300);margin-top:1rem;font-style:italic;">Pour compléter cette fiche, déposez un fichier Excel dans assets/data/partenaires.xlsx</p>
+    `;
+    document.getElementById('partnerPopup').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closePartner() {
+    document.getElementById('partnerPopup').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+// ── PDF Download ──
+function downloadPDF() {
+    const date = new Date().toLocaleDateString('fr-FR', { day:'2-digit', month:'2-digit', year:'numeric' });
+    const el = document.createElement('div');
+    el.style.cssText = 'position:fixed;bottom:5rem;left:50%;transform:translateX(-50%);background:var(--zinc-900);color:#fff;padding:0.75rem 1.5rem;border-radius:8px;font-size:0.8rem;z-index:9999;';
+    el.textContent = 'Mise en page PDF en cours... (' + date + ')';
+    document.body.appendChild(el);
+    setTimeout(() => {
+        window.print();
+        document.body.removeChild(el);
+    }, 500);
+}
+</script>
+
+</body>
+</html>
