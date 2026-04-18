@@ -3779,6 +3779,19 @@ window.addEventListener('scroll', () => {
     const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
     document.getElementById('scrollProgress').style.width = pct + '%';
 });
+
+// Ancres sans hash dans l URL
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (href === '#') return;
+    const target = document.querySelector(href);
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
+    history.replaceState(null, '', window.location.pathname);
+});
 </script>
 
 </body>
