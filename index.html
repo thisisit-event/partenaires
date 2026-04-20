@@ -2542,7 +2542,7 @@
                     <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--purple);flex-shrink:0;">·</span><span>Mention réseaux sociaux · publications partenaires</span></li>
                     <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--purple);flex-shrink:0;">·</span><span>Logo affiches & campagne d'affichage annuelle</span></li>
                     <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--purple);flex-shrink:0;">·</span><span>Logo sur le site enjoylife-emx.fr</span></li>
-                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--purple);flex-shrink:0;">·</span><span>Mention sur la page Shotgun Enjoylife</span></li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--purple);flex-shrink:0;">·</span><span>Présence dans la description Shotgun Enjoylife</span></li>
                     <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--purple);flex-shrink:0;">·</span><span>Logo sur toile · format S · zone intérieure</span></li>
                     <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--purple);flex-shrink:0;">·</span><span>Écrans · <strong>5 secondes</strong> par passage · diffusion non-stop</span></li>
                     <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--purple);flex-shrink:0;">·</span><span><strong>2 invitations / soir</strong></span></li>
@@ -2609,8 +2609,9 @@
                     <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);font-weight:500;"><span style="color:var(--violet);flex-shrink:0;">·</span><span><strong>Stand exclusif · hall d'accueil</strong> · présence physique toute la soirée</span></li>
                     <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--violet);flex-shrink:0;">·</span><span>Logo <strong>XL</strong> · meilleur emplacement · tous supports</span></li>
                     <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--violet);flex-shrink:0;">·</span><span>1ère slide sur tous les posts Instagram · logo prioritaire toute la saison</span></li>
-                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--violet);flex-shrink:0;">·</span><span>Logo sur la bannière Shotgun + logo sur le billet</span></li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--violet);flex-shrink:0;">·</span><span>Bannière Shotgun + logo sur le billet + description</span></li>
                     <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--violet);flex-shrink:0;">·</span><span>Logo sur toile · format L · zones premium</span></li>
+                    <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--violet);flex-shrink:0;">·</span><span>Signalétique intérieure · entrée, loges & espaces dédiés</span></li>
                     <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--violet);flex-shrink:0;">·</span><span>Écrans · <strong>15 secondes</strong> par passage + séquence plein écran dédiée</span></li>
                     <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--violet);flex-shrink:0;">·</span><span>Photocall · logo XL</span></li>
                     <li style="display:flex;gap:0.5rem;font-size:0.8rem;color:var(--zinc-600);"><span style="color:var(--violet);flex-shrink:0;">·</span><span>500 bracelets logotés · portés par chaque spectateur, artiste & invité</span></li>
@@ -3700,10 +3701,10 @@ async function generatePDF() {
         <tr><td>Réseaux sociaux · Instagram & Facebook</td><td class="c">Mention</td><td class="c">Post dédié + story</td><td class="c ok">Prioritaire · toute la saison</td></tr>
         <tr><td>Logo affiches & campagne d'affichage</td><td class="c ok">✓</td><td class="c ok">✓</td><td class="c ok">✓</td></tr>
         <tr><td>Logo sur le site enjoylife-emx.fr</td><td class="c ok">✓</td><td class="c ok">✓</td><td class="c ok">✓</td></tr>
-        <tr><td>Shotgun billetterie</td><td class="c">Mention</td><td class="c">Logo sur le billet</td><td class="c">Bannière + logo billet</td></tr>
+        <tr><td>Shotgun billetterie</td><td class="c">Description</td><td class="c">Logo sur le billet</td><td class="c">Bannière + logo billet + description</td></tr>
         <tr><td>Exclusivité catégorie de métier</td><td class="c ok">✓</td><td class="c ok">✓</td><td class="c ok">✓</td></tr>
         <tr><td>Toile tendue salle</td><td class="c">Logo format S</td><td class="c">Logo format M · hall + intérieure</td><td class="c">Logo format L · zones premium</td></tr>
-        <tr><td>Signalétique intérieure</td><td class="c ok">✓</td><td class="c">Grand format · entrée</td><td class="c ok">✓</td></tr>
+        <tr><td>Signalétique intérieure</td><td class="c no">—</td><td class="c">Grand format · entrée</td><td class="c ok">Entrée + loges & espaces dédiés</td></tr>
         <tr><td>Format logo sur tous supports</td><td class="c">Standard</td><td class="c">Grand format</td><td class="c">Extra Large</td></tr>
         <tr><td>Écrans · durée par passage</td><td class="c">5 secondes</td><td class="c">10 secondes</td><td class="c">15 sec + plein écran dédié</td></tr>
         <tr><td>Stand hall d'accueil</td><td class="c no">—</td><td class="c no">—</td><td class="c">Espace exclusif</td></tr>
