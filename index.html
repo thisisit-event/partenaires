@@ -636,8 +636,8 @@
             /* Nav padding */
             nav { top: 24px !important; }
 
-            /* PDF button ·plus petit */
-            #pdf-fixed-btn { padding: 0.5rem 0.875rem !important; font-size: 0.68rem !important; }
+            /* Boutons fixes cachés sur mobile/tablette → dans le menu mobile à la place */
+            #pdf-fixed-btn, #cta-offres { display: none !important; }
 
             /* Reconduction section ·stack vertical */
             .reconduction-grid { grid-template-columns: 1fr !important; }
@@ -1040,6 +1040,14 @@
         <a href="#partenariats-2027" class="px-6 py-3 text-zinc-600 text-sm border-b border-zinc-100 hover:text-zinc-900 hover:bg-zinc-50 transition-colors">Les offres · 2027</a>
         <a href="#mecenat" class="px-6 py-3 text-zinc-600 text-sm border-b border-zinc-100 hover:text-zinc-900 hover:bg-zinc-50 transition-colors">Mécénat</a>
         <a href="#contact" class="px-6 py-4 text-white text-sm font-semibold transition-colors" style="background:#4338ca;">Rejoindre l'aventure →</a>
+        <div style="display:flex;gap:0.75rem;padding:0.875rem 1.5rem;border-top:1px solid var(--zinc-100);">
+            <a href="#partenariats-2027" style="flex:1;display:flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.65rem;background:var(--zinc-900);border-radius:8px;font-size:0.75rem;font-weight:600;color:#fff;text-decoration:none;">
+                <i class="fas fa-arrow-right" style="font-size:0.65rem;opacity:0.6;"></i> Voir les offres
+            </a>
+            <button onclick="generatePDF()" style="flex:1;display:flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.65rem;background:#4338ca;border:none;border-radius:8px;font-size:0.75rem;font-weight:600;color:#fff;cursor:pointer;font-family:inherit;">
+                <i class="fas fa-file-pdf" style="font-size:0.7rem;opacity:0.8;"></i> Dossier PDF
+            </button>
+        </div>
     </div>
 </nav>
 
