@@ -2984,7 +2984,11 @@
             <!-- Formulaire -->
             <div>
                 <div class="section-label mb-5">Formulaire de contact</div>
-                <form onsubmit="handleSubmit(event)" style="display:flex;flex-direction:column;gap:0.875rem;">
+                <form id="partnerForm" onsubmit="handleSubmit(event)" style="display:flex;flex-direction:column;gap:0.875rem;">
+                    <input type="hidden" name="_subject" value="Demande partenariat 2027">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="text" name="_honey" style="display:none">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <input type="text" name="prenom" placeholder="Prénom *" class="form-input" required>
                         <input type="text" name="entreprise" placeholder="Entreprise *" class="form-input" required>
@@ -3009,7 +3013,10 @@
                         Je veux faire partie de l'aventure <i class="fas fa-arrow-right text-xs"></i>
                     </button>
                     <div id="formSuccess" style="display:none;padding:0.875rem;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);border-radius:10px;text-align:center;">
-                        <p style="font-size:0.85rem;font-weight:600;color:#15803d;">Votre client mail s'est ouvert avec votre demande pré-remplie. Vérifiez que le message part bien.</p>
+                        <p style="font-size:0.85rem;font-weight:600;color:#15803d;">Merci ! Votre demande a bien été envoyée. Nous revenons vers vous très vite.</p>
+                    </div>
+                    <div id="formError" style="display:none;padding:0.875rem;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);border-radius:10px;text-align:center;">
+                        <p style="font-size:0.85rem;font-weight:600;color:#b91c1c;">Une erreur est survenue. Merci d'écrire directement à contact@mgentertainment.fr.</p>
                     </div>
                 </form>
             </div>
@@ -3316,21 +3323,42 @@ function updateSim(val) {
 updateSim(1000);
 
 // ── Formulaire ──
-function handleSubmit(e) {
+async function handleSubmit(e) {
     e.preventDefault();
-    const fd = new FormData(e.target);
-    const sponsor2026 = e.target.querySelector('[name="sponsor2026"]').checked ? 'Oui' : 'Non';
-    const sub = encodeURIComponent('Demande partenariat 2027 · ' + (fd.get('entreprise') || ''));
-    const body = encodeURIComponent(
-        'Prénom : ' + fd.get('prenom') + '\nEntreprise : ' + fd.get('entreprise') +
-        '\nEmail : ' + fd.get('email') + '\nTéléphone : ' + (fd.get('telephone') || '-') +
-        '\nNiveau : ' + (fd.get('niveau') || '-') +
-        '\nSponsor 2026 (accès prioritaire) : ' + sponsor2026 +
-        '\n\nMessage :\n' + (fd.get('message') || '-')
-    );
-    window.location.href = 'mailto:contact@mgentertainment.fr?subject=' + sub + '&body=' + body;
-    document.getElementById('formSuccess').style.display = 'block';
-    e.target.reset();
+    const form = e.target;
+    const successEl = document.getElementById('formSuccess');
+    const errorEl = document.getElementById('formError');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    successEl.style.display = 'none';
+    errorEl.style.display = 'none';
+
+    const fd = new FormData(form);
+    fd.set('sponsor2026', form.querySelector('[name="sponsor2026"]').checked ? 'Oui' : 'Non');
+    fd.set('_subject', 'Demande partenariat 2027 · ' + (fd.get('entreprise') || ''));
+
+    const originalLabel = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Envoi en cours…';
+
+    try {
+        const res = await fetch('https://formsubmit.co/ajax/contact@mgentertainment.fr', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: fd
+        });
+        const data = await res.json();
+        if (res.ok && (data.success === 'true' || data.success === true)) {
+            successEl.style.display = 'block';
+            form.reset();
+        } else {
+            errorEl.style.display = 'block';
+        }
+    } catch (err) {
+        errorEl.style.display = 'block';
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalLabel;
+    }
 }
 
 // ── Partner popup data ──
