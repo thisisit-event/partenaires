@@ -3507,6 +3507,11 @@ async function generatePDF() {
 
         for (let i = 0; i < pages.length; i++) {
             const page = pages[i];
+
+            // Force layout sync : récupère les dimensions réelles après reflow
+            const realW = page.offsetWidth;
+            const realH = page.offsetHeight;
+
             const canvas = await html2canvas(page, {
                 scale: 3,                  // densité pixel haute (3× = ~285 DPI)
                 useCORS: true,
@@ -3514,18 +3519,33 @@ async function generatePDF() {
                 backgroundColor: '#ffffff',
                 logging: false,
                 imageTimeout: 0,
-                width: page.offsetWidth,
-                height: page.offsetHeight,
-                windowWidth: page.offsetWidth,
-                windowHeight: page.offsetHeight
+                width: realW,
+                height: realH,
+                windowWidth: realW,
+                windowHeight: realH
             });
 
             const imgData = canvas.toDataURL('image/jpeg', 0.95);
 
             if (i > 0) pdf.addPage();
 
-            // 1 page HTML → 1 page PDF, fit exact A4. Le template doit respecter le ratio.
-            pdf.addImage(imgData, 'JPEG', 0, 0, W, H, undefined, 'SLOW');
+            // Préserver le ratio natif du canvas pour éviter toute distorsion.
+            // Si la page dépasse A4, on l'ajuste en hauteur (lettre noire en haut).
+            const canvasRatio = canvas.width / canvas.height;
+            const a4Ratio = W / H;
+            let renderW, renderH, offsetX = 0, offsetY = 0;
+            if (canvasRatio > a4Ratio) {
+                renderW = W;
+                renderH = W / canvasRatio;
+                offsetY = (H - renderH) / 2;
+            } else {
+                renderH = H;
+                renderW = H * canvasRatio;
+                offsetX = (W - renderW) / 2;
+            }
+            pdf.addImage(imgData, 'JPEG', offsetX, offsetY, renderW, renderH, undefined, 'SLOW');
+
+            console.log(`[PDF] Page ${i+1} : canvas ${canvas.width}×${canvas.height} px · ratio ${canvasRatio.toFixed(3)} (A4=${a4Ratio.toFixed(3)})`);
         }
 
         pdf.save('Dossier-Partenariat-Enjoylife-2027.pdf');
@@ -3552,7 +3572,7 @@ async function generatePDF() {
     width: 794px;
     height: 1123px;          /* A4 portrait à 96dpi · ratio strict pour 1:1 PDF */
     background: #fff;
-    padding: 44px 48px 68px;
+    padding: 36px 44px 56px;
     box-sizing: border-box;
     position: relative;
     color: #18181b;
@@ -3567,9 +3587,9 @@ async function generatePDF() {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 12px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #e4e4e7;
-    margin-bottom: 22px;
+    margin-bottom: 18px;
 }
 .pdf-header-left { font-size: 8px; color: #71717a; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; }
 .pdf-header-right { font-size: 8px; color: #a1a1aa; text-align: right; letter-spacing: 0.18em; text-transform: uppercase; }
@@ -3601,10 +3621,10 @@ async function generatePDF() {
     background: #d4d4d8;
 }
 .pdf-h1 {
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 600;
     color: #18181b;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
     line-height: 1.25;
     letter-spacing: -0.005em;
 }
@@ -3619,23 +3639,23 @@ async function generatePDF() {
     text-transform: uppercase;
 }
 .pdf-h2 {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
     color: #18181b;
-    margin: 16px 0 10px;
-    padding-bottom: 5px;
+    margin: 14px 0 8px;
+    padding-bottom: 4px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     border-bottom: 1px solid #18181b;
     display: inline-block;
-    padding-right: 24px;
+    padding-right: 20px;
 }
 .pdf-h3 { font-size: 9px; font-weight: 700; color: #18181b; margin: 8px 0 4px; letter-spacing: 0.06em; text-transform: uppercase; }
 .pdf-body { font-size: 9px; color: #3f3f46; line-height: 1.7; margin-bottom: 8px; }
 .pdf-note { font-size: 8px; color: #a1a1aa; font-style: italic; line-height: 1.5; margin-top: 6px; }
 .pdf-hr { height: 1px; background: #e4e4e7; border: none; margin: 12px 0; }
 
-.pdf-kpi-grid { display: grid; gap: 8px; margin-bottom: 12px; }
+.pdf-kpi-grid { display: grid; gap: 6px; margin-bottom: 10px; }
 .pdf-kpi-grid-2 { grid-template-columns: repeat(2,1fr); }
 .pdf-kpi-grid-3 { grid-template-columns: repeat(3,1fr); }
 .pdf-kpi-grid-4 { grid-template-columns: repeat(4,1fr); }
@@ -3643,35 +3663,35 @@ async function generatePDF() {
 .pdf-kpi {
     background: #fff;
     border: 1px solid #e4e4e7;
-    padding: 12px 10px 10px;
+    padding: 9px 8px 8px;
     text-align: left;
-    border-radius: 4px;
+    border-radius: 3px;
 }
 .pdf-kpi-val {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
+    font-size: 19px;
     font-weight: 400;
     color: #18181b;
     line-height: 1;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     letter-spacing: 0.005em;
 }
 .pdf-kpi-val.green { color: #15803d; }
 .pdf-kpi-label { font-size: 6.5px; color: #71717a; line-height: 1.4; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
 
-.pdf-table { width: 100%; border-collapse: collapse; font-size: 8px; margin-bottom: 10px; }
+.pdf-table { width: 100%; border-collapse: collapse; font-size: 8px; margin-bottom: 8px; }
 .pdf-table th {
     background: #18181b;
     color: #fff;
-    padding: 8px 10px;
+    padding: 6px 8px;
     text-align: left;
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    font-size: 7.5px;
+    font-size: 7px;
 }
 .pdf-table th.c { text-align: center; }
-.pdf-table td { padding: 7px 10px; border-bottom: 1px solid #e4e4e7; color: #3f3f46; vertical-align: top; }
+.pdf-table td { padding: 5px 8px; border-bottom: 1px solid #e4e4e7; color: #3f3f46; vertical-align: top; }
 .pdf-table td.c { text-align: center; }
 .pdf-table tr:nth-child(even) td { background: #fafafa; }
 .pdf-table .ok { color: #15803d; font-weight: 700; }
@@ -3707,201 +3727,194 @@ async function generatePDF() {
 .pdf-quote-author { font-size: 7.5px; color: #71717a; margin-top: 5px; font-style: normal; letter-spacing: 0.04em; }
 .pdf-badge { display: inline-block; background: #fff; border: 1px solid #d4d4d8; font-size: 7px; padding: 3px 8px; border-radius: 2px; color: #52525b; margin: 2px 2px 2px 0; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 500; }
 
-/* ── COUVERTURE ÉDITORIALE ── */
-.cover-hero {
+/* ── COUVERTURE TYPOGRAPHIQUE PURE ── */
+.cover-wrap {
     position: relative;
     width: 100%;
-    height: 720px;
-    overflow: hidden;
-    background: #18181b;
+    height: 100%;
+    background: #fff;
+    padding: 56px 56px 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
-.cover-hero-img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    filter: brightness(0.55) saturate(1.05);
-}
-.cover-hero-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg,
-        rgba(10,10,15,0.55) 0%,
-        rgba(10,10,15,0.25) 35%,
-        rgba(10,10,15,0.55) 75%,
-        rgba(10,10,15,0.92) 100%);
-}
-.cover-top {
-    position: absolute; top: 44px; left: 52px; right: 52px;
+.cover-top-row {
     display: flex; justify-content: space-between; align-items: center;
-    z-index: 2;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #18181b;
 }
-.cover-top-label { font-size: 9px; color: rgba(255,255,255,0.7); letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; }
-.cover-top-logo { height: 28px; width: auto; opacity: 0.95; filter: brightness(0) invert(1); }
-.cover-bottom {
-    position: absolute; bottom: 48px; left: 52px; right: 52px;
-    z-index: 2;
+.cover-top-label {
+    font-size: 9px;
+    color: #18181b;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.cover-top-edition {
+    font-size: 9px;
+    color: #71717a;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
 }
 .cover-eyebrow {
+    margin-top: 60px;
     font-size: 10px;
-    color: rgba(255,255,255,0.65);
+    color: #71717a;
     letter-spacing: 0.4em;
     text-transform: uppercase;
     font-weight: 500;
-    margin-bottom: 18px;
     display: flex; align-items: center; gap: 14px;
 }
 .cover-eyebrow::before {
     content: ''; display: inline-block;
-    width: 32px; height: 1px; background: rgba(255,255,255,0.6);
+    width: 32px; height: 1px; background: #18181b;
 }
 .cover-title {
     font-family: 'Bebas Neue', 'Geist', sans-serif;
-    font-size: 96px;
-    line-height: 0.92;
-    letter-spacing: 0.005em;
-    color: #fff;
+    font-size: 132px;
+    line-height: 0.86;
+    letter-spacing: 0.002em;
+    color: #18181b;
     font-weight: 400;
-    margin-bottom: 14px;
+    margin: 22px 0 18px;
     text-transform: uppercase;
 }
+.cover-title-sub {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    color: #71717a;
+    margin-bottom: 32px;
+    letter-spacing: 0.005em;
+}
 .cover-subtitle {
-    font-size: 15px;
-    color: rgba(255,255,255,0.88);
-    font-weight: 300;
-    letter-spacing: 0.02em;
-    line-height: 1.4;
+    font-size: 13px;
+    color: #18181b;
+    font-weight: 400;
+    letter-spacing: 0.005em;
+    line-height: 1.55;
     max-width: 520px;
+    margin-bottom: 38px;
 }
 .cover-meta {
-    display: flex;
-    gap: 28px;
-    margin-top: 22px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.18);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    padding: 22px 0;
+    border-top: 1px solid #e4e4e7;
+    border-bottom: 1px solid #e4e4e7;
+    margin-bottom: 36px;
 }
-.cover-meta-item { color: #fff; }
-.cover-meta-label { font-size: 8px; color: rgba(255,255,255,0.55); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 4px; }
-.cover-meta-value { font-size: 13px; font-weight: 600; letter-spacing: 0.01em; }
+.cover-meta-item { color: #18181b; }
+.cover-meta-label { font-size: 8px; color: #a1a1aa; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 5px; font-weight: 600; }
+.cover-meta-value { font-size: 14px; font-weight: 600; letter-spacing: 0.005em; line-height: 1.2; }
 
-/* ── COUVERTURE BAS · KPI VEDETTES ── */
-.cover-stats {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 403px;
-    background: #fff;
-    padding: 52px 52px 0;
-    box-sizing: border-box;
-}
+/* ── BAS COUVERTURE · KPI + DEADLINE + CREDS ── */
 .cover-stats-intro {
     font-size: 9px;
     color: #a1a1aa;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
     display: flex; align-items: center; gap: 14px;
+    font-weight: 600;
 }
 .cover-stats-intro::after {
     content: ''; flex: 1; height: 1px; background: #e4e4e7;
 }
 .cover-stats-grid {
     display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+    gap: 22px;
     margin-bottom: 26px;
 }
-.cover-stat {
-    border-left: 2px solid #18181b;
-    padding-left: 14px;
-}
+.cover-stat { padding-left: 14px; border-left: 2px solid #18181b; }
 .cover-stat-val {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 38px;
+    font-size: 42px;
     line-height: 1;
     color: #18181b;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
     letter-spacing: 0.005em;
 }
 .cover-stat-val.green { color: #15803d; }
 .cover-stat-label {
     font-size: 8px;
     color: #71717a;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    line-height: 1.4;
+    line-height: 1.45;
     font-weight: 500;
 }
 .cover-deadline {
     background: #18181b; color: #fff;
-    padding: 14px 18px;
+    padding: 14px 20px;
     display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
 }
-.cover-deadline-label { font-size: 8px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
-.cover-deadline-value { font-size: 12px; font-weight: 600; color: #fff; }
+.cover-deadline-label { font-size: 8px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.55); font-weight: 600; }
+.cover-deadline-value { font-size: 11px; font-weight: 600; color: #fff; letter-spacing: 0.005em; }
 .cover-credentials {
     display: grid; grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
+    gap: 18px;
     font-size: 8px;
-    padding-top: 14px;
+    padding-top: 16px;
     border-top: 1px solid #e4e4e7;
+    margin-bottom: 22px;
 }
-.cover-cred-label { color: #a1a1aa; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 3px; }
-.cover-cred-val { color: #18181b; font-weight: 500; line-height: 1.4; }
+.cover-cred-label { color: #a1a1aa; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 4px; font-weight: 600; }
+.cover-cred-val { color: #18181b; font-weight: 500; line-height: 1.5; font-size: 8.5px; }
 .cover-footer {
     position: absolute;
-    bottom: 18px; left: 52px; right: 52px;
+    bottom: 20px; left: 56px; right: 56px;
     display: flex; justify-content: space-between;
     font-size: 7px;
     color: #a1a1aa;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
 }
 </style>
 
-<!-- ══ PAGE 1 : Couverture éditoriale ══ -->
+<!-- ══ PAGE 1 : Couverture typographique pure ══ -->
 <div class="pdf-page cover">
-    <!-- HERO photo full-bleed 720px -->
-    <div class="cover-hero">
-        <img class="cover-hero-img" src="https://enjoylife.b-cdn.net/Enjoylife%20Partenaire/img/2026-enjoylife.jpg" alt="" crossorigin="anonymous">
-        <div class="cover-hero-overlay"></div>
-
-        <div class="cover-top">
-            <span class="cover-top-label">MG Entertainment · Édition 2027</span>
-            <img class="cover-top-logo" src="https://enjoylife.b-cdn.net/Enjoylife%20Partenaire/img/enjoy-logo.png" alt="Enjoylife" crossorigin="anonymous">
+    <div class="cover-wrap">
+        <!-- Top : signature MGE + édition -->
+        <div class="cover-top-row">
+            <span class="cover-top-label">MG Entertainment · Association Loi 1901</span>
+            <span class="cover-top-edition">Dossier Partenariat · Confidentiel</span>
         </div>
 
-        <div class="cover-bottom">
-            <div class="cover-eyebrow">Dossier de Partenariat · Confidentiel</div>
-            <div class="cover-title">Enjoylife<br>Ed.4 · 2027</div>
-            <div class="cover-subtitle">Le plus grand show électro de la Plaine de l'Ain · 2 nuits · 2 000 spectateurs · Mars 2027</div>
+        <!-- Centre : titre éditorial -->
+        <div class="cover-eyebrow">Édition 4 · Mars 2027 · Plaine de l'Ain</div>
+        <div class="cover-title">Enjoylife</div>
+        <div class="cover-title-sub">Ed.4 · 2027</div>
+        <div class="cover-subtitle">Le plus grand show électro de la Plaine de l'Ain.<br>2 nuits consécutives · 2 000 spectateurs · jauge doublée vs 2026.</div>
 
-            <div class="cover-meta">
-                <div class="cover-meta-item">
-                    <div class="cover-meta-label">Date</div>
-                    <div class="cover-meta-value">Mars 2027</div>
-                </div>
-                <div class="cover-meta-item">
-                    <div class="cover-meta-label">Lieu</div>
-                    <div class="cover-meta-value">Plaine de l'Ain · 01</div>
-                </div>
-                <div class="cover-meta-item">
-                    <div class="cover-meta-label">Format</div>
-                    <div class="cover-meta-value">2 nuits · 2 000 pers.</div>
-                </div>
-                <div class="cover-meta-item">
-                    <div class="cover-meta-label">Édition</div>
-                    <div class="cover-meta-value">4ᵉ · depuis 2016</div>
-                </div>
+        <!-- Métadonnées -->
+        <div class="cover-meta">
+            <div class="cover-meta-item">
+                <div class="cover-meta-label">Date</div>
+                <div class="cover-meta-value">Mars 2027</div>
+            </div>
+            <div class="cover-meta-item">
+                <div class="cover-meta-label">Territoire</div>
+                <div class="cover-meta-value">Plaine de l'Ain · 01</div>
+            </div>
+            <div class="cover-meta-item">
+                <div class="cover-meta-label">Format</div>
+                <div class="cover-meta-value">2 nuits · 2 000 pers.</div>
+            </div>
+            <div class="cover-meta-item">
+                <div class="cover-meta-label">Édition</div>
+                <div class="cover-meta-value">4ᵉ · depuis 2016</div>
             </div>
         </div>
-    </div>
 
-    <!-- BAS · KPI vedettes + deadline + crédentiels -->
-    <div class="cover-stats">
-        <div class="cover-stats-intro">Bilan 2026 · Sold Out</div>
-
+        <!-- KPI vedettes -->
+        <div class="cover-stats-intro">Bilan 2026 · Sold Out double</div>
         <div class="cover-stats-grid">
             <div class="cover-stat">
                 <div class="cover-stat-val">1 500</div>
-                <div class="cover-stat-label">Spectateurs · Double Sold Out</div>
+                <div class="cover-stat-label">Spectateurs · double sold out</div>
             </div>
             <div class="cover-stat">
                 <div class="cover-stat-val">334 700</div>
@@ -3913,11 +3926,13 @@ async function generatePDF() {
             </div>
         </div>
 
+        <!-- Deadline -->
         <div class="cover-deadline">
             <span class="cover-deadline-label">Deadline tarif prioritaire</span>
-            <span class="cover-deadline-value">31 août 2026 · sponsors 2026 reconduisent au tarif actuel</span>
+            <span class="cover-deadline-value">31 août 2026</span>
         </div>
 
+        <!-- Crédentiels -->
         <div class="cover-credentials">
             <div>
                 <div class="cover-cred-label">Association</div>
@@ -3936,7 +3951,7 @@ async function generatePDF() {
 
     <div class="cover-footer">
         <span>Document confidentiel · Édition Enjoylife 2027</span>
-        <span>Page 1 / 6 · Confidentiel</span>
+        <span>Page 1 / 6</span>
     </div>
 </div>
 
@@ -3948,7 +3963,7 @@ async function generatePDF() {
     </div>
 
     <div class="pdf-num">01 · Bilan 2026</div>
-    <div class="pdf-h1" style="font-size:18px;">Weekend 20–21 Février 2026 · Centre Innovance · Villieu-Loyes-Mollon</div>
+    <div class="pdf-h1">Weekend 20–21 Février 2026 · Centre Innovance · Villieu-Loyes-Mollon</div>
 
     <div class="pdf-h2">Les deux événements</div>
     <div class="pdf-2col" style="margin-bottom:12px;">
@@ -4041,7 +4056,7 @@ async function generatePDF() {
     </div>
 
     <div class="pdf-num">02 · Livrables 2026</div>
-    <div class="pdf-h1" style="font-size:18px;">Ce que nous avons livré · 15 contractuels + 6 bonus offerts</div>
+    <div class="pdf-h1">Ce que nous avons livré · 15 contractuels + 6 bonus offerts</div>
 
     <div class="pdf-kpi-grid pdf-kpi-grid-3" style="margin-bottom:14px;">
         <div class="pdf-kpi"><div class="pdf-kpi-val green">15</div><div class="pdf-kpi-label">Livrables contractuels · 0 manquant · 0 incident</div></div>
@@ -4108,7 +4123,7 @@ async function generatePDF() {
     </div>
 
     <div class="pdf-num">03 · Offres Partenariat 2027</div>
-    <div class="pdf-h1" style="font-size:18px;">Enjoylife Ed.4 · 3 niveaux · 1 seul partenaire par métier</div>
+    <div class="pdf-h1">Enjoylife Ed.4 · 3 niveaux · 1 seul partenaire par métier</div>
 
     <div class="pdf-kpi-grid pdf-kpi-grid-4" style="margin-bottom:12px;">
         <div class="pdf-kpi"><div class="pdf-kpi-val">2</div><div class="pdf-kpi-label">Nuits · Mars 2027</div></div>
@@ -4173,7 +4188,7 @@ async function generatePDF() {
     </div>
 
     <div class="pdf-num">04 · Impact Local & RSE</div>
-    <div class="pdf-h1" style="font-size:18px;">95% de votre investissement reste dans l'Ain</div>
+    <div class="pdf-h1">95% de votre investissement reste dans l'Ain</div>
 
     <div class="pdf-kpi-grid pdf-kpi-grid-4" style="margin-bottom:12px;">
         <div class="pdf-kpi"><div class="pdf-kpi-val">95%</div><div class="pdf-kpi-label">Prestataires locaux · budget réinjecté localement</div></div>
@@ -4248,7 +4263,7 @@ async function generatePDF() {
     </div>
 
     <div class="pdf-num">05 · Mécénat</div>
-    <div class="pdf-h1" style="font-size:18px;">Régime fiscal d'intérêt général · Réduction d'impôt 60%</div>
+    <div class="pdf-h1">Régime fiscal d'intérêt général · Réduction d'impôt 60%</div>
 
     <div class="pdf-body">
         MG Entertainment est éligible au régime du mécénat d'intérêt général, confirmé par l'administration fiscale (Code APE 90.01Z). L'attestation officielle est disponible sur simple demande à contact@mgentertainment.fr.
