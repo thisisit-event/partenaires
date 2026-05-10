@@ -166,6 +166,20 @@
       color: var(--mu);
     }
     .top-chip strong { color: var(--fg); font-weight: 600; }
+    .top-chip-priority {
+      background: rgba(234,179,8,.08);
+      border-color: rgba(234,179,8,.3);
+      color: rgba(234,179,8,.9);
+      transition: all .15s var(--cubic);
+    }
+    .top-chip-priority:hover { background: rgba(234,179,8,.15); border-color: var(--amber); color: #fde047; }
+    .top-chip-priority.active {
+      background: rgba(234,179,8,.22);
+      border-color: var(--amber);
+      color: #fde047;
+      box-shadow: 0 0 12px rgba(234,179,8,.3);
+    }
+    .top-chip-priority strong { color: inherit; }
     .top-chip .dot {
       width: 6px; height: 6px; border-radius: 50%;
       background: var(--emerald); box-shadow: 0 0 8px rgba(16,185,129,.6);
@@ -574,6 +588,19 @@
       border-color: rgba(129,140,248,.4);
       color: var(--indigo);
     }
+    .chip-priority {
+      background: rgba(234,179,8,.08);
+      border-color: rgba(234,179,8,.28);
+      color: var(--amber);
+      font-weight: 600;
+    }
+    .chip-priority:hover { color: #fde047; border-color: rgba(234,179,8,.5); }
+    .chip-priority.active {
+      background: rgba(234,179,8,.22);
+      border-color: var(--amber);
+      color: #fde047;
+      box-shadow: 0 0 12px rgba(234,179,8,.25);
+    }
     .view-toggle {
       display: flex; gap: 2px; padding: 3px;
       background: var(--surface);
@@ -667,6 +694,24 @@
     }
     .card.ineligible:hover { opacity: .85; filter: grayscale(0); }
     .card.ineligible .card-name { text-decoration: line-through; text-decoration-color: var(--mu-3); text-decoration-thickness: 1px; }
+    .card.priority {
+      border-color: rgba(234,179,8,.32);
+      background: linear-gradient(135deg, rgba(234,179,8,.04) 0%, var(--surface) 60%);
+    }
+    .card.priority::before {
+      content: '★';
+      position: absolute; top: -7px; left: -7px;
+      width: 18px; height: 18px;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #fde047, #eab308);
+      color: #0a0a0a;
+      font-size: .65rem; font-weight: 800;
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(234,179,8,.55);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .card.priority:hover { border-color: rgba(234,179,8,.55); }
     .card-head {
       display: flex; align-items: flex-start; justify-content: space-between;
       gap: .55rem; margin-bottom: .5rem;
@@ -832,6 +877,22 @@
     }
     .map-marker:hover { transform: scale(1.15); }
     .map-marker.selected { box-shadow: 0 0 0 4px rgba(168,85,247,.6), 0 4px 14px rgba(0,0,0,.5); }
+    .map-marker.priority {
+      border-color: var(--amber);
+      box-shadow: 0 0 0 3px rgba(234,179,8,.45), 0 0 18px rgba(234,179,8,.55), 0 4px 14px rgba(0,0,0,.5);
+      z-index: 1000;
+    }
+    .map-marker.priority::after {
+      content: '★';
+      position: absolute; top: -10px; right: -10px;
+      width: 18px; height: 18px;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #fde047, #eab308);
+      color: #0a0a0a;
+      font-size: .62rem; font-weight: 800;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(234,179,8,.7);
+    }
     .map-popup-name { font-weight: 700; font-size: .85rem; margin-bottom: .2rem; }
     .map-popup-meta { font-size: .7rem; color: var(--mu); margin-bottom: .5rem; }
     .map-popup-btn {
@@ -1128,6 +1189,10 @@
         <span>Mission Control <span class="brand-sub">· Sponsors 50 k€</span></span>
       </div>
       <div class="top-meta">
+        <button class="top-chip top-chip-priority" id="priority-quick" title="Filtrer sur les boîtes de Lagnieu (event 2027)" style="cursor:pointer">
+          <span style="color:var(--amber)">★</span>
+          <strong id="priority-quick-count">—</strong> à Lagnieu
+        </button>
         <span class="top-chip" id="phase-chip">
           <span class="dot"></span>
           Phase active : <strong id="phase-name">—</strong>
@@ -1182,6 +1247,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input type="search" id="search" class="search-input" placeholder="Rechercher une boîte, contact, ville…" />
       </div>
+      <div class="filter-group" id="filter-priority"></div>
       <div class="filter-group" id="filter-phase"></div>
       <div class="filter-group" id="filter-level"></div>
       <div class="filter-group" id="filter-sector"></div>
@@ -1335,7 +1401,15 @@
 
     // ============ STATE ============
     let DATA = null;
-    let filters = { search: "", phase: "all", level: "all", sector: "all" };
+    let filters = { search: "", phase: "all", level: "all", sector: "all", priority: false };
+
+    // Ville(s) prioritaire(s) — événement 2027 à Lagnieu.
+    const PRIORITY_CITIES = ["lagnieu"];
+    function isPriority(p) {
+      const c = (p.city || "").toLowerCase();
+      const a = (p.address || "").toLowerCase();
+      return PRIORITY_CITIES.some(pc => c.includes(pc) || a.includes(pc));
+    }
     let currentView = "kanban";
     let mapState = { instance: null, markers: [], tourMode: false, tourSelection: new Set() };
     let calendarState = { year: null, month: null };
@@ -1451,6 +1525,7 @@
 
     // ============ FILTRES ============
     function matchFilter(p) {
+      if (filters.priority && !isPriority(p)) return false;
       if (filters.phase !== "all" && p.phase !== filters.phase) return false;
       if (filters.level !== "all" && p.level !== filters.level) return false;
       if (filters.sector !== "all" && (p.sector || "—") !== filters.sector) return false;
@@ -1475,6 +1550,12 @@
       const active = getActivePhase();
       document.getElementById("phase-name").textContent = active ? active.label.replace(/^Phase \d+ · /, "") : "Aucune";
       document.getElementById("today-chip").textContent = window.TODAY.toLocaleDateString("fr-FR", { weekday: "long", day: "2-digit", month: "long", year: "numeric" });
+      const priActive = (DATA.prospects || []).filter(p => isPriority(p) && p.status !== "accepte" && p.status !== "refus" && p.status !== "sans-suite").length;
+      const priTotal = (DATA.prospects || []).filter(isPriority).length;
+      document.getElementById("priority-quick-count").textContent = `${priActive}/${priTotal}`;
+      const btn = document.getElementById("priority-quick");
+      if (filters.priority) btn.classList.add("active");
+      else btn.classList.remove("active");
     }
 
     // ============ KPIs avec animation ============
@@ -1514,7 +1595,11 @@
           const undef = prospects.filter(p => !["accepte","refus","sans-suite"].includes(p.status) && (!p.level || p.level === "ouvert")).length;
           return `<strong>${openCount}</strong> dossiers ouverts${undef ? ` · <strong>${undef}</strong> à définir` : ""}`;
         })(), fmt: fmtEUR },
-        { accent: "amber", label: "Prospects", value: prospects.length, extra: `Contactés : <strong>${totalContacted}</strong> · À contacter : <strong>${prospects.length - totalContacted}</strong>`, fmt: fmtN },
+        { accent: "amber", label: "Prospects", value: prospects.length, extra: (() => {
+          const priCount = prospects.filter(isPriority).length;
+          const priActive = prospects.filter(p => isPriority(p) && p.status !== "accepte" && p.status !== "refus" && p.status !== "sans-suite").length;
+          return `Contactés : <strong>${totalContacted}</strong> · ${priCount ? `<strong style="color:var(--amber)">★ ${priActive}/${priCount} Lagnieu</strong>` : `À contacter : <strong>${prospects.length - totalContacted}</strong>`}`;
+        })(), fmt: fmtN },
         { accent: "sky", label: "Conversion", value: conv, extra: `${totalAccepted} signés / ${decided} décidés`, fmt: (v) => Math.round(v) + "<span class='unit'>%</span>" },
         { accent: "violet", label: "Secteurs verrouillés", value: sectorsLocked, extra: `${sectorsTotal} secteur${sectorsTotal > 1 ? "s" : ""} touchés · prospection libre tant que rien n'est signé`, fmt: fmtN }
       ];
@@ -1739,6 +1824,11 @@
 
     // ============ FILTERS ============
     function renderFilters() {
+      // Filtre priorité (Lagnieu)
+      const priEl = document.getElementById("filter-priority");
+      const priCount = (DATA.prospects || []).filter(isPriority).length;
+      priEl.innerHTML = `<button class="chip chip-priority ${filters.priority ? "active" : ""}" data-priority-toggle="1" title="Filtrer sur les boîtes de Lagnieu (lieu de l'event 2027)">★ Lagnieu <span style="opacity:.6;margin-left:.25rem">${priCount}</span></button>`;
+
       const phaseEl = document.getElementById("filter-phase");
       const phases = [{ id: "all", label: "Toutes phases" }, ...Object.values(DATA.meta.phases).map(p => ({ id: p.id, label: p.label.replace(/^Phase \d+ · /, "P" + p.id.slice(1) + " · ") }))];
       phaseEl.innerHTML = phases.map(p => `<button class="chip ${filters.phase === p.id ? "active" : ""}" data-phase="${p.id}">${p.label}</button>`).join("");
@@ -1825,8 +1915,9 @@
 
       const delay = (idx * 35);
       const ineligibleCls = lockedBy ? "ineligible" : "";
+      const priorityCls = isPriority(p) ? "priority" : "";
       return `
-        <div class="card ${ineligibleCls}" data-id="${p.id}" style="animation-delay:${delay}ms">
+        <div class="card ${ineligibleCls} ${priorityCls}" data-id="${p.id}" style="animation-delay:${delay}ms">
           <div class="card-head">
             <div class="card-name">${p.name}</div>
             <div class="card-level" style="--lvl-bg:${lvl.color}22;--lvl-color:${lvl.color}">${lvl.label}</div>
@@ -1907,8 +1998,10 @@
         const st = getStatus(p.status);
         const initial = (p.name || "?").trim().charAt(0).toUpperCase();
         const isSelected = mapState.tourMode && mapState.tourSelection.has(p.id);
-        const html = `<div class="map-marker ${isSelected ? "selected" : ""}" style="background:${st.color}">${initial}</div>`;
-        const icon = L.divIcon({ className: "", html, iconSize: [26, 26], iconAnchor: [13, 13] });
+        const priorityCls = isPriority(p) ? "priority" : "";
+        const size = isPriority(p) ? 34 : 26;
+        const html = `<div class="map-marker ${isSelected ? "selected" : ""} ${priorityCls}" style="background:${st.color};width:${size}px;height:${size}px;font-size:${isPriority(p) ? '.78rem' : '.65rem'}">${initial}</div>`;
+        const icon = L.divIcon({ className: "", html, iconSize: [size, size], iconAnchor: [size/2, size/2] });
         const marker = L.marker(p.coords, { icon }).addTo(mapState.instance);
         const lvl = getLevel(p.level);
 
@@ -2234,6 +2327,22 @@
     function bindEvents() {
       document.getElementById("search").addEventListener("input", (e) => {
         filters.search = e.target.value;
+        renderView();
+      });
+
+      document.getElementById("filter-priority").addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-priority-toggle]");
+        if (!btn) return;
+        filters.priority = !filters.priority;
+        renderFilters();
+        renderTopMeta();
+        renderView();
+      });
+
+      document.getElementById("priority-quick").addEventListener("click", () => {
+        filters.priority = !filters.priority;
+        renderFilters();
+        renderTopMeta();
         renderView();
       });
 
