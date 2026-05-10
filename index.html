@@ -3567,12 +3567,27 @@ async function generatePDF() {
 ══════════════════════════════════════════════════════ -->
 <div id="pdf-template" style="display:none;position:fixed;left:-9999px;top:0;z-index:-1;">
 <style>
-#pdf-template { font-family: 'Geist', 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+#pdf-template {
+    font-family: 'Geist', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    /* Palette chaleureuse PDF */
+    --pdf-ink: #18181b;
+    --pdf-mute: #71717a;
+    --pdf-soft: #f5f5f4;
+    --pdf-line: #e7e5e4;
+    --pdf-cream: #fef8f0;       /* fond chaud doux */
+    --pdf-cream-2: #fdf4e8;     /* crème + saturé */
+    --pdf-indigo: #4338ca;      /* couleur de marque */
+    --pdf-indigo-soft: #eef2ff;
+    --pdf-amber: #d97706;        /* ambre / cuivre */
+    --pdf-amber-soft: #fef3c7;
+    --pdf-green: #15803d;
+}
 .pdf-page {
     width: 794px;
     height: 1123px;          /* A4 portrait à 96dpi · ratio strict pour 1:1 PDF */
     background: #fff;
-    padding: 36px 44px 56px;
+    padding: 36px 44px 70px;  /* padding-bottom large pour ne pas chevaucher le footer absolute */
     box-sizing: border-box;
     position: relative;
     color: #18181b;
@@ -3583,6 +3598,7 @@ async function generatePDF() {
     padding: 0;
     overflow: hidden;
 }
+.pdf-page > .pdf-footer { left: 44px; right: 44px; bottom: 22px; }
 .pdf-header {
     display: flex;
     justify-content: space-between;
@@ -3608,17 +3624,18 @@ async function generatePDF() {
 .pdf-num {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 11px;
-    color: #a1a1aa;
+    color: #4338ca;
     letter-spacing: 0.32em;
     text-transform: uppercase;
     margin-bottom: 6px;
     display: flex; align-items: center; gap: 12px;
+    font-weight: 500;
 }
 .pdf-num::before {
     content: '';
     display: inline-block;
-    width: 24px; height: 1px;
-    background: #d4d4d8;
+    width: 28px; height: 2px;
+    background: #4338ca;
 }
 .pdf-h1 {
     font-size: 15px;
@@ -3646,7 +3663,7 @@ async function generatePDF() {
     padding-bottom: 4px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    border-bottom: 1px solid #18181b;
+    border-bottom: 2px solid #4338ca;
     display: inline-block;
     padding-right: 20px;
 }
@@ -3661,9 +3678,10 @@ async function generatePDF() {
 .pdf-kpi-grid-4 { grid-template-columns: repeat(4,1fr); }
 .pdf-kpi-grid-6 { grid-template-columns: repeat(6,1fr); }
 .pdf-kpi {
-    background: #fff;
-    border: 1px solid #e4e4e7;
-    padding: 9px 8px 8px;
+    background: #fdfcf9;
+    border: 1px solid #e7e5e4;
+    border-left: 2px solid #4338ca;
+    padding: 9px 8px 8px 10px;
     text-align: left;
     border-radius: 3px;
 }
@@ -3677,6 +3695,8 @@ async function generatePDF() {
     letter-spacing: 0.005em;
 }
 .pdf-kpi-val.green { color: #15803d; }
+.pdf-kpi-val.indigo { color: #4338ca; }
+.pdf-kpi-val.amber { color: #d97706; }
 .pdf-kpi-label { font-size: 6.5px; color: #71717a; line-height: 1.4; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
 
 .pdf-table { width: 100%; border-collapse: collapse; font-size: 8px; margin-bottom: 8px; }
@@ -3693,7 +3713,7 @@ async function generatePDF() {
 .pdf-table th.c { text-align: center; }
 .pdf-table td { padding: 5px 8px; border-bottom: 1px solid #e4e4e7; color: #3f3f46; vertical-align: top; }
 .pdf-table td.c { text-align: center; }
-.pdf-table tr:nth-child(even) td { background: #fafafa; }
+.pdf-table tr:nth-child(even) td { background: #fef8f0; }
 .pdf-table .ok { color: #15803d; font-weight: 700; }
 .pdf-table .no { color: #d4d4d8; }
 .pdf-table .bold { font-weight: 700; color: #18181b; font-size: 9px; }
@@ -3708,21 +3728,23 @@ async function generatePDF() {
     width: 18px;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 14px;
-    color: #18181b;
+    color: #4338ca;
     flex-shrink: 0;
     line-height: 1;
 }
 .pdf-step-title { width: 110px; font-weight: 700; color: #18181b; flex-shrink: 0; letter-spacing: 0.04em; text-transform: uppercase; font-size: 7.5px; }
 .pdf-step-desc { color: #3f3f46; line-height: 1.6; }
 .pdf-quote {
-    border-left: 2px solid #18181b;
-    padding: 4px 0 4px 14px;
+    border-left: 3px solid #4338ca;
+    padding: 6px 12px 6px 16px;
     font-size: 9.5px;
     color: #18181b;
     font-style: italic;
     line-height: 1.6;
     margin: 10px 0;
     font-weight: 400;
+    background: #fef8f0;
+    border-radius: 0 4px 4px 0;
 }
 .pdf-quote-author { font-size: 7.5px; color: #71717a; margin-top: 5px; font-style: normal; letter-spacing: 0.04em; }
 .pdf-badge { display: inline-block; background: #fff; border: 1px solid #d4d4d8; font-size: 7px; padding: 3px 8px; border-radius: 2px; color: #52525b; margin: 2px 2px 2px 0; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 500; }
@@ -3765,9 +3787,13 @@ async function generatePDF() {
     font-weight: 500;
     display: flex; align-items: center; gap: 14px;
 }
+.cover-eyebrow {
+    color: #4338ca;
+    font-weight: 600;
+}
 .cover-eyebrow::before {
     content: ''; display: inline-block;
-    width: 32px; height: 1px; background: #18181b;
+    width: 32px; height: 2px; background: #4338ca;
 }
 .cover-title {
     font-family: 'Bebas Neue', 'Geist', sans-serif;
@@ -3827,7 +3853,7 @@ async function generatePDF() {
     gap: 22px;
     margin-bottom: 26px;
 }
-.cover-stat { padding-left: 14px; border-left: 2px solid #18181b; }
+.cover-stat { padding-left: 14px; border-left: 3px solid #4338ca; }
 .cover-stat-val {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 42px;
@@ -3951,87 +3977,18 @@ async function generatePDF() {
 
     <div class="cover-footer">
         <span>Document confidentiel · Édition Enjoylife 2027</span>
-        <span>Page 1 / 9</span>
+        <span>Page 1 / 10</span>
     </div>
 </div>
 
-<!-- ══ PAGE 2 : Pourquoi Enjoylife · 4 raisons + MGE ══ -->
-<div class="pdf-page">
-    <div class="pdf-header">
-        <div class="pdf-header-left">MG Entertainment · Pourquoi Enjoylife</div>
-        <div class="pdf-header-right">Enjoylife Ed.4 · 2027</div>
-    </div>
-
-    <div class="pdf-num">01 · Pourquoi Enjoylife</div>
-    <div class="pdf-h1">Pourquoi Enjoylife · et pas un autre événement ?</div>
-    <div class="pdf-body" style="margin-top:-6px;color:#71717a;">Quatre raisons concrètes · pas des arguments marketing, des faits vérifiables.</div>
-
-    <!-- 4 RAISONS · Grid 2×2 -->
-    <div class="pdf-2col" style="margin-top:14px;">
-        <div style="border:1px solid #e4e4e7;padding:14px;border-radius:4px;">
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#a1a1aa;line-height:1;margin-bottom:6px;">01</div>
-            <div class="pdf-h3">Votre audience · pas n'importe qui</div>
-            <div class="pdf-body" style="font-size:8.5px;">Enjoylife est <strong>ancré dans la Plaine de l'Ain</strong>. Les 2 000 spectateurs visés sont vos voisins, vos clients, vos prospects. Ce n'est pas une masse anonyme sur Paris · c'est votre bassin de vie.</div>
-            <div style="background:#fafafa;padding:8px 10px;font-size:7.5px;color:#52525b;line-height:1.5;border-radius:3px;margin-top:6px;">Un concert généraliste à Lyon = 10 000 personnes dont 200 vous concernent. Ici, les 2 000 sont dans votre zone de chalandise.</div>
-        </div>
-
-        <div style="border:1px solid #e4e4e7;padding:14px;border-radius:4px;">
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#a1a1aa;line-height:1;margin-bottom:6px;">02</div>
-            <div class="pdf-h3">1 seul partenaire par métier</div>
-            <div class="pdf-body" style="font-size:8.5px;">Votre concurrent direct ne peut pas être là. <strong>Pas de logo concurrent</strong> à côté du vôtre, pas de dilution de message, pas de comparaison directe sur scène. Vous avez votre métier pour vous seul.</div>
-            <div style="background:#fafafa;padding:8px 10px;font-size:7.5px;color:#52525b;line-height:1.5;border-radius:3px;margin-top:6px;">Sur un salon ou un autre événement, votre concurrent peut exposer juste à côté. Ici, c'est <strong>contractuellement impossible</strong>.</div>
-        </div>
-
-        <div style="border:1px solid #e4e4e7;padding:14px;border-radius:4px;">
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#a1a1aa;line-height:1;margin-bottom:6px;">03</div>
-            <div class="pdf-h3">On livre plus que ce qu'on promet</div>
-            <div class="pdf-body" style="font-size:8.5px;">En 2026 : <strong>21 supports livrés pour 15 contractualisés</strong>. Soit +40% de valeur offerte sans condition et sans demande. Ce n'est pas une exception · c'est notre façon de travailler.</div>
-            <div style="background:#fafafa;padding:8px 10px;font-size:7.5px;color:#52525b;line-height:1.5;border-radius:3px;margin-top:6px;">La plupart des événements livrent exactement ce qui est contractualisé. Pas un de plus. Nous livrons le contrat <strong>+ les bonus qui font la différence</strong>.</div>
-        </div>
-
-        <div style="border:1px solid #e4e4e7;padding:14px;border-radius:4px;">
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#a1a1aa;line-height:1;margin-bottom:6px;">04</div>
-            <div class="pdf-h3">0,0015 € par contact · certifié</div>
-            <div class="pdf-body" style="font-size:8.5px;">En 2026, 334 700 personnes ont vu votre marque pour 500 €. Le CPM Meta certifié était de <strong>1,92 € contre 5–8 € sur le marché</strong>. Soit ×4 moins cher que la moyenne publicitaire locale.</div>
-            <div style="background:#fafafa;padding:8px 10px;font-size:7.5px;color:#52525b;line-height:1.5;border-radius:3px;margin-top:6px;">Chiffres issus de campagnes Meta réelles · disponibles sur demande avec captures Business Manager.</div>
-        </div>
-    </div>
-
-    <!-- MGE storytelling -->
-    <div class="pdf-h2" style="margin-top:18px;">MG Entertainment · L'association derrière le projet</div>
-    <div class="pdf-body" style="margin-bottom:8px;">
-        Association loi 1901 active depuis 2012, MG Entertainment opère exclusivement sur la Plaine de l'Ain. <strong>14 ans d'événementiel local</strong>, 200 artistes accueillis, 15 000 spectateurs cumulés et 150 partenaires privés ayant fait confiance à la structure. Aucune dette, aucun incident sur la durée.
-    </div>
-    <div class="pdf-kpi-grid pdf-kpi-grid-4">
-        <div class="pdf-kpi"><div class="pdf-kpi-val">255 000 €</div><div class="pdf-kpi-label">CA cumulé géré · 2012-2026</div></div>
-        <div class="pdf-kpi"><div class="pdf-kpi-val">150</div><div class="pdf-kpi-label">Partenaires privés cumulés</div></div>
-        <div class="pdf-kpi"><div class="pdf-kpi-val">200</div><div class="pdf-kpi-label">Artistes accueillis</div></div>
-        <div class="pdf-kpi"><div class="pdf-kpi-val">15 000</div><div class="pdf-kpi-label">Spectateurs cumulés</div></div>
-    </div>
-
-    <div class="pdf-h2">Historique Enjoylife · 4 éditions</div>
-    <table class="pdf-table">
-        <tr><th>Édition</th><th>Année · Lieu</th><th>Résultat</th><th>Artistes notables</th></tr>
-        <tr><td>Ed.1</td><td>2016 · Ambérieu-en-Bugey</td><td class="ok">Sold Out</td><td>RIVO · Odymel (avant notoriété)</td></tr>
-        <tr><td>Ed.2</td><td>2017 · Ambérieu-en-Bugey</td><td class="ok">Sold Out</td><td>Tony Romera (avant notoriété)</td></tr>
-        <tr><td><strong>Ed.3</strong></td><td>2026 · Villieu-Loyes-Mollon</td><td class="ok bold">Sold Out 24h avant</td><td>Plateau multi-artistes émergents</td></tr>
-        <tr><td><strong>Ed.4 ★</strong></td><td>2027 · Plaine de l'Ain</td><td style="font-weight:700;">2 nuits · 2 000 pers.</td><td>Talents émergents · à annoncer</td></tr>
-    </table>
-
-    <div class="pdf-footer">
-        <span>MG Entertainment · contact@mgentertainment.fr · 07 44 98 00 15</span>
-        <span>Page 2 / 9</span>
-    </div>
-</div>
-
-<!-- ══ PAGE 3 : Bilan 2026 complet ══ -->
+<!-- ══ PAGE 2 : Bilan 2026 complet ══ -->
 <div class="pdf-page">
     <div class="pdf-header">
         <div class="pdf-header-left">MG Entertainment · Bilan 2026</div>
         <div class="pdf-header-right">Enjoylife Ed.4 · 2027</div>
     </div>
 
-    <div class="pdf-num">02 · Bilan 2026</div>
+    <div class="pdf-num">01 · Bilan 2026</div>
     <div class="pdf-h1">Weekend 20–21 Février 2026 · Centre Innovance · Villieu-Loyes-Mollon</div>
 
     <div class="pdf-h2">Les deux événements</div>
@@ -4113,18 +4070,18 @@ async function generatePDF() {
 
     <div class="pdf-footer">
         <span>MG Entertainment · contact@mgentertainment.fr · 07 44 98 00 15</span>
-        <span>Page 3 / 9</span>
+        <span>Page 2 / 10</span>
     </div>
 </div>
 
-<!-- ══ PAGE 4 : Livrables 2026 complets ══ -->
+<!-- ══ PAGE 3 : Livrables 2026 complets ══ -->
 <div class="pdf-page">
     <div class="pdf-header">
         <div class="pdf-header-left">MG Entertainment · Livrables 2026</div>
         <div class="pdf-header-right">Enjoylife Ed.4 · 2027</div>
     </div>
 
-    <div class="pdf-num">03 · Livrables 2026</div>
+    <div class="pdf-num">02 · Livrables 2026</div>
     <div class="pdf-h1">Ce que nous avons livré · 15 contractuels + 6 bonus offerts</div>
 
     <div class="pdf-kpi-grid pdf-kpi-grid-3" style="margin-bottom:14px;">
@@ -4180,7 +4137,67 @@ async function generatePDF() {
 
     <div class="pdf-footer">
         <span>MG Entertainment · contact@mgentertainment.fr · 07 44 98 00 15</span>
-        <span>Page 4 / 9</span>
+        <span>Page 3 / 10</span>
+    </div>
+</div>
+
+<!-- ══ PAGE 4 : Impact local ══ -->
+<div class="pdf-page">
+    <div class="pdf-header">
+        <div class="pdf-header-left">MG Entertainment · Impact Local &amp; RSE</div>
+        <div class="pdf-header-right">Enjoylife Ed.4 · 2027</div>
+    </div>
+
+    <div class="pdf-num">03 · Impact Local &amp; RSE</div>
+    <div class="pdf-h1">95% de votre investissement reste dans l'Ain</div>
+
+    <div class="pdf-kpi-grid pdf-kpi-grid-4" style="margin-bottom:12px;">
+        <div class="pdf-kpi"><div class="pdf-kpi-val">95%</div><div class="pdf-kpi-label">Prestataires locaux · budget réinjecté localement</div></div>
+        <div class="pdf-kpi"><div class="pdf-kpi-val">80%</div><div class="pdf-kpi-label">Public local · votre clientèle directe</div></div>
+        <div class="pdf-kpi"><div class="pdf-kpi-val">80</div><div class="pdf-kpi-label">Bénévoles logotés · vos logos visibles toute la soirée</div></div>
+        <div class="pdf-kpi"><div class="pdf-kpi-val">−49%</div><div class="pdf-kpi-label">Prix billet vs coût réel (29,47 € prod · 15 € public)</div></div>
+    </div>
+
+    <div class="pdf-h2">Diffusion physique sur le territoire · Édition 2026</div>
+    <table class="pdf-table">
+        <tr><th>Support physique</th><th>Localisation</th><th class="c">Audience</th></tr>
+        <tr><td>Abribus Drive McDonald's</td><td>Ambérieu-en-Bugey & Meximieux</td><td class="c bold">40 000 clients/mois</td></tr>
+        <tr><td>Écran Cinéma l'Horloge</td><td>Meximieux · avant chaque séance</td><td class="c">1 mois continu</td></tr>
+        <tr><td>Flyers A4</td><td>Boîtes aux lettres & commerces locaux</td><td class="c bold">15 000 foyers</td></tr>
+        <tr><td>Affiches A3</td><td>Vitrines des commerçants · Plaine de l'Ain</td><td class="c bold">300 points d'affichage</td></tr>
+        <tr><td>Bénévoles T-shirts logotés</td><td>Centre Innovance · salle et accueil</td><td class="c">80 porteurs · toute la soirée</td></tr>
+    </table>
+
+    <div class="pdf-body">
+        En soutenant MG Entertainment, votre image RSE est renforcée auprès de votre propre clientèle locale. Le public d'Enjoylife est majoritairement composé de résidents de la Plaine de l'Ain, les mêmes personnes qui fréquentent votre établissement.
+    </div>
+    <div class="pdf-body">
+        Prix réel de production par billet&nbsp;: <strong>29,47 €</strong> · Prix payé par le public&nbsp;: <strong>15 €</strong> · Écart rendu possible grâce au soutien de vos entreprises. Votre investissement contribue directement à l'accès à la culture pour les habitants du territoire.
+    </div>
+
+    <div class="pdf-h2">Top 3 villes d'origine du public · 80% Plaine de l'Ain</div>
+    <table class="pdf-table">
+        <tr><th>Rang</th><th>Ville</th><th class="c">Distance vs lieu événement</th><th class="c">Profil public</th></tr>
+        <tr><td class="c bold">1</td><td>Ambérieu-en-Bugey</td><td class="c">12 km</td><td class="c">Bassin économique principal</td></tr>
+        <tr><td class="c bold">2</td><td>Lagnieu</td><td class="c">8 km</td><td class="c">Zone résidentielle premium</td></tr>
+        <tr><td class="c bold">3</td><td>Meximieux</td><td class="c">3 km</td><td class="c">Tissu commercial actif</td></tr>
+    </table>
+
+    <div class="pdf-h2">Engagement RSE · pourquoi cela compte pour vos publications</div>
+    <div class="pdf-2col" style="margin-bottom:8px;">
+        <div style="background:#fafafa;border:1px solid #e4e4e7;padding:12px;border-radius:4px;">
+            <div class="pdf-h3" style="margin-top:0;">Soutien à la culture locale</div>
+            <div class="pdf-body" style="font-size:8.5px;margin-bottom:0;">Le mécénat culturel valorise votre rapport annuel et vos publications RSE. Acte concret de soutien à la création artistique locale, traçable et documenté.</div>
+        </div>
+        <div style="background:#fafafa;border:1px solid #e4e4e7;padding:12px;border-radius:4px;">
+            <div class="pdf-h3" style="margin-top:0;">Économie circulaire territoriale</div>
+            <div class="pdf-body" style="font-size:8.5px;margin-bottom:0;">95% du budget reversé à des prestataires de la Plaine de l'Ain · effet de levier direct sur l'écosystème économique local que vous servez déjà.</div>
+        </div>
+    </div>
+
+    <div class="pdf-footer">
+        <span>MG Entertainment · contact@mgentertainment.fr · 07 44 98 00 15</span>
+        <span>Page 4 / 10</span>
     </div>
 </div>
 
@@ -4257,18 +4274,212 @@ async function generatePDF() {
 
     <div class="pdf-footer">
         <span>MG Entertainment · contact@mgentertainment.fr · 07 44 98 00 15</span>
-        <span>Page 5 / 9</span>
+        <span>Page 5 / 10</span>
     </div>
 </div>
 
-<!-- ══ PAGE 6 : Offres 2027 ══ -->
+<!-- ══ PAGE 6 : Témoignages partenaires ══ -->
+<div class="pdf-page">
+    <div class="pdf-header">
+        <div class="pdf-header-left">MG Entertainment · Témoignages partenaires</div>
+        <div class="pdf-header-right">Enjoylife Ed.4 · 2027</div>
+    </div>
+
+    <div class="pdf-num">05 · Témoignages</div>
+    <div class="pdf-h1">Ce que disent nos partenaires 2026 · retours spontanés et non sollicités</div>
+
+    <div class="pdf-body" style="margin-bottom:14px;color:#52525b;">Tous ces témoignages ont été reçus dans les jours qui ont suivi l'édition 2026, sans avoir été demandés. Ils représentent l'expérience réellement vécue, pas le récit que l'événement aimerait raconter.</div>
+
+    <div style="background:#fef8f0;border:1px solid #fde4c0;padding:18px 22px;border-radius:6px;margin-bottom:14px;">
+        <div style="font-size:8px;letter-spacing:0.28em;text-transform:uppercase;color:#d97706;margin-bottom:6px;font-weight:600;">Citation · SAFTI Immobilier</div>
+        <div style="font-size:11px;color:#18181b;line-height:1.55;font-style:italic;margin-bottom:8px;">"On a été franchement étonnés dans le bon sens de notre visibilité. Tu nous l'avais dit à la rencontre, mais là on a été agréablement surpris."</div>
+        <div style="font-size:8px;color:#71717a;letter-spacing:0.04em;">Alexandra · Partenaire 2026 · Visibilité concrète ressentie au-delà des attentes dès la première participation.</div>
+    </div>
+
+    <div style="background:#fef8f0;border:1px solid #fde4c0;padding:18px 22px;border-radius:6px;margin-bottom:14px;">
+        <div style="font-size:8px;letter-spacing:0.28em;text-transform:uppercase;color:#d97706;margin-bottom:6px;font-weight:600;">Citation · Siligreen by Puissanc'Elec</div>
+        <div style="font-size:11px;color:#18181b;line-height:1.55;font-style:italic;margin-bottom:8px;">"Vous avez tellement assuré. Vous pouvez être fiers de vous. Ça nous a fait plaisir de contribuer à vos projets. Vous êtes plein d'ambition et on adore ça. Ça nous ressemble beaucoup."</div>
+        <div style="font-size:8px;color:#71717a;letter-spacing:0.04em;">Sophie & David · Partenaire Officiel 2026 · Association d'image entre l'entreprise et un projet local ambitieux.</div>
+    </div>
+
+    <div class="pdf-2col">
+        <div style="background:#fef8f0;border:1px solid #fde4c0;padding:14px 18px;border-radius:6px;">
+            <div style="font-size:8px;letter-spacing:0.28em;text-transform:uppercase;color:#d97706;margin-bottom:6px;font-weight:600;">Ronzat Menuiseries</div>
+            <div style="font-size:10px;color:#18181b;line-height:1.55;font-style:italic;margin-bottom:6px;">"C'était franchement bien organisé. On vous suivra pour la suite."</div>
+            <div style="font-size:7.5px;color:#71717a;">Elsa · Partenaire 2026 · Reconduction confirmée spontanément après l'événement.</div>
+        </div>
+        <div style="background:#fef8f0;border:1px solid #fde4c0;padding:14px 18px;border-radius:6px;">
+            <div style="font-size:8px;letter-spacing:0.28em;text-transform:uppercase;color:#d97706;margin-bottom:6px;font-weight:600;">Atol Ambérieu-Lagnieu</div>
+            <div style="font-size:10px;color:#18181b;line-height:1.55;font-style:italic;margin-bottom:6px;">"C'était top. On vous suit."</div>
+            <div style="font-size:7.5px;color:#71717a;">Laurie · Partenaire 2026 · Décision de reconduction prise immédiatement après la soirée.</div>
+        </div>
+    </div>
+
+    <div class="pdf-h2">Couverture presse · 4 médias locaux</div>
+    <table class="pdf-table">
+        <tr><th>Média</th><th>Date</th><th>Titre</th><th class="c">Timing</th></tr>
+        <tr><td>Le Progrès</td><td>28 oct. 2025</td><td>"Soirée électro et tremplin musical · cette association revient avec deux événements"</td><td class="c">J−120</td></tr>
+        <tr><td>Le Progrès</td><td>Fév. 2026</td><td>"On veut aller au bout du projet · une association locale crée son festival"</td><td class="c">J−8</td></tr>
+        <tr><td>La Voix de l'Ain</td><td>13 fév. 2026</td><td>"Deux soirées, deux univers à Villieu-Loyes-Mollon"</td><td class="c">J−7</td></tr>
+        <tr><td>NRJ · J'aime La Cotière · BEB Media</td><td>Fév. 2026</td><td>Reportages & couvertures événement</td><td class="c">J0</td></tr>
+    </table>
+
+    <div class="pdf-footer">
+        <span>MG Entertainment · contact@mgentertainment.fr · 07 44 98 00 15</span>
+        <span>Page 6 / 10</span>
+    </div>
+</div>
+
+<!-- ══ PAGE 7 : Pourquoi Enjoylife · 4 raisons + MGE ══ -->
+<div class="pdf-page">
+    <div class="pdf-header">
+        <div class="pdf-header-left">MG Entertainment · Pourquoi Enjoylife</div>
+        <div class="pdf-header-right">Enjoylife Ed.4 · 2027</div>
+    </div>
+
+    <div class="pdf-num">06 · Pourquoi Enjoylife</div>
+    <div class="pdf-h1">Pourquoi Enjoylife · et pas un autre événement ?</div>
+    <div class="pdf-body" style="margin-top:-6px;color:#71717a;">Quatre raisons concrètes · pas des arguments marketing, des faits vérifiables.</div>
+
+    <!-- 4 RAISONS · Grid 2×2 -->
+    <div class="pdf-2col" style="margin-top:14px;">
+        <div style="border:1px solid #e4e4e7;padding:14px;border-radius:4px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#a1a1aa;line-height:1;margin-bottom:6px;">01</div>
+            <div class="pdf-h3">Votre audience · pas n'importe qui</div>
+            <div class="pdf-body" style="font-size:8.5px;">Enjoylife est <strong>ancré dans la Plaine de l'Ain</strong>. Les 2 000 spectateurs visés sont vos voisins, vos clients, vos prospects. Ce n'est pas une masse anonyme sur Paris · c'est votre bassin de vie.</div>
+            <div style="background:#fafafa;padding:8px 10px;font-size:7.5px;color:#52525b;line-height:1.5;border-radius:3px;margin-top:6px;">Un concert généraliste à Lyon = 10 000 personnes dont 200 vous concernent. Ici, les 2 000 sont dans votre zone de chalandise.</div>
+        </div>
+
+        <div style="border:1px solid #e4e4e7;padding:14px;border-radius:4px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#a1a1aa;line-height:1;margin-bottom:6px;">02</div>
+            <div class="pdf-h3">1 seul partenaire par métier</div>
+            <div class="pdf-body" style="font-size:8.5px;">Votre concurrent direct ne peut pas être là. <strong>Pas de logo concurrent</strong> à côté du vôtre, pas de dilution de message, pas de comparaison directe sur scène. Vous avez votre métier pour vous seul.</div>
+            <div style="background:#fafafa;padding:8px 10px;font-size:7.5px;color:#52525b;line-height:1.5;border-radius:3px;margin-top:6px;">Sur un salon ou un autre événement, votre concurrent peut exposer juste à côté. Ici, c'est <strong>contractuellement impossible</strong>.</div>
+        </div>
+
+        <div style="border:1px solid #e4e4e7;padding:14px;border-radius:4px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#a1a1aa;line-height:1;margin-bottom:6px;">03</div>
+            <div class="pdf-h3">On livre plus que ce qu'on promet</div>
+            <div class="pdf-body" style="font-size:8.5px;">En 2026 : <strong>21 supports livrés pour 15 contractualisés</strong>. Soit +40% de valeur offerte sans condition et sans demande. Ce n'est pas une exception · c'est notre façon de travailler.</div>
+            <div style="background:#fafafa;padding:8px 10px;font-size:7.5px;color:#52525b;line-height:1.5;border-radius:3px;margin-top:6px;">La plupart des événements livrent exactement ce qui est contractualisé. Pas un de plus. Nous livrons le contrat <strong>+ les bonus qui font la différence</strong>.</div>
+        </div>
+
+        <div style="border:1px solid #e4e4e7;padding:14px;border-radius:4px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#a1a1aa;line-height:1;margin-bottom:6px;">04</div>
+            <div class="pdf-h3">0,0015 € par contact · certifié</div>
+            <div class="pdf-body" style="font-size:8.5px;">En 2026, 334 700 personnes ont vu votre marque pour 500 €. Le CPM Meta certifié était de <strong>1,92 € contre 5–8 € sur le marché</strong>. Soit ×4 moins cher que la moyenne publicitaire locale.</div>
+            <div style="background:#fafafa;padding:8px 10px;font-size:7.5px;color:#52525b;line-height:1.5;border-radius:3px;margin-top:6px;">Chiffres issus de campagnes Meta réelles · disponibles sur demande avec captures Business Manager.</div>
+        </div>
+    </div>
+
+    <!-- MGE storytelling -->
+    <div class="pdf-h2" style="margin-top:18px;">MG Entertainment · L'association derrière le projet</div>
+    <div class="pdf-body" style="margin-bottom:8px;">
+        Association loi 1901 active depuis 2012, MG Entertainment opère exclusivement sur la Plaine de l'Ain. <strong>14 ans d'événementiel local</strong>, 200 artistes accueillis, 15 000 spectateurs cumulés et 150 partenaires privés ayant fait confiance à la structure. Aucune dette, aucun incident sur la durée.
+    </div>
+    <div class="pdf-kpi-grid pdf-kpi-grid-4">
+        <div class="pdf-kpi"><div class="pdf-kpi-val">255 000 €</div><div class="pdf-kpi-label">CA cumulé géré · 2012-2026</div></div>
+        <div class="pdf-kpi"><div class="pdf-kpi-val">150</div><div class="pdf-kpi-label">Partenaires privés cumulés</div></div>
+        <div class="pdf-kpi"><div class="pdf-kpi-val">200</div><div class="pdf-kpi-label">Artistes accueillis</div></div>
+        <div class="pdf-kpi"><div class="pdf-kpi-val">15 000</div><div class="pdf-kpi-label">Spectateurs cumulés</div></div>
+    </div>
+
+    <div class="pdf-h2">Historique Enjoylife · 4 éditions</div>
+    <table class="pdf-table">
+        <tr><th>Édition</th><th>Année · Lieu</th><th>Résultat</th><th>Artistes notables</th></tr>
+        <tr><td>Ed.1</td><td>2016 · Ambérieu-en-Bugey</td><td class="ok">Sold Out</td><td>RIVO · Odymel (avant notoriété)</td></tr>
+        <tr><td>Ed.2</td><td>2017 · Ambérieu-en-Bugey</td><td class="ok">Sold Out</td><td>Tony Romera (avant notoriété)</td></tr>
+        <tr><td><strong>Ed.3</strong></td><td>2026 · Villieu-Loyes-Mollon</td><td class="ok bold">Sold Out 24h avant</td><td>Plateau multi-artistes émergents</td></tr>
+        <tr><td><strong>Ed.4 ★</strong></td><td>2027 · Plaine de l'Ain</td><td style="font-weight:700;">2 nuits · 2 000 pers.</td><td>Talents émergents · à annoncer</td></tr>
+    </table>
+
+    <div class="pdf-footer">
+        <span>MG Entertainment · contact@mgentertainment.fr · 07 44 98 00 15</span>
+        <span>Page 7 / 10</span>
+    </div>
+</div>
+
+<!-- ══ PAGE 8 : Reconduction partenaires 2026 ══ -->
+<div class="pdf-page">
+    <div class="pdf-header">
+        <div class="pdf-header-left">MG Entertainment · Reconduction partenaires</div>
+        <div class="pdf-header-right">Enjoylife Ed.4 · 2027</div>
+    </div>
+
+    <div class="pdf-num">07 · Reconduction 2026 → 2027</div>
+    <div class="pdf-h1">Vous étiez là en 2026 · restez dans l'aventure</div>
+
+    <!-- Bloc reconduction · sombre -->
+    <div style="background:linear-gradient(135deg,#18181b 0%,#27272a 100%);color:#fff;padding:22px 26px;border-radius:6px;margin-bottom:16px;border-left:4px solid #4338ca;">
+        <div style="font-size:7.5px;letter-spacing:0.28em;text-transform:uppercase;color:#a5b4fc;margin-bottom:10px;font-weight:600;">Pour les partenaires 2026</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:34px;color:#fff;line-height:0.95;letter-spacing:0.005em;text-transform:uppercase;margin-bottom:12px;">Vous étiez là.<br>Restez dans l'aventure.</div>
+        <div style="font-size:9.5px;color:rgba(255,255,255,0.78);line-height:1.7;margin-bottom:12px;">
+            Vous avez vécu l'édition 2026 de l'intérieur. Votre logo sur les écrans, vos clients dans la salle, votre nom cité sur scène. <strong style="color:#fff;">En 2027, l'événement double de taille. Votre visibilité aussi.</strong>
+        </div>
+        <div style="font-size:9px;color:rgba(255,255,255,0.6);line-height:1.65;margin-bottom:14px;">
+            En tant que partenaire 2026, vous bénéficiez du <strong style="color:rgba(255,255,255,0.9);">tarif prioritaire et de votre emplacement garanti</strong> · à condition de confirmer avant le 31 août 2026.
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:rgba(67,56,202,0.18);border-radius:4px;border:1px solid rgba(165,180,252,0.25);">
+            <span style="font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:#a5b4fc;font-weight:600;">Deadline reconduction</span>
+            <span style="font-size:12px;font-weight:600;color:#fff;">31 août 2026 · Tarif & emplacement garantis</span>
+        </div>
+    </div>
+
+    <!-- ROI 2026 partenaires -->
+    <div class="pdf-h2">Ce que votre investissement 500 € a généré · 2026</div>
+    <div class="pdf-kpi-grid pdf-kpi-grid-3">
+        <div class="pdf-kpi">
+            <div class="pdf-kpi-val indigo">334 700</div>
+            <div class="pdf-kpi-label">Personnes ayant vu votre marque pour 500 € · 0,0015 € par contact</div>
+        </div>
+        <div class="pdf-kpi">
+            <div class="pdf-kpi-val indigo">× 4</div>
+            <div class="pdf-kpi-label">Moins cher que le marché · CPM Meta 1,92 € vs 5–8 €</div>
+        </div>
+        <div class="pdf-kpi">
+            <div class="pdf-kpi-val indigo">21 / 15</div>
+            <div class="pdf-kpi-label">Supports livrés · contractualisés · +40% de valeur offerte sans condition</div>
+        </div>
+    </div>
+
+    <div class="pdf-quote" style="margin:14px 0;">
+        "En 2027, la jauge double. Votre visibilité aussi."
+    </div>
+
+    <!-- Process simple reconduction -->
+    <div class="pdf-h2">Comment reconduire · 3 étapes</div>
+    <div class="pdf-3col">
+        <div style="background:#fef8f0;border:1px solid #fde4c0;padding:14px;border-radius:6px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:#4338ca;line-height:1;margin-bottom:6px;">01</div>
+            <div class="pdf-h3" style="margin-top:0;">Email ou appel</div>
+            <div class="pdf-body" style="font-size:8.5px;margin-bottom:0;">Une réponse rapide à contact@mgentertainment.fr ou un appel au 07 44 98 00 15 suffit pour acter votre intention.</div>
+        </div>
+        <div style="background:#fef8f0;border:1px solid #fde4c0;padding:14px;border-radius:6px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:#4338ca;line-height:1;margin-bottom:6px;">02</div>
+            <div class="pdf-h3" style="margin-top:0;">Validation niveau</div>
+            <div class="pdf-body" style="font-size:8.5px;margin-bottom:0;">Reconduction au même niveau ou évolution. La jauge doublant, votre visibilité 2027 sera supérieure à 2026 à niveau égal.</div>
+        </div>
+        <div style="background:#fef8f0;border:1px solid #fde4c0;padding:14px;border-radius:6px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:#4338ca;line-height:1;margin-bottom:6px;">03</div>
+            <div class="pdf-h3" style="margin-top:0;">Contrat signé</div>
+            <div class="pdf-body" style="font-size:8.5px;margin-bottom:0;">Reconduction signée avant 31/08/2026 · tarif 2026 garanti · emplacement préservé · campagne intégrée dès la rentrée.</div>
+        </div>
+    </div>
+
+    <div class="pdf-footer">
+        <span>MG Entertainment · contact@mgentertainment.fr · 07 44 98 00 15</span>
+        <span>Page 8 / 10</span>
+    </div>
+</div>
+
+<!-- ══ PAGE 9 : Offres 2027 ══ -->
 <div class="pdf-page">
     <div class="pdf-header">
         <div class="pdf-header-left">MG Entertainment · Offres Partenariat 2027</div>
         <div class="pdf-header-right">Enjoylife Ed.4 · 2027</div>
     </div>
 
-    <div class="pdf-num">05 · Offres Partenariat 2027</div>
+    <div class="pdf-num">08 · Offres Partenariat 2027</div>
     <div class="pdf-h1">Enjoylife Ed.4 · 3 niveaux · 1 seul partenaire par métier</div>
 
     <div class="pdf-kpi-grid pdf-kpi-grid-4" style="margin-bottom:12px;">
@@ -4322,151 +4533,18 @@ async function generatePDF() {
 
     <div class="pdf-footer">
         <span>MG Entertainment · contact@mgentertainment.fr · 07 44 98 00 15</span>
-        <span>Page 6 / 9</span>
+        <span>Page 9 / 10</span>
     </div>
 </div>
 
-<!-- ══ PAGE 7 : Reconduction partenaires 2026 + Témoignages ══ -->
-<div class="pdf-page">
-    <div class="pdf-header">
-        <div class="pdf-header-left">MG Entertainment · Reconduction & Témoignages</div>
-        <div class="pdf-header-right">Enjoylife Ed.4 · 2027</div>
-    </div>
-
-    <div class="pdf-num">06 · Reconduction & Témoignages</div>
-    <div class="pdf-h1">Vous étiez là en 2026 · restez dans l'aventure</div>
-
-    <!-- Bloc reconduction · sombre -->
-    <div style="background:#18181b;color:#fff;padding:18px 22px;border-radius:6px;margin-bottom:14px;">
-        <div style="font-size:7.5px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:8px;font-weight:600;">Pour les partenaires 2026</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#fff;line-height:0.95;letter-spacing:0.005em;text-transform:uppercase;margin-bottom:10px;">Vous étiez là.<br>Restez dans l'aventure.</div>
-        <div style="font-size:9px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:10px;">
-            Vous avez vécu l'édition 2026 de l'intérieur. Votre logo sur les écrans, vos clients dans la salle, votre nom cité sur scène. <strong style="color:#fff;">En 2027, l'événement double de taille. Votre visibilité aussi.</strong>
-        </div>
-        <div style="font-size:8.5px;color:rgba(255,255,255,0.5);line-height:1.65;margin-bottom:14px;">
-            En tant que partenaire 2026, vous bénéficiez du <strong style="color:rgba(255,255,255,0.85);">tarif prioritaire et de votre emplacement garanti</strong> · à condition de confirmer avant le 31 août 2026.
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:4px;">
-            <span style="font-size:7.5px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.4);font-weight:600;">Deadline reconduction</span>
-            <span style="font-size:11px;font-weight:600;color:#fff;">31 août 2026 · Tarif & emplacement garantis</span>
-        </div>
-    </div>
-
-    <!-- ROI 2026 partenaires -->
-    <div class="pdf-h2">Ce que votre investissement 500 € a généré · 2026</div>
-    <div class="pdf-kpi-grid pdf-kpi-grid-3">
-        <div class="pdf-kpi">
-            <div class="pdf-kpi-val">334 700</div>
-            <div class="pdf-kpi-label">Personnes ayant vu votre marque pour 500 € · 0,0015 € par contact</div>
-        </div>
-        <div class="pdf-kpi">
-            <div class="pdf-kpi-val">× 4</div>
-            <div class="pdf-kpi-label">Moins cher que le marché · CPM Meta 1,92 € vs 5–8 €</div>
-        </div>
-        <div class="pdf-kpi">
-            <div class="pdf-kpi-val">21 / 15</div>
-            <div class="pdf-kpi-label">Supports livrés · contractualisés · +40% de valeur offerte sans condition</div>
-        </div>
-    </div>
-
-    <div class="pdf-quote" style="margin:14px 0 16px;">
-        "En 2027, la jauge double. Votre visibilité aussi."
-    </div>
-
-    <!-- Témoignages -->
-    <div class="pdf-h2">Témoignages partenaires 2026 · Retours spontanés non sollicités</div>
-
-    <div class="pdf-quote">
-        "On a été franchement étonnés dans le bon sens de notre visibilité. Tu nous l'avais dit à la rencontre, mais là on a été agréablement surpris."
-        <div class="pdf-quote-author">· Alexandra · SAFTI Immobilier · Partenaire 2026</div>
-    </div>
-    <div class="pdf-quote">
-        "Vous avez tellement assuré. Vous pouvez être fiers de vous. Vous êtes plein d'ambition et on adore ça. Ça nous ressemble beaucoup."
-        <div class="pdf-quote-author">· Sophie & David · Siligreen by Puissanc'Elec · Partenaire Officiel 2026</div>
-    </div>
-    <div class="pdf-quote">
-        "C'était franchement bien organisé. On vous suivra pour la suite."
-        <div class="pdf-quote-author">· Elsa · Ronzat Menuiseries Extérieures · Partenaire 2026</div>
-    </div>
-    <div class="pdf-quote">
-        "C'était top. On vous suit."
-        <div class="pdf-quote-author">· Laurie · Atol Ambérieu-Lagnieu · Partenaire 2026</div>
-    </div>
-
-    <div class="pdf-footer">
-        <span>MG Entertainment · contact@mgentertainment.fr · 07 44 98 00 15</span>
-        <span>Page 7 / 9</span>
-    </div>
-</div>
-
-<!-- ══ PAGE 8 : Impact local ══ -->
-<div class="pdf-page">
-    <div class="pdf-header">
-        <div class="pdf-header-left">MG Entertainment · Impact Local &amp; RSE</div>
-        <div class="pdf-header-right">Enjoylife Ed.4 · 2027</div>
-    </div>
-
-    <div class="pdf-num">07 · Impact Local & RSE</div>
-    <div class="pdf-h1">95% de votre investissement reste dans l'Ain</div>
-
-    <div class="pdf-kpi-grid pdf-kpi-grid-4" style="margin-bottom:12px;">
-        <div class="pdf-kpi"><div class="pdf-kpi-val">95%</div><div class="pdf-kpi-label">Prestataires locaux · budget réinjecté localement</div></div>
-        <div class="pdf-kpi"><div class="pdf-kpi-val">80%</div><div class="pdf-kpi-label">Public local · votre clientèle directe</div></div>
-        <div class="pdf-kpi"><div class="pdf-kpi-val">80</div><div class="pdf-kpi-label">Bénévoles logotés · vos logos visibles toute la soirée</div></div>
-        <div class="pdf-kpi"><div class="pdf-kpi-val">−49%</div><div class="pdf-kpi-label">Prix billet vs coût réel (29,47 € prod · 15 € public)</div></div>
-    </div>
-
-    <div class="pdf-h2">Diffusion physique sur le territoire · Édition 2026</div>
-    <table class="pdf-table">
-        <tr><th>Support physique</th><th>Localisation</th><th class="c">Audience</th></tr>
-        <tr><td>Abribus Drive McDonald's</td><td>Ambérieu-en-Bugey & Meximieux</td><td class="c bold">40 000 clients/mois</td></tr>
-        <tr><td>Écran Cinéma l'Horloge</td><td>Meximieux · avant chaque séance</td><td class="c">1 mois continu</td></tr>
-        <tr><td>Flyers A4</td><td>Boîtes aux lettres & commerces locaux</td><td class="c bold">15 000 foyers</td></tr>
-        <tr><td>Affiches A3</td><td>Vitrines des commerçants · Plaine de l'Ain</td><td class="c bold">300 points d'affichage</td></tr>
-        <tr><td>Bénévoles T-shirts logotés</td><td>Centre Innovance · salle et accueil</td><td class="c">80 porteurs · toute la soirée</td></tr>
-    </table>
-
-    <div class="pdf-body">
-        En soutenant MG Entertainment, votre image RSE est renforcée auprès de votre propre clientèle locale. Le public d'Enjoylife est majoritairement composé de résidents de la Plaine de l'Ain, les mêmes personnes qui fréquentent votre établissement.
-    </div>
-    <div class="pdf-body">
-        Prix réel de production par billet&nbsp;: <strong>29,47 €</strong> · Prix payé par le public&nbsp;: <strong>15 €</strong> · Écart rendu possible grâce au soutien de vos entreprises. Votre investissement contribue directement à l'accès à la culture pour les habitants du territoire.
-    </div>
-
-    <div class="pdf-h2">Top 3 villes d'origine du public · 80% Plaine de l'Ain</div>
-    <table class="pdf-table">
-        <tr><th>Rang</th><th>Ville</th><th class="c">Distance vs lieu événement</th><th class="c">Profil public</th></tr>
-        <tr><td class="c bold">1</td><td>Ambérieu-en-Bugey</td><td class="c">12 km</td><td class="c">Bassin économique principal</td></tr>
-        <tr><td class="c bold">2</td><td>Lagnieu</td><td class="c">8 km</td><td class="c">Zone résidentielle premium</td></tr>
-        <tr><td class="c bold">3</td><td>Meximieux</td><td class="c">3 km</td><td class="c">Tissu commercial actif</td></tr>
-    </table>
-
-    <div class="pdf-h2">Engagement RSE · pourquoi cela compte pour vos publications</div>
-    <div class="pdf-2col" style="margin-bottom:8px;">
-        <div style="background:#fafafa;border:1px solid #e4e4e7;padding:12px;border-radius:4px;">
-            <div class="pdf-h3" style="margin-top:0;">Soutien à la culture locale</div>
-            <div class="pdf-body" style="font-size:8.5px;margin-bottom:0;">Le mécénat culturel valorise votre rapport annuel et vos publications RSE. Acte concret de soutien à la création artistique locale, traçable et documenté.</div>
-        </div>
-        <div style="background:#fafafa;border:1px solid #e4e4e7;padding:12px;border-radius:4px;">
-            <div class="pdf-h3" style="margin-top:0;">Économie circulaire territoriale</div>
-            <div class="pdf-body" style="font-size:8.5px;margin-bottom:0;">95% du budget reversé à des prestataires de la Plaine de l'Ain · effet de levier direct sur l'écosystème économique local que vous servez déjà.</div>
-        </div>
-    </div>
-
-    <div class="pdf-footer">
-        <span>MG Entertainment · contact@mgentertainment.fr · 07 44 98 00 15</span>
-        <span>Page 8 / 9</span>
-    </div>
-</div>
-
-<!-- ══ PAGE 9 : Mécénat + Contact ══ -->
+<!-- ══ PAGE 10 : Mécénat + Contact ══ -->
 <div class="pdf-page">
     <div class="pdf-header">
         <div class="pdf-header-left">MG Entertainment · Mécénat & Contact</div>
         <div class="pdf-header-right">Enjoylife Ed.4 · 2027</div>
     </div>
 
-    <div class="pdf-num">08 · Mécénat</div>
+    <div class="pdf-num">09 · Mécénat</div>
     <div class="pdf-h1">Régime fiscal d'intérêt général · Réduction d'impôt 60%</div>
 
     <div class="pdf-body">
@@ -4533,9 +4611,8 @@ async function generatePDF() {
 
     <div class="pdf-footer">
         <span>MG Entertainment · contact@mgentertainment.fr · 07 44 98 00 15</span>
-        <span>Page 9 / 9</span>
+        <span>Page 10 / 10</span>
     </div>
-</div>
 
 </div>
 
