@@ -23,6 +23,14 @@
     },
     "levels": [
       {
+        "id": "ouvert",
+        "label": "Ouvert · à définir",
+        "tier": 0,
+        "amount": 0,
+        "color": "#71717a",
+        "subtitle": "Niveau à définir par le partenaire"
+      },
+      {
         "id": "partenaire",
         "label": "Partenaire",
         "tier": 1,
@@ -107,7 +115,7 @@
       "sector": "Coiffeur",
       "address": "36 Rue Centrale, 01150 Lagnieu",
       "city": "Lagnieu",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -134,7 +142,7 @@
       "sector": "Auto · entretien / pneus",
       "address": "ZI Rue des Granges, 01800 Meximieux",
       "city": "Meximieux",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -162,7 +170,7 @@
       "sector": "Boulangerie / Pâtisserie",
       "address": "Rue de la Tréfilerie, 01800 Meximieux",
       "city": "Meximieux",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -189,7 +197,7 @@
       "sector": "Chausseur",
       "address": "8 Rue Alexandre Bérard, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -217,7 +225,7 @@
       "sector": "Parfumerie",
       "address": "Centre commercial du Bugey, Rue Roger Vailland, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -245,7 +253,7 @@
       "sector": "Animaux · alimentation",
       "address": "28 Rue Jean Jaurès, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -272,7 +280,7 @@
       "sector": "Librairie / Papeterie / Presse",
       "address": "7 rue du marché, 01150 Lagnieu",
       "city": "Lagnieu",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -300,7 +308,7 @@
       "sector": "Services aux entreprises et particuliers",
       "address": "ZA en Beauvoir, 120 Rue de la Beauvoir, 01500 Château-Gaillard",
       "city": "Château-Gaillard",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -328,7 +336,7 @@
       "sector": "Bien-être / Minceur",
       "address": "Centre commercial du Bugey, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -355,7 +363,7 @@
       "sector": "Opticien",
       "address": "Rue des Carronnières, Centre Commercial Les Portes De La Dombes, 01800 Meximieux",
       "city": "Meximieux",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -383,7 +391,7 @@
       "sector": "Banque",
       "address": "1 Avenue de Verdun, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -411,7 +419,7 @@
       "sector": "Cave · vins / spiritueux",
       "address": "12 rue Pasteur, 01150 Lagnieu",
       "city": "Lagnieu",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -440,7 +448,7 @@
       "sector": "Auto-école",
       "address": "6 Place Lieutenant Giraud, 01800 Meximieux",
       "city": "Meximieux",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -469,7 +477,7 @@
       "sector": "Restaurant",
       "address": "39 Avenue Paul Painlevé, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -497,7 +505,7 @@
       "sector": "Coiffeur",
       "address": "Centre Magali, 4 Avenue du Docteur Berthier, 01800 Meximieux",
       "city": "Meximieux",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -525,7 +533,7 @@
       "sector": "Cave · vins / spiritueux",
       "address": "18 Route du Port, 01150 Lagnieu",
       "city": "Lagnieu",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -584,7 +592,7 @@
       "sector": "Cadeaux / Décoration",
       "address": "135 rue du Président, 01800 Pérouges",
       "city": "Pérouges",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -611,7 +619,7 @@
       "sector": "Bijouterie",
       "address": "26 Route du Port, 01150 Lagnieu",
       "city": "Lagnieu",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -639,7 +647,7 @@
       "sector": "Sport · running",
       "address": "370 Avenue Léon Blum, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -669,7 +677,7 @@
       "sector": "Électroménager / Tech",
       "address": "960 Rue du Marquis Albert de Dion, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -697,7 +705,7 @@
       "sector": "Huissier / Commissaire de justice",
       "address": "13 Rue de la République, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -725,7 +733,7 @@
       "sector": "Animaux · toilettage",
       "address": "8 Rue Centrale, 01150 Lagnieu",
       "city": "Lagnieu",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -753,7 +761,7 @@
       "sector": "Jeux / Jouets",
       "address": "Zone de l'Aviation, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -781,7 +789,7 @@
       "sector": "Jeux / Jouets",
       "address": "Rue Carronnières, 01800 Meximieux",
       "city": "Meximieux",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -809,7 +817,7 @@
       "sector": "Lingerie",
       "address": "16 Rue Alexandre Bérard, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -837,7 +845,7 @@
       "sector": "Librairie / Papeterie / Presse",
       "address": "4 Place Vaugelas, 01800 Meximieux",
       "city": "Meximieux",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -865,7 +873,7 @@
       "sector": "Prêt-à-porter homme/femme",
       "address": "40 Rue Alexandre Bérard, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -894,7 +902,7 @@
       "sector": "Prêt-à-porter femme",
       "address": "40 Rue Alexandre Bérard, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -923,7 +931,7 @@
       "sector": "Bio / Alimentation",
       "address": "186 Rue Alexandre Bérard, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -951,7 +959,7 @@
       "sector": "Bien-être / Minceur",
       "address": "1 Place Sanville, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -979,7 +987,7 @@
       "sector": "Sport · vélo / cycle",
       "address": "RD 1084 Le Pont de Chazey, 01800 Villieu-Loyes-Mollon",
       "city": "Villieu-Loyes-Mollon",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -1009,7 +1017,7 @@
       "sector": "Beauté / Cosmétique",
       "address": "5 Rue Alexandre Bérard, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -1037,7 +1045,7 @@
       "sector": "Pâtisserie / Chocolaterie",
       "address": "268 Avenue Charles de Gaulle, 01800 Villieu-Loyes-Mollon",
       "city": "Villieu-Loyes-Mollon",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -1065,7 +1073,7 @@
       "sector": "Agence immobilière",
       "address": "127 Rue Alexandre Bérard, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -1093,7 +1101,7 @@
       "sector": "Plomberie / Chauffage",
       "address": "50 Avenue Jules Pellaudin, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -1152,7 +1160,7 @@
       "sector": "Boucherie / Charcuterie / Traiteur",
       "address": "133 Rue Dr Temporal, 01500 Saint-Rambert-en-Bugey",
       "city": "Saint-Rambert-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -1181,7 +1189,7 @@
       "sector": "Électroménager · literie",
       "address": "Centre Commercial, 39 Rue de Lyon, 01800 Meximieux",
       "city": "Meximieux",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -1209,7 +1217,7 @@
       "sector": "Informatique / Tech",
       "address": "16 Place du 8 Mai 1945, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -1238,7 +1246,7 @@
       "sector": "Lingerie",
       "address": "29 Rue de Lyon, 01800 Meximieux",
       "city": "Meximieux",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -1266,7 +1274,7 @@
       "sector": "Opticien",
       "address": "46 Rue Alexandre Bérard, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -1294,7 +1302,7 @@
       "sector": "Boucherie / Charcuterie / Traiteur",
       "address": "2 Rue Alexandre Bérard, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -1323,7 +1331,7 @@
       "sector": "Cave · bières / vins",
       "address": "10 Allée Louis Mouthier, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -1351,7 +1359,7 @@
       "sector": "Fournitures bureau / Papeterie pro",
       "address": "720 Avenue Léon Blum, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -1379,7 +1387,7 @@
       "sector": "Électroménager / Tech",
       "address": "704 Avenue Léon Blum, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -1407,7 +1415,7 @@
       "sector": "Opticien",
       "address": "22 Place Vaugelas, 01800 Meximieux",
       "city": "Meximieux",
-      "level": "officiel",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [

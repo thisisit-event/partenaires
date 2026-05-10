@@ -1499,7 +1499,10 @@
       const cards = [
         { accent: "indigo", label: "Objectif", value: objective, extra: `Phase 1 : <strong>${fmtEUR(25000)}</strong> · Phase 2 : <strong>${fmtEUR(25000)}</strong>`, fmt: fmtEUR, progress: pct },
         { accent: "emerald", label: "Signé", value: signed, extra: `<strong>${pct}%</strong> de l'objectif · ${totalAccepted} partenaire${totalAccepted > 1 ? "s" : ""}`, fmt: fmtEUR },
-        { accent: "violet", label: "Pipeline en cours", value: pipeline, extra: `<strong>${openCount}</strong> dossiers ouverts`, fmt: fmtEUR },
+        { accent: "violet", label: "Pipeline en cours", value: pipeline, extra: (() => {
+          const undef = prospects.filter(p => !["accepte","refus","sans-suite"].includes(p.status) && (!p.level || p.level === "ouvert")).length;
+          return `<strong>${openCount}</strong> dossiers ouverts${undef ? ` · <strong>${undef}</strong> à définir` : ""}`;
+        })(), fmt: fmtEUR },
         { accent: "amber", label: "Prospects", value: prospects.length, extra: `Contactés : <strong>${totalContacted}</strong> · À contacter : <strong>${prospects.length - totalContacted}</strong>`, fmt: fmtN },
         { accent: "sky", label: "Conversion", value: conv, extra: `${totalAccepted} signés / ${decided} décidés`, fmt: (v) => Math.round(v) + "<span class='unit'>%</span>" },
         { accent: "violet", label: "Secteurs verrouillés", value: sectorsLocked, extra: `${sectorsTotal} secteur${sectorsTotal > 1 ? "s" : ""} touchés · ${sectorsConflict ? `<strong style="color:var(--rose)">${sectorsConflict} conflit${sectorsConflict > 1 ? "s" : ""}</strong>` : "<strong>aucun conflit</strong>"}`, fmt: fmtN }
