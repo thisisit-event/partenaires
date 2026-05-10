@@ -61,6 +61,7 @@ Tu cliques sur une ligne, ça t'ouvre la fiche du prospect.
       "address": "12 rue de la République, 01500 Ambérieu",
       "city": "Ambérieu-en-Bugey",
       "coords": [45.9580, 5.3580],     // [lat, lng] · rempli par Claude après géocodage
+      "sector": "Retail alimentaire",   // string libre · règle "1 partenaire = 1 métier"
       "website": "https://www.carrefour.fr",
       "contacts": [
         { "name": "Jean Dupont", "role": "Directeur magasin", "email": "j.dupont@…", "phone": "06 12 34 56 78" }
@@ -84,6 +85,22 @@ Tu cliques sur une ligne, ça t'ouvre la fiche du prospect.
   ]
 }
 ```
+
+### Règle d'or · 1 partenaire = 1 métier
+
+Pour préserver l'exclusivité commerciale, **un seul partenaire par secteur** (ex : 1 seule boulangerie, 1 seule banque). Le dashboard te file 3 garde-fous :
+
+- **Panneau "Exclusivité secteurs"** en haut · liste tous les secteurs touchés avec leur statut :
+  - 🟢 **Verrouillé** · au moins 1 signé sur ce secteur
+  - 🟡 **En cours** · 1 prospect actif (à contacter / RDV / négo)
+  - 🔴 **Conflit** · 2+ prospects actifs sur le même secteur · à arbitrer
+  - ⚪ **À retenter** · que des refus / sans-suite · libre de re-prospecter
+- **Badge secteur sur chaque carte kanban**, avec un picto rouge "⚠ N" si conflit
+- **Bandeau d'alerte rouge dans la fiche** quand un autre prospect actif est sur le même métier, avec liens directs vers les concurrents
+
+Tu peux **filtrer par secteur** via les chips de la toolbar (apparaissent dès qu'un secteur existe), ou **cliquer sur une card secteur** dans le panneau pour filtrer.
+
+Le champ est en **string libre** (`"sector": "Brasserie locale"`), à enrichir au fur et à mesure de tes ajouts. Pas de liste prédéfinie.
 
 ### Champ `coords` (carte)
 Optionnel. Format `[lat, lng]` en décimal. Quand tu me files une adresse, je géocode automatiquement via Nominatim (OpenStreetMap, gratuit) et je remplis ce champ. Si une boîte n'a pas de `coords`, elle n'apparaît juste pas sur la carte (les autres vues marchent normalement).

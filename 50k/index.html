@@ -240,6 +240,113 @@
       box-shadow: 0 0 8px rgba(168,85,247,.4);
     }
 
+    /* SECTORS PANEL */
+    .sectors {
+      margin: 1.4rem 1.6rem 0;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      opacity: 0; transform: translateY(10px);
+      animation: fadeUp .55s var(--cubic) .4s forwards;
+    }
+    .sectors-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .9rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .sectors-title {
+      display: flex; align-items: center; gap: .55rem;
+      font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--mu-2);
+    }
+    .sectors-title svg { width: 14px; height: 14px; color: var(--violet); }
+    .sectors-counts {
+      display: flex; gap: .55rem;
+      font-family: 'Geist Mono', monospace; font-size: .68rem;
+    }
+    .sectors-counts .tw-count { padding: .25rem .55rem; }
+    .sectors-body {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: .55rem;
+      padding: 1rem 1.2rem;
+    }
+    .sector-card {
+      position: relative;
+      padding: .75rem .85rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all .15s var(--cubic);
+    }
+    .sector-card:hover { background: var(--surface-3); border-color: var(--border-2); transform: translateY(-1px); }
+    .sector-card.locked { border-color: rgba(16,185,129,.35); background: rgba(16,185,129,.05); }
+    .sector-card.conflict { border-color: rgba(244,63,94,.4); background: rgba(244,63,94,.06); }
+    .sector-card.active-filter { box-shadow: 0 0 0 1px var(--violet) inset; }
+    .sector-row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: .55rem;
+    }
+    .sector-name {
+      font-size: .82rem; font-weight: 600; color: var(--fg);
+      min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .sector-status-pill {
+      display: inline-flex; align-items: center; gap: .3rem;
+      padding: .15rem .45rem; border-radius: 999px;
+      font-size: .58rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; flex-shrink: 0;
+    }
+    .sector-status-pill.locked { background: rgba(16,185,129,.18); color: var(--emerald); }
+    .sector-status-pill.ongoing { background: rgba(234,179,8,.16); color: var(--amber); }
+    .sector-status-pill.open { background: rgba(255,255,255,.06); color: var(--mu-2); }
+    .sector-status-pill.conflict { background: rgba(244,63,94,.18); color: var(--rose); }
+    .sector-meta {
+      display: flex; gap: .55rem;
+      margin-top: .4rem;
+      font-size: .65rem; color: var(--mu-2);
+    }
+    .sector-meta .lead {
+      display: inline-flex; align-items: center; gap: .3rem;
+      color: var(--mu);
+    }
+    .sector-meta .lead .b-dot { width: 5px; height: 5px; border-radius: 50%; }
+
+    /* Sector badge sur les cartes */
+    .card-sector-badge {
+      display: inline-flex; align-items: center; gap: .25rem;
+      padding: .15rem .45rem;
+      border-radius: 999px;
+      font-size: .6rem; font-weight: 500;
+      background: rgba(168,85,247,.12); color: var(--violet);
+      border: 1px solid rgba(168,85,247,.25);
+      margin-top: .35rem;
+      width: fit-content;
+    }
+    .card-sector-badge svg { width: 9px; height: 9px; }
+
+    /* Conflict warning dans la fiche */
+    .conflict-warn {
+      display: flex; align-items: flex-start; gap: .7rem;
+      padding: .85rem 1rem;
+      background: rgba(244,63,94,.08);
+      border: 1px solid rgba(244,63,94,.3);
+      border-radius: 10px;
+      margin-bottom: 1.2rem;
+    }
+    .conflict-warn-icon {
+      flex-shrink: 0; width: 20px; height: 20px;
+      color: var(--rose);
+    }
+    .conflict-warn-icon svg { width: 100%; height: 100%; }
+    .conflict-warn-content { flex: 1; font-size: .82rem; line-height: 1.45; color: var(--fg); }
+    .conflict-warn-title { font-weight: 700; color: var(--rose); margin-bottom: .15rem; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; }
+    .conflict-warn-list a {
+      color: var(--indigo); text-decoration: none; font-weight: 500;
+    }
+    .conflict-warn-list a:hover { text-decoration: underline; }
+
     /* THIS WEEK PANEL */
     .this-week {
       margin: 1.4rem 1.6rem 0;
@@ -1037,6 +1144,18 @@
       <div class="this-week-body" id="tw-body"></div>
     </section>
 
+    <!-- Exclusivité secteurs -->
+    <section class="sectors" id="sectors-panel" hidden>
+      <div class="sectors-head">
+        <div class="sectors-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M3 7l9-4 9 4"/><path d="M12 11v8"/><path d="M3 7l9 4 9-4"/></svg>
+          <span>Exclusivité secteurs · 1 partenaire = 1 métier</span>
+        </div>
+        <div class="sectors-counts" id="sectors-counts"></div>
+      </div>
+      <div class="sectors-body" id="sectors-body"></div>
+    </section>
+
     <!-- Timeline phases -->
     <section class="timeline">
       <div class="timeline-head">
@@ -1055,6 +1174,7 @@
       </div>
       <div class="filter-group" id="filter-phase"></div>
       <div class="filter-group" id="filter-level"></div>
+      <div class="filter-group" id="filter-sector"></div>
       <div class="view-toggle">
         <button data-view="kanban" class="active" title="Kanban">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
@@ -1205,7 +1325,7 @@
 
     // ============ STATE ============
     let DATA = null;
-    let filters = { search: "", phase: "all", level: "all" };
+    let filters = { search: "", phase: "all", level: "all", sector: "all" };
     let currentView = "kanban";
     let mapState = { instance: null, markers: [], tourMode: false, tourSelection: new Set() };
     let calendarState = { year: null, month: null };
@@ -1227,6 +1347,7 @@
 
       renderTopMeta();
       renderKPIs();
+      renderSectors();
       renderThisWeek();
       renderTimeline();
       renderFilters();
@@ -1266,6 +1387,48 @@
       return lvl.amount || 0;
     }
 
+    // Statut "leader" d'un secteur = le plus avancé parmi ses prospects
+    const ACTIVE_STATUSES = ["a-contacter","contacte","rdv","negociation"];
+    const STATUS_RANK = { "accepte": 100, "negociation": 50, "rdv": 40, "contacte": 30, "a-contacter": 20, "refus": 5, "sans-suite": 1 };
+
+    function getSectors() {
+      const map = new Map();
+      (DATA.prospects || []).forEach(p => {
+        const s = p.sector;
+        if (!s) return;
+        if (!map.has(s)) map.set(s, []);
+        map.get(s).push(p);
+      });
+      const result = [];
+      for (const [name, items] of map) {
+        const signed = items.filter(x => x.status === "accepte");
+        const active = items.filter(x => ACTIVE_STATUSES.includes(x.status));
+        let state;
+        if (signed.length > 0) state = "locked";
+        else if (active.length >= 2) state = "conflict";
+        else if (active.length === 1) state = "ongoing";
+        else state = "open";
+        const leader = items.slice().sort((a, b) => (STATUS_RANK[b.status] || 0) - (STATUS_RANK[a.status] || 0))[0];
+        result.push({ name, items, signed, active, state, leader });
+      }
+      result.sort((a, b) => {
+        const order = { conflict: 0, ongoing: 1, locked: 2, open: 3 };
+        if (order[a.state] !== order[b.state]) return order[a.state] - order[b.state];
+        return a.name.localeCompare(b.name, "fr");
+      });
+      return result;
+    }
+
+    function getConflictsFor(prospect) {
+      if (!prospect.sector) return [];
+      if (!ACTIVE_STATUSES.includes(prospect.status)) return [];
+      return (DATA.prospects || []).filter(p =>
+        p.id !== prospect.id &&
+        p.sector === prospect.sector &&
+        ACTIVE_STATUSES.includes(p.status)
+      );
+    }
+
     function shouldSuggestRelance(p) {
       if (p.status !== "contacte") return false;
       if (p.nextAction) return false;
@@ -1278,6 +1441,7 @@
     function matchFilter(p) {
       if (filters.phase !== "all" && p.phase !== filters.phase) return false;
       if (filters.level !== "all" && p.level !== filters.level) return false;
+      if (filters.sector !== "all" && (p.sector || "—") !== filters.sector) return false;
       if (filters.search) {
         const q = filters.search.toLowerCase();
         const hay = [
@@ -1327,12 +1491,18 @@
       const conv = decided > 0 ? Math.round((totalAccepted / decided) * 100) : 0;
       const openCount = prospects.filter(p => !["accepte","refus","sans-suite"].includes(p.status)).length;
 
+      const sectors = getSectors();
+      const sectorsLocked = sectors.filter(s => s.state === "locked").length;
+      const sectorsConflict = sectors.filter(s => s.state === "conflict").length;
+      const sectorsTotal = sectors.length;
+
       const cards = [
         { accent: "indigo", label: "Objectif", value: objective, extra: `Phase 1 : <strong>${fmtEUR(25000)}</strong> · Phase 2 : <strong>${fmtEUR(25000)}</strong>`, fmt: fmtEUR, progress: pct },
         { accent: "emerald", label: "Signé", value: signed, extra: `<strong>${pct}%</strong> de l'objectif · ${totalAccepted} partenaire${totalAccepted > 1 ? "s" : ""}`, fmt: fmtEUR },
         { accent: "violet", label: "Pipeline en cours", value: pipeline, extra: `<strong>${openCount}</strong> dossiers ouverts`, fmt: fmtEUR },
         { accent: "amber", label: "Prospects", value: prospects.length, extra: `Contactés : <strong>${totalContacted}</strong> · À contacter : <strong>${prospects.length - totalContacted}</strong>`, fmt: fmtN },
-        { accent: "sky", label: "Conversion", value: conv, extra: `${totalAccepted} signés / ${decided} décidés`, fmt: (v) => Math.round(v) + "<span class='unit'>%</span>" }
+        { accent: "sky", label: "Conversion", value: conv, extra: `${totalAccepted} signés / ${decided} décidés`, fmt: (v) => Math.round(v) + "<span class='unit'>%</span>" },
+        { accent: "violet", label: "Secteurs verrouillés", value: sectorsLocked, extra: `${sectorsTotal} secteur${sectorsTotal > 1 ? "s" : ""} touchés · ${sectorsConflict ? `<strong style="color:var(--rose)">${sectorsConflict} conflit${sectorsConflict > 1 ? "s" : ""}</strong>` : "<strong>aucun conflit</strong>"}`, fmt: fmtN }
       ];
 
       document.getElementById("kpis").innerHTML = cards.map((c, i) => `
@@ -1354,6 +1524,59 @@
           el.style.width = (el.dataset.fill || 0) + "%";
         });
       }, 300);
+    }
+
+    // ============ SECTORS PANEL ============
+    function renderSectors() {
+      const sectors = getSectors();
+      const panel = document.getElementById("sectors-panel");
+      if (sectors.length === 0) { panel.hidden = true; return; }
+      panel.hidden = false;
+
+      const locked = sectors.filter(s => s.state === "locked").length;
+      const conflict = sectors.filter(s => s.state === "conflict").length;
+      const ongoing = sectors.filter(s => s.state === "ongoing").length;
+      const open = sectors.filter(s => s.state === "open").length;
+
+      document.getElementById("sectors-counts").innerHTML = `
+        ${locked ? `<span class="tw-count"><span class="b-dot" style="background:var(--emerald)"></span>${locked} verrouillé${locked > 1 ? "s" : ""}</span>` : ""}
+        ${ongoing ? `<span class="tw-count"><span class="b-dot" style="background:var(--amber)"></span>${ongoing} en cours</span>` : ""}
+        ${conflict ? `<span class="tw-count"><span class="b-dot" style="background:var(--rose)"></span>${conflict} conflit${conflict > 1 ? "s" : ""}</span>` : ""}
+        ${open ? `<span class="tw-count"><span class="b-dot" style="background:var(--mu-2)"></span>${open} ouvert${open > 1 ? "s" : ""}</span>` : ""}
+      `;
+
+      document.getElementById("sectors-body").innerHTML = sectors.map(s => {
+        const lead = s.leader;
+        const leadSt = getStatus(lead.status);
+        let pillCls, pillLabel;
+        if (s.state === "locked") { pillCls = "locked"; pillLabel = "Verrouillé"; }
+        else if (s.state === "conflict") { pillCls = "conflict"; pillLabel = `Conflit · ${s.active.length}`; }
+        else if (s.state === "ongoing") { pillCls = "ongoing"; pillLabel = "En cours"; }
+        else { pillCls = "open"; pillLabel = "À retenter"; }
+        const filterCls = filters.sector === s.name ? "active-filter" : "";
+        return `
+          <div class="sector-card ${s.state} ${filterCls}" data-sector="${s.name.replace(/"/g, "&quot;")}">
+            <div class="sector-row">
+              <div class="sector-name" title="${s.name}">${s.name}</div>
+              <span class="sector-status-pill ${pillCls}">${pillLabel}</span>
+            </div>
+            <div class="sector-meta">
+              <span class="lead"><span class="b-dot" style="background:${leadSt.color}"></span>${lead.name}</span>
+              <span>· ${s.items.length} prospect${s.items.length > 1 ? "s" : ""}</span>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      document.getElementById("sectors-body").querySelectorAll(".sector-card").forEach(el => {
+        el.addEventListener("click", () => {
+          const sector = el.dataset.sector;
+          filters.sector = (filters.sector === sector) ? "all" : sector;
+          renderFilters();
+          renderSectors();
+          renderView();
+        });
+      });
     }
 
     // ============ THIS WEEK ============
@@ -1507,6 +1730,12 @@
       const lvlEl = document.getElementById("filter-level");
       const levels = [{ id: "all", label: "Tous niveaux" }, ...DATA.meta.levels.map(l => ({ id: l.id, label: l.label + (l.amount ? ` · ${l.amount}€` : "") }))];
       lvlEl.innerHTML = levels.map(l => `<button class="chip ${filters.level === l.id ? "active" : ""}" data-level="${l.id}">${l.label}</button>`).join("");
+
+      const secEl = document.getElementById("filter-sector");
+      const sectorNames = Array.from(new Set((DATA.prospects || []).map(p => p.sector).filter(Boolean))).sort((a, b) => a.localeCompare(b, "fr"));
+      if (sectorNames.length === 0) { secEl.innerHTML = ""; return; }
+      const sectors = [{ id: "all", label: "Tous secteurs" }, ...sectorNames.map(s => ({ id: s, label: s }))];
+      secEl.innerHTML = sectors.map(s => `<button class="chip ${filters.sector === s.id ? "active" : ""}" data-sector="${s.id.replace(/"/g, "&quot;")}">${s.label}</button>`).join("");
     }
 
     // ============ KANBAN ============
@@ -1564,6 +1793,14 @@
           <span><strong>${dateLabel}</strong> · ${p.nextAction}</span>
         </div>`;
       }
+      const conflicts = getConflictsFor(p);
+      const conflictPip = conflicts.length > 0 ? `<span style="display:inline-flex;align-items:center;gap:.25rem;padding:.15rem .4rem;border-radius:999px;font-size:.58rem;font-weight:700;letter-spacing:.06em;background:rgba(244,63,94,.16);color:var(--rose);border:1px solid rgba(244,63,94,.3);margin-left:.3rem;" title="${conflicts.length} prospect${conflicts.length > 1 ? "s" : ""} actif${conflicts.length > 1 ? "s" : ""} sur le même secteur">⚠ ${conflicts.length}</span>` : "";
+      const sectorBadge = p.sector ? `
+        <div class="card-sector-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M3 7l9-4 9 4"/></svg>
+          ${p.sector}${conflictPip}
+        </div>` : "";
+
       const suggest = shouldSuggestRelance(p) ? `
         <div class="card-suggest">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -1582,6 +1819,7 @@
             ${p.city ? `<span>· ${p.city}</span>` : ""}
             ${phase ? `<span>· ${phase.id.toUpperCase()}</span>` : ""}
           </div>
+          ${sectorBadge}
           ${suggest}
           ${action}
         </div>
@@ -1818,8 +2056,26 @@
       const mapsUrl = p.coords ? `https://www.google.com/maps/search/?api=1&query=${p.coords[0]},${p.coords[1]}`
         : (p.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.address)}` : null);
 
+      const conflicts = getConflictsFor(p);
+      const conflictBlock = conflicts.length > 0 ? `
+        <div class="conflict-warn">
+          <div class="conflict-warn-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div class="conflict-warn-content">
+            <div class="conflict-warn-title">Conflit secteur · ${p.sector}</div>
+            <div class="conflict-warn-list">
+              ${conflicts.length} autre${conflicts.length > 1 ? "s" : ""} prospect${conflicts.length > 1 ? "s" : ""} actif${conflicts.length > 1 ? "s" : ""} sur ce métier :
+              ${conflicts.map(c => `<a href="#" data-id="${c.id}">${c.name} · ${getStatus(c.status).label}</a>`).join(" · ")}
+              <br><span style="color:var(--mu-2);font-size:.74rem;">Rappel : 1 partenaire par métier. Arbitre rapidement.</span>
+            </div>
+          </div>
+        </div>
+      ` : "";
+
       const body = document.getElementById("drawer-body");
       body.innerHTML = `
+        ${conflictBlock}
         <div class="d-section">
           <div style="display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:.6rem;">
             <span class="badge" style="background:${st.color}22;color:${st.color}">
@@ -1852,6 +2108,15 @@
             </a>
           </div>
         </div>
+
+        ${p.sector ? `
+        <div class="d-section">
+          <div class="d-section-title">Secteur · exclusivité</div>
+          <div class="d-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M3 7l9-4 9 4"/></svg>
+            ${p.sector}
+          </div>
+        </div>` : ""}
 
         <div class="d-section">
           <div class="d-section-title">Coordonnées</div>
@@ -1930,6 +2195,14 @@
         </div>
       `;
 
+      // Bind les liens conflits → ouvrent la fiche du concurrent
+      document.querySelectorAll(".conflict-warn-list a[data-id]").forEach(a => {
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          openDrawer(a.dataset.id);
+        });
+      });
+
       document.getElementById("drawer").classList.add("open");
       document.getElementById("drawer-bg").classList.add("open");
       document.getElementById("drawer").setAttribute("aria-hidden", "false");
@@ -1961,6 +2234,15 @@
         if (!btn) return;
         filters.level = btn.dataset.level;
         renderFilters();
+        renderView();
+      });
+
+      document.getElementById("filter-sector").addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-sector]");
+        if (!btn) return;
+        filters.sector = btn.dataset.sector;
+        renderFilters();
+        renderSectors();
         renderView();
       });
 
