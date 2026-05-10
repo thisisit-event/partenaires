@@ -326,22 +326,26 @@
     }
     .card-sector-badge svg { width: 9px; height: 9px; }
 
-    /* Conflict warning dans la fiche */
+    /* Bandeau "inéligible" dans la fiche */
     .conflict-warn {
       display: flex; align-items: flex-start; gap: .7rem;
       padding: .85rem 1rem;
-      background: rgba(244,63,94,.08);
-      border: 1px solid rgba(244,63,94,.3);
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border-2);
       border-radius: 10px;
       margin-bottom: 1.2rem;
     }
+    .conflict-warn.ineligible {
+      background: rgba(255,255,255,.04);
+      border-color: var(--border-2);
+    }
     .conflict-warn-icon {
       flex-shrink: 0; width: 20px; height: 20px;
-      color: var(--rose);
+      color: var(--mu);
     }
     .conflict-warn-icon svg { width: 100%; height: 100%; }
     .conflict-warn-content { flex: 1; font-size: .82rem; line-height: 1.45; color: var(--fg); }
-    .conflict-warn-title { font-weight: 700; color: var(--rose); margin-bottom: .15rem; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; }
+    .conflict-warn-title { font-weight: 700; color: var(--mu); margin-bottom: .15rem; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
     .conflict-warn-list a {
       color: var(--indigo); text-decoration: none; font-weight: 500;
     }
@@ -657,6 +661,12 @@
       transform: translateY(-1px);
       box-shadow: 0 6px 18px rgba(0,0,0,.3);
     }
+    .card.ineligible {
+      opacity: .55;
+      filter: grayscale(.4);
+    }
+    .card.ineligible:hover { opacity: .85; filter: grayscale(0); }
+    .card.ineligible .card-name { text-decoration: line-through; text-decoration-color: var(--mu-3); text-decoration-thickness: 1px; }
     .card-head {
       display: flex; align-items: flex-start; justify-content: space-between;
       gap: .55rem; margin-bottom: .5rem;
@@ -1403,30 +1413,32 @@
       for (const [name, items] of map) {
         const signed = items.filter(x => x.status === "accepte");
         const active = items.filter(x => ACTIVE_STATUSES.includes(x.status));
-        let state;
-        if (signed.length > 0) state = "locked";
-        else if (active.length >= 2) state = "conflict";
-        else if (active.length === 1) state = "ongoing";
-        else state = "open";
+        // 2 états seulement :
+        //   - "locked" : au moins 1 signature dans ce secteur (verrouillé pour 2027)
+        //   - "open"   : aucune signature, prospection libre (même avec 10 prospects actifs)
+        const state = signed.length > 0 ? "locked" : "open";
         const leader = items.slice().sort((a, b) => (STATUS_RANK[b.status] || 0) - (STATUS_RANK[a.status] || 0))[0];
         result.push({ name, items, signed, active, state, leader });
       }
       result.sort((a, b) => {
-        const order = { conflict: 0, ongoing: 1, locked: 2, open: 3 };
+        const order = { locked: 0, open: 1 };
         if (order[a.state] !== order[b.state]) return order[a.state] - order[b.state];
         return a.name.localeCompare(b.name, "fr");
       });
       return result;
     }
 
-    function getConflictsFor(prospect) {
-      if (!prospect.sector) return [];
-      if (!ACTIVE_STATUSES.includes(prospect.status)) return [];
-      return (DATA.prospects || []).filter(p =>
-        p.id !== prospect.id &&
+    // Retourne le prospect signataire si le secteur est verrouillé par quelqu'un d'autre que `prospect`.
+    // Sinon retourne null. C'est ça qui rend les autres "inéligibles 2027".
+    function getLockedBy(prospect) {
+      if (!prospect.sector) return null;
+      if (prospect.status === "accepte") return null; // c'est lui le winner
+      const winner = (DATA.prospects || []).find(p =>
         p.sector === prospect.sector &&
-        ACTIVE_STATUSES.includes(p.status)
+        p.status === "accepte" &&
+        p.id !== prospect.id
       );
+      return winner || null;
     }
 
     function shouldSuggestRelance(p) {
@@ -1493,7 +1505,6 @@
 
       const sectors = getSectors();
       const sectorsLocked = sectors.filter(s => s.state === "locked").length;
-      const sectorsConflict = sectors.filter(s => s.state === "conflict").length;
       const sectorsTotal = sectors.length;
 
       const cards = [
@@ -1505,7 +1516,7 @@
         })(), fmt: fmtEUR },
         { accent: "amber", label: "Prospects", value: prospects.length, extra: `Contactés : <strong>${totalContacted}</strong> · À contacter : <strong>${prospects.length - totalContacted}</strong>`, fmt: fmtN },
         { accent: "sky", label: "Conversion", value: conv, extra: `${totalAccepted} signés / ${decided} décidés`, fmt: (v) => Math.round(v) + "<span class='unit'>%</span>" },
-        { accent: "violet", label: "Secteurs verrouillés", value: sectorsLocked, extra: `${sectorsTotal} secteur${sectorsTotal > 1 ? "s" : ""} touchés · ${sectorsConflict ? `<strong style="color:var(--rose)">${sectorsConflict} conflit${sectorsConflict > 1 ? "s" : ""}</strong>` : "<strong>aucun conflit</strong>"}`, fmt: fmtN }
+        { accent: "violet", label: "Secteurs verrouillés", value: sectorsLocked, extra: `${sectorsTotal} secteur${sectorsTotal > 1 ? "s" : ""} touchés · prospection libre tant que rien n'est signé`, fmt: fmtN }
       ];
 
       document.getElementById("kpis").innerHTML = cards.map((c, i) => `
@@ -1533,39 +1544,41 @@
     function renderSectors() {
       const sectors = getSectors();
       const panel = document.getElementById("sectors-panel");
-      if (sectors.length === 0) { panel.hidden = true; return; }
+      // On n'affiche QUE les secteurs verrouillés (≥1 signé).
+      // Tant qu'aucun n'a signé, on est en prospection libre, pas de bruit visuel.
+      const lockedSectors = sectors.filter(s => s.state === "locked");
+
+      if (lockedSectors.length === 0) {
+        // Mode prospection libre : panneau zen
+        panel.hidden = false;
+        document.getElementById("sectors-counts").innerHTML = `<span class="tw-count" style="color:var(--mu-2)">${sectors.length} secteurs touchés · 0 verrouillé</span>`;
+        document.getElementById("sectors-body").innerHTML = `
+          <div class="tw-empty" style="grid-column: 1 / -1;">
+            <div class="tw-empty-em">Prospection libre</div>
+            Aucun secteur verrouillé pour l'instant. Tu peux contacter plusieurs boîtes du même métier en parallèle — le secteur se verrouille au moment où l'une signe.
+          </div>`;
+        return;
+      }
+
       panel.hidden = false;
 
-      const locked = sectors.filter(s => s.state === "locked").length;
-      const conflict = sectors.filter(s => s.state === "conflict").length;
-      const ongoing = sectors.filter(s => s.state === "ongoing").length;
-      const open = sectors.filter(s => s.state === "open").length;
-
       document.getElementById("sectors-counts").innerHTML = `
-        ${locked ? `<span class="tw-count"><span class="b-dot" style="background:var(--emerald)"></span>${locked} verrouillé${locked > 1 ? "s" : ""}</span>` : ""}
-        ${ongoing ? `<span class="tw-count"><span class="b-dot" style="background:var(--amber)"></span>${ongoing} en cours</span>` : ""}
-        ${conflict ? `<span class="tw-count"><span class="b-dot" style="background:var(--rose)"></span>${conflict} conflit${conflict > 1 ? "s" : ""}</span>` : ""}
-        ${open ? `<span class="tw-count"><span class="b-dot" style="background:var(--mu-2)"></span>${open} ouvert${open > 1 ? "s" : ""}</span>` : ""}
+        <span class="tw-count"><span class="b-dot" style="background:var(--emerald)"></span>${lockedSectors.length} verrouillé${lockedSectors.length > 1 ? "s" : ""} pour 2027</span>
       `;
 
-      document.getElementById("sectors-body").innerHTML = sectors.map(s => {
-        const lead = s.leader;
-        const leadSt = getStatus(lead.status);
-        let pillCls, pillLabel;
-        if (s.state === "locked") { pillCls = "locked"; pillLabel = "Verrouillé"; }
-        else if (s.state === "conflict") { pillCls = "conflict"; pillLabel = `Conflit · ${s.active.length}`; }
-        else if (s.state === "ongoing") { pillCls = "ongoing"; pillLabel = "En cours"; }
-        else { pillCls = "open"; pillLabel = "À retenter"; }
+      document.getElementById("sectors-body").innerHTML = lockedSectors.map(s => {
+        const winner = s.signed[0];
+        const othersCount = s.items.length - 1;
         const filterCls = filters.sector === s.name ? "active-filter" : "";
         return `
-          <div class="sector-card ${s.state} ${filterCls}" data-sector="${s.name.replace(/"/g, "&quot;")}">
+          <div class="sector-card locked ${filterCls}" data-sector="${s.name.replace(/"/g, "&quot;")}">
             <div class="sector-row">
               <div class="sector-name" title="${s.name}">${s.name}</div>
-              <span class="sector-status-pill ${pillCls}">${pillLabel}</span>
+              <span class="sector-status-pill locked">Verrouillé</span>
             </div>
             <div class="sector-meta">
-              <span class="lead"><span class="b-dot" style="background:${leadSt.color}"></span>${lead.name}</span>
-              <span>· ${s.items.length} prospect${s.items.length > 1 ? "s" : ""}</span>
+              <span class="lead"><span class="b-dot" style="background:var(--emerald)"></span>${winner.name}</span>
+              ${othersCount > 0 ? `<span>· ${othersCount} inéligible${othersCount > 1 ? "s" : ""}</span>` : ""}
             </div>
           </div>
         `;
@@ -1796,12 +1809,12 @@
           <span><strong>${dateLabel}</strong> · ${p.nextAction}</span>
         </div>`;
       }
-      const conflicts = getConflictsFor(p);
-      const conflictPip = conflicts.length > 0 ? `<span style="display:inline-flex;align-items:center;gap:.25rem;padding:.15rem .4rem;border-radius:999px;font-size:.58rem;font-weight:700;letter-spacing:.06em;background:rgba(244,63,94,.16);color:var(--rose);border:1px solid rgba(244,63,94,.3);margin-left:.3rem;" title="${conflicts.length} prospect${conflicts.length > 1 ? "s" : ""} actif${conflicts.length > 1 ? "s" : ""} sur le même secteur">⚠ ${conflicts.length}</span>` : "";
+      const lockedBy = getLockedBy(p);
+      const ineligiblePip = lockedBy ? `<span style="display:inline-flex;align-items:center;gap:.25rem;padding:.15rem .4rem;border-radius:999px;font-size:.58rem;font-weight:700;letter-spacing:.06em;background:rgba(255,255,255,.06);color:var(--mu-2);border:1px solid var(--border);margin-left:.3rem;" title="Secteur verrouillé par ${lockedBy.name}">Inéligible 2027</span>` : "";
       const sectorBadge = p.sector ? `
         <div class="card-sector-badge">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M3 7l9-4 9 4"/></svg>
-          ${p.sector}${conflictPip}
+          ${p.sector}${ineligiblePip}
         </div>` : "";
 
       const suggest = shouldSuggestRelance(p) ? `
@@ -1811,8 +1824,9 @@
         </div>` : "";
 
       const delay = (idx * 35);
+      const ineligibleCls = lockedBy ? "ineligible" : "";
       return `
-        <div class="card" data-id="${p.id}" style="animation-delay:${delay}ms">
+        <div class="card ${ineligibleCls}" data-id="${p.id}" style="animation-delay:${delay}ms">
           <div class="card-head">
             <div class="card-name">${p.name}</div>
             <div class="card-level" style="--lvl-bg:${lvl.color}22;--lvl-color:${lvl.color}">${lvl.label}</div>
@@ -2059,18 +2073,17 @@
       const mapsUrl = p.coords ? `https://www.google.com/maps/search/?api=1&query=${p.coords[0]},${p.coords[1]}`
         : (p.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.address)}` : null);
 
-      const conflicts = getConflictsFor(p);
-      const conflictBlock = conflicts.length > 0 ? `
-        <div class="conflict-warn">
+      const lockedBy = getLockedBy(p);
+      const conflictBlock = lockedBy ? `
+        <div class="conflict-warn ineligible">
           <div class="conflict-warn-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           </div>
           <div class="conflict-warn-content">
-            <div class="conflict-warn-title">Conflit secteur · ${p.sector}</div>
+            <div class="conflict-warn-title">Inéligible pour 2027</div>
             <div class="conflict-warn-list">
-              ${conflicts.length} autre${conflicts.length > 1 ? "s" : ""} prospect${conflicts.length > 1 ? "s" : ""} actif${conflicts.length > 1 ? "s" : ""} sur ce métier :
-              ${conflicts.map(c => `<a href="#" data-id="${c.id}">${c.name} · ${getStatus(c.status).label}</a>`).join(" · ")}
-              <br><span style="color:var(--mu-2);font-size:.74rem;">Rappel : 1 partenaire par métier. Arbitre rapidement.</span>
+              Secteur <strong>${p.sector}</strong> verrouillé par <a href="#" data-id="${lockedBy.id}">${lockedBy.name}</a> (signé).
+              <br><span style="color:var(--mu-2);font-size:.74rem;">Cette boîte ne peut plus être partenaire 2027. À garder en mémoire pour 2028 si elle a montré de l'intérêt.</span>
             </div>
           </div>
         </div>
