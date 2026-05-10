@@ -56,14 +56,1378 @@
       }
     ],
     "statuses": [
-      { "id": "a-contacter",   "label": "À contacter",        "color": "#71717a", "order": 1 },
-      { "id": "contacte",      "label": "Contacté · attente", "color": "#eab308", "order": 2 },
-      { "id": "rdv",           "label": "RDV planifié",       "color": "#38bdf8", "order": 3 },
-      { "id": "negociation",   "label": "En négociation",     "color": "#a855f7", "order": 4 },
-      { "id": "accepte",       "label": "Accepté · signé",    "color": "#10b981", "order": 5 },
-      { "id": "refus",         "label": "Refusé",             "color": "#f43f5e", "order": 6 },
-      { "id": "sans-suite",    "label": "Sans suite",         "color": "#3f3f46", "order": 7 }
+      {
+        "id": "a-contacter",
+        "label": "À contacter",
+        "color": "#71717a",
+        "order": 1
+      },
+      {
+        "id": "contacte",
+        "label": "Contacté · attente",
+        "color": "#eab308",
+        "order": 2
+      },
+      {
+        "id": "rdv",
+        "label": "RDV planifié",
+        "color": "#38bdf8",
+        "order": 3
+      },
+      {
+        "id": "negociation",
+        "label": "En négociation",
+        "color": "#a855f7",
+        "order": 4
+      },
+      {
+        "id": "accepte",
+        "label": "Accepté · signé",
+        "color": "#10b981",
+        "order": 5
+      },
+      {
+        "id": "refus",
+        "label": "Refusé",
+        "color": "#f43f5e",
+        "order": 6
+      },
+      {
+        "id": "sans-suite",
+        "label": "Sans suite",
+        "color": "#3f3f46",
+        "order": 7
+      }
     ]
   },
-  "prospects": []
+  "prospects": [
+    {
+      "id": "el-coiff",
+      "name": "El Coiff",
+      "sector": "Coiffeur",
+      "address": "36 Rue Centrale, 01150 Lagnieu",
+      "city": "Lagnieu",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.902933,
+        5.347543
+      ]
+    },
+    {
+      "id": "point-s-meximieux",
+      "name": "Point S Meximieux",
+      "sector": "Auto · entretien / pneus",
+      "address": "ZI Rue des Granges, 01800 Meximieux",
+      "city": "Meximieux",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "franchise"
+      ],
+      "notes": "Source : Amblamex · franchise Point S, agence locale",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.902149,
+        5.194757
+      ]
+    },
+    {
+      "id": "boulangerie-sans-contrefacon",
+      "name": "Boulangerie Sans Contrefaçon",
+      "sector": "Boulangerie / Pâtisserie",
+      "address": "Rue de la Tréfilerie, 01800 Meximieux",
+      "city": "Meximieux",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.901907,
+        5.199375
+      ]
+    },
+    {
+      "id": "remy-chausseur",
+      "name": "Rémy Chausseur",
+      "sector": "Chausseur",
+      "address": "8 Rue Alexandre Bérard, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.958675,
+        5.358587
+      ]
+    },
+    {
+      "id": "nocibe-amberieu",
+      "name": "Nocibé Ambérieu",
+      "sector": "Parfumerie",
+      "address": "Centre commercial du Bugey, Rue Roger Vailland, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "franchise"
+      ],
+      "notes": "Source : Amblamex · franchise, agence locale",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.958431,
+        5.35951
+      ]
+    },
+    {
+      "id": "husse",
+      "name": "Husse",
+      "sector": "Animaux · alimentation",
+      "address": "28 Rue Jean Jaurès, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.956023,
+        5.343198
+      ]
+    },
+    {
+      "id": "my-papeterie",
+      "name": "My Papeterie",
+      "sector": "Librairie / Papeterie / Presse",
+      "address": "7 rue du marché, 01150 Lagnieu",
+      "city": "Lagnieu",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.903675,
+        5.348132
+      ]
+    },
+    {
+      "id": "adb-services",
+      "name": "ADB",
+      "sector": "Services aux entreprises et particuliers",
+      "address": "ZA en Beauvoir, 120 Rue de la Beauvoir, 01500 Château-Gaillard",
+      "city": "Château-Gaillard",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "B2B"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.9732,
+        5.30522
+      ]
+    },
+    {
+      "id": "chanvre-attitude",
+      "name": "Chanvre Attitude",
+      "sector": "Bien-être / Minceur",
+      "address": "Centre commercial du Bugey, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.958431,
+        5.35951
+      ]
+    },
+    {
+      "id": "generale-optique-meximieux",
+      "name": "Générale d'Optique Meximieux",
+      "sector": "Opticien",
+      "address": "Rue des Carronnières, Centre Commercial Les Portes De La Dombes, 01800 Meximieux",
+      "city": "Meximieux",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "franchise"
+      ],
+      "notes": "Source : Amblamex · franchise",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.90363,
+        5.192526
+      ]
+    },
+    {
+      "id": "societe-generale-amberieu",
+      "name": "Société Générale Ambérieu",
+      "sector": "Banque",
+      "address": "1 Avenue de Verdun, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "banque"
+      ],
+      "notes": "Source : Amblamex · agence locale, budget mécénat local possible",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.959922,
+        5.349487
+      ]
+    },
+    {
+      "id": "chai-du-coteau",
+      "name": "Le Chai du Coteau",
+      "sector": "Cave · vins / spiritueux",
+      "address": "12 rue Pasteur, 01150 Lagnieu",
+      "city": "Lagnieu",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant",
+        "boisson"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.904152,
+        5.348831
+      ]
+    },
+    {
+      "id": "cer-by-francine",
+      "name": "CER by Francine",
+      "sector": "Auto-école",
+      "address": "6 Place Lieutenant Giraud, 01800 Meximieux",
+      "city": "Meximieux",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "franchise",
+        "multi-sites"
+      ],
+      "notes": "Source : Amblamex · 1 patronne (Francine) avec 3 emplacements :\n· Meximieux · 6 Place Lieutenant Giraud, 01800\n· Lagnieu · 54 Route du Port, 01150\n· Ambérieu · 19 Avenue du Général de Gaulle, 01500",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex · consolidé 3 emplacements"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.904215,
+        5.193268
+      ]
+    },
+    {
+      "id": "le-ptit-resto",
+      "name": "Le P'tit Resto",
+      "sector": "Restaurant",
+      "address": "39 Avenue Paul Painlevé, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.957403,
+        5.338841
+      ]
+    },
+    {
+      "id": "florence-coiffure",
+      "name": "Florence Coiffure",
+      "sector": "Coiffeur",
+      "address": "Centre Magali, 4 Avenue du Docteur Berthier, 01800 Meximieux",
+      "city": "Meximieux",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.90363,
+        5.192526
+      ]
+    },
+    {
+      "id": "cave-de-lagnieu",
+      "name": "La Cave de Lagnieu",
+      "sector": "Cave · vins / spiritueux",
+      "address": "18 Route du Port, 01150 Lagnieu",
+      "city": "Lagnieu",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant",
+        "boisson"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.901656,
+        5.347408
+      ]
+    },
+    {
+      "id": "v-and-b-amberieu",
+      "name": "V and B Ambérieu",
+      "sector": "Cave · bières / vins",
+      "address": "37 Avenue de la Libération, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "majeur",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "franchise",
+        "boisson",
+        "pépite"
+      ],
+      "notes": "Source : Amblamex · cible idéale public Enjoylife (bar/cave). Possible animation bar partenaire. À pousser en Majeur.",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex · flag pépite"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.960309,
+        5.333978
+      ]
+    },
+    {
+      "id": "amblamex-boutique",
+      "name": "Amblamex Boutique",
+      "sector": "Cadeaux / Décoration",
+      "address": "135 rue du Président, 01800 Pérouges",
+      "city": "Pérouges",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex"
+      ],
+      "notes": "Source : Amblamex · à clarifier (boutique liée à l'asso ?)",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.903428,
+        5.179461
+      ]
+    },
+    {
+      "id": "bijouterie-dumaine",
+      "name": "Bijouterie Dumaine",
+      "sector": "Bijouterie",
+      "address": "26 Route du Port, 01150 Lagnieu",
+      "city": "Lagnieu",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.901399,
+        5.347408
+      ]
+    },
+    {
+      "id": "terre-de-running",
+      "name": "Terre de Running",
+      "sector": "Sport · running",
+      "address": "370 Avenue Léon Blum, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "franchise",
+        "sport",
+        "pépite"
+      ],
+      "notes": "Source : Amblamex · alignement public adulte sportif",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex · flag pépite"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.963979,
+        5.341044
+      ]
+    },
+    {
+      "id": "darty-amberieu",
+      "name": "Darty Ambérieu",
+      "sector": "Électroménager / Tech",
+      "address": "960 Rue du Marquis Albert de Dion, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "franchise"
+      ],
+      "notes": "Source : Amblamex · magasin local franchisé",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.965127,
+        5.341649
+      ]
+    },
+    {
+      "id": "etude-enjalbert",
+      "name": "Étude Enjalbert",
+      "sector": "Huissier / Commissaire de justice",
+      "address": "13 Rue de la République, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "B2B"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.958879,
+        5.356783
+      ]
+    },
+    {
+      "id": "ain-toilettage",
+      "name": "Ain Toilettage",
+      "sector": "Animaux · toilettage",
+      "address": "8 Rue Centrale, 01150 Lagnieu",
+      "city": "Lagnieu",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.903713,
+        5.348049
+      ]
+    },
+    {
+      "id": "king-jouet-amberieu",
+      "name": "King Jouet Ambérieu",
+      "sector": "Jeux / Jouets",
+      "address": "Zone de l'Aviation, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "franchise"
+      ],
+      "notes": "Source : Amblamex · franchise. Vérifier si même propriétaire que King Jouet Meximieux.",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.958431,
+        5.35951
+      ]
+    },
+    {
+      "id": "king-jouet-meximieux",
+      "name": "King Jouet Meximieux",
+      "sector": "Jeux / Jouets",
+      "address": "Rue Carronnières, 01800 Meximieux",
+      "city": "Meximieux",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "franchise"
+      ],
+      "notes": "Source : Amblamex · franchise. À fusionner avec Ambérieu si même propriétaire.",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.914934,
+        5.191398
+      ]
+    },
+    {
+      "id": "insolence-lingerie",
+      "name": "Insolence Lingerie",
+      "sector": "Lingerie",
+      "address": "16 Rue Alexandre Bérard, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.958874,
+        5.358497
+      ]
+    },
+    {
+      "id": "maison-de-la-presse-meximieux",
+      "name": "Maison de la Presse Meximieux",
+      "sector": "Librairie / Papeterie / Presse",
+      "address": "4 Place Vaugelas, 01800 Meximieux",
+      "city": "Meximieux",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "franchise"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.90391,
+        5.192594
+      ]
+    },
+    {
+      "id": "bonobo-amberieu",
+      "name": "Bonobo Ambérieu",
+      "sector": "Prêt-à-porter homme/femme",
+      "address": "40 Rue Alexandre Bérard, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "franchise",
+        "beaumanoir"
+      ],
+      "notes": "Source : Amblamex · groupe Beaumanoir (même groupe que Cache Cache, même adresse)",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.959796,
+        5.35808
+      ]
+    },
+    {
+      "id": "cache-cache-amberieu",
+      "name": "Cache Cache Ambérieu",
+      "sector": "Prêt-à-porter femme",
+      "address": "40 Rue Alexandre Bérard, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "franchise",
+        "beaumanoir"
+      ],
+      "notes": "Source : Amblamex · groupe Beaumanoir (même adresse que Bonobo, à vérifier si même directeur)",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.959796,
+        5.35808
+      ]
+    },
+    {
+      "id": "biocoop-le-vert-de-terre",
+      "name": "Biocoop Le Vert de Terre",
+      "sector": "Bio / Alimentation",
+      "address": "186 Rue Alexandre Bérard, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant"
+      ],
+      "notes": "Source : Amblamex · Biocoop est une coopérative, magasins indépendants",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.972954,
+        5.352279
+      ]
+    },
+    {
+      "id": "diet-plus",
+      "name": "Diet Plus",
+      "sector": "Bien-être / Minceur",
+      "address": "1 Place Sanville, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "franchise"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.958228,
+        5.357506
+      ]
+    },
+    {
+      "id": "bbcycle",
+      "name": "BBCycle",
+      "sector": "Sport · vélo / cycle",
+      "address": "RD 1084 Le Pont de Chazey, 01800 Villieu-Loyes-Mollon",
+      "city": "Villieu-Loyes-Mollon",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant",
+        "sport",
+        "pépite"
+      ],
+      "notes": "Source : Amblamex · alignement public adulte sportif",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex · flag pépite"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.928987,
+        5.225329
+      ]
+    },
+    {
+      "id": "yves-rocher-amberieu",
+      "name": "Yves Rocher Ambérieu",
+      "sector": "Beauté / Cosmétique",
+      "address": "5 Rue Alexandre Bérard, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "franchise"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.958725,
+        5.358442
+      ]
+    },
+    {
+      "id": "patisserie-petitdidier",
+      "name": "Pâtisserie Petitdidier",
+      "sector": "Pâtisserie / Chocolaterie",
+      "address": "268 Avenue Charles de Gaulle, 01800 Villieu-Loyes-Mollon",
+      "city": "Villieu-Loyes-Mollon",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.920123,
+        5.223055
+      ]
+    },
+    {
+      "id": "christal-immobilier-century21",
+      "name": "Christal Immobilier · Century 21",
+      "sector": "Agence immobilière",
+      "address": "127 Rue Alexandre Bérard, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "franchise"
+      ],
+      "notes": "Source : Amblamex · agence indépendante sous enseigne Century 21",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.966198,
+        5.354905
+      ]
+    },
+    {
+      "id": "rodriguez-plombier",
+      "name": "Rodriguez Richard · Plombier",
+      "sector": "Plomberie / Chauffage",
+      "address": "50 Avenue Jules Pellaudin, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant",
+        "artisan"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.95137,
+        5.364446
+      ]
+    },
+    {
+      "id": "brasserie-ain-pression",
+      "name": "Brasserie Ain Pression",
+      "sector": "Brasserie locale",
+      "address": "Rue de l'Artisanat, 01800 Villieu-Loyes-Mollon",
+      "city": "Villieu-Loyes-Mollon",
+      "level": "majeur",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant",
+        "boisson",
+        "pépite"
+      ],
+      "notes": "Source : Amblamex · PÉPITE. Brasserie locale, identité forte. Opportunité cuvée Enjoylife. Alignement parfait public adulte +18. À pousser en Majeur.",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex · flag pépite"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.916494,
+        5.234042
+      ]
+    },
+    {
+      "id": "boucherie-degletagne",
+      "name": "Boucherie Charcuterie Degletagne",
+      "sector": "Boucherie / Charcuterie / Traiteur",
+      "address": "133 Rue Dr Temporal, 01500 Saint-Rambert-en-Bugey",
+      "city": "Saint-Rambert-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant",
+        "artisan"
+      ],
+      "notes": "Source : Amblamex · opportunité prestation traiteur staff/backstage",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.948607,
+        5.439958
+      ]
+    },
+    {
+      "id": "la-boutique-morphee",
+      "name": "La Boutique Morphée",
+      "sector": "Électroménager · literie",
+      "address": "Centre Commercial, 39 Rue de Lyon, 01800 Meximieux",
+      "city": "Meximieux",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant"
+      ],
+      "notes": "Source : Amblamex · spécialiste literie/sommeil",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.90363,
+        5.192526
+      ]
+    },
+    {
+      "id": "ellipse-informatique",
+      "name": "Ellipse Informatique",
+      "sector": "Informatique / Tech",
+      "address": "16 Place du 8 Mai 1945, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant",
+        "pépite"
+      ],
+      "notes": "Source : Amblamex · tech locale indépendante",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex · flag pépite"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.962968,
+        5.357704
+      ]
+    },
+    {
+      "id": "cent-dessus-dessous",
+      "name": "Cent Dessus Dessous",
+      "sector": "Lingerie",
+      "address": "29 Rue de Lyon, 01800 Meximieux",
+      "city": "Meximieux",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.901981,
+        5.190432
+      ]
+    },
+    {
+      "id": "odacyeux-optique-seytier",
+      "name": "Odacyeux by Optique Seytier",
+      "sector": "Opticien",
+      "address": "46 Rue Alexandre Bérard, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant"
+      ],
+      "notes": "Source : Amblamex · opticien indépendant",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.959979,
+        5.357988
+      ]
+    },
+    {
+      "id": "boucherie-morard",
+      "name": "Boucherie Charcuterie Morard",
+      "sector": "Boucherie / Charcuterie / Traiteur",
+      "address": "2 Rue Alexandre Bérard, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "indépendant",
+        "artisan"
+      ],
+      "notes": "Source : Amblamex · opportunité prestation traiteur staff/backstage",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.95853,
+        5.358649
+      ]
+    },
+    {
+      "id": "sans-pression",
+      "name": "Sans Pression",
+      "sector": "Cave · bières / vins",
+      "address": "10 Allée Louis Mouthier, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "boisson"
+      ],
+      "notes": "Source : Amblamex",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.972035,
+        5.345179
+      ]
+    },
+    {
+      "id": "bureau-vallee-amberieu",
+      "name": "Bureau Vallée Ambérieu",
+      "sector": "Fournitures bureau / Papeterie pro",
+      "address": "720 Avenue Léon Blum, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "franchise"
+      ],
+      "notes": "Source : Amblamex · magasin franchisé local",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.963979,
+        5.341044
+      ]
+    },
+    {
+      "id": "pro-cie-mdh",
+      "name": "Pro & Cie · MDH Services",
+      "sector": "Électroménager / Tech",
+      "address": "704 Avenue Léon Blum, 01500 Ambérieu-en-Bugey",
+      "city": "Ambérieu-en-Bugey",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "franchise"
+      ],
+      "notes": "Source : Amblamex · enseigne Pro & Cie, exploitée par MDH Services (indépendant local)",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.963979,
+        5.341044
+      ]
+    },
+    {
+      "id": "optic-2000-meximieux",
+      "name": "Optic 2000 Meximieux",
+      "sector": "Opticien",
+      "address": "22 Place Vaugelas, 01800 Meximieux",
+      "city": "Meximieux",
+      "level": "officiel",
+      "status": "a-contacter",
+      "phase": "p1",
+      "tags": [
+        "amblamex",
+        "franchise"
+      ],
+      "notes": "Source : Amblamex · coopérative d'opticiens, magasin local indépendant",
+      "timeline": [
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
+        }
+      ],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10",
+      "coords": [
+        45.903338,
+        5.191819
+      ]
+    }
+  ]
 }
