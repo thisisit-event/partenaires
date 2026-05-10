@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "objective": 50000,
+    "currency": "EUR",
+    "updatedAt": "2026-05-10",
+    "phases": {
+      "p1": {
+        "id": "p1",
+        "label": "Phase 1 · Tarifs préférentiels",
+        "subtitle": "Closing prioritaire avant la fin de l'été",
+        "start": "2026-05-10",
+        "end": "2026-08-31",
+        "color": "#818cf8"
+      },
+      "p2": {
+        "id": "p2",
+        "label": "Phase 2 · Closing final",
+        "subtitle": "Derniers signataires avant lancement com 2027",
+        "start": "2026-09-01",
+        "end": "2026-12-31",
+        "color": "#a855f7"
+      }
+    },
+    "levels": [
+      {
+        "id": "partenaire",
+        "label": "Partenaire",
+        "tier": 1,
+        "amount": 500,
+        "color": "#94a3b8",
+        "subtitle": "Visibilité locale & digitale"
+      },
+      {
+        "id": "officiel",
+        "label": "Officiel",
+        "tier": 2,
+        "amount": 1000,
+        "color": "#818cf8",
+        "subtitle": "Présence dans l'événement"
+      },
+      {
+        "id": "majeur",
+        "label": "Majeur",
+        "tier": 3,
+        "amount": 2500,
+        "color": "#a855f7",
+        "subtitle": "L'événement porte votre marque"
+      },
+      {
+        "id": "mecenat",
+        "label": "Mécénat",
+        "tier": 4,
+        "amount": 0,
+        "color": "#10b981",
+        "subtitle": "Don déductible 60% (entreprise)"
+      }
+    ],
+    "statuses": [
+      { "id": "a-contacter",   "label": "À contacter",        "color": "#71717a", "order": 1 },
+      { "id": "contacte",      "label": "Contacté · attente", "color": "#eab308", "order": 2 },
+      { "id": "rdv",           "label": "RDV planifié",       "color": "#38bdf8", "order": 3 },
+      { "id": "negociation",   "label": "En négociation",     "color": "#a855f7", "order": 4 },
+      { "id": "accepte",       "label": "Accepté · signé",    "color": "#10b981", "order": 5 },
+      { "id": "refus",         "label": "Refusé",             "color": "#f43f5e", "order": 6 },
+      { "id": "sans-suite",    "label": "Sans suite",         "color": "#3f3f46", "order": 7 }
+    ]
+  },
+  "prospects": []
+}
