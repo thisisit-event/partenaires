@@ -625,6 +625,63 @@
       box-shadow: 0 1px 3px rgba(0,0,0,.3);
     }
 
+    /* ============ DASHBOARD HERO (bouton démarrer session) ============ */
+    .dash-hero {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1.5rem; padding: 1.4rem 1.6rem;
+      background: linear-gradient(135deg, rgba(99,102,241,.12) 0%, rgba(168,85,247,.12) 50%, rgba(234,179,8,.08) 100%);
+      border: 1px solid rgba(168,85,247,.3);
+      border-radius: 16px;
+      box-shadow: 0 8px 28px rgba(99,102,241,.18), inset 0 1px 0 rgba(255,255,255,.06);
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(10px);
+      animation: fadeUp .5s var(--cubic) forwards;
+      flex-wrap: wrap;
+    }
+    .dash-hero::before {
+      content: ''; position: absolute; inset: 0 0 auto 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--indigo), var(--violet), var(--amber), transparent);
+      opacity: .45;
+    }
+    .dash-hero-left { flex: 1; min-width: 0; }
+    .dash-hero-eyebrow {
+      font-size: .62rem; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+      margin-bottom: .35rem;
+    }
+    .dash-hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1; letter-spacing: .01em;
+      background: linear-gradient(135deg, #fff 0%, #c7d2fe 60%, #fde047 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .dash-hero-sub {
+      font-size: .85rem; color: var(--mu); margin-top: .35rem; line-height: 1.4;
+    }
+    .dash-hero-actions { display: flex; gap: .55rem; flex-wrap: wrap; }
+    .dash-hero-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: .85rem 1.4rem; border-radius: 12px;
+      font-family: 'Geist', sans-serif; font-weight: 700; font-size: .82rem;
+      letter-spacing: .02em;
+      background: var(--surface-3);
+      color: var(--fg);
+      border: 1px solid var(--border-2);
+      transition: all .15s var(--cubic);
+      cursor: pointer;
+    }
+    .dash-hero-btn:hover { background: var(--surface); border-color: rgba(255,255,255,.25); transform: translateY(-1px); }
+    .dash-hero-btn.primary {
+      background: linear-gradient(135deg, #fde047 0%, #eab308 100%);
+      color: #0a0a0a;
+      border-color: transparent;
+      box-shadow: 0 6px 22px rgba(234,179,8,.35);
+    }
+    .dash-hero-btn.primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(234,179,8,.5); filter: brightness(1.06); }
+    .dash-hero-btn.primary:active { transform: translateY(0); }
+
     /* ============ DASHBOARD VIEW ============ */
     .dashboard {
       padding: 1rem 1.6rem 3rem;
@@ -1353,6 +1410,347 @@
     }
     .empty-sub { font-size: .85rem; line-height: 1.5; max-width: 420px; margin: 0 auto; }
 
+    /* ============ MODE SESSION (overlay plein écran) ============ */
+    #session-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: linear-gradient(180deg, #0a0a0a 0%, #121214 100%);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    .session-top {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(10,10,10,.6); backdrop-filter: blur(20px);
+      flex-shrink: 0;
+    }
+    .session-top-left { flex: 1; min-width: 0; max-width: 500px; }
+    .session-progress { display: flex; flex-direction: column; gap: .35rem; }
+    .session-progress-bar {
+      height: 6px; background: rgba(255,255,255,.06);
+      border-radius: 999px; overflow: hidden;
+    }
+    .session-progress-fill {
+      height: 100%; background: linear-gradient(90deg, var(--indigo), var(--violet), var(--amber));
+      transition: width .35s var(--cubic);
+      box-shadow: 0 0 12px rgba(168,85,247,.4);
+    }
+    .session-progress-text {
+      font-size: .72rem; color: var(--mu); font-family: 'Geist Mono', monospace;
+    }
+    .session-progress-text strong { color: var(--fg); font-weight: 600; }
+    .session-top-stats { display: flex; gap: .45rem; flex-wrap: wrap; }
+    .session-stat-pill {
+      display: inline-flex; align-items: center; gap: .35rem;
+      padding: .3rem .65rem; border-radius: 999px;
+      background: var(--surface-2); border: 1px solid var(--border);
+      font-size: .68rem; color: var(--mu); font-weight: 500;
+    }
+    .session-stat-pill strong { color: var(--fg); font-weight: 700; font-family: 'Geist Mono', monospace; }
+    .session-stat-pill .b-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--c, var(--mu)); }
+    .session-quit-btn {
+      padding: .5rem .9rem; border-radius: 8px;
+      background: var(--surface-2); border: 1px solid var(--border);
+      color: var(--mu); font-size: .76rem; font-weight: 500;
+      display: inline-flex; align-items: center; gap: .4rem;
+      transition: all .15s;
+    }
+    .session-quit-btn:hover { color: var(--fg); border-color: var(--border-2); background: var(--surface-3); }
+    .session-quit-btn svg { width: 13px; height: 13px; }
+
+    .session-main {
+      flex: 1; overflow-y: auto;
+      padding: 1.6rem;
+      display: flex; align-items: flex-start; justify-content: center;
+    }
+    .session-card {
+      width: 100%; max-width: 980px;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 1.2rem;
+    }
+    @media (max-width: 920px) {
+      .session-card { grid-template-columns: 1fr; }
+    }
+    .session-content {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.6rem 1.8rem;
+      overflow: hidden;
+    }
+    .session-prospect-head {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;
+    }
+    .session-prospect-titles { flex: 1; min-width: 0; }
+    .session-prospect-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+      line-height: 1; letter-spacing: .01em; color: var(--fg);
+    }
+    .session-prospect-sub {
+      display: flex; align-items: center; flex-wrap: wrap; gap: .5rem;
+      margin-top: .5rem;
+    }
+    .session-prospect-badges {
+      display: flex; gap: .4rem; flex-wrap: wrap;
+    }
+    .session-prospect-action {
+      padding: .85rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: .55rem;
+      font-size: .85rem;
+    }
+    .session-prospect-action.urgent { border-color: rgba(244,63,94,.35); background: rgba(244,63,94,.06); color: var(--rose); }
+    .session-prospect-action.warn { border-color: rgba(234,179,8,.35); background: rgba(234,179,8,.06); color: var(--amber); }
+    .session-prospect-action svg { width: 14px; height: 14px; }
+    .session-prospect-info {
+      display: grid; grid-template-columns: 1fr 1fr; gap: .55rem;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 700px) {
+      .session-prospect-info { grid-template-columns: 1fr; }
+    }
+    .session-info-block {
+      padding: .8rem .9rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .session-info-label {
+      font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--mu-2); margin-bottom: .4rem;
+    }
+    .session-info-value {
+      font-size: .85rem; color: var(--fg); word-break: break-word;
+    }
+    .session-info-value a { color: var(--indigo); text-decoration: none; }
+    .session-info-value a:hover { text-decoration: underline; }
+    .session-info-value.muted { color: var(--mu-2); }
+    .session-info-multiline { font-size: .78rem; line-height: 1.5; color: var(--mu); white-space: pre-wrap; }
+    .session-info-multiline.notes { max-height: 180px; overflow-y: auto; }
+
+    /* Panel actions (droite) */
+    .session-actions {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.4rem;
+      display: flex; flex-direction: column; gap: 1rem;
+      position: sticky; top: 1rem;
+    }
+    .session-actions-section { display: flex; flex-direction: column; gap: .55rem; }
+    .session-actions-label {
+      font-size: .6rem; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--mu-2);
+    }
+    .session-big-btn {
+      width: 100%;
+      padding: .9rem 1.1rem;
+      border-radius: 11px;
+      background: var(--surface-3);
+      border: 1px solid var(--border-2);
+      color: var(--fg);
+      font-family: 'Geist', sans-serif; font-weight: 600; font-size: .85rem;
+      display: inline-flex; align-items: center; gap: .55rem;
+      transition: all .15s var(--cubic);
+      cursor: pointer; text-decoration: none;
+      position: relative;
+    }
+    .session-big-btn:hover { background: var(--surface); border-color: rgba(255,255,255,.25); transform: translateY(-1px); }
+    .session-big-btn.disabled { opacity: .35; pointer-events: none; }
+    .session-big-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .session-big-btn.call { background: linear-gradient(135deg, rgba(16,185,129,.18), rgba(16,185,129,.06)); border-color: rgba(16,185,129,.45); color: #6ee7b7; }
+    .session-big-btn.call:hover { background: linear-gradient(135deg, rgba(16,185,129,.28), rgba(16,185,129,.12)); }
+    .session-big-btn.mail { background: linear-gradient(135deg, rgba(129,140,248,.18), rgba(129,140,248,.06)); border-color: rgba(129,140,248,.45); color: #c7d2fe; position: relative; }
+    .session-big-btn.mail:hover { background: linear-gradient(135deg, rgba(129,140,248,.28), rgba(129,140,248,.12)); }
+    .session-big-btn .chev { margin-left: auto; opacity: .55; }
+
+    /* Templates dropdown menu */
+    .tpl-menu {
+      position: absolute; top: calc(100% + .4rem); left: 0; right: 0;
+      background: var(--surface);
+      border: 1px solid var(--border-2);
+      border-radius: 10px;
+      box-shadow: 0 16px 40px rgba(0,0,0,.6);
+      z-index: 10;
+      max-height: 320px; overflow-y: auto;
+      display: none;
+    }
+    .tpl-menu.open { display: block; }
+    .tpl-item {
+      display: block; width: 100%;
+      padding: .65rem .9rem;
+      text-align: left;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      color: var(--fg);
+      font-size: .78rem;
+      cursor: pointer;
+      transition: background .12s;
+    }
+    .tpl-item:last-child { border-bottom: none; }
+    .tpl-item:hover { background: var(--surface-3); }
+    .tpl-item-label { font-weight: 600; }
+    .tpl-item-sub { font-size: .68rem; color: var(--mu-2); margin-top: .15rem; }
+    .tpl-item-actions {
+      display: flex; gap: .4rem; margin-top: .35rem;
+    }
+    .tpl-item-action-btn {
+      flex: 1;
+      padding: .3rem .55rem;
+      font-size: .68rem; font-weight: 600;
+      border-radius: 6px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--mu);
+      cursor: pointer;
+      transition: all .12s;
+    }
+    .tpl-item-action-btn:hover { color: var(--fg); border-color: var(--border-2); }
+    .tpl-item-action-btn.mailto { color: var(--indigo); border-color: rgba(129,140,248,.3); }
+
+    /* Boutons résultat de l'action */
+    .session-results {
+      display: grid; grid-template-columns: 1fr 1fr; gap: .45rem;
+    }
+    .session-result-btn {
+      padding: .65rem .55rem;
+      border-radius: 9px;
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      color: var(--mu);
+      font-size: .72rem; font-weight: 600;
+      cursor: pointer;
+      transition: all .13s;
+      display: inline-flex; align-items: center; justify-content: center; gap: .35rem;
+    }
+    .session-result-btn:hover { color: var(--fg); border-color: var(--border-2); background: var(--surface); transform: translateY(-1px); }
+    .session-result-btn.emerald:hover { border-color: rgba(16,185,129,.5); color: #6ee7b7; }
+    .session-result-btn.sky:hover { border-color: rgba(56,189,248,.5); color: #7dd3fc; }
+    .session-result-btn.amber:hover { border-color: rgba(234,179,8,.5); color: #fde047; }
+    .session-result-btn.rose:hover { border-color: rgba(244,63,94,.5); color: #fda4af; }
+    .session-result-btn.violet:hover { border-color: rgba(168,85,247,.5); color: #d8b4fe; }
+    .session-result-btn .b-dot { width: 6px; height: 6px; border-radius: 50%; }
+
+    .session-foot {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border);
+      background: rgba(10,10,10,.6); backdrop-filter: blur(20px);
+      flex-shrink: 0;
+    }
+    .session-nav {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .65rem 1rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      color: var(--mu);
+      font-size: .78rem; font-weight: 500;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .session-nav:hover { color: var(--fg); border-color: var(--border-2); background: var(--surface-3); }
+    .session-nav:disabled { opacity: .35; cursor: not-allowed; }
+    .session-nav.skip { color: var(--mu-2); }
+    .session-nav svg { width: 13px; height: 13px; }
+
+    .session-toast {
+      position: fixed; bottom: 5rem; left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      padding: .7rem 1.2rem;
+      background: var(--surface);
+      border: 1px solid var(--border-2);
+      border-radius: 999px;
+      font-size: .78rem; color: var(--fg);
+      box-shadow: 0 8px 24px rgba(0,0,0,.5);
+      z-index: 250;
+      opacity: 0; pointer-events: none;
+      transition: opacity .25s, transform .25s var(--cubic);
+    }
+    .session-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .session-toast.success { border-color: rgba(16,185,129,.45); }
+    .session-toast.info { border-color: rgba(129,140,248,.45); }
+
+    /* Empty state session */
+    .session-empty {
+      text-align: center; padding: 4rem 2rem;
+      color: var(--mu);
+      max-width: 480px;
+    }
+    .session-empty-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem; color: var(--fg); margin-bottom: .55rem;
+      letter-spacing: .02em;
+    }
+
+    /* Modal récap fin */
+    #session-recap {
+      position: fixed; inset: 0; z-index: 220;
+      background: rgba(0,0,0,.85); backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem;
+    }
+    .session-recap-card {
+      max-width: 480px; width: 100%;
+      background: var(--surface-2);
+      border: 1px solid var(--border-2);
+      border-radius: 18px;
+      padding: 2.2rem 2rem;
+      text-align: center;
+      box-shadow: 0 30px 80px rgba(0,0,0,.7);
+    }
+    .session-recap-icon {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--emerald), #34d399);
+      margin: 0 auto 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 30px rgba(16,185,129,.45);
+    }
+    .session-recap-icon svg { width: 30px; height: 30px; color: #0a0a0a; }
+    .session-recap-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem; color: var(--fg); letter-spacing: .02em; margin-bottom: .4rem;
+    }
+    .session-recap-sub { color: var(--mu); font-size: .85rem; margin-bottom: 1.5rem; }
+    .session-recap-stats {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: .6rem;
+      margin-bottom: 1.5rem;
+    }
+    .session-recap-stat {
+      padding: .8rem .6rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .session-recap-stat-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem; line-height: 1;
+    }
+    .session-recap-stat-label {
+      font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--mu-2); margin-top: .25rem;
+    }
+    .session-recap-actions { display: flex; justify-content: center; }
+    .session-recap-changes {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: .8rem 1rem;
+      max-height: 200px; overflow-y: auto;
+      margin-bottom: 1.2rem;
+      font-family: 'Geist Mono', monospace; font-size: .72rem;
+      text-align: left; color: var(--mu);
+      line-height: 1.6;
+    }
+    .session-recap-changes:empty { display: none; }
+
     /* RESPONSIVE */
     @media (max-width: 900px) {
       header.top { padding: .8rem 1rem; flex-wrap: wrap; gap: .6rem; }
@@ -1487,7 +1885,24 @@
 
     <!-- Vue Dashboard (par défaut) -->
     <section class="dashboard" id="view-dashboard">
-      <!-- Bandeau filtre ville actif (si filter.city !== "all" en mode kanban/table/carte) -->
+      <!-- HERO : Démarrer une session de prospection -->
+      <div class="dash-hero" id="dash-hero">
+        <div class="dash-hero-left">
+          <div class="dash-hero-eyebrow">Mode focus · 1 prospect à la fois</div>
+          <div class="dash-hero-title">Démarrer une session de prospection</div>
+          <div class="dash-hero-sub" id="dash-hero-sub">—</div>
+        </div>
+        <div class="dash-hero-actions">
+          <button class="dash-hero-btn primary" id="session-start-lagnieu">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;margin-right:.4rem"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+            ★ Session Lagnieu
+          </button>
+          <button class="dash-hero-btn" id="session-start-all">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;margin-right:.4rem"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+            Tout le pipeline
+          </button>
+        </div>
+      </div>
       <!-- Showcase Priorité Lagnieu -->
       <div class="dash-block dash-priority" id="dash-priority"></div>
       <!-- Carte par ville -->
@@ -1568,6 +1983,53 @@
       <div class="cal-grid" id="cal-grid"></div>
     </section>
 
+  </div>
+
+  <!-- ============ MODE SESSION (overlay plein écran) ============ -->
+  <div id="session-overlay" hidden>
+    <header class="session-top">
+      <div class="session-top-left">
+        <div class="session-progress">
+          <div class="session-progress-bar"><div class="session-progress-fill" id="session-progress-fill"></div></div>
+          <div class="session-progress-text" id="session-progress-text">—</div>
+        </div>
+      </div>
+      <div class="session-top-stats" id="session-top-stats"></div>
+      <div class="session-top-right">
+        <button class="session-quit-btn" id="session-quit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Terminer
+        </button>
+      </div>
+    </header>
+    <main class="session-main" id="session-main"><!-- rendu dynamique --></main>
+    <footer class="session-foot">
+      <button class="session-nav" id="session-prev">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        Précédent
+      </button>
+      <button class="session-nav skip" id="session-skip">
+        Passer · pas le temps
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </footer>
+  </div>
+
+  <!-- Modal récap fin de session -->
+  <div id="session-recap" hidden>
+    <div class="session-recap-card">
+      <div class="session-recap-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="session-recap-title">Session terminée</div>
+      <div class="session-recap-sub" id="session-recap-sub">—</div>
+      <div class="session-recap-stats" id="session-recap-stats"></div>
+      <div class="session-recap-changes" id="session-recap-changes"></div>
+      <div class="session-recap-actions" style="display:flex;gap:.5rem;flex-direction:column">
+        <button class="dash-hero-btn primary" id="session-recap-copy">📋 Copier mes modifs pour Claude</button>
+        <button class="dash-hero-btn" id="session-recap-close">Retour au dashboard</button>
+      </div>
+    </div>
   </div>
 
   <!-- Drawer -->
@@ -1746,6 +2208,88 @@
         p.id !== prospect.id
       );
       return winner || null;
+    }
+
+    // ============ EMAIL TEMPLATES ============
+    function fillTemplate(tplBody, p) {
+      const c = (p.contacts || [])[0] || {};
+      const contactName = c.name && c.name !== "Contact magasin" && c.name !== "Contact entreprise" ? c.name : "";
+      const firstName = contactName ? contactName.split(/\s+/)[0] : "";
+      const lvl = getLevel(p.level);
+      const phase = getPhase(p.phase);
+      const today = window.TODAY.toLocaleDateString("fr-FR", { day: "2-digit", month: "long", year: "numeric" });
+      const repl = {
+        "{{contact_name}}": contactName || "",
+        "{{contact_first_name}}": firstName || "",
+        "{{boite}}": p.name || "",
+        "{{ville}}": p.city || "",
+        "{{secteur}}": p.sector || "",
+        "{{niveau}}": (lvl && lvl.label) || "à définir",
+        "{{phase}}": (phase && phase.label) || "",
+        "{{date}}": today,
+        "{{prochain_rdv}}": p.nextActionDate ? fmtDate(p.nextActionDate) : "—",
+      };
+      let out = tplBody;
+      for (const [k, v] of Object.entries(repl)) {
+        out = out.split(k).join(v);
+      }
+      // Si le destinataire n'a pas de prénom, adapter les "Bonjour {prenom}," vides
+      out = out.replace(/Bonjour\s*,/g, "Bonjour,");
+      return out;
+    }
+
+    function mailtoLink(template, p) {
+      const c = (p.contacts || [])[0] || {};
+      const email = c.email || "";
+      const subject = fillTemplate(template.subject, p);
+      const body = fillTemplate(template.body, p);
+      return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
+    async function copyTemplate(template, p) {
+      const subject = fillTemplate(template.subject, p);
+      const body = fillTemplate(template.body, p);
+      const full = `Sujet : ${subject}\n\n${body}`;
+      try { await navigator.clipboard.writeText(full); return true; }
+      catch (e) { return false; }
+    }
+
+    function relevantTemplatesFor(p) {
+      const tpls = (DATA.meta.emailTemplates || []).slice();
+      // Tri : pertinents en premier selon scope
+      const score = (t) => {
+        if (t.scope === "all") return 1;
+        if (t.scope === "lagnieu" && isPriority(p)) return 5;
+        if (t.scope === "lagnieu") return 0;
+        if (t.scope === "local") return isPriority(p) ? 2 : 4;
+        if (t.scope === "b2b" && (p.tags || []).includes("pipa")) return 5;
+        if (t.scope === "b2b") return 0;
+        if (t.scope === "national") return (p.tags || []).includes("national") ? 5 : 1;
+        return 1;
+      };
+      return tpls.sort((a, b) => score(b) - score(a));
+    }
+
+    // ============ PROSPECTION QUEUE (intelligence priorisation) ============
+    function getProspectionQueue(opts = {}) {
+      let pool = (DATA.prospects || []).filter(p => !["accepte","refus","sans-suite"].includes(p.status));
+      if (opts.priorityOnly) pool = pool.filter(isPriority);
+      if (opts.city) pool = pool.filter(p => p.city === opts.city);
+      if (opts.hasContact) pool = pool.filter(p => (p.contacts || []).some(c => c.email || c.phone));
+      pool.sort((a, b) => {
+        const ap = isPriority(a) ? 1 : 0, bp = isPriority(b) ? 1 : 0;
+        if (ap !== bp) return bp - ap;
+        const ape = (a.tags || []).includes("pépite") ? 1 : 0;
+        const bpe = (b.tags || []).includes("pépite") ? 1 : 0;
+        if (ape !== bpe) return bpe - ape;
+        const ar = STATUS_RANK[a.status] || 0, br = STATUS_RANK[b.status] || 0;
+        if (ar !== br) return br - ar;
+        const ac = (a.contacts || []).some(c => c.email || c.phone) ? 1 : 0;
+        const bc = (b.contacts || []).some(c => c.email || c.phone) ? 1 : 0;
+        if (ac !== bc) return bc - ac;
+        return a.id.localeCompare(b.id);
+      });
+      return pool;
     }
 
     function shouldSuggestRelance(p) {
@@ -2090,6 +2634,317 @@
       secEl.innerHTML = sectors.map(s => `<button class="chip ${filters.sector === s.id ? "active" : ""}" data-sector="${s.id.replace(/"/g, "&quot;")}">${s.label}</button>`).join("");
     }
 
+    // ============ MODE SESSION (focus prospection) ============
+    let session = null;
+
+    function startSession(opts = {}) {
+      const queue = getProspectionQueue(opts);
+      if (queue.length === 0) {
+        showToast("Aucun prospect à traiter avec ce filtre.", "info");
+        return;
+      }
+      session = {
+        opts,
+        queue: queue.map(p => p.id),
+        idx: 0,
+        startedAt: Date.now(),
+        stats: { appels: 0, mails: 0, rdv: 0, contactes: 0, refus: 0, sansSuite: 0, skip: 0, traites: 0 },
+        actionsLog: [],
+      };
+      document.getElementById("session-overlay").hidden = false;
+      renderSession();
+    }
+
+    function endSession() {
+      if (!session) return;
+      const elapsedMs = Date.now() - session.startedAt;
+      const elapsedMin = Math.round(elapsedMs / 60000);
+      document.getElementById("session-overlay").hidden = true;
+
+      // Modal récap
+      const s = session.stats;
+      document.getElementById("session-recap-sub").textContent =
+        `${s.traites} boîte${s.traites>1?"s":""} traitée${s.traites>1?"s":""} en ${elapsedMin} min · queue de ${session.queue.length}`;
+      document.getElementById("session-recap-stats").innerHTML = `
+        <div class="session-recap-stat"><div class="session-recap-stat-value" style="color:var(--emerald)">${s.rdv}</div><div class="session-recap-stat-label">RDV pris</div></div>
+        <div class="session-recap-stat"><div class="session-recap-stat-value" style="color:var(--sky)">${s.appels}</div><div class="session-recap-stat-label">Appels</div></div>
+        <div class="session-recap-stat"><div class="session-recap-stat-value" style="color:var(--indigo)">${s.mails}</div><div class="session-recap-stat-label">Mails envoyés</div></div>
+        <div class="session-recap-stat"><div class="session-recap-stat-value" style="color:var(--rose)">${s.refus + s.sansSuite}</div><div class="session-recap-stat-label">Refus / Sans-suite</div></div>
+      `;
+
+      // Liste des modifs à m'envoyer pour persistance
+      const STATUS_LABEL = { accepte: "Signé · partenaire", rdv: "RDV pris", negociation: "Passé en négociation", contacte: "Contacté · en attente", refus: "Refus", "sans-suite": "Sans suite" };
+      const changesHtml = session.actionsLog.length === 0
+        ? ""
+        : session.actionsLog.map(a => {
+            const p = (DATA.prospects || []).find(x => x.id === a.id);
+            const time = new Date(a.ts).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+            return `· ${time} <strong style="color:var(--fg)">${p ? p.name : a.id}</strong> → ${STATUS_LABEL[a.status] || a.status}`;
+          }).join("<br>");
+      document.getElementById("session-recap-changes").innerHTML = changesHtml || "<i style='color:var(--mu-2)'>Aucune modification enregistrée</i>";
+
+      // Stocker pour le bouton copier
+      session._changesText = session.actionsLog.length === 0
+        ? ""
+        : "Modifs session " + new Date().toLocaleDateString("fr-FR") + " :\n" +
+          session.actionsLog.map(a => {
+            const p = (DATA.prospects || []).find(x => x.id === a.id);
+            return `· ${p ? p.name : a.id} → ${STATUS_LABEL[a.status] || a.status}`;
+          }).join("\n");
+      // Sauver dans localStorage aussi en cas de fermeture accidentelle
+      try {
+        const prev = JSON.parse(localStorage.getItem("mc50k_session_changes") || "[]");
+        localStorage.setItem("mc50k_session_changes", JSON.stringify(prev.concat(session.actionsLog)));
+      } catch (e) {}
+
+      window._lastSessionChanges = session._changesText;
+      document.getElementById("session-recap").hidden = false;
+      session = null;
+    }
+
+    function showToast(msg, type = "info") {
+      let t = document.getElementById("__toast");
+      if (!t) {
+        t = document.createElement("div");
+        t.id = "__toast";
+        t.className = "session-toast";
+        document.body.appendChild(t);
+      }
+      t.textContent = msg;
+      t.className = "session-toast " + type + " show";
+      clearTimeout(t._timer);
+      t._timer = setTimeout(() => { t.className = "session-toast"; }, 2200);
+    }
+
+    function renderSession() {
+      if (!session) return;
+      const p = (DATA.prospects || []).find(x => x.id === session.queue[session.idx]);
+      if (!p) {
+        endSession();
+        return;
+      }
+      const total = session.queue.length;
+      const idx = session.idx + 1;
+      const pct = Math.round((idx / total) * 100);
+
+      // Top
+      document.getElementById("session-progress-fill").style.width = pct + "%";
+      const elapsedMin = Math.floor((Date.now() - session.startedAt) / 60000);
+      document.getElementById("session-progress-text").innerHTML =
+        `<strong>${idx}/${total}</strong> · ${elapsedMin} min · ${session.stats.traites} traités`;
+
+      const s = session.stats;
+      document.getElementById("session-top-stats").innerHTML = `
+        ${s.rdv ? `<span class="session-stat-pill" style="--c:var(--emerald)"><span class="b-dot"></span><strong>${s.rdv}</strong> RDV</span>` : ""}
+        ${s.appels ? `<span class="session-stat-pill" style="--c:var(--sky)"><span class="b-dot"></span><strong>${s.appels}</strong> Appels</span>` : ""}
+        ${s.mails ? `<span class="session-stat-pill" style="--c:var(--indigo)"><span class="b-dot"></span><strong>${s.mails}</strong> Mails</span>` : ""}
+        ${s.refus + s.sansSuite ? `<span class="session-stat-pill" style="--c:var(--rose)"><span class="b-dot"></span><strong>${s.refus + s.sansSuite}</strong> Refus</span>` : ""}
+      `;
+
+      // Main content
+      const st = getStatus(p.status);
+      const lvl = getLevel(p.level);
+      const phase = getPhase(p.phase);
+      const primaryContact = (p.contacts || [])[0] || {};
+      const phone = primaryContact.phone;
+      const email = primaryContact.email;
+      const mapsUrl = p.coords ? `https://www.google.com/maps/search/?api=1&query=${p.coords[0]},${p.coords[1]}`
+        : (p.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.address)}` : null);
+
+      let actionBanner = "";
+      if (p.nextAction && p.nextActionDate) {
+        const days = daysBetween(window.TODAY, parseDate(p.nextActionDate));
+        const cls = days < 0 ? "urgent" : (days <= 3 ? "warn" : "");
+        const dateLabel = fmtDate(p.nextActionDate);
+        actionBanner = `
+          <div class="session-prospect-action ${cls}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <strong>${dateLabel}</strong> · ${p.nextAction}
+          </div>`;
+      }
+
+      const timelineHtml = (p.timeline || []).slice(-3).reverse().map(t => `· <span style="color:var(--mu-2)">${fmtDateShort(t.date)}</span> ${t.text}`).join("\n");
+
+      document.getElementById("session-main").innerHTML = `
+        <div class="session-card">
+          <div class="session-content">
+            <div class="session-prospect-head">
+              <div class="session-prospect-titles">
+                <div class="session-prospect-name">${p.name}</div>
+                <div class="session-prospect-sub">
+                  <span class="session-prospect-badges">
+                    ${isPriority(p) ? `<span style="display:inline-flex;align-items:center;gap:.3rem;padding:.2rem .55rem;border-radius:999px;background:rgba(234,179,8,.18);color:#fde047;font-size:.65rem;font-weight:700;letter-spacing:.04em">★ LAGNIEU</span>` : ""}
+                    <span class="badge" style="background:${st.color}22;color:${st.color}"><span class="b-dot" style="--b-color:${st.color}"></span>${st.label}</span>
+                    <span class="badge" style="background:${lvl.color}22;color:${lvl.color}"><span class="b-dot" style="--b-color:${lvl.color}"></span>${lvl.label}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            ${actionBanner}
+            <div class="session-prospect-info">
+              <div class="session-info-block">
+                <div class="session-info-label">Adresse</div>
+                <div class="session-info-value">${p.address || "—"}</div>
+              </div>
+              <div class="session-info-block">
+                <div class="session-info-label">Secteur</div>
+                <div class="session-info-value">${p.sector || "—"}</div>
+              </div>
+              <div class="session-info-block">
+                <div class="session-info-label">Contact</div>
+                <div class="session-info-value">${primaryContact.name && primaryContact.name !== "Contact magasin" && primaryContact.name !== "Contact entreprise" ? primaryContact.name : "—"}${primaryContact.role ? `<br><span class="muted" style="font-size:.74rem">${primaryContact.role}</span>` : ""}</div>
+              </div>
+              <div class="session-info-block">
+                <div class="session-info-label">Téléphone</div>
+                <div class="session-info-value">${phone ? `<a href="tel:${phone.replace(/\s/g,'')}">${phone}</a>` : "<span class='muted'>—</span>"}</div>
+              </div>
+              <div class="session-info-block">
+                <div class="session-info-label">Email</div>
+                <div class="session-info-value">${email ? `<a href="mailto:${email}">${email}</a>` : "<span class='muted'>—</span>"}</div>
+              </div>
+              <div class="session-info-block">
+                <div class="session-info-label">Site web</div>
+                <div class="session-info-value">${p.website ? `<a href="${p.website}" target="_blank" rel="noopener">${p.website.replace(/^https?:\/\//, "")}</a>` : "<span class='muted'>—</span>"}</div>
+              </div>
+            </div>
+            ${p.notes ? `
+              <div class="session-info-block">
+                <div class="session-info-label">Notes</div>
+                <div class="session-info-multiline notes">${p.notes.length > 600 ? p.notes.slice(0, 600) + "…" : p.notes}</div>
+              </div>` : ""}
+            ${timelineHtml ? `
+              <div class="session-info-block" style="margin-top:.55rem">
+                <div class="session-info-label">3 derniers événements</div>
+                <div class="session-info-multiline">${timelineHtml}</div>
+              </div>` : ""}
+          </div>
+
+          <aside class="session-actions">
+            <div class="session-actions-section">
+              <div class="session-actions-label">Action de contact</div>
+              <a href="${phone ? `tel:${phone.replace(/\s/g,'')}` : '#'}" class="session-big-btn call ${phone ? "" : "disabled"}" data-session-act="call">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>Appeler${phone ? "" : " (indispo)"}</span>
+              </a>
+              <button class="session-big-btn mail ${email ? "" : "disabled"}" id="session-mail-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                <span>Mailer avec template${email ? "" : " (pas d'email)"}</span>
+                <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                <div class="tpl-menu" id="session-tpl-menu"></div>
+              </button>
+              <a href="${mapsUrl || '#'}" target="_blank" rel="noopener" class="session-big-btn ${mapsUrl ? "" : "disabled"}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+                <span>Itinéraire Maps</span>
+              </a>
+              <a href="${p.website || '#'}" target="_blank" rel="noopener" class="session-big-btn ${p.website ? "" : "disabled"}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <span>Site web</span>
+              </a>
+            </div>
+
+            <div class="session-actions-section">
+              <div class="session-actions-label">Résultat · enregistrer & passer au suivant</div>
+              <div class="session-results">
+                <button class="session-result-btn emerald" data-session-result="accepte"><span class="b-dot" style="background:var(--emerald)"></span>Signé !</button>
+                <button class="session-result-btn sky" data-session-result="rdv"><span class="b-dot" style="background:var(--sky)"></span>RDV pris</button>
+                <button class="session-result-btn violet" data-session-result="negociation"><span class="b-dot" style="background:var(--violet)"></span>En négo</button>
+                <button class="session-result-btn amber" data-session-result="contacte"><span class="b-dot" style="background:var(--amber)"></span>Contacté</button>
+                <button class="session-result-btn rose" data-session-result="refus"><span class="b-dot" style="background:var(--rose)"></span>Refus</button>
+                <button class="session-result-btn" data-session-result="sans-suite"><span class="b-dot" style="background:var(--mu-3)"></span>Sans suite</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      `;
+
+      // Bind buttons
+      const mailBtn = document.getElementById("session-mail-btn");
+      if (mailBtn && !mailBtn.classList.contains("disabled")) {
+        mailBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          renderTemplateMenu("session-tpl-menu", p, () => { recordSessionAction("mail"); });
+          document.getElementById("session-tpl-menu").classList.toggle("open");
+        });
+      }
+      document.querySelectorAll("[data-session-result]").forEach(btn => {
+        btn.addEventListener("click", () => applySessionResult(btn.dataset.sessionResult));
+      });
+      document.querySelectorAll("[data-session-act='call']").forEach(btn => {
+        btn.addEventListener("click", () => { if (!btn.classList.contains("disabled")) recordSessionAction("call"); });
+      });
+
+      // Update prev/skip availability
+      document.getElementById("session-prev").disabled = (session.idx === 0);
+    }
+
+    function renderTemplateMenu(elId, p, onUseCallback) {
+      const tpls = relevantTemplatesFor(p);
+      const el = document.getElementById(elId);
+      if (!el) return;
+      el.innerHTML = tpls.map(t => `
+        <div class="tpl-item" data-tpl="${t.id}">
+          <div class="tpl-item-label">${t.label}</div>
+          <div class="tpl-item-sub">${t.subject}</div>
+          <div class="tpl-item-actions">
+            <button class="tpl-item-action-btn mailto" data-tpl-action="mailto" data-tpl="${t.id}">Ouvrir dans mon mail</button>
+            <button class="tpl-item-action-btn" data-tpl-action="copy" data-tpl="${t.id}">Copier le texte</button>
+          </div>
+        </div>
+      `).join("");
+      el.querySelectorAll("[data-tpl-action]").forEach(btn => {
+        btn.addEventListener("click", async (e) => {
+          e.stopPropagation();
+          const tpl = (DATA.meta.emailTemplates || []).find(x => x.id === btn.dataset.tpl);
+          if (!tpl) return;
+          if (btn.dataset.tplAction === "mailto") {
+            window.location.href = mailtoLink(tpl, p);
+            showToast(`Mail "${tpl.label}" ouvert dans ton client`, "success");
+          } else {
+            const ok = await copyTemplate(tpl, p);
+            showToast(ok ? `Template "${tpl.label}" copié ✓` : "Échec copie", ok ? "success" : "info");
+          }
+          if (onUseCallback) onUseCallback();
+          el.classList.remove("open");
+        });
+      });
+    }
+
+    function recordSessionAction(type) {
+      if (!session) return;
+      if (type === "call") session.stats.appels++;
+      else if (type === "mail") session.stats.mails++;
+    }
+
+    function applySessionResult(status) {
+      if (!session) return;
+      const p = (DATA.prospects || []).find(x => x.id === session.queue[session.idx]);
+      if (!p) return;
+      // Update du statut localement (le data.json reste serveur — Morgan me dira de pusher les vrais changements)
+      p.status = status;
+      const today = window.TODAY.toISOString().slice(0, 10);
+      p.timeline = p.timeline || [];
+      const STATUS_LABEL = { accepte: "Signé · partenaire", rdv: "RDV pris", negociation: "Passé en négociation", contacte: "Contacté · en attente", refus: "Refus", "sans-suite": "Sans suite" };
+      p.timeline.push({ date: today, type: "session", text: STATUS_LABEL[status] || status });
+      p.updatedAt = today;
+
+      session.stats.traites++;
+      if (status === "rdv") session.stats.rdv++;
+      else if (status === "contacte") session.stats.contactes++;
+      else if (status === "refus") session.stats.refus++;
+      else if (status === "sans-suite") session.stats.sansSuite++;
+
+      session.actionsLog.push({ id: p.id, status, ts: Date.now() });
+
+      // Avancer
+      if (session.idx + 1 >= session.queue.length) {
+        endSession();
+      } else {
+        session.idx++;
+        renderSession();
+        showToast(`Statut mis à jour · ${STATUS_LABEL[status]}`, "success");
+      }
+    }
+
     // ============ DASHBOARD VIEW ============
     function getCities() {
       const map = new Map();
@@ -2120,6 +2975,11 @@
     }
 
     function renderDashboard() {
+      // Hero subtitle : nombre de prospects dans la queue prioritaire
+      const queueLagnieu = getProspectionQueue({ priorityOnly: true }).length;
+      const queueAll = getProspectionQueue({}).length;
+      document.getElementById("dash-hero-sub").innerHTML = `1 boîte plein écran à la fois · gros boutons Appeler/Mailer · enchaîne vite. Queue prête : <strong style="color:var(--amber)">★ ${queueLagnieu} Lagnieu</strong> ou <strong style="color:var(--fg)">${queueAll}</strong> au total.`;
+
       // 1) Showcase Priorité Lagnieu
       const priorityProspects = (DATA.prospects || [])
         .filter(p => isPriority(p))
@@ -2605,10 +3465,12 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               Appeler
             </a>
-            <a href="${primaryEmail ? 'mailto:' + primaryEmail : '#'}" class="${primaryEmail ? '' : 'disabled'}" title="Mailer">
+            <button class="d-mail-btn ${primaryEmail ? '' : 'disabled'}" id="drawer-mail-btn" title="${primaryEmail ? 'Mailer avec template' : 'Pas d\\'email'}" style="position:relative">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
               Mailer
-            </a>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:10px;height:10px;margin-left:.2rem;opacity:.5"><polyline points="6 9 12 15 18 9"/></svg>
+              <div class="tpl-menu" id="drawer-tpl-menu"></div>
+            </button>
             <a href="${mapsUrl || '#'}" target="_blank" rel="noopener" class="${mapsUrl ? '' : 'disabled'}" title="Itinéraire">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
               Itinéraire
@@ -2714,6 +3576,16 @@
         });
       });
 
+      // Bouton Mailer du drawer : ouvre le dropdown templates
+      const mailBtn = document.getElementById("drawer-mail-btn");
+      if (mailBtn && !mailBtn.classList.contains("disabled")) {
+        mailBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          renderTemplateMenu("drawer-tpl-menu", p);
+          document.getElementById("drawer-tpl-menu").classList.toggle("open");
+        });
+      }
+
       document.getElementById("drawer").classList.add("open");
       document.getElementById("drawer-bg").classList.add("open");
       document.getElementById("drawer").setAttribute("aria-hidden", "false");
@@ -2792,7 +3664,74 @@
 
       document.getElementById("drawer-close").addEventListener("click", closeDrawer);
       document.getElementById("drawer-bg").addEventListener("click", closeDrawer);
-      document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeDrawer(); });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          // Fermer drawer si ouvert, sinon fermer session
+          if (document.getElementById("drawer").classList.contains("open")) closeDrawer();
+          else if (!document.getElementById("session-overlay").hidden) {
+            if (confirm("Quitter la session de prospection ?")) endSession();
+          }
+        }
+      });
+
+      // Boutons "Démarrer session" sur le hero du dashboard
+      const btnLagnieu = document.getElementById("session-start-lagnieu");
+      if (btnLagnieu) btnLagnieu.addEventListener("click", () => startSession({ priorityOnly: true }));
+      const btnAll = document.getElementById("session-start-all");
+      if (btnAll) btnAll.addEventListener("click", () => startSession({}));
+
+      // Navigation session
+      const btnQuit = document.getElementById("session-quit");
+      if (btnQuit) btnQuit.addEventListener("click", () => {
+        if (confirm("Terminer la session ? Tes progrès sont sauvegardés.")) endSession();
+      });
+      const btnSkip = document.getElementById("session-skip");
+      if (btnSkip) btnSkip.addEventListener("click", () => {
+        if (!session) return;
+        session.stats.skip++;
+        if (session.idx + 1 >= session.queue.length) endSession();
+        else { session.idx++; renderSession(); }
+      });
+      const btnPrev = document.getElementById("session-prev");
+      if (btnPrev) btnPrev.addEventListener("click", () => {
+        if (!session || session.idx === 0) return;
+        session.idx--;
+        renderSession();
+      });
+
+      // Recap modal close
+      const btnRecapClose = document.getElementById("session-recap-close");
+      if (btnRecapClose) btnRecapClose.addEventListener("click", () => {
+        document.getElementById("session-recap").hidden = true;
+        renderTopMeta();
+        renderView();
+      });
+      // Recap modal copy changes
+      const btnRecapCopy = document.getElementById("session-recap-copy");
+      if (btnRecapCopy) btnRecapCopy.addEventListener("click", async () => {
+        const txt = window._lastSessionChanges || "";
+        if (!txt) { showToast("Aucune modif à copier", "info"); return; }
+        try {
+          await navigator.clipboard.writeText(txt);
+          showToast("Modifs copiées ✓ Colle-les dans le chat Claude", "success");
+        } catch (e) {
+          // Fallback : sélectionner le texte
+          const ta = document.createElement("textarea");
+          ta.value = txt;
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand("copy"); showToast("Modifs copiées ✓", "success"); }
+          catch (e2) { showToast("Copie auto échouée, sélection manuelle", "info"); }
+          document.body.removeChild(ta);
+        }
+      });
+
+      // Click outside template menu pour le fermer
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".tpl-menu") && !e.target.closest("#session-mail-btn") && !e.target.closest(".d-mail-btn")) {
+          document.querySelectorAll(".tpl-menu.open").forEach(m => m.classList.remove("open"));
+        }
+      });
 
       // Map controls
       document.getElementById("map-fit").addEventListener("click", () => {

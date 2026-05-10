@@ -106,6 +106,57 @@
         "color": "#3f3f46",
         "order": 7
       }
+    ],
+    "emailTemplates": [
+      {
+        "id": "first-lagnieu",
+        "label": "Premier contact · Lagnieu",
+        "scope": "lagnieu",
+        "subject": "Enjoylife 2027 vient s'installer à Lagnieu — partenariat {{boite}} ?",
+        "body": "Bonjour {{contact_first_name}},\n\nJ'organise Enjoylife, le festival électro de la Plaine de l'Ain. 3 éditions, 3 sold out depuis 2023. En 2027, on s'installe à Lagnieu.\n\nC'est ce qui me pousse à vous écrire aujourd'hui : {{boite}} est un acteur de Lagnieu, et nous ouvrons les partenariats pour 2027 en priorité aux entreprises locales.\n\nConcrètement, on propose 3 niveaux de partenariat à partir de 500 €, avec une visibilité ciblée sur un public adulte (32 ans en moyenne, +18 strict). Pour information, le mécénat est éligible à une déduction fiscale de 60 %.\n\nJe serais ravi d'échanger 15 minutes avec vous pour vous présenter ça concrètement, à votre rythme.\n\nDisponible quand pour un appel ou un café à Lagnieu ?\n\nBelle journée,\nMorgan\nMG Entertainment · Enjoylife\ncontact@enjoylife-emx.fr\n"
+      },
+      {
+        "id": "first-local",
+        "label": "Premier contact · Plaine de l'Ain (hors Lagnieu)",
+        "scope": "local",
+        "subject": "Partenariat Enjoylife 2027 — {{boite}}",
+        "body": "Bonjour {{contact_first_name}},\n\nJ'organise Enjoylife, le festival électro de la Plaine de l'Ain. 3 éditions, 3 sold out depuis 2023. En 2027, on franchit une étape et l'événement s'installe à Lagnieu.\n\n{{boite}} fait partie du tissu local que je souhaite associer à cette nouvelle édition. On ouvre les partenariats avec 3 niveaux dès 500 €, et une visibilité bien ciblée sur un public adulte premium (32 ans moyen, +18 strict).\n\n15 minutes en visio ou par téléphone pour vous présenter le projet, ça vous dit ?\n\nBelle journée,\nMorgan\nMG Entertainment · Enjoylife\ncontact@enjoylife-emx.fr\n"
+      },
+      {
+        "id": "first-pipa",
+        "label": "Premier contact · B2B / Grand compte",
+        "scope": "b2b",
+        "subject": "Enjoylife 2027 — opportunité de mécénat local pour {{boite}}",
+        "body": "Bonjour {{contact_first_name}},\n\nJe me permets de vous contacter au sujet d'Enjoylife, le festival électro de la Plaine de l'Ain (3 éditions, 3 sold out). En 2027, nous nous installons à Lagnieu.\n\nVous êtes implanté à proximité immédiate, et nous cherchons à associer quelques entreprises du territoire à cette édition — soit par un partenariat classique (3 niveaux dès 500 €), soit par du mécénat (déduction fiscale 60 %).\n\nAu-delà de la visibilité, l'opportunité est aussi de marquer un engagement RSE local concret auprès d'un événement qui touche un public adulte (32 ans en moyenne).\n\nPouvez-vous me dire qui est la bonne personne dans votre organisation pour évoquer ce type de partenariat ? Ou directement, êtes-vous disponible pour un échange court ?\n\nBelle journée,\nMorgan\nMG Entertainment · Enjoylife\ncontact@enjoylife-emx.fr\n"
+      },
+      {
+        "id": "relance",
+        "label": "Relance · sans nouvelles",
+        "scope": "all",
+        "subject": "Petit relance · Enjoylife 2027 × {{boite}}",
+        "body": "Bonjour {{contact_first_name}},\n\nJe vous écrivais il y a quelques temps au sujet d'un partenariat possible avec Enjoylife pour 2027.\n\nJ'imagine que la période est chargée — je remonte simplement ce mail au cas où.\n\nSi le sujet n'est pas d'actualité pour vous, un simple \"non merci\" me convient, j'arrête là sans souci.\nSi c'est juste une question de timing, on peut caler 15 minutes quand ça vous arrange.\n\nBelle journée,\nMorgan\nMG Entertainment · Enjoylife\n"
+      },
+      {
+        "id": "post-rdv",
+        "label": "Suite après RDV",
+        "scope": "all",
+        "subject": "Suite de notre échange · Enjoylife 2027",
+        "body": "Bonjour {{contact_first_name}},\n\nMerci pour notre échange. Comme convenu, je vous envoie une synthèse rapide :\n\n· Enjoylife 2027 · Lagnieu · public adulte premium\n· Niveau de partenariat envisagé : {{niveau}}\n· Engagement {{boite}} : à confirmer\n\nJe reste à votre disposition pour toute question, ou pour avancer sur la convention de partenariat dès que vous êtes prêts.\n\nBelle journée,\nMorgan\nMG Entertainment · Enjoylife\ncontact@enjoylife-emx.fr\n"
+      },
+      {
+        "id": "fondation",
+        "label": "Pitch · fondations / grands groupes",
+        "scope": "national",
+        "subject": "Demande de soutien — Enjoylife 2027, festival culturel local",
+        "body": "Bonjour,\n\nJe sollicite votre fondation pour un soutien financier au festival Enjoylife, événement culturel local qui se tiendra en 2027 à Lagnieu (Ain).\n\nLe projet en bref :\n· 4ème édition d'un festival électro, organisé par l'association MG Entertainment (loi 1901)\n· Public : 1500 à 3000 personnes par soir, adultes (32 ans en moyenne, +18 strict)\n· 3 sold out consécutifs sur les éditions précédentes\n· Ancrage territorial fort, lien direct avec le tissu économique local\n· Programmation artistique exigeante (immersion scénographique, pas de logique \"tête d'affiche\")\n\nLe projet correspond à plusieurs axes de mécénat éligibles :\n· Culture et création artistique\n· Vie associative et économie territoriale\n· Animation de territoire rural\n\nJe serais ravi de vous présenter un dossier complet (budget, axes d'engagement, contreparties éventuelles). Pouvez-vous m'indiquer la procédure à suivre pour un dépôt de demande ?\n\nCordialement,\nMorgan Spirli\nMG Entertainment · Enjoylife\ncontact@enjoylife-emx.fr\n"
+      },
+      {
+        "id": "refus-poli",
+        "label": "Réponse après refus",
+        "scope": "all",
+        "subject": "Merci pour votre retour · Enjoylife",
+        "body": "Bonjour {{contact_first_name}},\n\nMerci pour votre retour, et pour avoir pris le temps de me répondre.\n\nPas de souci pour cette édition — je garde {{boite}} dans nos contacts. Si votre stratégie évolue, ou si une opportunité différente émerge (échange de visibilité, mécénat ponctuel, partenariat sur une édition future), n'hésitez pas à me recontacter directement.\n\nBonne continuation,\nMorgan\nMG Entertainment · Enjoylife\n"
+      }
     ]
   },
   "prospects": [
@@ -148,23 +199,28 @@
       "id": "point-s-meximieux",
       "name": "Point S Meximieux",
       "sector": "Auto · entretien / pneus",
-      "address": "ZI Rue des Granges, 01800 Meximieux",
+      "address": "140 Avenue Charles de Gaulle, 01150 Saint-vulbas",
       "city": "Meximieux",
       "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
         "amblamex",
+        "base-full",
         "franchise",
-        "pipa",
-        "base-full"
+        "pipa"
       ],
-      "notes": "Source : Amblamex · franchise Point S, agence locale\nAussi sur PIPA (Plaine de l'Ain) : https://www.plainedelain.fr/annuaire-des-entreprises/\nEffectifs (mars 2026) : 3\nActivité (base FULL) : ENTRETIEN AUTOMOBILE. CENTRE POINT S DE MEXIMIEUX.",
+      "notes": "Source : Amblamex · franchise Point S, agence locale\nAussi sur PIPA (Plaine de l'Ain) : https://www.plainedelain.fr/annuaire-des-entreprises/\nEffectifs (mars 2026) : 3\nActivité (base FULL) : ENTRETIEN AUTOMOBILE. CENTRE POINT S DE MEXIMIEUX.\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : GARAGE, LOCATION, VENTE VÉHICULES",
       "timeline": [
         {
           "date": "2026-05-10",
           "type": "ajout",
           "text": "Ajouté depuis liste Amblamex"
+        },
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis base FULL Morgan (Numbers)"
         }
       ],
       "createdAt": "2026-05-10",
@@ -743,33 +799,6 @@
       ]
     },
     {
-      "id": "amblamex-boutique",
-      "name": "Amblamex Boutique",
-      "sector": "Cadeaux / Décoration",
-      "address": "135 rue du Président, 01800 Pérouges",
-      "city": "Pérouges",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "amblamex"
-      ],
-      "notes": "Source : Amblamex · à clarifier (boutique liée à l'asso ?)",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis liste Amblamex"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "coords": [
-        45.903428,
-        5.179461
-      ]
-    },
-    {
       "id": "bijouterie-dumaine",
       "name": "Bijouterie Dumaine",
       "sector": "Bijouterie",
@@ -959,49 +988,21 @@
       ]
     },
     {
-      "id": "king-jouet-amberieu",
-      "name": "King Jouet Ambérieu",
-      "sector": "Jeux / Jouets",
-      "address": "Zone de l'Aviation, 01500 Ambérieu-en-Bugey",
-      "city": "Ambérieu-en-Bugey",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "amblamex",
-        "franchise"
-      ],
-      "notes": "Source : Amblamex · franchise. Vérifier si même propriétaire que King Jouet Meximieux.",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis liste Amblamex"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "coords": [
-        45.958431,
-        5.35951
-      ]
-    },
-    {
       "id": "king-jouet-meximieux",
       "name": "King Jouet Meximieux",
       "sector": "Jeux / Jouets",
-      "address": "Rue Carronnières, 01800 Meximieux",
+      "address": "Zone de l'Aviation, 01500 Ambérieu-en-Bugey",
       "city": "Meximieux",
       "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
-        "amblamex",
-        "franchise",
         "amberieuvitrines",
-        "base-full"
+        "amblamex",
+        "base-full",
+        "franchise"
       ],
-      "notes": "Source : Amblamex · franchise. À fusionner avec Ambérieu si même propriétaire.\nAussi listé sur Ambérieu Vitrines : https://amberieuvitrines.fr/boutique/enseigne/king-jouet\nActivité (base FULL) : MAGASIN DE JEUX ET JOUETS",
+      "notes": "Source : Amblamex · franchise. À fusionner avec Ambérieu si même propriétaire.\nAussi listé sur Ambérieu Vitrines : https://amberieuvitrines.fr/boutique/enseigne/king-jouet\nActivité (base FULL) : MAGASIN DE JEUX ET JOUETS\n\n--- Fusion ---\nSource : Amblamex · franchise. Vérifier si même propriétaire que King Jouet Meximieux.",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -1208,43 +1209,6 @@
           "role": "Contact principal",
           "email": "contact@biodemo.fr",
           "phone": "04 74 34 63 51"
-        }
-      ]
-    },
-    {
-      "id": "diet-plus",
-      "name": "Diet Plus",
-      "sector": "Bien-être / Minceur",
-      "address": "1 Place Sanville, 01500 Ambérieu-en-Bugey",
-      "city": "Ambérieu-en-Bugey",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "amblamex",
-        "franchise",
-        "base-full"
-      ],
-      "notes": "Source : Amblamex\nActivité (base FULL) : CENTRE DE RÉÉQUILIBRAGE ALIMENTAIRE POUR LA PERTE DE POIDS.",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis liste Amblamex"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "coords": [
-        45.958228,
-        5.357506
-      ],
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "email": "amberieuenbugey@dietplus.fr",
-          "phone": "04 74 37 39 56"
         }
       ]
     },
@@ -2163,42 +2127,6 @@
       ]
     },
     {
-      "id": "nouvelle-pharmacie-du-champs-de-mars",
-      "name": "Nouvelle pharmacie du champs de mars",
-      "sector": "Pharmacie",
-      "address": "9 Rue Alexandre Bérard, 01500 Ambérieu-en-Bugey",
-      "city": "Ambérieu-en-bugey",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "amberieuvitrines",
-        "base-full"
-      ],
-      "notes": "Source : Ambérieu Vitrines · https://amberieuvitrines.fr/boutique/enseigne/nouvelle-pharmacie-du-champs-de-mars\nAdresse précise à récupérer sur la fiche.\nActivité (base FULL) : PHARMACIE",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis liste Ambérieu Vitrines"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "coords": [
-        45.958918,
-        5.358349
-      ],
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "email": "hugues.sotty@proton.me",
-          "phone": "06 67 89 79 97"
-        }
-      ]
-    },
-    {
       "id": "western-fleurs",
       "name": "Western Fleurs",
       "sector": "Fleuriste",
@@ -2999,20 +2927,26 @@
       "id": "cuisine-aviva",
       "name": "Cuisine Aviva",
       "sector": "Cuisiniste",
-      "address": "8 Rue Marquis Albert de Dion, 01500 AMBERIEU EN BUGEY",
+      "address": "les Arcades, 54 Rue Alexandre Bérard, 01500 Amberieu-en-bugey",
       "city": "Amberieu en Bugey",
       "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
-        "amberieuvitrines"
+        "amberieuvitrines",
+        "base-full"
       ],
-      "notes": "Source : Ambérieu Vitrines · https://amberieuvitrines.fr/boutique/enseigne/cuisine-aviva\nAdresse précise à récupérer sur la fiche.",
+      "notes": "Source : Ambérieu Vitrines · https://amberieuvitrines.fr/boutique/enseigne/cuisine-aviva\nAdresse précise à récupérer sur la fiche.\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : MAGASIN DE CUISINES SUR MESURE\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : BANQUE / ASSURANCE",
       "timeline": [
         {
           "date": "2026-05-10",
           "type": "ajout",
           "text": "Ajouté depuis liste Ambérieu Vitrines"
+        },
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis base FULL Morgan (Numbers)"
         }
       ],
       "createdAt": "2026-05-10",
@@ -3028,6 +2962,11 @@
           "role": "Contact principal",
           "email": "alparslan.uyar@cuisines-aviva.fr",
           "phone": "04 74 39 89 78"
+        },
+        {
+          "name": "Contact magasin",
+          "role": "Contact principal",
+          "phone": "04 74 38 28 86"
         }
       ]
     },
@@ -3797,14 +3736,20 @@
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
-        "amberieuvitrines"
+        "amberieuvitrines",
+        "base-full"
       ],
-      "notes": "Source : Ambérieu Vitrines · https://amberieuvitrines.fr/boutique/enseigne/ets-servignat\nAdresse précise à récupérer sur la fiche.",
+      "notes": "Source : Ambérieu Vitrines · https://amberieuvitrines.fr/boutique/enseigne/ets-servignat\nAdresse précise à récupérer sur la fiche.\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : ENTREPRISE GÉNÉRALE DU BÂTIMENT",
       "timeline": [
         {
           "date": "2026-05-10",
           "type": "ajout",
           "text": "Ajouté depuis liste Ambérieu Vitrines"
+        },
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis base FULL Morgan (Numbers)"
         }
       ],
       "createdAt": "2026-05-10",
@@ -3820,6 +3765,12 @@
           "role": "Contact principal",
           "email": "nicolas.servignat@servignat.com",
           "phone": "04 74 38 27 44"
+        },
+        {
+          "name": "Contact magasin",
+          "role": "Contact principal",
+          "email": "servignat-sas@servignat.com",
+          "phone": "47 43 82 74 40"
         }
       ]
     },
@@ -4919,14 +4870,22 @@
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
-        "amberieuvitrines"
+        "amberieuvitrines",
+        "amblamex",
+        "base-full",
+        "franchise"
       ],
-      "notes": "Source : Ambérieu Vitrines · https://amberieuvitrines.fr/boutique/enseigne/dietplus\nAdresse précise à récupérer sur la fiche.",
+      "notes": "Source : Ambérieu Vitrines · https://amberieuvitrines.fr/boutique/enseigne/dietplus\nAdresse précise à récupérer sur la fiche.\n\n--- Fusion ---\nSource : Amblamex\nActivité (base FULL) : CENTRE DE RÉÉQUILIBRAGE ALIMENTAIRE POUR LA PERTE DE POIDS.",
       "timeline": [
         {
           "date": "2026-05-10",
           "type": "ajout",
           "text": "Ajouté depuis liste Ambérieu Vitrines"
+        },
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
         }
       ],
       "createdAt": "2026-05-10",
@@ -5677,9 +5636,10 @@
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
-        "amberieuvitrines"
+        "amberieuvitrines",
+        "base-full"
       ],
-      "notes": "Source : Ambérieu Vitrines · https://amberieuvitrines.fr/boutique/enseigne/nouvelle-pharmacie-du-champ-de-mars\nAdresse précise à récupérer sur la fiche.",
+      "notes": "Source : Ambérieu Vitrines · https://amberieuvitrines.fr/boutique/enseigne/nouvelle-pharmacie-du-champ-de-mars\nAdresse précise à récupérer sur la fiche.\n\n--- Fusion ---\nSource : Ambérieu Vitrines · https://amberieuvitrines.fr/boutique/enseigne/nouvelle-pharmacie-du-champs-de-mars\nAdresse précise à récupérer sur la fiche.\nActivité (base FULL) : PHARMACIE",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -5700,6 +5660,12 @@
           "role": "Contact principal",
           "email": "phie.pasqualini@wanadoo.fr",
           "phone": "04 74 38 02 26"
+        },
+        {
+          "name": "Contact magasin",
+          "role": "Contact principal",
+          "email": "hugues.sotty@proton.me",
+          "phone": "06 67 89 79 97"
         }
       ]
     },
@@ -6254,20 +6220,26 @@
       "id": "aldene",
       "name": "ALDENE",
       "sector": "BTP · Menuiserie / Agencement",
-      "address": "Le Patagonia, 510 avenue des Bergeries, 01150 Saint-Vulbas",
+      "address": "le Patagonia, 510, Avenue des Bergeries, 01150 Saint-vulbas",
       "city": "Saint-Vulbas",
       "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
+        "base-full",
         "pipa"
       ],
-      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Aménagement, agencement et équipement d'espaces de travail\nEffectifs (mars 2026) : 3",
+      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Aménagement, agencement et équipement d'espaces de travail\nEffectifs (mars 2026) : 3\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : SOLUTIONS COMPLÈTES POUR AMÉNAGEMENT, AGENCEMENT ET ÉQUIPEMENT DES ESPACES DE TRAVAIL",
       "timeline": [
         {
           "date": "2026-05-10",
           "type": "ajout",
           "text": "Ajouté depuis liste PIPA (mars 2026)"
+        },
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis base FULL Morgan (Numbers)"
         }
       ],
       "createdAt": "2026-05-10",
@@ -6867,17 +6839,17 @@
       "id": "biomerieux-saint-vulbas",
       "name": "BIOMERIEUX Saint-Vulbas",
       "sector": "Logistique / Entreposage",
-      "address": "305 avenue des Bergeries, 01150 Saint-Vulbas",
+      "address": "Allée du Clair de Lune - Bât 2A, 01150 Saint-Vulbas",
       "city": "Saint-Vulbas",
       "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
-        "pipa",
+        "base-full",
         "grand-compte",
-        "base-full"
+        "pipa"
       ],
-      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Centre logistique international de kits de diagnostic in vitro\nEffectifs (mars 2026) : 185",
+      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Centre logistique international de kits de diagnostic in vitro\nEffectifs (mars 2026) : 185\n\n--- Fusion ---\nSource : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Gestion de stocks et prestations logistiques\nEffectifs (mars 2026) : 290",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -8284,14 +8256,20 @@
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
+        "base-full",
         "pipa"
       ],
-      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Extrusion aluminium (Groupe Liebot)\nEffectifs (mars 2026) : 80",
+      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Extrusion aluminium (Groupe Liebot)\nEffectifs (mars 2026) : 80\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : EXTRUSION ALUMINIUM",
       "timeline": [
         {
           "date": "2026-05-10",
           "type": "ajout",
           "text": "Ajouté depuis liste PIPA (mars 2026)"
+        },
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis base FULL Morgan (Numbers)"
         }
       ],
       "createdAt": "2026-05-10",
@@ -8467,15 +8445,21 @@
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
-        "pipa",
-        "grand-compte"
+        "base-full",
+        "grand-compte",
+        "pipa"
       ],
-      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Plateforme de distribution du groupe Feu Vert\nEffectifs (mars 2026) : 111",
+      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Plateforme de distribution du groupe Feu Vert\nEffectifs (mars 2026) : 111\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : PLATEFORME DE DISTRIBUTION",
       "timeline": [
         {
           "date": "2026-05-10",
           "type": "ajout",
           "text": "Ajouté depuis liste PIPA (mars 2026)"
+        },
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis base FULL Morgan (Numbers)"
         }
       ],
       "createdAt": "2026-05-10",
@@ -8896,59 +8880,29 @@
       ]
     },
     {
-      "id": "gxo-supply-chain-biomerieux",
-      "name": "GXO Supply Chain - Biomérieux",
-      "sector": "Logistique / Entreposage",
-      "address": "Allée du Clair de Lune - Bât 2A, 01150 Saint-Vulbas",
-      "city": "Saint-Vulbas",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "pipa",
-        "grand-compte"
-      ],
-      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Gestion de stocks et prestations logistiques\nEffectifs (mars 2026) : 290",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis liste PIPA (mars 2026)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "website": "https://www.gxo.com/fr",
-      "contacts": [
-        {
-          "name": "Contact entreprise",
-          "role": "Contact principal",
-          "phone": "04 74 46 22 44"
-        }
-      ],
-      "coords": [
-        45.851307,
-        5.276323
-      ]
-    },
-    {
       "id": "gxo-supply-chain-amer-sport",
       "name": "GXO Supply Chain - Amer Sport",
       "sector": "Logistique / Entreposage",
-      "address": "Allée du Clair de Lune - Bât 2B/2C, 01150 Saint-Vulbas",
+      "address": "Allée du Clair de Lune - Bât 2b / 2c, 01150 Saint-vulbas",
       "city": "Saint-Vulbas",
       "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
+        "base-full",
         "pipa"
       ],
-      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Gestion de stocks et prestations logistiques\nEffectifs (mars 2026) : -",
+      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Gestion de stocks et prestations logistiques\nEffectifs (mars 2026) : -\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : LOGISTIQUE, GESTION DE STOCK",
       "timeline": [
         {
           "date": "2026-05-10",
           "type": "ajout",
           "text": "Ajouté depuis liste PIPA (mars 2026)"
+        },
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis base FULL Morgan (Numbers)"
         }
       ],
       "createdAt": "2026-05-10",
@@ -10029,20 +9983,26 @@
       "id": "mom-bistrot",
       "name": "MôM BISTROT",
       "sector": "Restauration · bistrot",
-      "address": "140 avenue Guy de la Verpillière, 01150 Saint-Vulbas",
+      "address": "140, Avenue Guy de la Verpillière, 01150 Saint-vulbas",
       "city": "Saint-Vulbas",
       "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
+        "base-full",
         "pipa"
       ],
-      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Restauration traditionnelle\nEffectifs (mars 2026) : 7",
+      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Restauration traditionnelle\nEffectifs (mars 2026) : 7\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : RESTAURANT TRADITIONNEL",
       "timeline": [
         {
           "date": "2026-05-10",
           "type": "ajout",
           "text": "Ajouté depuis liste PIPA (mars 2026)"
+        },
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis base FULL Morgan (Numbers)"
         }
       ],
       "createdAt": "2026-05-10",
@@ -10209,20 +10169,26 @@
       "id": "ntn-snr",
       "name": "NTN-SNR",
       "sector": "Logistique / Entreposage",
-      "address": "Distripôle, Allée des Chênes, 01150 Saint-Vulbas",
+      "address": "100 Distripôle, Allée des Chênes, 01150 Saint-vulbas",
       "city": "Saint-Vulbas",
       "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
+        "base-full",
         "pipa"
       ],
-      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Centre de distribution du groupe NTN-SNR (exploité par FM Logistic)\nEffectifs (mars 2026) : 100",
+      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Centre de distribution du groupe NTN-SNR (exploité par FM Logistic)\nEffectifs (mars 2026) : 100\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : CENTRE DE DISTRIBUTION DU GROUPE NTN-SNR EXPLOITÉ PAR FM LOGISTIC",
       "timeline": [
         {
           "date": "2026-05-10",
           "type": "ajout",
           "text": "Ajouté depuis liste PIPA (mars 2026)"
+        },
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis base FULL Morgan (Numbers)"
         }
       ],
       "createdAt": "2026-05-10",
@@ -11032,21 +10998,26 @@
       "id": "relife-electronic",
       "name": "RELIFE ELECTRONIC",
       "sector": "Informatique / Tech",
-      "address": "160 allée des Acacias, 01150 Saint-Vulbas",
+      "address": "Zi, 51 Rue Pasteur, 01500 Château Gaillard",
       "city": "Saint-Vulbas",
       "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
-        "pipa",
-        "base-full"
+        "base-full",
+        "pipa"
       ],
-      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Recyclage et reconditionnement de matériel téléphonique et informatique\nEffectifs (mars 2026) : 1",
+      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Recyclage et reconditionnement de matériel téléphonique et informatique\nEffectifs (mars 2026) : 1\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : ENTREPRISE LOCALE (DÉTAILS EXACTS NON TROUVÉS).",
       "timeline": [
         {
           "date": "2026-05-10",
           "type": "ajout",
           "text": "Ajouté depuis liste PIPA (mars 2026)"
+        },
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis base FULL Morgan (Numbers)"
         }
       ],
       "createdAt": "2026-05-10",
@@ -11057,6 +11028,12 @@
           "role": "Contact principal",
           "phone": "06 34 47 38 09",
           "email": "relife.electronic@gmail.com"
+        },
+        {
+          "name": "Contact magasin",
+          "role": "Contact principal",
+          "email": "lectron@orange.fr",
+          "phone": "04 74 35 43 81"
         }
       ],
       "coords": [
@@ -11857,52 +11834,17 @@
       ]
     },
     {
-      "id": "spi-entrepot-saint-vulbas",
-      "name": "SPI entrepôt Saint-Vulbas",
-      "sector": "Logistique / Entreposage",
-      "address": "1000 avenue de Côtier, 01150 Saint-Vulbas",
-      "city": "Saint-Vulbas",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "pipa"
-      ],
-      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Logistique, co-packing, co-manufacturing\nEffectifs (mars 2026) : -",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis liste PIPA (mars 2026)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "website": "https://www.spigroup.fr",
-      "contacts": [
-        {
-          "name": "Contact entreprise",
-          "role": "Contact principal",
-          "email": "contact@spiservices.fr"
-        }
-      ],
-      "coords": [
-        45.834932,
-        5.274383
-      ]
-    },
-    {
       "id": "spi-entrepot-blyes",
       "name": "SPI entrepôt Blyes",
       "sector": "Logistique / Entreposage",
-      "address": "810 allée des Combes, 01150 Blyes",
+      "address": "1000 avenue de Côtier, 01150 Saint-Vulbas",
       "city": "Blyes",
       "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
-        "pipa",
-        "base-full"
+        "base-full",
+        "pipa"
       ],
       "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Logistique, co-packing, co-manufacturing\nEffectifs (mars 2026) : -",
       "timeline": [
@@ -12076,14 +12018,20 @@
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
+        "base-full",
         "pipa"
       ],
-      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Soudure, tuyauterie\nEffectifs (mars 2026) : 2",
+      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Soudure, tuyauterie\nEffectifs (mars 2026) : 2\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : SOUDURE, TUYAUTERIE",
       "timeline": [
         {
           "date": "2026-05-10",
           "type": "ajout",
           "text": "Ajouté depuis liste PIPA (mars 2026)"
+        },
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis base FULL Morgan (Numbers)"
         }
       ],
       "createdAt": "2026-05-10",
@@ -12581,75 +12529,17 @@
       "id": "veepee-lyon-1",
       "name": "VEEPEE - LYON 1",
       "sector": "Logistique / Entreposage",
-      "address": "845 allée des Chênes, 01150 Saint-Vulbas",
-      "city": "Saint-Vulbas",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "pipa",
-        "grand-compte",
-        "base-full"
-      ],
-      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Centre de distribution e-commerce\nEffectifs (mars 2026) : 672",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis liste PIPA (mars 2026)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "website": "https://www.veepee.fr",
-      "coords": [
-        45.846695,
-        5.279527
-      ]
-    },
-    {
-      "id": "veepee-lyon-2",
-      "name": "VEEPEE - LYON 2",
-      "sector": "Logistique / Entreposage",
-      "address": "845 allée des Chênes, 01150 Saint-Vulbas",
-      "city": "Saint-Vulbas",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "pipa",
-        "base-full"
-      ],
-      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Centre de distribution e-commerce\nEffectifs (mars 2026) : -",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis liste PIPA (mars 2026)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "website": "https://www.veepee.fr",
-      "coords": [
-        45.846695,
-        5.279527
-      ]
-    },
-    {
-      "id": "veepee-lyon-3",
-      "name": "VEEPEE - LYON 3",
-      "sector": "Logistique / Entreposage",
       "address": "Allée Figue et Lièvre, 01150 Saint-Vulbas",
       "city": "Saint-Vulbas",
       "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
-        "pipa",
-        "base-full"
+        "base-full",
+        "grand-compte",
+        "pipa"
       ],
-      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Centre de distribution e-commerce\nEffectifs (mars 2026) : -",
+      "notes": "Source : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Centre de distribution e-commerce\nEffectifs (mars 2026) : 672\n\n--- Fusion ---\nSource : PIPA (Plaine de l'Ain Parc Industriel) · https://www.plainedelain.fr/annuaire-des-entreprises/\nActivité : Centre de distribution e-commerce\nEffectifs (mars 2026) : -",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -12661,8 +12551,8 @@
       "updatedAt": "2026-05-10",
       "website": "https://www.veepee.fr",
       "coords": [
-        45.85082,
-        5.277373
+        45.846695,
+        5.279527
       ]
     },
     {
@@ -12880,40 +12770,6 @@
       ]
     },
     {
-      "id": "aviva",
-      "name": "Aviva",
-      "sector": "Assurance",
-      "address": "les Arcades, 54 Rue Alexandre Bérard, 01500 Amberieu-en-bugey",
-      "city": "Amberieu-en-bugey",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : BANQUE / ASSURANCE",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "phone": "04 74 38 28 86"
-        }
-      ],
-      "coords": [
-        45.959961,
-        5.356583
-      ]
-    },
-    {
       "id": "bijouterie-favre",
       "name": "Bijouterie Favre",
       "sector": "Bijouterie / Horlogerie",
@@ -12960,41 +12816,7 @@
       "tags": [
         "base-full"
       ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : BOULANGERIE / PÂTISSERIE / CHOCOLATERIE",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "phone": "04 74 38 01 20"
-        }
-      ],
-      "coords": [
-        45.972044,
-        5.352251
-      ]
-    },
-    {
-      "id": "boulangerie-riquelme-2",
-      "name": "Boulangerie Riquelme",
-      "sector": "Ce Commerçant N'a Pas Renseigné de Description",
-      "address": "133 Rue Alexandre Bérard, 01500 Amberieu-en-bugey",
-      "city": "Amberieu-en-bugey",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : CE COMMERÇANT N'A PAS RENSEIGNÉ DE DESCRIPTION",
+      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : BOULANGERIE / PÂTISSERIE / CHOCOLATERIE\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : CE COMMERÇANT N'A PAS RENSEIGNÉ DE DESCRIPTION",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -13087,74 +12909,6 @@
       ]
     },
     {
-      "id": "cgdm-notaires",
-      "name": "Cgdm Notaires",
-      "sector": "Notaire",
-      "address": "191 Bis Rue Alexandre Bérard, 01500 Amberieu-en-bugey",
-      "city": "Amberieu-en-bugey",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : NOTAIRE",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "phone": "04 74 38 20 39"
-        }
-      ],
-      "coords": [
-        45.972044,
-        5.352251
-      ]
-    },
-    {
-      "id": "cgdm-notaires-2",
-      "name": "Cgdm Notaires",
-      "sector": "Ce Commerçant N'a Pas Renseigné de Description",
-      "address": "191 Bis Rue Alexandre Bérard, 01500 Amberieu-en-bugey",
-      "city": "Amberieu-en-bugey",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : CE COMMERÇANT N'A PAS RENSEIGNÉ DE DESCRIPTION",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "phone": "04 74 38 20 39"
-        }
-      ],
-      "coords": [
-        45.972044,
-        5.352251
-      ]
-    },
-    {
       "id": "cic-amberieu",
       "name": "Cic - Ambérieu",
       "sector": "Assurance",
@@ -13166,7 +12920,7 @@
       "tags": [
         "base-full"
       ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : BANQUE, ASSURANCES, TÉLÉPHONIE, TÉLÉSURVEILLANCE",
+      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : BANQUE, ASSURANCES, TÉLÉPHONIE, TÉLÉSURVEILLANCE\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : BANQUE / ASSURANCE\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : BANQUE POUR PARTICULIERS ET ENTREPRISES AVEC OFFRES DE TÉLÉPHONIE, ÉPARGNE, FINANCEMENT.",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -13182,6 +12936,16 @@
           "role": "Contact principal",
           "email": "18038@cic.fr",
           "phone": "04 37 63 27 92"
+        },
+        {
+          "name": "Contact magasin",
+          "role": "Contact principal",
+          "phone": "04 37 63 27 95"
+        },
+        {
+          "name": "Contact magasin",
+          "role": "Contact principal",
+          "phone": "04 37 63 27 94"
         }
       ],
       "coords": [
@@ -13235,7 +12999,7 @@
       "tags": [
         "base-full"
       ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : FLEURS FRANÇAISES DE SAISON, THÉS, CHOCOLATS, ARTISANAT LOCAL.",
+      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : FLEURS FRANÇAISES DE SAISON, THÉS, CHOCOLATS, ARTISANAT LOCAL.\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : FLEURISTE CRÉATIVE – COMPOSITIONS, LIVRAISON, IDÉES CADEAUX.",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -13251,6 +13015,12 @@
           "role": "Contact principal",
           "email": "paulinemagdinier@gmail.com",
           "phone": "04 74 35 17 67"
+        },
+        {
+          "name": "Contact magasin",
+          "role": "Contact principal",
+          "email": "lagnieufleurs@gmail.com",
+          "phone": "04 74 35 70 76"
         }
       ],
       "coords": [
@@ -13702,40 +13472,6 @@
       ]
     },
     {
-      "id": "cuisines-aviva",
-      "name": "Cuisines Aviva",
-      "sector": "Cuisiniste",
-      "address": "8 Rue Marquis Albert de Dion, 01500 Amberieu-en-bugey",
-      "city": "Amberieu-en-bugey",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : MAGASIN DE CUISINES SUR MESURE",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "phone": "04 74 39 89 78"
-        }
-      ],
-      "coords": [
-        45.96029,
-        5.360766
-      ]
-    },
-    {
       "id": "trucks-services-et-distribution",
       "name": "Trucks Services et Distribution",
       "sector": "Vente et Entretien Poids Lourds",
@@ -13976,41 +13712,6 @@
       "coords": [
         45.965665,
         5.34041
-      ]
-    },
-    {
-      "id": "servignat",
-      "name": "Servignat",
-      "sector": "BTP / Construction",
-      "address": "01500 Amberieu-en-bugey",
-      "city": "Amberieu-en-bugey",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : ENTREPRISE GÉNÉRALE DU BÂTIMENT",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "email": "servignat-sas@servignat.com",
-          "phone": "47 43 82 74 40"
-        }
-      ],
-      "coords": [
-        45.975775,
-        5.343037
       ]
     },
     {
@@ -14328,41 +14029,6 @@
       ]
     },
     {
-      "id": "calidrys-2",
-      "name": "Calidrys",
-      "sector": "Paysagiste / Espaces verts",
-      "address": "150, Allée des Prunus, Parc D'activités les Combieres, 01150 Blyes",
-      "city": "Blyes",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : AMÉNAGEMENT PAYSAGER",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "email": "contact@calidrys.fr",
-          "phone": "04 74 22 20 28"
-        }
-      ],
-      "coords": [
-        45.84905,
-        5.250305
-      ]
-    },
-    {
       "id": "charrin",
       "name": "Charrin",
       "sector": "Travaux Publics et Privés, Génie Civil, Terrasseme",
@@ -14424,41 +14090,6 @@
           "name": "Contact magasin",
           "role": "Contact principal",
           "phone": "06 65 74 54 35"
-        }
-      ],
-      "coords": [
-        45.840991,
-        5.262822
-      ]
-    },
-    {
-      "id": "stj-co",
-      "name": "Stj & Co",
-      "sector": "Soudure, Tuyauterie",
-      "address": "55, Impasse des Prunus, 01150 Blyes",
-      "city": "Blyes",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : SOUDURE, TUYAUTERIE",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "email": "stj01500@gmail.com",
-          "phone": "07 71 22 04 46"
         }
       ],
       "coords": [
@@ -14817,41 +14448,6 @@
       ]
     },
     {
-      "id": "lectron",
-      "name": "Lectron",
-      "sector": "Entreprise Locale (détails Exacts Non Trouvés).",
-      "address": "Zi, 51 Rue Pasteur, 01500 Château Gaillard",
-      "city": "Château Gaillard",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : ENTREPRISE LOCALE (DÉTAILS EXACTS NON TROUVÉS).",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "email": "lectron@orange.fr",
-          "phone": "04 74 35 43 81"
-        }
-      ],
-      "coords": [
-        45.971281,
-        5.302959
-      ]
-    },
-    {
       "id": "locamuc-agence-de-chateau-gaillard",
       "name": "Locamuc Agence de Château Gaillard",
       "sector": "Agence Locale (service/location Non Précisé).",
@@ -15087,40 +14683,6 @@
       ]
     },
     {
-      "id": "cic-lagnieu",
-      "name": "Cic - Lagnieu",
-      "sector": "Assurance",
-      "address": "46 Rue Pasteur, 01150 Lagnieu",
-      "city": "Lagnieu",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : BANQUE / ASSURANCE",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "phone": "04 37 63 27 95"
-        }
-      ],
-      "coords": [
-        45.90306,
-        5.348709
-      ]
-    },
-    {
       "id": "cosmos-geometres",
       "name": "Cosmos Géomètres",
       "sector": "Géomètre-expert",
@@ -15236,7 +14798,7 @@
       "tags": [
         "base-full"
       ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : BOULANGERIE ARTISANALE, PÂTISSERIES, PRODUITS RÉGIONAUX, SNACKING ET SPÉCIALITÉS LOCALES.",
+      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : BOULANGERIE ARTISANALE, PÂTISSERIES, PRODUITS RÉGIONAUX, SNACKING ET SPÉCIALITÉS LOCALES.\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : FLEURISTE / JARDINERIE",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -15326,41 +14888,6 @@
       "coords": [
         45.90283,
         5.348753
-      ]
-    },
-    {
-      "id": "lagnieu-fleurs",
-      "name": "Lagnieu Fleurs",
-      "sector": "Fleuriste",
-      "address": "37 Rue Pasteur 01150 Lagnieu, 01150 Lagnieu",
-      "city": "Lagnieu",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : FLEURISTE CRÉATIVE – COMPOSITIONS, LIVRAISON, IDÉES CADEAUX.",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "email": "lagnieufleurs@gmail.com",
-          "phone": "04 74 35 70 76"
-        }
-      ],
-      "coords": [
-        45.903797,
-        5.349295
       ]
     },
     {
@@ -15548,42 +15075,7 @@
       "tags": [
         "base-full"
       ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : COIFFURE, ONGLERIE, BIEN-ÊTRE, MASSAGES.",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "email": "courantdhair01@orange.fr",
-          "phone": "04 74 35 90 44"
-        }
-      ],
-      "coords": [
-        45.899205,
-        5.347426
-      ]
-    },
-    {
-      "id": "salon-3-0-2",
-      "name": "Salon 3.0",
-      "sector": "Coiffeur",
-      "address": "74 Route du Port, 01150 Lagnieu",
-      "city": "Lagnieu",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : LE SALON 3.0 CE SONT 3 ESPACES DÉDIÉS À VOTRE BEAUTÉ : COIFFURE, ONGLERIE, BIEN-ÊTRE.",
+      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : COIFFURE, ONGLERIE, BIEN-ÊTRE, MASSAGES.\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : LE SALON 3.0 CE SONT 3 ESPACES DÉDIÉS À VOTRE BEAUTÉ : COIFFURE, ONGLERIE, BIEN-ÊTRE.",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -15688,42 +15180,7 @@
       "tags": [
         "base-full"
       ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : WELDOM EST SPÉCIALISÉ DANS LES ARTICLES ET ÉQUIPEMENTS DE BRICOLAGE POUR MAISON ET JARDIN.",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "email": "lagnieu@weldom.fr",
-          "phone": "04 74 35 71 33"
-        }
-      ],
-      "coords": [
-        45.898685,
-        5.346285
-      ]
-    },
-    {
-      "id": "weldom-2",
-      "name": "Weldom",
-      "sector": "Bricolage / Jardinage",
-      "address": "Avenue de Montferrand, 01150 Lagnieu",
-      "city": "Lagnieu",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : MAGASIN DE BRICOLAGE, JARDINAGE ET RÉNOVATION.",
+      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : WELDOM EST SPÉCIALISÉ DANS LES ARTICLES ET ÉQUIPEMENTS DE BRICOLAGE POUR MAISON ET JARDIN.\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : MAGASIN DE BRICOLAGE, JARDINAGE ET RÉNOVATION.",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -15779,40 +15236,6 @@
       "coords": [
         45.920635,
         5.296622
-      ]
-    },
-    {
-      "id": "judiverre",
-      "name": "Judiverre",
-      "sector": "Travail du verre et vitrerie artisanale",
-      "address": "Zone Artisanale Les Granges, 01150 Leyment",
-      "city": "Leyment",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : Travail du verre et vitrerie artisanale",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "email": "judiverre@outlook.fr"
-        }
-      ],
-      "coords": [
-        45.925248,
-        5.297913
       ]
     },
     {
@@ -15932,7 +15355,7 @@
       "tags": [
         "base-full"
       ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : VERRERIE ARTISANALE",
+      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : VERRERIE ARTISANALE\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : Travail du verre et vitrerie artisanale",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -16163,41 +15586,6 @@
       ]
     },
     {
-      "id": "agence-axa-meximieux",
-      "name": "Agence Axa Meximieux",
-      "sector": "Assurance",
-      "address": "15 Rue de Genève, 01800 Meximieux",
-      "city": "Meximieux",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : BANQUE / ASSURANCE",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "email": "agence.duvieusart@axa.fr",
-          "phone": "04 74 37 07 51"
-        }
-      ],
-      "coords": [
-        45.903957,
-        5.193664
-      ]
-    },
-    {
       "id": "agence-axa-meximieux-2",
       "name": "Agence Axa Meximieux",
       "sector": "Ce Commerçant N'a Pas Renseigné de Description",
@@ -16209,7 +15597,7 @@
       "tags": [
         "base-full"
       ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : CE COMMERÇANT N'A PAS RENSEIGNÉ DE DESCRIPTION",
+      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : CE COMMERÇANT N'A PAS RENSEIGNÉ DE DESCRIPTION\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : BANQUE / ASSURANCE",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -16592,42 +15980,7 @@
       "tags": [
         "base-full"
       ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : BIJOUTIER HORLOGER DEPUIS SIX GÉNÉRATIONS. RÉPARATIONS, CRÉATIONS, TRANSFORMATIONS.",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "email": "bijouteriebal@orange.fr",
-          "phone": "04 74 61 06 33"
-        }
-      ],
-      "coords": [
-        45.903307,
-        5.191753
-      ]
-    },
-    {
-      "id": "bijouterie-maison-bal-2",
-      "name": "Bijouterie Maison Bal",
-      "sector": "Bijouterie / Horlogerie",
-      "address": "24 Place Vaugelas, 01800 Meximieux",
-      "city": "Meximieux",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : BIJOUTIER HORLOGER DEPUIS 6 GÉNÉRATIONS, CRÉATIONS ET RÉPARATIONS SUR PLACE.",
+      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : BIJOUTIER HORLOGER DEPUIS SIX GÉNÉRATIONS. RÉPARATIONS, CRÉATIONS, TRANSFORMATIONS.\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : BIJOUTIER HORLOGER DEPUIS 6 GÉNÉRATIONS, CRÉATIONS ET RÉPARATIONS SUR PLACE.",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -16928,40 +16281,6 @@
       ]
     },
     {
-      "id": "cic-meximieux",
-      "name": "Cic - Meximieux",
-      "sector": "Banque / Fondation",
-      "address": "23 Rue de Lyon, 01800 Meximieux",
-      "city": "Meximieux",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : BANQUE POUR PARTICULIERS ET ENTREPRISES AVEC OFFRES DE TÉLÉPHONIE, ÉPARGNE, FINANCEMENT.",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "phone": "04 37 63 27 94"
-        }
-      ],
-      "coords": [
-        45.90215,
-        5.190648
-      ]
-    },
-    {
       "id": "cinema-l-horloge",
       "name": "Cinema L'horloge",
       "sector": "Cinéma Associatif Avec Films Art & Essai et Animat",
@@ -17102,41 +16421,6 @@
       ]
     },
     {
-      "id": "cuisine-reference",
-      "name": "Cuisine Référence",
-      "sector": "Cuisiniste",
-      "address": "01800 Meximieux",
-      "city": "Meximieux",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : CUISINISTE",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "email": "adossantos@cuisines-references.com",
-          "phone": "04 74 36 25 19"
-        }
-      ],
-      "coords": [
-        45.90363,
-        5.192526
-      ]
-    },
-    {
       "id": "cuisines-references",
       "name": "Cuisines Références",
       "sector": "Electroménager / Equipement de la Maison",
@@ -17148,7 +16432,7 @@
       "tags": [
         "base-full"
       ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : ELECTROMÉNAGER / EQUIPEMENT DE LA MAISON",
+      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : ELECTROMÉNAGER / EQUIPEMENT DE LA MAISON\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : Conception et installation de cuisines sur mesure\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : CUISINISTE",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -17169,41 +16453,6 @@
       "coords": [
         45.902472,
         5.190534
-      ]
-    },
-    {
-      "id": "cuisines-references-2",
-      "name": "Cuisines Références",
-      "sector": "Cuisiniste",
-      "address": "Rue de la Tréfilerie, 01800 Meximieux",
-      "city": "Meximieux",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : Conception et installation de cuisines sur mesure",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "email": "meximieux@cuisines-references.com",
-          "phone": "04 74 36 25 19"
-        }
-      ],
-      "coords": [
-        45.901907,
-        5.199375
       ]
     },
     {
@@ -17650,40 +16899,6 @@
       ]
     },
     {
-      "id": "l-atelier-vert",
-      "name": "L'atelier Vert",
-      "sector": "Fleuriste",
-      "address": "8 Place Vaugelas, 01800 Meximieux",
-      "city": "Meximieux",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : FLEURISTE / JARDINERIE",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "phone": "04 74 61 01 75"
-        }
-      ],
-      "coords": [
-        45.903777,
-        5.192442
-      ]
-    },
-    {
       "id": "la-baraque-a-frites",
       "name": "la Baraque à Frites",
       "sector": "Restauration Rapide",
@@ -17973,7 +17188,7 @@
       "tags": [
         "base-full"
       ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : ENSEIGNES LUMINEUSES, SIGNALÉTIQUE, PUBLICITÉ.",
+      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : ENSEIGNES LUMINEUSES, SIGNALÉTIQUE, PUBLICITÉ.\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : Communication visuelle et signalétique",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -17994,40 +17209,6 @@
       "coords": [
         45.903444,
         5.193099
-      ]
-    },
-    {
-      "id": "martinez-communication-2",
-      "name": "Martinez Communication",
-      "sector": "Communication / Marketing",
-      "address": "135 Rue Simone Veil, 01800 Meximieux",
-      "city": "Meximieux",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : Communication visuelle et signalétique",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "email": "contact@martinez-communication.fr"
-        }
-      ],
-      "coords": [
-        45.899298,
-        5.198714
       ]
     },
     {
@@ -18321,7 +17502,7 @@
       "tags": [
         "base-full"
       ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : Design graphique et communication visuelle",
+      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : Design graphique et communication visuelle\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : PUB / MARKETING",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -18348,7 +17529,7 @@
       "id": "notaires",
       "name": "Notaires",
       "sector": "Notaire",
-      "address": "01800 Meximieux",
+      "address": "191 Bis Rue Alexandre Bérard, 01500 Amberieu-en-bugey",
       "city": "Meximieux",
       "level": "ouvert",
       "status": "a-contacter",
@@ -18356,7 +17537,7 @@
       "tags": [
         "base-full"
       ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : NOTAIRE",
+      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : NOTAIRE\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : CE COMMERÇANT N'A PAS RENSEIGNÉ DE DESCRIPTION\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : NOTAIRE",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -18372,6 +17553,11 @@
           "role": "Contact principal",
           "email": "sylvain.milan@notaires.fr",
           "phone": "04 74 34 21 21"
+        },
+        {
+          "name": "Contact magasin",
+          "role": "Contact principal",
+          "phone": "04 74 38 20 39"
         }
       ],
       "coords": [
@@ -18425,42 +17611,7 @@
       "tags": [
         "base-full"
       ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : IMPRIMERIE, CRÉATION GRAPHIQUE, MARQUAGE TEXTILE, SERVICES AUX ENTREPRISES.",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "email": "pixelchrom@orange.fr",
-          "phone": "04 74 61 46 00"
-        }
-      ],
-      "coords": [
-        45.90416,
-        5.198174
-      ]
-    },
-    {
-      "id": "pixel-chrom-2",
-      "name": "Pixel Chrom",
-      "sector": "Communication / Marketing",
-      "address": "40 Avenue de Verdun, 01800 Meximieux",
-      "city": "Meximieux",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : IMPRIMERIE ET STUDIO GRAPHIQUE : CRÉATION, IMPRESSION, MARQUAGE TEXTILE.",
+      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : IMPRIMERIE, CRÉATION GRAPHIQUE, MARQUAGE TEXTILE, SERVICES AUX ENTREPRISES.\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : IMPRIMERIE ET STUDIO GRAPHIQUE : CRÉATION, IMPRESSION, MARQUAGE TEXTILE.",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -18981,14 +18132,20 @@
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
+        "amblamex",
         "base-full"
       ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : CADEAUX, DÉCORATION, CHÈQUES CADEAUX LOCAUX.",
+      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : CADEAUX, DÉCORATION, CHÈQUES CADEAUX LOCAUX.\n\n--- Fusion ---\nSource : Amblamex · à clarifier (boutique liée à l'asso ?)",
       "timeline": [
         {
           "date": "2026-05-10",
           "type": "ajout",
           "text": "Ajouté depuis base FULL Morgan (Numbers)"
+        },
+        {
+          "date": "2026-05-10",
+          "type": "ajout",
+          "text": "Ajouté depuis liste Amblamex"
         }
       ],
       "createdAt": "2026-05-10",
@@ -19146,41 +18303,6 @@
       ]
     },
     {
-      "id": "aldene-groupe-technic-bureau",
-      "name": "Aldene (groupe Technic Bureau)",
-      "sector": "Beauté · esthétique",
-      "address": "le Patagonia, 510, Avenue des Bergeries, 01150 Saint-vulbas",
-      "city": "Saint-vulbas",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : SOLUTIONS COMPLÈTES POUR AMÉNAGEMENT, AGENCEMENT ET ÉQUIPEMENT DES ESPACES DE TRAVAIL",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "email": "g.david@aldene.fr",
-          "phone": "07 50 56 75 63"
-        }
-      ],
-      "coords": [
-        45.828488,
-        5.289051
-      ]
-    },
-    {
       "id": "alti-solutions",
       "name": "Alti Solutions",
       "sector": "Cordiste",
@@ -19320,74 +18442,6 @@
       ]
     },
     {
-      "id": "ex-al-groupe-liebot",
-      "name": "Ex'al (groupe Liebot)",
-      "sector": "Extrusion Aluminium",
-      "address": "1460 Avenue Guy de la Verpillière, 01150 Saint-vulbas",
-      "city": "Saint-vulbas",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : EXTRUSION ALUMINIUM",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "phone": "04 69 13 55 60"
-        }
-      ],
-      "coords": [
-        45.844347,
-        5.289624
-      ]
-    },
-    {
-      "id": "feu-vert",
-      "name": "Feu Vert",
-      "sector": "Plateforme de Distribution",
-      "address": "405 Avenue Charles de Gaulle, 01150 Saint-vulbas",
-      "city": "Saint-vulbas",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : PLATEFORME DE DISTRIBUTION",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "phone": "04 37 61 61 61"
-        }
-      ],
-      "coords": [
-        45.837305,
-        5.283498
-      ]
-    },
-    {
       "id": "fluide-haute-pression",
       "name": "Fluide Haute Pression",
       "sector": "Réparation Hydraulique Moteurs/vérins",
@@ -19458,41 +18512,6 @@
       ]
     },
     {
-      "id": "garage-de-la-plaine-de-l-ain-point-s",
-      "name": "Garage de la Plaine de L'ain - Point S",
-      "sector": "Auto · entretien / concession",
-      "address": "140 Avenue Charles de Gaulle, 01150 Saint-vulbas",
-      "city": "Saint-vulbas",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : GARAGE, LOCATION, VENTE VÉHICULES",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "email": "ventes@garagedelaplaine01.fr",
-          "phone": "04 74 61 58 81"
-        }
-      ],
-      "coords": [
-        45.837777,
-        5.286524
-      ]
-    },
-    {
       "id": "gpo-paredes-orapi",
       "name": "Gpo - Paredes Orapi",
       "sector": "Industrie",
@@ -19525,33 +18544,6 @@
       "coords": [
         45.829544,
         5.281661
-      ]
-    },
-    {
-      "id": "gxo-supply-chain-france-amer-sport",
-      "name": "Gxo Supply Chain France - Amer Sport",
-      "sector": "Logistique / Transport",
-      "address": "Allée du Clair de Lune - Bât 2b / 2c, 01150 Saint-vulbas",
-      "city": "Saint-vulbas",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : LOGISTIQUE, GESTION DE STOCK",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "coords": [
-        45.83296,
-        5.287131
       ]
     },
     {
@@ -19778,74 +18770,6 @@
       "coords": [
         45.840754,
         5.287594
-      ]
-    },
-    {
-      "id": "mm-bistrot",
-      "name": "Møm Bistrot",
-      "sector": "Restauration",
-      "address": "140, Avenue Guy de la Verpillière, 01150 Saint-vulbas",
-      "city": "Saint-vulbas",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : RESTAURANT TRADITIONNEL",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "phone": "04 74 37 27 63"
-        }
-      ],
-      "coords": [
-        45.844347,
-        5.289624
-      ]
-    },
-    {
-      "id": "ntn-snr-fm-logistic",
-      "name": "Ntn-snr (fm Logistic)",
-      "sector": "Centre de Distribution du Groupe Ntn-snr Exploité ",
-      "address": "100 Distripôle, Allée des Chênes, 01150 Saint-vulbas",
-      "city": "Saint-vulbas",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : CENTRE DE DISTRIBUTION DU GROUPE NTN-SNR EXPLOITÉ PAR FM LOGISTIC",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "phone": "04 74 46 56 02"
-        }
-      ],
-      "coords": [
-        45.831276,
-        5.290432
       ]
     },
     {
@@ -20514,37 +19438,6 @@
           "role": "Contact principal",
           "email": "martin.tp01@gmail.com",
           "phone": "06 22 08 47 97"
-        }
-      ]
-    },
-    {
-      "id": "mycreadesign",
-      "name": "Mycreadesign",
-      "sector": "Communication / Marketing",
-      "address": "",
-      "city": "",
-      "level": "ouvert",
-      "status": "a-contacter",
-      "phase": "p1",
-      "tags": [
-        "base-full"
-      ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : PUB / MARKETING",
-      "timeline": [
-        {
-          "date": "2026-05-10",
-          "type": "ajout",
-          "text": "Ajouté depuis base FULL Morgan (Numbers)"
-        }
-      ],
-      "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
-      "contacts": [
-        {
-          "name": "Contact magasin",
-          "role": "Contact principal",
-          "email": "marielle@mycreadesign.fr",
-          "phone": "06 14 26 16 86"
         }
       ]
     },
