@@ -14,6 +14,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
   <style>
     :root {
       --bg: #0a0a0a;
@@ -93,10 +96,7 @@
       -webkit-text-fill-color: transparent;
       margin-bottom: .35rem;
     }
-    .lock-sub {
-      font-size: .82rem; color: var(--mu);
-      margin-bottom: 1.6rem;
-    }
+    .lock-sub { font-size: .82rem; color: var(--mu); margin-bottom: 1.6rem; }
     .lock-form { display: flex; flex-direction: column; gap: .7rem; }
     .lock-input {
       width: 100%; padding: .85rem 1rem;
@@ -157,10 +157,7 @@
       letter-spacing: .12em; text-transform: uppercase;
       color: var(--mu-2);
     }
-    .top-meta {
-      display: flex; align-items: center; gap: 1.5rem;
-      font-size: .74rem;
-    }
+    .top-meta { display: flex; align-items: center; gap: 1.5rem; font-size: .74rem; }
     .top-chip {
       display: inline-flex; align-items: center; gap: .5rem;
       padding: .35rem .7rem; border-radius: 999px;
@@ -199,8 +196,16 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       overflow: hidden;
-      transition: border-color .2s, background .2s;
+      transition: border-color .2s, background .2s, transform .25s var(--cubic);
+      opacity: 0; transform: translateY(10px);
+      animation: fadeUp .55s var(--cubic) forwards;
     }
+    .kpi:nth-child(1) { animation-delay: .03s; }
+    .kpi:nth-child(2) { animation-delay: .09s; }
+    .kpi:nth-child(3) { animation-delay: .15s; }
+    .kpi:nth-child(4) { animation-delay: .21s; }
+    .kpi:nth-child(5) { animation-delay: .27s; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     .kpi:hover { border-color: var(--border-2); }
     .kpi::before {
       content: ''; position: absolute; inset: 0 0 auto 0; height: 1px;
@@ -222,18 +227,118 @@
       color: var(--fg);
     }
     .kpi-value .unit { font-size: 1.1rem; color: var(--mu-2); margin-left: .15rem; }
-    .kpi-extra {
-      margin-top: .45rem; font-size: .72rem; color: var(--mu);
-    }
+    .kpi-extra { margin-top: .45rem; font-size: .72rem; color: var(--mu); }
     .kpi-extra strong { color: var(--fg); font-weight: 600; }
     .kpi-bar {
       margin-top: .75rem; height: 4px;
       background: rgba(255,255,255,.06); border-radius: 999px; overflow: hidden;
     }
     .kpi-bar-fill {
-      height: 100%; border-radius: 999px;
+      height: 100%; border-radius: 999px; width: 0;
       background: linear-gradient(90deg, var(--indigo), var(--violet));
-      transition: width .6s var(--cubic);
+      transition: width 1.4s var(--cubic);
+      box-shadow: 0 0 8px rgba(168,85,247,.4);
+    }
+
+    /* THIS WEEK PANEL */
+    .this-week {
+      margin: 1.4rem 1.6rem 0;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      opacity: 0; transform: translateY(10px);
+      animation: fadeUp .55s var(--cubic) .35s forwards;
+    }
+    .this-week-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .9rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .this-week-title {
+      display: flex; align-items: center; gap: .55rem;
+      font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--mu-2);
+    }
+    .this-week-title svg { width: 14px; height: 14px; color: var(--indigo); }
+    .this-week-counts {
+      display: flex; gap: .55rem;
+      font-family: 'Geist Mono', monospace; font-size: .68rem;
+    }
+    .tw-count {
+      display: inline-flex; align-items: center; gap: .35rem;
+      padding: .25rem .55rem; border-radius: 6px;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--mu);
+    }
+    .tw-count .b-dot { width: 5px; height: 5px; border-radius: 50%; }
+    .this-week-body {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: .65rem;
+      padding: 1rem 1.2rem;
+    }
+    .tw-item {
+      display: flex; align-items: flex-start; gap: .7rem;
+      padding: .7rem .8rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all .15s var(--cubic);
+    }
+    .tw-item:hover { background: var(--surface-3); border-color: var(--border-2); transform: translateY(-1px); }
+    .tw-item.urgent { border-color: rgba(244,63,94,.35); background: rgba(244,63,94,.06); }
+    .tw-item.today { border-color: rgba(234,179,8,.4); background: rgba(234,179,8,.06); }
+    .tw-day {
+      flex-shrink: 0; width: 42px;
+      padding: .35rem .25rem;
+      background: var(--surface-3); border-radius: 8px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+    .tw-item.urgent .tw-day { border-color: rgba(244,63,94,.5); background: rgba(244,63,94,.12); }
+    .tw-item.today .tw-day { border-color: rgba(234,179,8,.5); background: rgba(234,179,8,.12); }
+    .tw-day-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem; line-height: 1;
+    }
+    .tw-day-mon {
+      font-size: .58rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--mu-2); margin-top: .15rem;
+    }
+    .tw-content { flex: 1; min-width: 0; }
+    .tw-line1 {
+      display: flex; align-items: center; gap: .45rem;
+      font-size: .78rem; font-weight: 600;
+      color: var(--fg);
+    }
+    .tw-line1 .b-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+    .tw-line2 {
+      font-size: .72rem; color: var(--mu);
+      margin-top: .2rem; line-height: 1.4;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    .tw-tag {
+      display: inline-flex; align-items: center; gap: .3rem;
+      padding: .15rem .4rem; border-radius: 4px;
+      font-size: .58rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      margin-left: .35rem;
+    }
+    .tw-tag.urgent { background: rgba(244,63,94,.15); color: var(--rose); }
+    .tw-tag.today { background: rgba(234,179,8,.15); color: var(--amber); }
+    .tw-empty {
+      grid-column: 1 / -1;
+      padding: 1.5rem; text-align: center;
+      font-size: .82rem; color: var(--mu-2);
+    }
+    .tw-empty .tw-empty-em {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem; color: var(--fg); margin-bottom: .25rem;
+      letter-spacing: .02em;
     }
 
     /* TIMELINE des 2 phases */
@@ -243,6 +348,8 @@
       background: var(--surface-2);
       border: 1px solid var(--border);
       border-radius: 14px;
+      opacity: 0; transform: translateY(10px);
+      animation: fadeUp .55s var(--cubic) .45s forwards;
     }
     .timeline-head {
       display: flex; align-items: center; justify-content: space-between;
@@ -254,33 +361,24 @@
       color: var(--mu-2);
     }
     .timeline-bar {
-      position: relative;
-      height: 38px;
-      display: flex; gap: 4px;
+      position: relative; height: 38px; display: flex; gap: 4px;
     }
     .phase-block {
-      position: relative;
-      flex: 1; height: 100%;
-      border-radius: 8px;
+      position: relative; flex: 1; height: 100%; border-radius: 8px;
       background: linear-gradient(135deg, var(--phase-color, var(--indigo)) 0%, rgba(168,85,247,.4) 100%);
-      opacity: .55;
-      transition: opacity .25s;
-      cursor: default;
+      opacity: .55; transition: opacity .25s; cursor: default;
     }
     .phase-block.active { opacity: 1; box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset, 0 4px 18px rgba(129,140,248,.18); }
     .phase-block.past { opacity: .25; filter: grayscale(.6); }
     .phase-block-label {
-      position: absolute; top: 50%; left: .8rem;
-      transform: translateY(-50%);
-      font-size: .72rem; font-weight: 600;
-      color: #fff; pointer-events: none;
+      position: absolute; top: 50%; left: .8rem; transform: translateY(-50%);
+      font-size: .72rem; font-weight: 600; color: #fff; pointer-events: none;
       text-shadow: 0 1px 2px rgba(0,0,0,.3);
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
       max-width: calc(100% - 1.6rem);
     }
     .phase-block-right {
-      position: absolute; top: 50%; right: .8rem;
-      transform: translateY(-50%);
+      position: absolute; top: 50%; right: .8rem; transform: translateY(-50%);
       font-family: 'Geist Mono', monospace;
       font-size: .68rem; color: rgba(255,255,255,.85);
       pointer-events: none;
@@ -289,20 +387,16 @@
       position: absolute; top: -6px; bottom: -6px;
       width: 2px; background: var(--fg);
       box-shadow: 0 0 12px rgba(255,255,255,.45);
-      pointer-events: none;
-      transform: translateX(-1px);
+      pointer-events: none; transform: translateX(-1px);
     }
     .today-cursor::before {
-      content: 'TODAY';
-      position: absolute; top: -18px; left: 50%;
-      transform: translateX(-50%);
+      content: 'TODAY'; position: absolute; top: -18px; left: 50%; transform: translateX(-50%);
       font-family: 'Geist Mono', monospace;
       font-size: .58rem; letter-spacing: .12em;
       color: var(--fg); white-space: nowrap;
     }
     .today-cursor::after {
-      content: ''; position: absolute; top: 100%; left: 50%;
-      transform: translateX(-50%);
+      content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
       width: 8px; height: 8px; border-radius: 50%;
       background: var(--fg); box-shadow: 0 0 12px rgba(255,255,255,.6);
     }
@@ -314,13 +408,10 @@
     }
     .timeline-countdown {
       display: flex; gap: 1.4rem;
-      margin-top: .9rem;
-      padding-top: .9rem;
+      margin-top: .9rem; padding-top: .9rem;
       border-top: 1px solid var(--border);
     }
-    .countdown {
-      display: flex; flex-direction: column; gap: .15rem;
-    }
+    .countdown { display: flex; flex-direction: column; gap: .15rem; }
     .countdown-label {
       font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
       color: var(--mu-2);
@@ -341,6 +432,8 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       flex-wrap: wrap;
+      opacity: 0; transform: translateY(10px);
+      animation: fadeUp .55s var(--cubic) .55s forwards;
     }
     .search-wrap {
       flex: 1; min-width: 240px;
@@ -357,9 +450,7 @@
       color: var(--fg); font-size: .82rem;
     }
     .search-input::placeholder { color: var(--mu-3); }
-    .filter-group {
-      display: flex; gap: .35rem; flex-wrap: wrap;
-    }
+    .filter-group { display: flex; gap: .35rem; flex-wrap: wrap; }
     .chip {
       padding: .42rem .75rem; border-radius: 999px;
       background: var(--surface); border: 1px solid var(--border);
@@ -373,8 +464,7 @@
       color: var(--indigo);
     }
     .view-toggle {
-      display: flex; gap: 2px;
-      padding: 3px;
+      display: flex; gap: 2px; padding: 3px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 8px;
@@ -382,8 +472,9 @@
     .view-toggle button {
       padding: .4rem .8rem; border-radius: 6px;
       color: var(--mu); font-size: .72rem; font-weight: 500;
-      transition: all .15s;
+      transition: all .15s; display: inline-flex; align-items: center; gap: .35rem;
     }
+    .view-toggle button svg { width: 12px; height: 12px; }
     .view-toggle button.active {
       background: var(--surface-3); color: var(--fg);
       box-shadow: 0 1px 3px rgba(0,0,0,.3);
@@ -449,7 +540,10 @@
       cursor: pointer;
       transition: all .15s var(--cubic);
       position: relative;
+      opacity: 0; transform: translateY(8px);
+      animation: cardIn .42s var(--cubic) forwards;
     }
+    @keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
     .card:hover {
       background: var(--surface-3);
       border-color: var(--border-2);
@@ -476,7 +570,7 @@
     .card-meta {
       display: flex; gap: .7rem;
       font-size: .68rem; color: var(--mu-2);
-      margin-top: .4rem;
+      margin-top: .4rem; flex-wrap: wrap;
     }
     .card-meta .amt {
       font-family: 'Geist Mono', monospace;
@@ -491,12 +585,15 @@
     .card-action.urgent { color: var(--rose); }
     .card-action.warn { color: var(--amber); }
     .card-action svg { width: 11px; height: 11px; flex-shrink: 0; }
-    .card-phase-pip {
-      position: absolute; top: 8px; right: 8px;
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--phase-color, var(--indigo));
-      opacity: 0;
+    .card-suggest {
+      display: inline-flex; align-items: center; gap: .3rem;
+      margin-top: .5rem;
+      padding: .25rem .5rem; border-radius: 6px;
+      background: rgba(234,179,8,.12); color: var(--amber);
+      font-size: .62rem; font-weight: 600; letter-spacing: .06em;
+      width: fit-content;
     }
+    .card-suggest svg { width: 10px; height: 10px; }
 
     /* TABLE VIEW */
     .table-view {
@@ -506,13 +603,9 @@
       border-radius: 12px;
       overflow: hidden;
     }
-    table {
-      width: 100%; border-collapse: collapse;
-      font-size: .8rem;
-    }
+    table { width: 100%; border-collapse: collapse; font-size: .8rem; }
     thead th {
-      text-align: left;
-      padding: .8rem 1rem;
+      text-align: left; padding: .8rem 1rem;
       font-size: .65rem; font-weight: 600;
       letter-spacing: .12em; text-transform: uppercase;
       color: var(--mu-2);
@@ -521,8 +614,7 @@
     }
     tbody tr {
       border-bottom: 1px solid var(--border);
-      cursor: pointer;
-      transition: background .15s;
+      cursor: pointer; transition: background .15s;
     }
     tbody tr:hover { background: var(--surface); }
     tbody tr:last-child { border-bottom: none; }
@@ -532,12 +624,182 @@
     .badge {
       display: inline-flex; align-items: center; gap: .3rem;
       padding: .2rem .55rem; border-radius: 999px;
-      font-size: .65rem; font-weight: 600;
-      letter-spacing: .04em;
+      font-size: .65rem; font-weight: 600; letter-spacing: .04em;
     }
-    .badge .b-dot {
-      width: 5px; height: 5px; border-radius: 50%;
-      background: var(--b-color, var(--mu));
+    .badge .b-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--b-color, var(--mu)); }
+
+    /* MAP VIEW */
+    .map-view {
+      margin: 1rem 1.6rem 3rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .map-toolbar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: .8rem;
+      padding: .7rem 1rem;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .map-toolbar-left {
+      display: flex; align-items: center; gap: .55rem;
+      font-size: .68rem; color: var(--mu);
+    }
+    .map-toolbar-left svg { width: 14px; height: 14px; color: var(--indigo); }
+    .map-toolbar-right { display: flex; align-items: center; gap: .55rem; flex-wrap: wrap; }
+    .map-btn {
+      padding: .4rem .75rem; border-radius: 7px;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--mu); font-size: .7rem; font-weight: 500;
+      display: inline-flex; align-items: center; gap: .35rem;
+      transition: all .15s;
+    }
+    .map-btn:hover { color: var(--fg); border-color: var(--border-2); background: var(--surface-3); }
+    .map-btn.primary {
+      background: linear-gradient(135deg, var(--indigo), var(--violet));
+      color: #fff; border-color: transparent;
+    }
+    .map-btn.primary:hover { filter: brightness(1.08); }
+    .map-btn.disabled { opacity: .35; cursor: not-allowed; }
+    .map-btn svg { width: 12px; height: 12px; }
+    #leaflet-map {
+      height: 580px;
+      width: 100%;
+      background: #0a0a0a;
+    }
+    .map-noaddr {
+      padding: 4rem 2rem;
+      text-align: center;
+      color: var(--mu-2);
+    }
+    .map-noaddr-em {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem; color: var(--fg); margin-bottom: .35rem;
+      letter-spacing: .02em;
+    }
+    .map-noaddr-sub { font-size: .85rem; line-height: 1.55; max-width: 480px; margin: 0 auto; }
+
+    /* Leaflet skin override (mode dark) */
+    .leaflet-container { background: #0a0a0a; }
+    .leaflet-tile-pane { filter: brightness(.65) saturate(.7) invert(1) hue-rotate(180deg); }
+    .leaflet-control-attribution {
+      background: rgba(0,0,0,.6) !important; color: var(--mu-2) !important;
+      font-size: .58rem !important;
+    }
+    .leaflet-control-attribution a { color: var(--indigo) !important; }
+    .leaflet-control-zoom a {
+      background: var(--surface-2) !important;
+      color: var(--fg) !important;
+      border: 1px solid var(--border) !important;
+    }
+    .leaflet-control-zoom a:hover { background: var(--surface-3) !important; }
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+      background: var(--surface-2) !important;
+      color: var(--fg) !important;
+      border: 1px solid var(--border) !important;
+      box-shadow: 0 12px 32px rgba(0,0,0,.6) !important;
+    }
+    .leaflet-popup-content { margin: .8rem 1rem !important; font-family: 'Geist', sans-serif; }
+    .map-marker {
+      width: 26px; height: 26px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 700; font-size: .65rem;
+      border: 2px solid rgba(255,255,255,.9);
+      box-shadow: 0 4px 14px rgba(0,0,0,.5);
+      cursor: pointer;
+      transition: transform .15s;
+    }
+    .map-marker:hover { transform: scale(1.15); }
+    .map-marker.selected { box-shadow: 0 0 0 4px rgba(168,85,247,.6), 0 4px 14px rgba(0,0,0,.5); }
+    .map-popup-name { font-weight: 700; font-size: .85rem; margin-bottom: .2rem; }
+    .map-popup-meta { font-size: .7rem; color: var(--mu); margin-bottom: .5rem; }
+    .map-popup-btn {
+      display: inline-block; padding: .35rem .6rem; border-radius: 6px;
+      background: linear-gradient(135deg, var(--indigo), var(--violet));
+      color: #fff !important; text-decoration: none; font-size: .68rem;
+      font-weight: 600; letter-spacing: .04em;
+    }
+
+    /* CALENDAR */
+    .calendar-view {
+      margin: 1rem 1.6rem 3rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .cal-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .9rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .cal-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem; letter-spacing: .03em;
+    }
+    .cal-nav { display: flex; gap: .35rem; }
+    .cal-nav button {
+      width: 30px; height: 30px; border-radius: 7px;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--mu);
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: all .15s;
+    }
+    .cal-nav button:hover { color: var(--fg); background: var(--surface-3); }
+    .cal-nav button svg { width: 13px; height: 13px; }
+    .cal-grid-dow {
+      display: grid; grid-template-columns: repeat(7, 1fr);
+      padding: .55rem 1.2rem .15rem;
+    }
+    .cal-dow {
+      padding: .35rem .5rem;
+      font-size: .6rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--mu-2);
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      padding: 0 1.2rem 1.2rem;
+    }
+    .cal-day {
+      position: relative;
+      min-height: 86px;
+      padding: .45rem .55rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: default;
+      transition: all .15s;
+    }
+    .cal-day.muted { opacity: .35; }
+    .cal-day.today { border-color: var(--indigo); box-shadow: 0 0 0 1px var(--indigo) inset; }
+    .cal-day.has-event { cursor: pointer; }
+    .cal-day.has-event:hover { background: var(--surface-3); border-color: var(--border-2); }
+    .cal-day-num {
+      font-family: 'Geist Mono', monospace;
+      font-size: .72rem; font-weight: 600;
+      color: var(--mu);
+    }
+    .cal-day.today .cal-day-num { color: var(--indigo); }
+    .cal-events { display: flex; flex-direction: column; gap: 2px; margin-top: .4rem; }
+    .cal-event {
+      font-size: .62rem; line-height: 1.25;
+      padding: .15rem .35rem;
+      border-radius: 4px;
+      color: #fff;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      background: var(--ev-color, var(--indigo));
+      cursor: pointer;
+      transition: filter .15s;
+    }
+    .cal-event:hover { filter: brightness(1.15); }
+    .cal-event-more {
+      font-size: .58rem; color: var(--mu-2); padding: .1rem .35rem;
     }
 
     /* DRAWER */
@@ -586,12 +848,29 @@
       font-size: 2.2rem; line-height: 1; letter-spacing: .01em;
       color: var(--fg);
     }
+    /* Quick actions row */
+    .d-quick {
+      display: flex; gap: .45rem; flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .d-quick a, .d-quick button {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .55rem .8rem; border-radius: 8px;
+      background: var(--surface-2); border: 1px solid var(--border);
+      color: var(--mu); text-decoration: none;
+      font-size: .72rem; font-weight: 500;
+      transition: all .15s;
+      cursor: pointer;
+    }
+    .d-quick a:hover, .d-quick button:hover { color: var(--fg); border-color: var(--border-2); background: var(--surface-3); }
+    .d-quick a.disabled, .d-quick button.disabled { opacity: .35; cursor: not-allowed; pointer-events: none; }
+    .d-quick svg { width: 13px; height: 13px; }
+
     .d-row {
       display: flex; align-items: center; gap: .55rem;
       padding: .6rem .7rem;
       background: var(--surface-2); border: 1px solid var(--border);
-      border-radius: 8px;
-      margin-bottom: .4rem;
+      border-radius: 8px; margin-bottom: .4rem;
       font-size: .82rem;
     }
     .d-row svg { width: 14px; height: 14px; color: var(--mu-2); flex-shrink: 0; }
@@ -607,10 +886,7 @@
       border: 1px solid var(--border); border-radius: 10px;
       margin-bottom: .55rem;
     }
-    .d-contact-head {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: .45rem;
-    }
+    .d-contact-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: .45rem; }
     .d-contact-name { font-weight: 600; font-size: .88rem; }
     .d-contact-role { font-size: .72rem; color: var(--mu-2); }
     .d-contact-detail {
@@ -621,10 +897,7 @@
     .d-contact-detail svg { width: 13px; height: 13px; color: var(--mu-2); }
     .d-contact-detail a { color: var(--mu); text-decoration: none; }
     .d-contact-detail a:hover { color: var(--indigo); }
-    .d-amounts {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: .55rem;
-    }
+    .d-amounts { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; }
     .d-amount {
       padding: .8rem .9rem;
       background: var(--surface-2); border: 1px solid var(--border);
@@ -645,20 +918,15 @@
       content: ''; position: absolute; left: 5px; top: 6px; bottom: 6px;
       width: 2px; background: var(--border);
     }
-    .te {
-      position: relative;
-      padding: .15rem 0 .8rem 0;
-    }
+    .te { position: relative; padding: .15rem 0 .8rem 0; }
     .te::before {
       content: ''; position: absolute; left: -22px; top: 6px;
       width: 12px; height: 12px; border-radius: 50%;
-      background: var(--surface);
-      border: 2px solid var(--indigo);
+      background: var(--surface); border: 2px solid var(--indigo);
     }
     .te-date {
       font-family: 'Geist Mono', monospace;
-      font-size: .68rem; color: var(--mu-2);
-      letter-spacing: .04em;
+      font-size: .68rem; color: var(--mu-2); letter-spacing: .04em;
     }
     .te-text {
       font-size: .85rem; color: var(--fg);
@@ -702,10 +970,12 @@
     @media (max-width: 900px) {
       header.top { padding: .8rem 1rem; flex-wrap: wrap; gap: .6rem; }
       .top-meta { gap: .6rem; flex-wrap: wrap; }
-      .kpis, .toolbar, .table-view, .timeline { margin-left: 1rem; margin-right: 1rem; }
+      .kpis, .toolbar, .table-view, .timeline, .this-week, .map-view, .calendar-view { margin-left: 1rem; margin-right: 1rem; }
       .kanban { padding: 1rem; grid-template-columns: repeat(7, 78vw); overflow-x: auto; }
       .timeline-countdown { flex-direction: column; gap: .55rem; }
       .d-amounts { grid-template-columns: 1fr; }
+      #leaflet-map { height: 460px; }
+      .cal-day { min-height: 60px; }
     }
   </style>
 </head>
@@ -753,15 +1023,24 @@
       </div>
     </header>
 
-    <!-- KPIs -->
     <section class="kpis" id="kpis"></section>
+
+    <!-- This Week -->
+    <section class="this-week">
+      <div class="this-week-head">
+        <div class="this-week-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Cette semaine</span>
+        </div>
+        <div class="this-week-counts" id="tw-counts"></div>
+      </div>
+      <div class="this-week-body" id="tw-body"></div>
+    </section>
 
     <!-- Timeline phases -->
     <section class="timeline">
       <div class="timeline-head">
-        <div class="timeline-title">
-          <span>Roadmap · 2 phases</span>
-        </div>
+        <div class="timeline-title"><span>Roadmap · 2 phases</span></div>
       </div>
       <div class="timeline-bar" id="timeline-bar"></div>
       <div class="timeline-foot" id="timeline-foot"></div>
@@ -777,8 +1056,22 @@
       <div class="filter-group" id="filter-phase"></div>
       <div class="filter-group" id="filter-level"></div>
       <div class="view-toggle">
-        <button data-view="kanban" class="active">Kanban</button>
-        <button data-view="table">Tableau</button>
+        <button data-view="kanban" class="active" title="Kanban">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          Kanban
+        </button>
+        <button data-view="table" title="Tableau">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          Tableau
+        </button>
+        <button data-view="map" title="Carte">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          Carte
+        </button>
+        <button data-view="calendar" title="Calendrier">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Cal
+        </button>
       </div>
     </section>
 
@@ -790,18 +1083,61 @@
       <table>
         <thead>
           <tr>
-            <th>Boîte</th>
-            <th>Niveau</th>
-            <th>Statut</th>
-            <th>Phase</th>
-            <th>Cible</th>
-            <th>Signé</th>
-            <th>Prochaine action</th>
-            <th>Ville</th>
+            <th>Boîte</th><th>Niveau</th><th>Statut</th><th>Phase</th>
+            <th>Cible</th><th>Signé</th><th>Prochaine action</th><th>Ville</th>
           </tr>
         </thead>
         <tbody id="tbody"></tbody>
       </table>
+    </section>
+
+    <!-- Vue carte -->
+    <section class="map-view" id="view-map" hidden>
+      <div class="map-toolbar">
+        <div class="map-toolbar-left">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span id="map-stats">—</span>
+        </div>
+        <div class="map-toolbar-right">
+          <button class="map-btn" id="map-fit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            Voir tout
+          </button>
+          <button class="map-btn" id="map-tour-toggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <span id="tour-toggle-label">Mode tournée</span>
+          </button>
+          <button class="map-btn primary disabled" id="map-tour-go">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+            <span id="tour-go-label">Itinéraire (0)</span>
+          </button>
+        </div>
+      </div>
+      <div id="leaflet-map"></div>
+      <div id="map-noaddr" class="map-noaddr" hidden>
+        <div class="map-noaddr-em">Pas encore d'adresses</div>
+        <div class="map-noaddr-sub">Quand tu me files les adresses des boîtes, je géocode et je les place sur la carte. La vue s'activera automatiquement dès qu'il y a au moins un prospect localisé.</div>
+      </div>
+    </section>
+
+    <!-- Vue calendrier -->
+    <section class="calendar-view" id="view-calendar" hidden>
+      <div class="cal-head">
+        <div class="cal-title" id="cal-title">—</div>
+        <div class="cal-nav">
+          <button id="cal-prev" title="Mois précédent">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button id="cal-today" title="Aujourd'hui">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+          <button id="cal-next" title="Mois suivant">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="cal-grid-dow" id="cal-grid-dow"></div>
+      <div class="cal-grid" id="cal-grid"></div>
     </section>
 
   </div>
@@ -817,6 +1153,9 @@
     </div>
     <div class="drawer-body" id="drawer-body"></div>
   </aside>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
   <script>
     // ============ PASSWORD GATE ============
@@ -868,6 +1207,8 @@
     let DATA = null;
     let filters = { search: "", phase: "all", level: "all" };
     let currentView = "kanban";
+    let mapState = { instance: null, markers: [], tourMode: false, tourSelection: new Set() };
+    let calendarState = { year: null, month: null };
 
     // ============ INIT ============
     async function init() {
@@ -882,11 +1223,11 @@
         return;
       }
 
-      // Date today (mocked)
-      window.TODAY = new Date("2026-05-10T12:00:00");
+      window.TODAY = new Date(); window.TODAY.setHours(12, 0, 0, 0);
 
       renderTopMeta();
       renderKPIs();
+      renderThisWeek();
       renderTimeline();
       renderFilters();
       renderView();
@@ -896,15 +1237,14 @@
     // ============ HELPERS ============
     const fmtEUR = (n) => new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n || 0);
     const fmtN = (n) => new Intl.NumberFormat("fr-FR").format(n || 0);
+    const parseDate = (s) => s ? new Date(s + "T12:00:00") : null;
     const fmtDate = (s) => {
       if (!s) return "—";
-      const d = new Date(s + "T12:00:00");
-      return d.toLocaleDateString("fr-FR", { day: "2-digit", month: "short", year: "numeric" });
+      return parseDate(s).toLocaleDateString("fr-FR", { day: "2-digit", month: "short", year: "numeric" });
     };
     const fmtDateShort = (s) => {
       if (!s) return "—";
-      const d = new Date(s + "T12:00:00");
-      return d.toLocaleDateString("fr-FR", { day: "2-digit", month: "short" });
+      return parseDate(s).toLocaleDateString("fr-FR", { day: "2-digit", month: "short" });
     };
     const daysBetween = (a, b) => Math.round((b - a) / 86400000);
 
@@ -915,9 +1255,7 @@
     function getActivePhase() {
       const today = window.TODAY;
       for (const p of Object.values(DATA.meta.phases)) {
-        const start = new Date(p.start + "T00:00:00");
-        const end = new Date(p.end + "T23:59:59");
-        if (today >= start && today <= end) return p;
+        if (today >= parseDate(p.start) && today <= parseDate(p.end)) return p;
       }
       return null;
     }
@@ -926,6 +1264,14 @@
       if (typeof p.amountTarget === "number" && p.amountTarget > 0) return p.amountTarget;
       const lvl = getLevel(p.level);
       return lvl.amount || 0;
+    }
+
+    function shouldSuggestRelance(p) {
+      if (p.status !== "contacte") return false;
+      if (p.nextAction) return false;
+      const lastEvt = p.timeline && p.timeline.length ? parseDate(p.timeline[p.timeline.length - 1].date) : parseDate(p.updatedAt || p.createdAt);
+      if (!lastEvt) return false;
+      return daysBetween(lastEvt, window.TODAY) >= 14;
     }
 
     // ============ FILTRES ============
@@ -955,13 +1301,23 @@
       document.getElementById("today-chip").textContent = window.TODAY.toLocaleDateString("fr-FR", { weekday: "long", day: "2-digit", month: "long", year: "numeric" });
     }
 
-    // ============ KPIs ============
+    // ============ KPIs avec animation ============
+    function animateNumber(el, from, to, duration, fmt) {
+      const start = performance.now();
+      function step(now) {
+        const t = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - t, 3);
+        const v = from + (to - from) * eased;
+        el.innerHTML = fmt(v);
+        if (t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
     function renderKPIs() {
       const prospects = DATA.prospects || [];
       const signed = prospects.filter(p => p.status === "accepte").reduce((s, p) => s + (p.amountSigned || expectedAmount(p)), 0);
-      const pipeline = prospects
-        .filter(p => !["accepte","refus","sans-suite"].includes(p.status))
-        .reduce((s, p) => s + expectedAmount(p), 0);
+      const pipeline = prospects.filter(p => !["accepte","refus","sans-suite"].includes(p.status)).reduce((s, p) => s + expectedAmount(p), 0);
       const objective = DATA.meta.objective || 50000;
       const pct = Math.min(100, Math.round((signed / objective) * 100));
       const totalContacted = prospects.filter(p => p.status !== "a-contacter").length;
@@ -969,63 +1325,139 @@
       const totalRefused = prospects.filter(p => p.status === "refus").length;
       const decided = totalAccepted + totalRefused;
       const conv = decided > 0 ? Math.round((totalAccepted / decided) * 100) : 0;
+      const openCount = prospects.filter(p => !["accepte","refus","sans-suite"].includes(p.status)).length;
 
       const cards = [
-        {
-          accent: "indigo",
-          label: "Objectif",
-          value: fmtEUR(objective),
-          extra: `Phase 1 : <strong>${fmtEUR(25000)}</strong> · Phase 2 : <strong>${fmtEUR(25000)}</strong>`,
-          progress: pct
-        },
-        {
-          accent: "emerald",
-          label: "Signé",
-          value: fmtEUR(signed),
-          extra: `<strong>${pct}%</strong> de l'objectif · ${totalAccepted} partenaire${totalAccepted > 1 ? "s" : ""}`
-        },
-        {
-          accent: "violet",
-          label: "Pipeline en cours",
-          value: fmtEUR(pipeline),
-          extra: `<strong>${prospects.filter(p => !["accepte","refus","sans-suite"].includes(p.status)).length}</strong> dossiers ouverts`
-        },
-        {
-          accent: "amber",
-          label: "Prospects",
-          value: fmtN(prospects.length),
-          extra: `Contactés : <strong>${totalContacted}</strong> · À contacter : <strong>${prospects.length - totalContacted}</strong>`
-        },
-        {
-          accent: "sky",
-          label: "Conversion",
-          value: conv + "<span class='unit'>%</span>",
-          extra: `${totalAccepted} signés / ${decided} décidés`
-        }
+        { accent: "indigo", label: "Objectif", value: objective, extra: `Phase 1 : <strong>${fmtEUR(25000)}</strong> · Phase 2 : <strong>${fmtEUR(25000)}</strong>`, fmt: fmtEUR, progress: pct },
+        { accent: "emerald", label: "Signé", value: signed, extra: `<strong>${pct}%</strong> de l'objectif · ${totalAccepted} partenaire${totalAccepted > 1 ? "s" : ""}`, fmt: fmtEUR },
+        { accent: "violet", label: "Pipeline en cours", value: pipeline, extra: `<strong>${openCount}</strong> dossiers ouverts`, fmt: fmtEUR },
+        { accent: "amber", label: "Prospects", value: prospects.length, extra: `Contactés : <strong>${totalContacted}</strong> · À contacter : <strong>${prospects.length - totalContacted}</strong>`, fmt: fmtN },
+        { accent: "sky", label: "Conversion", value: conv, extra: `${totalAccepted} signés / ${decided} décidés`, fmt: (v) => Math.round(v) + "<span class='unit'>%</span>" }
       ];
 
-      document.getElementById("kpis").innerHTML = cards.map(c => `
-        <div class="kpi" data-accent="${c.accent}">
+      document.getElementById("kpis").innerHTML = cards.map((c, i) => `
+        <div class="kpi" data-accent="${c.accent}" data-i="${i}">
           <div class="kpi-label">${c.label}</div>
-          <div class="kpi-value">${c.value}</div>
+          <div class="kpi-value" data-target="${c.value}">${c.fmt(0)}</div>
           <div class="kpi-extra">${c.extra}</div>
-          ${c.progress !== undefined ? `<div class="kpi-bar"><div class="kpi-bar-fill" style="width:${c.progress}%"></div></div>` : ""}
+          ${c.progress !== undefined ? `<div class="kpi-bar"><div class="kpi-bar-fill" data-fill="${c.progress}"></div></div>` : ""}
         </div>
       `).join("");
+
+      // animate numbers + bars after a tiny delay
+      cards.forEach((c, i) => {
+        const el = document.querySelector(`.kpi[data-i="${i}"] .kpi-value`);
+        if (el) setTimeout(() => animateNumber(el, 0, c.value, 1100, c.fmt), 150 + i * 80);
+      });
+      setTimeout(() => {
+        document.querySelectorAll(".kpi-bar-fill").forEach(el => {
+          el.style.width = (el.dataset.fill || 0) + "%";
+        });
+      }, 300);
     }
 
-    // ============ TIMELINE ============
+    // ============ THIS WEEK ============
+    function renderThisWeek() {
+      const prospects = DATA.prospects || [];
+      const items = [];
+      const today = window.TODAY;
+      const limit = new Date(today); limit.setDate(limit.getDate() + 7);
+
+      // RDV / nextAction overdue or in next 7 days
+      prospects.forEach(p => {
+        if (!p.nextActionDate) return;
+        const d = parseDate(p.nextActionDate);
+        if (d > limit) return;
+        const days = daysBetween(today, d);
+        items.push({
+          type: "action",
+          prospect: p,
+          date: d,
+          days,
+          kind: days < 0 ? "urgent" : (days === 0 ? "today" : "soon")
+        });
+      });
+
+      // Relances suggérées
+      prospects.forEach(p => {
+        if (!shouldSuggestRelance(p)) return;
+        items.push({
+          type: "relance",
+          prospect: p,
+          date: today,
+          days: 0,
+          kind: "today",
+          relanceLabel: "À relancer"
+        });
+      });
+
+      // Sort by date asc (overdue first)
+      items.sort((a, b) => a.date - b.date);
+
+      // Counts
+      const urgentCount = items.filter(i => i.kind === "urgent").length;
+      const todayCount = items.filter(i => i.kind === "today").length;
+      const soonCount = items.filter(i => i.kind === "soon").length;
+
+      document.getElementById("tw-counts").innerHTML = `
+        ${urgentCount ? `<span class="tw-count"><span class="b-dot" style="background:var(--rose)"></span>${urgentCount} en retard</span>` : ""}
+        ${todayCount ? `<span class="tw-count"><span class="b-dot" style="background:var(--amber)"></span>${todayCount} aujourd'hui</span>` : ""}
+        ${soonCount ? `<span class="tw-count"><span class="b-dot" style="background:var(--indigo)"></span>${soonCount} sous 7j</span>` : ""}
+        ${items.length === 0 ? `<span class="tw-count" style="color:var(--mu-2)">RAS</span>` : ""}
+      `;
+
+      const body = document.getElementById("tw-body");
+      if (items.length === 0) {
+        body.innerHTML = `
+          <div class="tw-empty">
+            <div class="tw-empty-em">Calme plat</div>
+            Pas d'action programmée cette semaine. Le moment de prospecter, ou de planifier la suivante.
+          </div>`;
+        return;
+      }
+
+      body.innerHTML = items.slice(0, 12).map(it => {
+        const p = it.prospect;
+        const st = getStatus(p.status);
+        const cls = it.kind === "urgent" ? "urgent" : (it.kind === "today" ? "today" : "");
+        const tag = it.kind === "urgent" ? `<span class="tw-tag urgent">en retard · J${it.days}</span>` :
+                    it.kind === "today" ? `<span class="tw-tag today">aujourd'hui</span>` : "";
+        const monShort = it.date.toLocaleDateString("fr-FR", { month: "short" }).replace(".", "");
+        const label = it.type === "relance" ? "Relancer · 14j+ sans nouvelles" : p.nextAction;
+        return `
+          <div class="tw-item ${cls}" data-id="${p.id}">
+            <div class="tw-day">
+              <div class="tw-day-num">${it.date.getDate()}</div>
+              <div class="tw-day-mon">${monShort}</div>
+            </div>
+            <div class="tw-content">
+              <div class="tw-line1">
+                <span class="b-dot" style="background:${st.color}"></span>
+                ${p.name}
+                ${tag}
+              </div>
+              <div class="tw-line2">${label || "—"}${p.city ? ` · ${p.city}` : ""}</div>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      body.querySelectorAll(".tw-item").forEach(el => {
+        el.addEventListener("click", () => openDrawer(el.dataset.id));
+      });
+    }
+
+    // ============ TIMELINE PHASES ============
     function renderTimeline() {
       const today = window.TODAY;
       const phases = Object.values(DATA.meta.phases);
-      const allStart = new Date(phases[0].start + "T00:00:00");
-      const allEnd = new Date(phases[phases.length - 1].end + "T23:59:59");
+      const allStart = parseDate(phases[0].start);
+      const allEnd = parseDate(phases[phases.length - 1].end);
       const totalMs = allEnd - allStart;
 
       const bar = document.getElementById("timeline-bar");
       bar.innerHTML = phases.map(p => {
-        const ps = new Date(p.start + "T00:00:00");
-        const pe = new Date(p.end + "T23:59:59");
+        const ps = parseDate(p.start); const pe = parseDate(p.end);
         let cls = "";
         if (today > pe) cls = "past";
         else if (today >= ps && today <= pe) cls = "active";
@@ -1037,23 +1469,20 @@
         `;
       }).join("");
 
-      // Today cursor
       const todayPct = Math.max(0, Math.min(100, ((today - allStart) / totalMs) * 100));
       if (today >= allStart && today <= allEnd) {
         bar.insertAdjacentHTML("beforeend", `<div class="today-cursor" style="left:${todayPct}%"></div>`);
       }
 
-      // Footer dates
       const foot = document.getElementById("timeline-foot");
       foot.innerHTML = `
         <span>${fmtDate(phases[0].start)}</span>
         <span>${fmtDate(phases[phases.length - 1].end)}</span>
       `;
 
-      // Countdown
       const cd = document.getElementById("timeline-countdown");
       cd.innerHTML = phases.map(p => {
-        const end = new Date(p.end + "T23:59:59");
+        const end = parseDate(p.end);
         const days = daysBetween(today, end);
         let cls = "";
         if (days < 0) cls = "past";
@@ -1098,7 +1527,7 @@
               <span class="kcol-count">${items.length}</span>
             </div>
             <div class="kcol-body">
-              ${items.length === 0 ? `<div class="kcol-empty">Aucun</div>` : items.map(renderCard).join("")}
+              ${items.length === 0 ? `<div class="kcol-empty">Aucun</div>` : items.map((p, i) => renderCard(p, i)).join("")}
             </div>
           </div>
         `;
@@ -1118,7 +1547,7 @@
       });
     }
 
-    function renderCard(p) {
+    function renderCard(p, idx) {
       const lvl = getLevel(p.level);
       const phase = getPhase(p.phase);
       const target = expectedAmount(p);
@@ -1126,7 +1555,7 @@
       let action = "";
       if (p.nextAction) {
         const dateLabel = p.nextActionDate ? fmtDateShort(p.nextActionDate) : "—";
-        const days = p.nextActionDate ? daysBetween(window.TODAY, new Date(p.nextActionDate + "T12:00:00")) : null;
+        const days = p.nextActionDate ? daysBetween(window.TODAY, parseDate(p.nextActionDate)) : null;
         let cls = "";
         if (days !== null && days < 0) cls = "urgent";
         else if (days !== null && days <= 3) cls = "warn";
@@ -1135,8 +1564,15 @@
           <span><strong>${dateLabel}</strong> · ${p.nextAction}</span>
         </div>`;
       }
+      const suggest = shouldSuggestRelance(p) ? `
+        <div class="card-suggest">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          À relancer ?
+        </div>` : "";
+
+      const delay = (idx * 35);
       return `
-        <div class="card" data-id="${p.id}">
+        <div class="card" data-id="${p.id}" style="animation-delay:${delay}ms">
           <div class="card-head">
             <div class="card-name">${p.name}</div>
             <div class="card-level" style="--lvl-bg:${lvl.color}22;--lvl-color:${lvl.color}">${lvl.label}</div>
@@ -1146,6 +1582,7 @@
             ${p.city ? `<span>· ${p.city}</span>` : ""}
             ${phase ? `<span>· ${phase.id.toUpperCase()}</span>` : ""}
           </div>
+          ${suggest}
           ${action}
         </div>
       `;
@@ -1166,16 +1603,8 @@
         return `
           <tr data-id="${p.id}">
             <td class="td-name">${p.name}</td>
-            <td>
-              <span class="badge" style="background:${lvl.color}22;color:${lvl.color}">
-                <span class="b-dot" style="--b-color:${lvl.color}"></span>${lvl.label}
-              </span>
-            </td>
-            <td>
-              <span class="badge" style="background:${st.color}22;color:${st.color}">
-                <span class="b-dot" style="--b-color:${st.color}"></span>${st.label}
-              </span>
-            </td>
+            <td><span class="badge" style="background:${lvl.color}22;color:${lvl.color}"><span class="b-dot" style="--b-color:${lvl.color}"></span>${lvl.label}</span></td>
+            <td><span class="badge" style="background:${st.color}22;color:${st.color}"><span class="b-dot" style="--b-color:${st.color}"></span>${st.label}</span></td>
             <td>${phase ? phase.id.toUpperCase() : "—"}</td>
             <td class="td-amt">${fmtEUR(expectedAmount(p))}</td>
             <td class="td-amt" style="color:var(--emerald)">${p.amountSigned ? fmtEUR(p.amountSigned) : "—"}</td>
@@ -1187,16 +1616,192 @@
       tbody.querySelectorAll("tr").forEach(el => el.addEventListener("click", () => openDrawer(el.dataset.id)));
     }
 
-    function renderView() {
-      if (currentView === "kanban") {
-        document.getElementById("view-kanban").hidden = false;
-        document.getElementById("view-table").hidden = true;
-        renderKanban();
-      } else {
-        document.getElementById("view-kanban").hidden = true;
-        document.getElementById("view-table").hidden = false;
-        renderTable();
+    // ============ MAP ============
+    function renderMap() {
+      const filtered = getFilteredProspects().filter(p => Array.isArray(p.coords) && p.coords.length === 2);
+      const totalWithCoords = (DATA.prospects || []).filter(p => Array.isArray(p.coords) && p.coords.length === 2).length;
+
+      document.getElementById("map-stats").innerHTML = totalWithCoords === 0
+        ? `Aucune boîte localisée pour l'instant`
+        : `<strong style="color:var(--fg)">${filtered.length}</strong> boîte${filtered.length > 1 ? "s" : ""} affichée${filtered.length > 1 ? "s" : ""} · ${totalWithCoords} géolocalisée${totalWithCoords > 1 ? "s" : ""} sur ${DATA.prospects.length}`;
+
+      // Si pas du tout d'adresses : message
+      if (totalWithCoords === 0) {
+        document.getElementById("leaflet-map").style.display = "none";
+        document.getElementById("map-noaddr").hidden = false;
+        return;
       }
+      document.getElementById("leaflet-map").style.display = "block";
+      document.getElementById("map-noaddr").hidden = true;
+
+      // Init map si pas déjà fait
+      if (!mapState.instance) {
+        mapState.instance = L.map("leaflet-map", { zoomControl: true, attributionControl: true })
+          .setView([45.95, 5.35], 9);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: '&copy; OpenStreetMap',
+          maxZoom: 19
+        }).addTo(mapState.instance);
+      }
+
+      // Clear existing markers
+      mapState.markers.forEach(m => mapState.instance.removeLayer(m));
+      mapState.markers = [];
+
+      filtered.forEach(p => {
+        const st = getStatus(p.status);
+        const initial = (p.name || "?").trim().charAt(0).toUpperCase();
+        const isSelected = mapState.tourMode && mapState.tourSelection.has(p.id);
+        const html = `<div class="map-marker ${isSelected ? "selected" : ""}" style="background:${st.color}">${initial}</div>`;
+        const icon = L.divIcon({ className: "", html, iconSize: [26, 26], iconAnchor: [13, 13] });
+        const marker = L.marker(p.coords, { icon }).addTo(mapState.instance);
+        const lvl = getLevel(p.level);
+
+        marker.bindPopup(`
+          <div class="map-popup-name">${p.name}</div>
+          <div class="map-popup-meta">${st.label} · ${lvl.label}${p.city ? ` · ${p.city}` : ""}</div>
+          <a href="#" class="map-popup-btn" data-id="${p.id}">Voir la fiche →</a>
+        `);
+
+        marker.on("click", () => {
+          if (mapState.tourMode) {
+            if (mapState.tourSelection.has(p.id)) mapState.tourSelection.delete(p.id);
+            else mapState.tourSelection.add(p.id);
+            updateTourButton();
+            renderMap();
+          }
+        });
+
+        mapState.markers.push(marker);
+      });
+
+      // Délégation pour le bouton "Voir la fiche" dans popup
+      mapState.instance.off("popupopen");
+      mapState.instance.on("popupopen", (e) => {
+        const btn = e.popup.getElement().querySelector(".map-popup-btn");
+        if (btn) {
+          btn.addEventListener("click", (ev) => {
+            ev.preventDefault();
+            openDrawer(btn.dataset.id);
+          });
+        }
+      });
+
+      // Fit on init
+      if (filtered.length > 0 && !mapState._fittedOnce) {
+        const bounds = L.latLngBounds(filtered.map(p => p.coords));
+        mapState.instance.fitBounds(bounds, { padding: [40, 40], maxZoom: 13 });
+        mapState._fittedOnce = true;
+      }
+      setTimeout(() => mapState.instance.invalidateSize(), 50);
+    }
+
+    function updateTourButton() {
+      const n = mapState.tourSelection.size;
+      const go = document.getElementById("map-tour-go");
+      document.getElementById("tour-go-label").textContent = `Itinéraire (${n})`;
+      if (n >= 1) go.classList.remove("disabled");
+      else go.classList.add("disabled");
+    }
+
+    function startTour() {
+      const ids = Array.from(mapState.tourSelection);
+      if (ids.length === 0) return;
+      const pts = ids.map(id => (DATA.prospects || []).find(p => p.id === id))
+        .filter(p => p && p.coords)
+        .map(p => `${p.coords[0]},${p.coords[1]}`);
+      if (pts.length === 0) return;
+      const url = pts.length === 1
+        ? `https://www.google.com/maps/dir/?api=1&destination=${pts[0]}`
+        : `https://www.google.com/maps/dir/?api=1&destination=${pts[pts.length - 1]}&waypoints=${pts.slice(0, -1).join("|")}`;
+      window.open(url, "_blank", "noopener");
+    }
+
+    // ============ CALENDAR ============
+    function renderCalendar() {
+      if (calendarState.year === null) {
+        calendarState.year = window.TODAY.getFullYear();
+        calendarState.month = window.TODAY.getMonth();
+      }
+      const dow = ["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"];
+      document.getElementById("cal-grid-dow").innerHTML = dow.map(d => `<div class="cal-dow">${d}</div>`).join("");
+
+      const y = calendarState.year, m = calendarState.month;
+      const firstOfMonth = new Date(y, m, 1);
+      const monthLabel = firstOfMonth.toLocaleDateString("fr-FR", { month: "long", year: "numeric" });
+      document.getElementById("cal-title").textContent = monthLabel.charAt(0).toUpperCase() + monthLabel.slice(1);
+
+      // ISO week (lundi = 1)
+      const firstWeekDay = (firstOfMonth.getDay() + 6) % 7; // 0 = lundi
+      const daysInMonth = new Date(y, m + 1, 0).getDate();
+      const prevMonthDays = new Date(y, m, 0).getDate();
+
+      // Group events by yyyy-mm-dd
+      const events = {};
+      (DATA.prospects || []).forEach(p => {
+        if (!p.nextActionDate) return;
+        const d = parseDate(p.nextActionDate);
+        if (d.getFullYear() === y && d.getMonth() === m) {
+          const k = p.nextActionDate;
+          (events[k] = events[k] || []).push(p);
+        } else if (d.getFullYear() === y && d.getMonth() !== m) {
+          // only current month for now
+        }
+      });
+
+      const cells = [];
+      // Previous month
+      for (let i = firstWeekDay - 1; i >= 0; i--) {
+        cells.push({ day: prevMonthDays - i, muted: true });
+      }
+      // Current month
+      const todayKey = window.TODAY.toISOString().slice(0, 10);
+      for (let d = 1; d <= daysInMonth; d++) {
+        const key = `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+        cells.push({
+          day: d,
+          key,
+          today: key === todayKey,
+          events: events[key] || []
+        });
+      }
+      // Next month
+      while (cells.length % 7 !== 0) cells.push({ day: cells.length - daysInMonth - firstWeekDay + 1, muted: true });
+      while (cells.length < 42) cells.push({ day: cells.length - daysInMonth - firstWeekDay + 1, muted: true });
+
+      const grid = document.getElementById("cal-grid");
+      grid.innerHTML = cells.map(c => {
+        const evs = (c.events || []);
+        const show = evs.slice(0, 3);
+        const more = evs.length - show.length;
+        const cls = [c.muted ? "muted" : "", c.today ? "today" : "", evs.length > 0 ? "has-event" : ""].filter(Boolean).join(" ");
+        return `
+          <div class="cal-day ${cls}" data-key="${c.key || ""}">
+            <div class="cal-day-num">${c.day}</div>
+            <div class="cal-events">
+              ${show.map(p => {
+                const st = getStatus(p.status);
+                return `<div class="cal-event" data-id="${p.id}" style="--ev-color:${st.color}" title="${p.nextAction || ""}">${p.name}</div>`;
+              }).join("")}
+              ${more > 0 ? `<div class="cal-event-more">+${more}</div>` : ""}
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      grid.querySelectorAll(".cal-event").forEach(el => {
+        el.addEventListener("click", (e) => { e.stopPropagation(); openDrawer(el.dataset.id); });
+      });
+    }
+
+    function renderView() {
+      ["kanban","table","map","calendar"].forEach(v => {
+        document.getElementById("view-" + v).hidden = (currentView !== v);
+      });
+      if (currentView === "kanban") renderKanban();
+      else if (currentView === "table") renderTable();
+      else if (currentView === "map") renderMap();
+      else if (currentView === "calendar") renderCalendar();
     }
 
     // ============ DRAWER ============
@@ -1206,6 +1811,12 @@
       const lvl = getLevel(p.level);
       const st = getStatus(p.status);
       const phase = getPhase(p.phase);
+      const primaryContact = (p.contacts || [])[0];
+      const primaryEmail = primaryContact ? primaryContact.email : null;
+      const primaryPhone = primaryContact ? primaryContact.phone : null;
+
+      const mapsUrl = p.coords ? `https://www.google.com/maps/search/?api=1&query=${p.coords[0]},${p.coords[1]}`
+        : (p.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.address)}` : null);
 
       const body = document.getElementById("drawer-body");
       body.innerHTML = `
@@ -1218,8 +1829,28 @@
               <span class="b-dot" style="--b-color:${lvl.color}"></span>${lvl.label}
             </span>
             ${phase ? `<span class="badge" style="background:${phase.color}22;color:${phase.color}"><span class="b-dot" style="--b-color:${phase.color}"></span>${phase.label}</span>` : ""}
+            ${shouldSuggestRelance(p) ? `<span class="badge" style="background:rgba(234,179,8,.18);color:var(--amber)"><span class="b-dot" style="--b-color:var(--amber)"></span>À relancer</span>` : ""}
           </div>
           <div class="d-title">${p.name}</div>
+
+          <div class="d-quick">
+            <a href="${primaryPhone ? 'tel:' + primaryPhone.replace(/\s/g, '') : '#'}" class="${primaryPhone ? '' : 'disabled'}" title="Appeler">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Appeler
+            </a>
+            <a href="${primaryEmail ? 'mailto:' + primaryEmail : '#'}" class="${primaryEmail ? '' : 'disabled'}" title="Mailer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              Mailer
+            </a>
+            <a href="${mapsUrl || '#'}" target="_blank" rel="noopener" class="${mapsUrl ? '' : 'disabled'}" title="Itinéraire">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+              Itinéraire
+            </a>
+            <a href="${p.website || '#'}" target="_blank" rel="noopener" class="${p.website ? '' : 'disabled'}" title="Site web">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              Site
+            </a>
+          </div>
         </div>
 
         <div class="d-section">
@@ -1244,8 +1875,7 @@
               ${c.phone ? `<div class="d-contact-detail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:${c.phone.replace(/\s/g, "")}">${c.phone}</a></div>` : ""}
             </div>
           `).join("")}
-        </div>
-        ` : ""}
+        </div>` : ""}
 
         <div class="d-section">
           <div class="d-section-title">Montants</div>
@@ -1281,8 +1911,7 @@
               </div>
             `).join("")}
           </div>
-        </div>
-        ` : ""}
+        </div>` : ""}
 
         ${p.notes ? `
         <div class="d-section">
@@ -1347,6 +1976,43 @@
       document.getElementById("drawer-close").addEventListener("click", closeDrawer);
       document.getElementById("drawer-bg").addEventListener("click", closeDrawer);
       document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeDrawer(); });
+
+      // Map controls
+      document.getElementById("map-fit").addEventListener("click", () => {
+        if (!mapState.instance) return;
+        const filtered = getFilteredProspects().filter(p => Array.isArray(p.coords));
+        if (filtered.length === 0) return;
+        const bounds = L.latLngBounds(filtered.map(p => p.coords));
+        mapState.instance.fitBounds(bounds, { padding: [40, 40], maxZoom: 13 });
+      });
+
+      document.getElementById("map-tour-toggle").addEventListener("click", () => {
+        mapState.tourMode = !mapState.tourMode;
+        mapState.tourSelection.clear();
+        document.getElementById("tour-toggle-label").textContent = mapState.tourMode ? "Quitter mode tournée" : "Mode tournée";
+        document.getElementById("map-tour-toggle").classList.toggle("primary", mapState.tourMode);
+        updateTourButton();
+        renderMap();
+      });
+
+      document.getElementById("map-tour-go").addEventListener("click", startTour);
+
+      // Calendar nav
+      document.getElementById("cal-prev").addEventListener("click", () => {
+        calendarState.month--;
+        if (calendarState.month < 0) { calendarState.month = 11; calendarState.year--; }
+        renderCalendar();
+      });
+      document.getElementById("cal-next").addEventListener("click", () => {
+        calendarState.month++;
+        if (calendarState.month > 11) { calendarState.month = 0; calendarState.year++; }
+        renderCalendar();
+      });
+      document.getElementById("cal-today").addEventListener("click", () => {
+        calendarState.year = window.TODAY.getFullYear();
+        calendarState.month = window.TODAY.getMonth();
+        renderCalendar();
+      });
     }
   </script>
 </body>
