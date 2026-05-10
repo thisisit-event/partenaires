@@ -1404,7 +1404,19 @@
     let filters = { search: "", phase: "all", level: "all", sector: "all", priority: false };
 
     // Ville(s) prioritaire(s) — événement 2027 à Lagnieu.
-    const PRIORITY_CITIES = ["lagnieu"];
+    // Zone élargie : Lagnieu + communes résidentielles voisines (ambassadeurs locaux).
+    // Saint-Vulbas est volontairement exclu : cible B2B industrielle (PIPA), filtrée via le tag "pipa".
+    const PRIORITY_CITIES = [
+      "lagnieu",
+      "saint-sorlin-en-bugey", "saint sorlin",
+      "sault-brenaz", "sault-brénaz", "sault brenaz",
+      "villebois",
+      "souclin",
+      "loyettes",
+      "vaux-en-bugey", "vaux en bugey",
+      "bénonces", "benonces",
+      "blyes"
+    ];
     function isPriority(p) {
       const c = (p.city || "").toLowerCase();
       const a = (p.address || "").toLowerCase();
