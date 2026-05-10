@@ -594,6 +594,13 @@
       color: var(--amber);
       font-weight: 600;
     }
+    .chip-city {
+      background: rgba(129,140,248,.16);
+      border-color: rgba(129,140,248,.45);
+      color: var(--indigo);
+      font-weight: 600;
+    }
+    .chip-city:hover { background: rgba(129,140,248,.25); color: #c7d2fe; }
     .chip-priority:hover { color: #fde047; border-color: rgba(234,179,8,.5); }
     .chip-priority.active {
       background: rgba(234,179,8,.22);
@@ -617,6 +624,208 @@
       background: var(--surface-3); color: var(--fg);
       box-shadow: 0 1px 3px rgba(0,0,0,.3);
     }
+
+    /* ============ DASHBOARD VIEW ============ */
+    .dashboard {
+      padding: 1rem 1.6rem 3rem;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .dash-block {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      opacity: 0; transform: translateY(10px);
+      animation: fadeUp .55s var(--cubic) forwards;
+    }
+    .dash-block:nth-child(1) { animation-delay: .05s; }
+    .dash-block:nth-child(2) { animation-delay: .12s; }
+    .dash-block-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .dash-block-title {
+      display: flex; align-items: center; gap: .55rem;
+      font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--mu-2);
+    }
+    .dash-block-title svg { width: 14px; height: 14px; color: var(--indigo); }
+    .dash-block-title.priority svg { color: var(--amber); }
+
+    /* Priorité Lagnieu Showcase */
+    .dash-priority {
+      background: linear-gradient(135deg, rgba(234,179,8,.04) 0%, var(--surface-2) 100%);
+      border-color: rgba(234,179,8,.22);
+    }
+    .dash-priority .dash-block-head {
+      border-bottom-color: rgba(234,179,8,.15);
+    }
+    .dash-priority-banner {
+      display: flex; align-items: center; gap: .9rem;
+      padding: 1.1rem 1.3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .dash-priority-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, #fde047, #eab308);
+      display: flex; align-items: center; justify-content: center;
+      color: #0a0a0a; font-weight: 900; font-size: 1.2rem;
+      box-shadow: 0 0 22px rgba(234,179,8,.45);
+      flex-shrink: 0;
+    }
+    .dash-priority-text { flex: 1; min-width: 0; }
+    .dash-priority-em {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.55rem; line-height: 1; letter-spacing: .02em;
+      color: #fde047;
+    }
+    .dash-priority-sub {
+      font-size: .82rem; color: var(--mu); margin-top: .25rem;
+    }
+    .dash-priority-grid {
+      padding: 1rem 1.3rem 1.3rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: .65rem;
+    }
+    .dash-priority-card {
+      background: var(--surface); border: 1px solid rgba(234,179,8,.18);
+      border-radius: 10px;
+      padding: .8rem .9rem;
+      cursor: pointer;
+      transition: all .15s var(--cubic);
+      position: relative;
+    }
+    .dash-priority-card:hover {
+      background: var(--surface-3);
+      border-color: rgba(234,179,8,.5);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(234,179,8,.12);
+    }
+    .dash-priority-card-name { font-weight: 600; font-size: .88rem; color: var(--fg); margin-bottom: .35rem; }
+    .dash-priority-card-meta {
+      display: flex; align-items: center; gap: .4rem;
+      font-size: .68rem; color: var(--mu-2);
+    }
+    .dash-priority-card-status {
+      display: inline-flex; align-items: center; gap: .25rem;
+      padding: .12rem .4rem; border-radius: 4px;
+      font-size: .58rem; font-weight: 700; letter-spacing: .06em;
+    }
+    .dash-priority-card-action {
+      margin-top: .55rem; padding-top: .55rem;
+      border-top: 1px dashed var(--border);
+      font-size: .68rem; color: var(--mu);
+    }
+    .dash-priority-card-action.urgent { color: var(--rose); }
+    .dash-priority-card-action.warn { color: var(--amber); }
+    .dash-priority-card .star {
+      position: absolute; top: -7px; left: -7px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: linear-gradient(135deg, #fde047, #eab308);
+      color: #0a0a0a; font-size: .62rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 12px rgba(234,179,8,.55);
+    }
+    .dash-priority-empty {
+      padding: 2rem 1.3rem;
+      text-align: center;
+      color: var(--mu-2);
+      font-size: .85rem;
+    }
+
+    /* Carte par ville */
+    .dash-cities-sub {
+      font-family: 'Geist Mono', monospace; font-size: .68rem;
+      color: var(--mu-2);
+    }
+    .dash-cities-grid {
+      padding: 1rem 1.3rem 1.3rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: .7rem;
+    }
+    .dash-city-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: all .15s var(--cubic);
+      position: relative;
+    }
+    .dash-city-card:hover {
+      background: var(--surface-3);
+      border-color: var(--border-2);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,0,0,.35);
+    }
+    .dash-city-card.priority {
+      border-color: rgba(234,179,8,.4);
+      background: linear-gradient(135deg, rgba(234,179,8,.04) 0%, var(--surface) 100%);
+    }
+    .dash-city-card.priority::before {
+      content: '★';
+      position: absolute; top: 8px; right: 10px;
+      color: var(--amber);
+      font-size: .9rem;
+      text-shadow: 0 0 8px rgba(234,179,8,.5);
+    }
+    .dash-city-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: .4rem;
+      margin-bottom: .35rem;
+    }
+    .dash-city-name {
+      font-weight: 700; font-size: 1rem; color: var(--fg);
+      letter-spacing: -.005em;
+      max-width: calc(100% - 50px);
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .dash-city-count {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.35rem; line-height: 1; letter-spacing: .02em;
+      color: var(--indigo);
+    }
+    .dash-city-bar {
+      height: 5px; background: rgba(255,255,255,.06);
+      border-radius: 999px; overflow: hidden;
+      margin: .65rem 0 .6rem;
+      display: flex;
+    }
+    .dash-city-bar-seg {
+      height: 100%;
+      transition: width .8s var(--cubic);
+    }
+    .dash-city-stats {
+      display: flex; flex-wrap: wrap; gap: .3rem;
+      font-size: .65rem; color: var(--mu-2);
+    }
+    .dash-city-stat {
+      display: inline-flex; align-items: center; gap: .25rem;
+      padding: .15rem .4rem; border-radius: 4px;
+      background: rgba(255,255,255,.04);
+    }
+    .dash-city-stat .b-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--s-color, var(--mu-2));
+    }
+    .dash-city-stat strong { color: var(--fg); font-weight: 600; }
+
+    /* En mode dashboard, masquer certaines sections doublons */
+    body.is-dashboard .toolbar { display: none; }
+    body.is-dashboard .table-view,
+    body.is-dashboard .map-view,
+    body.is-dashboard .calendar-view,
+    body.is-dashboard .kanban { display: none !important; }
+    /* En mode kanban/table/etc, masquer le dashboard */
+    body:not(.is-dashboard) .dashboard { display: none !important; }
+    /* En mode kanban/table/etc, masquer aussi les KPIs/this-week/sectors/timeline (ils servent au dashboard) */
+    body:not(.is-dashboard) .kpis,
+    body:not(.is-dashboard) .this-week,
+    body:not(.is-dashboard) .sectors,
+    body:not(.is-dashboard) .timeline { display: none; }
 
     /* KANBAN */
     .kanban {
@@ -1247,12 +1456,17 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input type="search" id="search" class="search-input" placeholder="Rechercher une boîte, contact, ville…" />
       </div>
+      <div class="filter-group" id="filter-city"></div>
       <div class="filter-group" id="filter-priority"></div>
       <div class="filter-group" id="filter-phase"></div>
       <div class="filter-group" id="filter-level"></div>
       <div class="filter-group" id="filter-sector"></div>
       <div class="view-toggle">
-        <button data-view="kanban" class="active" title="Kanban">
+        <button data-view="dashboard" class="active" title="Dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </button>
+        <button data-view="kanban" title="Kanban">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
           Kanban
         </button>
@@ -1271,8 +1485,26 @@
       </div>
     </section>
 
+    <!-- Vue Dashboard (par défaut) -->
+    <section class="dashboard" id="view-dashboard">
+      <!-- Bandeau filtre ville actif (si filter.city !== "all" en mode kanban/table/carte) -->
+      <!-- Showcase Priorité Lagnieu -->
+      <div class="dash-block dash-priority" id="dash-priority"></div>
+      <!-- Carte par ville -->
+      <div class="dash-block dash-cities">
+        <div class="dash-block-head">
+          <div class="dash-block-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Pipeline par ville</span>
+          </div>
+          <div class="dash-cities-sub" id="dash-cities-sub">—</div>
+        </div>
+        <div class="dash-cities-grid" id="dash-cities-grid"></div>
+      </div>
+    </section>
+
     <!-- Vue kanban -->
-    <section class="kanban" id="view-kanban"></section>
+    <section class="kanban" id="view-kanban" hidden></section>
 
     <!-- Vue tableau -->
     <section class="table-view" id="view-table" hidden>
@@ -1401,7 +1633,7 @@
 
     // ============ STATE ============
     let DATA = null;
-    let filters = { search: "", phase: "all", level: "all", sector: "all", priority: false };
+    let filters = { search: "", phase: "all", level: "all", sector: "all", priority: false, city: "all" };
 
     // Ville(s) prioritaire(s) — événement 2027 à Lagnieu.
     // Zone élargie : Lagnieu + communes résidentielles voisines (ambassadeurs locaux).
@@ -1422,7 +1654,7 @@
       const a = (p.address || "").toLowerCase();
       return PRIORITY_CITIES.some(pc => c.includes(pc) || a.includes(pc));
     }
-    let currentView = "kanban";
+    let currentView = "dashboard";
     let mapState = { instance: null, markers: [], tourMode: false, tourSelection: new Set() };
     let calendarState = { year: null, month: null };
 
@@ -1442,11 +1674,9 @@
       window.TODAY = new Date(); window.TODAY.setHours(12, 0, 0, 0);
 
       renderTopMeta();
-      renderKPIs();
-      renderSectors();
-      renderThisWeek();
-      renderTimeline();
       renderFilters();
+      // Initial view = dashboard, qui appellera les sous-renders nécessaires
+      document.body.classList.add("is-dashboard");
       renderView();
       bindEvents();
     }
@@ -1541,6 +1771,7 @@
       if (filters.phase !== "all" && p.phase !== filters.phase) return false;
       if (filters.level !== "all" && p.level !== filters.level) return false;
       if (filters.sector !== "all" && (p.sector || "—") !== filters.sector) return false;
+      if (filters.city !== "all" && (p.city || "—") !== filters.city) return false;
       if (filters.search) {
         const q = filters.search.toLowerCase();
         const hay = [
@@ -1836,6 +2067,18 @@
 
     // ============ FILTERS ============
     function renderFilters() {
+      // Filtre ville (apparait quand drill-down depuis dashboard)
+      const cityEl = document.getElementById("filter-city");
+      if (filters.city !== "all") {
+        cityEl.innerHTML = `
+          <button class="chip chip-city active" data-city-clear="1" title="Retirer le filtre ville">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px;margin-right:.2rem;vertical-align:-1px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            ${filters.city} <span style="margin-left:.35rem;opacity:.7">✕</span>
+          </button>`;
+      } else {
+        cityEl.innerHTML = "";
+      }
+
       // Filtre priorité (Lagnieu)
       const priEl = document.getElementById("filter-priority");
       const priCount = (DATA.prospects || []).filter(isPriority).length;
@@ -1854,6 +2097,152 @@
       if (sectorNames.length === 0) { secEl.innerHTML = ""; return; }
       const sectors = [{ id: "all", label: "Tous secteurs" }, ...sectorNames.map(s => ({ id: s, label: s }))];
       secEl.innerHTML = sectors.map(s => `<button class="chip ${filters.sector === s.id ? "active" : ""}" data-sector="${s.id.replace(/"/g, "&quot;")}">${s.label}</button>`).join("");
+    }
+
+    // ============ DASHBOARD VIEW ============
+    function getCities() {
+      const map = new Map();
+      (DATA.prospects || []).forEach(p => {
+        const key = (p.city || "—").trim();
+        if (!map.has(key)) map.set(key, []);
+        map.get(key).push(p);
+      });
+      const result = [];
+      for (const [name, items] of map) {
+        const stats = {};
+        DATA.meta.statuses.forEach(s => stats[s.id] = 0);
+        items.forEach(p => { if (stats[p.status] !== undefined) stats[p.status]++; });
+        const signed = stats["accepte"] || 0;
+        const refused = (stats["refus"] || 0) + (stats["sans-suite"] || 0);
+        const inProgress = (stats["contacte"] || 0) + (stats["rdv"] || 0) + (stats["negociation"] || 0);
+        const toContact = stats["a-contacter"] || 0;
+        const isPrio = PRIORITY_CITIES.some(pc => name.toLowerCase().includes(pc));
+        result.push({ name, items, stats, signed, refused, inProgress, toContact, total: items.length, isPriority: isPrio });
+      }
+      result.sort((a, b) => {
+        if (a.isPriority !== b.isPriority) return a.isPriority ? -1 : 1;
+        if (a.signed !== b.signed) return b.signed - a.signed;
+        if (a.inProgress !== b.inProgress) return b.inProgress - a.inProgress;
+        return b.total - a.total;
+      });
+      return result;
+    }
+
+    function renderDashboard() {
+      // 1) Showcase Priorité Lagnieu
+      const priorityProspects = (DATA.prospects || [])
+        .filter(p => isPriority(p))
+        .sort((a, b) => {
+          // Prioriser celles avec une action urgente, puis les autres
+          const aDate = a.nextActionDate ? parseDate(a.nextActionDate).getTime() : Infinity;
+          const bDate = b.nextActionDate ? parseDate(b.nextActionDate).getTime() : Infinity;
+          if (aDate !== bDate) return aDate - bDate;
+          return (STATUS_RANK[b.status] || 0) - (STATUS_RANK[a.status] || 0);
+        });
+
+      const priorityActive = priorityProspects.filter(p => !["accepte","refus","sans-suite"].includes(p.status)).length;
+      const prioritySigned = priorityProspects.filter(p => p.status === "accepte").length;
+
+      const priEl = document.getElementById("dash-priority");
+      if (priorityProspects.length === 0) {
+        priEl.innerHTML = `
+          <div class="dash-block-head">
+            <div class="dash-block-title priority">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+              <span>Priorité Lagnieu · lieu de l'event 2027</span>
+            </div>
+          </div>
+          <div class="dash-priority-empty">Aucun prospect priorité Lagnieu pour l'instant. Ajoutons des boîtes locales à Lagnieu et alentours.</div>`;
+      } else {
+        priEl.innerHTML = `
+          <div class="dash-block-head">
+            <div class="dash-block-title priority">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+              <span>Priorité Lagnieu · lieu de l'event 2027</span>
+            </div>
+            <div class="dash-cities-sub">${prioritySigned ? `<strong style="color:var(--emerald)">${prioritySigned} signé${prioritySigned>1?"s":""}</strong> · ` : ""}<strong style="color:var(--amber)">${priorityActive}</strong> actif${priorityActive>1?"s":""} / ${priorityProspects.length}</div>
+          </div>
+          <div class="dash-priority-banner">
+            <div class="dash-priority-icon">★</div>
+            <div class="dash-priority-text">
+              <div class="dash-priority-em">${priorityProspects.length} ambassadeur${priorityProspects.length>1?"s":""} potentiel${priorityProspects.length>1?"s":""}</div>
+              <div class="dash-priority-sub">Boîtes de Lagnieu et alentours immédiats — ROI partenariat démultiplié pour elles, premières à contacter.</div>
+            </div>
+          </div>
+          <div class="dash-priority-grid">
+            ${priorityProspects.slice(0, 12).map(p => {
+              const st = getStatus(p.status);
+              let action = "";
+              if (p.nextAction) {
+                const dateLabel = p.nextActionDate ? fmtDateShort(p.nextActionDate) : "—";
+                const days = p.nextActionDate ? daysBetween(window.TODAY, parseDate(p.nextActionDate)) : null;
+                let cls = "";
+                if (days !== null && days < 0) cls = "urgent";
+                else if (days !== null && days <= 3) cls = "warn";
+                action = `<div class="dash-priority-card-action ${cls}"><strong>${dateLabel}</strong> · ${p.nextAction}</div>`;
+              }
+              return `
+                <div class="dash-priority-card" data-id="${p.id}">
+                  <div class="star">★</div>
+                  <div class="dash-priority-card-name">${p.name}</div>
+                  <div class="dash-priority-card-meta">
+                    <span class="dash-priority-card-status" style="background:${st.color}22;color:${st.color}">${st.label}</span>
+                    ${p.city ? `<span>· ${p.city}</span>` : ""}
+                  </div>
+                  ${action}
+                </div>`;
+            }).join("")}
+          </div>`;
+      }
+      priEl.querySelectorAll(".dash-priority-card").forEach(el => {
+        el.addEventListener("click", () => openDrawer(el.dataset.id));
+      });
+
+      // 2) Carte par ville
+      const cities = getCities();
+      document.getElementById("dash-cities-sub").innerHTML = `<strong style="color:var(--fg)">${cities.length}</strong> villes · ${(DATA.prospects||[]).length} prospects au total`;
+
+      const grid = document.getElementById("dash-cities-grid");
+      grid.innerHTML = cities.map(c => {
+        const total = c.total;
+        const pctSigned = total > 0 ? (c.signed / total) * 100 : 0;
+        const pctActive = total > 0 ? (c.inProgress / total) * 100 : 0;
+        const pctTodo = total > 0 ? (c.toContact / total) * 100 : 0;
+        const pctRefused = total > 0 ? (c.refused / total) * 100 : 0;
+        return `
+          <div class="dash-city-card ${c.isPriority ? "priority" : ""}" data-city="${c.name.replace(/"/g, "&quot;")}">
+            <div class="dash-city-head">
+              <div class="dash-city-name">${c.name}</div>
+              <div class="dash-city-count">${total}</div>
+            </div>
+            <div class="dash-city-bar">
+              ${c.signed ? `<div class="dash-city-bar-seg" style="width:${pctSigned}%;background:var(--emerald)"></div>` : ""}
+              ${c.inProgress ? `<div class="dash-city-bar-seg" style="width:${pctActive}%;background:var(--amber)"></div>` : ""}
+              ${c.toContact ? `<div class="dash-city-bar-seg" style="width:${pctTodo}%;background:rgba(255,255,255,.18)"></div>` : ""}
+              ${c.refused ? `<div class="dash-city-bar-seg" style="width:${pctRefused}%;background:rgba(244,63,94,.4)"></div>` : ""}
+            </div>
+            <div class="dash-city-stats">
+              ${c.signed ? `<span class="dash-city-stat" style="--s-color:var(--emerald)"><span class="b-dot"></span><strong>${c.signed}</strong> signé${c.signed>1?"s":""}</span>` : ""}
+              ${c.inProgress ? `<span class="dash-city-stat" style="--s-color:var(--amber)"><span class="b-dot"></span><strong>${c.inProgress}</strong> en cours</span>` : ""}
+              ${c.toContact ? `<span class="dash-city-stat" style="--s-color:rgba(255,255,255,.5)"><span class="b-dot"></span><strong>${c.toContact}</strong> à contacter</span>` : ""}
+              ${c.refused ? `<span class="dash-city-stat" style="--s-color:rgba(244,63,94,.6)"><span class="b-dot"></span><strong>${c.refused}</strong> refus/abandon</span>` : ""}
+            </div>
+          </div>`;
+      }).join("");
+
+      grid.querySelectorAll(".dash-city-card").forEach(el => {
+        el.addEventListener("click", () => {
+          const city = el.dataset.city;
+          // Drill-down : on filtre par cette ville et on bascule en Kanban
+          filters.city = city;
+          currentView = "kanban";
+          document.querySelectorAll(".view-toggle button").forEach(b => b.classList.toggle("active", b.dataset.view === "kanban"));
+          renderFilters();
+          renderView();
+          // Scroll en haut
+          window.scrollTo({top: 0, behavior: "smooth"});
+        });
+      });
     }
 
     // ============ KANBAN ============
@@ -2155,10 +2544,20 @@
     }
 
     function renderView() {
-      ["kanban","table","map","calendar"].forEach(v => {
-        document.getElementById("view-" + v).hidden = (currentView !== v);
+      ["dashboard","kanban","table","map","calendar"].forEach(v => {
+        const el = document.getElementById("view-" + v);
+        if (el) el.hidden = (currentView !== v);
       });
-      if (currentView === "kanban") renderKanban();
+      // Toggle body class pour masquer toolbar/panels selon le mode
+      document.body.classList.toggle("is-dashboard", currentView === "dashboard");
+      if (currentView === "dashboard") {
+        // Refresh des panels du haut (KPIs, this week, etc.) qui restent visibles
+        renderKPIs();
+        renderThisWeek();
+        renderTimeline();
+        renderSectors();
+        renderDashboard();
+      } else if (currentView === "kanban") renderKanban();
       else if (currentView === "table") renderTable();
       else if (currentView === "map") renderMap();
       else if (currentView === "calendar") renderCalendar();
@@ -2339,6 +2738,14 @@
     function bindEvents() {
       document.getElementById("search").addEventListener("input", (e) => {
         filters.search = e.target.value;
+        renderView();
+      });
+
+      document.getElementById("filter-city").addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-city-clear]");
+        if (!btn) return;
+        filters.city = "all";
+        renderFilters();
         renderView();
       });
 
