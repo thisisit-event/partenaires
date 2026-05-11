@@ -35,6 +35,7 @@
       --emerald: #10b981;
       --amber: #eab308;
       --sky: #38bdf8;
+      --teal: #14b8a6;
       --rose: #f43f5e;
       --cubic: cubic-bezier(.4,0,.2,1);
     }
@@ -231,6 +232,7 @@
     .kpi[data-accent="violet"] { --accent: var(--violet); }
     .kpi[data-accent="amber"] { --accent: var(--amber); }
     .kpi[data-accent="sky"] { --accent: var(--sky); }
+    .kpi[data-accent="teal"] { --accent: var(--teal); }
     .kpi-label {
       font-size: .65rem; letter-spacing: .14em; text-transform: uppercase;
       color: var(--mu-2); margin-bottom: .55rem;
@@ -2166,6 +2168,18 @@
       return lvl.amount || 0;
     }
 
+    // Apport en nature : un prospect peut avoir un pack 100% in-kind (amountKind="in-kind")
+    // et/ou un bonus en nature ajouté à un pack cash (amountInKindBonus).
+    function isInKind(p) { return p.amountKind === "in-kind"; }
+    function expectedCash(p) {
+      return isInKind(p) ? 0 : expectedAmount(p);
+    }
+    function expectedInKind(p) {
+      const base = isInKind(p) ? expectedAmount(p) : 0;
+      const bonus = typeof p.amountInKindBonus === "number" ? p.amountInKindBonus : 0;
+      return base + bonus;
+    }
+
     // Statut "leader" d'un secteur = le plus avancé parmi ses prospects
     const ACTIVE_STATUSES = ["a-contacter","contacte","rdv","negociation"];
     const STATUS_RANK = { "accepte": 100, "negociation": 50, "rdv": 40, "contacte": 30, "a-contacter": 20, "refus": 5, "sans-suite": 1 };
@@ -2351,16 +2365,21 @@
 
     function renderKPIs() {
       const prospects = DATA.prospects || [];
-      const signed = prospects.filter(p => p.status === "accepte").reduce((s, p) => s + (p.amountSigned || expectedAmount(p)), 0);
-      const pipeline = prospects.filter(p => !["accepte","refus","sans-suite"].includes(p.status)).reduce((s, p) => s + expectedAmount(p), 0);
+      const isOpen = (p) => !["accepte","refus","sans-suite"].includes(p.status);
+      const signedCash = prospects.filter(p => p.status === "accepte").reduce((s, p) => s + (p.amountSigned || expectedCash(p)), 0);
+      const signedInKind = prospects.filter(p => p.status === "accepte").reduce((s, p) => s + expectedInKind(p), 0);
+      const pipelineCash = prospects.filter(isOpen).reduce((s, p) => s + expectedCash(p), 0);
+      const inKindOpen = prospects.filter(isOpen).reduce((s, p) => s + expectedInKind(p), 0);
+      const inKindTotal = signedInKind + inKindOpen;
+      const inKindCount = prospects.filter(p => isOpen(p) && expectedInKind(p) > 0).length;
       const objective = DATA.meta.objective || 50000;
-      const pct = Math.min(100, Math.round((signed / objective) * 100));
+      const pct = Math.min(100, Math.round((signedCash / objective) * 100));
       const totalContacted = prospects.filter(p => p.status !== "a-contacter").length;
       const totalAccepted = prospects.filter(p => p.status === "accepte").length;
       const totalRefused = prospects.filter(p => p.status === "refus").length;
       const decided = totalAccepted + totalRefused;
       const conv = decided > 0 ? Math.round((totalAccepted / decided) * 100) : 0;
-      const openCount = prospects.filter(p => !["accepte","refus","sans-suite"].includes(p.status)).length;
+      const openCount = prospects.filter(isOpen).length;
 
       const sectors = getSectors();
       const sectorsLocked = sectors.filter(s => s.state === "locked").length;
@@ -2368,11 +2387,12 @@
 
       const cards = [
         { accent: "indigo", label: "Objectif", value: objective, extra: `Phase 1 : <strong>${fmtEUR(25000)}</strong> · Phase 2 : <strong>${fmtEUR(25000)}</strong>`, fmt: fmtEUR, progress: pct },
-        { accent: "emerald", label: "Signé", value: signed, extra: `<strong>${pct}%</strong> de l'objectif · ${totalAccepted} partenaire${totalAccepted > 1 ? "s" : ""}`, fmt: fmtEUR },
-        { accent: "violet", label: "Pipeline en cours", value: pipeline, extra: (() => {
-          const undef = prospects.filter(p => !["accepte","refus","sans-suite"].includes(p.status) && (!p.level || p.level === "ouvert")).length;
+        { accent: "emerald", label: "Signé · cash", value: signedCash, extra: `<strong>${pct}%</strong> de l'objectif · ${totalAccepted} partenaire${totalAccepted > 1 ? "s" : ""}${signedInKind ? ` · <strong>+ ${fmtEUR(signedInKind)}</strong> en nature` : ""}`, fmt: fmtEUR },
+        { accent: "violet", label: "Pipeline · cash", value: pipelineCash, extra: (() => {
+          const undef = prospects.filter(p => isOpen(p) && (!p.level || p.level === "ouvert") && !isInKind(p)).length;
           return `<strong>${openCount}</strong> dossiers ouverts${undef ? ` · <strong>${undef}</strong> à définir` : ""}`;
         })(), fmt: fmtEUR },
+        { accent: "teal", label: "Apport en nature", value: inKindTotal, extra: inKindTotal > 0 ? `<strong>${inKindCount}</strong> dossier${inKindCount > 1 ? "s" : ""} actif${inKindCount > 1 ? "s" : ""} · valorisation hors trésorerie` : `Aucun apport en nature pour le moment`, fmt: fmtEUR },
         { accent: "amber", label: "Prospects", value: prospects.length, extra: (() => {
           const priCount = prospects.filter(isPriority).length;
           const priActive = prospects.filter(p => isPriority(p) && p.status !== "accepte" && p.status !== "refus" && p.status !== "sans-suite").length;
@@ -3137,7 +3157,8 @@
     function renderCard(p, idx) {
       const lvl = getLevel(p.level);
       const phase = getPhase(p.phase);
-      const target = expectedAmount(p);
+      const cashTarget = expectedCash(p);
+      const inKindTarget = expectedInKind(p);
       const signed = p.amountSigned;
       let action = "";
       if (p.nextAction) {
@@ -3175,7 +3196,8 @@
             <div class="card-level" style="--lvl-bg:${lvl.color}22;--lvl-color:${lvl.color}">${lvl.label}</div>
           </div>
           <div class="card-meta">
-            ${signed ? `<span class="amt" style="color:var(--emerald)">${fmtEUR(signed)}</span>` : `<span class="amt">${fmtEUR(target)}</span>`}
+            ${signed ? `<span class="amt" style="color:var(--emerald)">${fmtEUR(signed)}</span>` : (cashTarget > 0 ? `<span class="amt">${fmtEUR(cashTarget)}</span>` : (inKindTarget > 0 ? `<span class="amt" style="color:var(--teal)">${fmtEUR(inKindTarget)} nat.</span>` : `<span class="amt">${fmtEUR(0)}</span>`))}
+            ${cashTarget > 0 && inKindTarget > 0 && !signed ? `<span style="color:var(--teal)">+ ${fmtEUR(inKindTarget)} nat.</span>` : ""}
             ${p.city ? `<span>· ${p.city}</span>` : ""}
             ${phase ? `<span>· ${phase.id.toUpperCase()}</span>` : ""}
           </div>
@@ -3198,13 +3220,20 @@
         const lvl = getLevel(p.level);
         const st = getStatus(p.status);
         const phase = getPhase(p.phase);
+        const cash = expectedCash(p);
+        const inKind = expectedInKind(p);
+        const cibleHtml = (() => {
+          if (cash > 0 && inKind > 0) return `${fmtEUR(cash)} <span style="color:var(--teal);font-size:.78rem">+ ${fmtEUR(inKind)} nat.</span>`;
+          if (inKind > 0 && cash === 0) return `<span style="color:var(--teal)">${fmtEUR(inKind)} <span style="font-size:.78rem">nature</span></span>`;
+          return fmtEUR(cash);
+        })();
         return `
           <tr data-id="${p.id}">
             <td class="td-name">${p.name}</td>
             <td><span class="badge" style="background:${lvl.color}22;color:${lvl.color}"><span class="b-dot" style="--b-color:${lvl.color}"></span>${lvl.label}</span></td>
             <td><span class="badge" style="background:${st.color}22;color:${st.color}"><span class="b-dot" style="--b-color:${st.color}"></span>${st.label}</span></td>
             <td>${phase ? phase.id.toUpperCase() : "—"}</td>
-            <td class="td-amt">${fmtEUR(expectedAmount(p))}</td>
+            <td class="td-amt">${cibleHtml}</td>
             <td class="td-amt" style="color:var(--emerald)">${p.amountSigned ? fmtEUR(p.amountSigned) : "—"}</td>
             <td style="color:var(--mu)">${p.nextAction ? `${fmtDateShort(p.nextActionDate)} · ${p.nextAction}` : "—"}</td>
             <td style="color:var(--mu)">${p.city || "—"}</td>
@@ -3519,14 +3548,21 @@
           <div class="d-section-title">Montants</div>
           <div class="d-amounts">
             <div class="d-amount">
-              <div class="d-amount-label">Cible</div>
-              <div class="d-amount-value">${fmtEUR(expectedAmount(p))}</div>
+              <div class="d-amount-label">Cible cash</div>
+              <div class="d-amount-value">${fmtEUR(expectedCash(p))}</div>
             </div>
             <div class="d-amount">
               <div class="d-amount-label">Signé</div>
               <div class="d-amount-value signed">${p.amountSigned ? fmtEUR(p.amountSigned) : "—"}</div>
             </div>
           </div>
+          ${expectedInKind(p) > 0 ? `
+          <div class="d-amounts" style="margin-top:.55rem">
+            <div class="d-amount" style="grid-column:span 2;border-color:var(--teal);background:rgba(20,184,166,.08)">
+              <div class="d-amount-label" style="color:var(--teal)">Apport en nature${p.amountInKindLabel ? ` · ${p.amountInKindLabel}` : ""}</div>
+              <div class="d-amount-value" style="color:var(--teal)">${fmtEUR(expectedInKind(p))}</div>
+            </div>
+          </div>` : ""}
         </div>
 
         ${p.nextAction ? `

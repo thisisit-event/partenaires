@@ -3339,12 +3339,15 @@
       "level": "partenaire",
       "status": "negociation",
       "phase": "p1",
+      "amountKind": "cash",
+      "amountInKindBonus": 500,
+      "amountInKindLabel": "lunettes offertes",
       "tags": [
         "amberieuvitrines",
         "base-full",
         "goodies"
       ],
-      "notes": "Source : Ambérieu Vitrines · https://amberieuvitrines.fr/boutique/enseigne/atol\nAdresse précise à récupérer sur la fiche.\nActivité (base FULL) : OPTICIEN / AUDIOPROTHÉSISTE\nDeal 2026-05-11 : pack Partenaire 500 € cash + 500 € en lunettes offertes (apport en nature, hors pipeline cash) · bénéficie des avantages Officiel.",
+      "notes": "Source : Ambérieu Vitrines · https://amberieuvitrines.fr/boutique/enseigne/atol\nAdresse précise à récupérer sur la fiche.\nActivité (base FULL) : OPTICIEN / AUDIOPROTHÉSISTE\nDeal 2026-05-11 : pack Partenaire 500 € cash + 500 € en lunettes offertes (apport en nature) · bénéficie des avantages Officiel.",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -17620,8 +17623,11 @@
       "level": "officiel",
       "status": "negociation",
       "phase": "p1",
+      "amountKind": "in-kind",
+      "amountInKindLabel": "supports d'impression / marketing",
       "tags": [
-        "base-full"
+        "base-full",
+        "apport-nature"
       ],
       "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : IMPRIMERIE, CRÉATION GRAPHIQUE, MARQUAGE TEXTILE, SERVICES AUX ENTREPRISES.\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : IMPRIMERIE ET STUDIO GRAPHIQUE : CRÉATION, IMPRESSION, MARQUAGE TEXTILE.\n\nDeal 2026-05-11 : pack Officiel 1000 € envisagé sur 2027.",
       "timeline": [
