@@ -3336,7 +3336,7 @@
       "sector": "Opticien",
       "address": "Galerie commerciale C/C Intermarché, 01500 AMBERIEU EN BUGEY",
       "city": "Amberieu en Bugey",
-      "level": "officiel",
+      "level": "partenaire",
       "status": "negociation",
       "phase": "p1",
       "tags": [
@@ -3344,7 +3344,7 @@
         "base-full",
         "goodies"
       ],
-      "notes": "Source : Ambérieu Vitrines · https://amberieuvitrines.fr/boutique/enseigne/atol\nAdresse précise à récupérer sur la fiche.\nActivité (base FULL) : OPTICIEN / AUDIOPROTHÉSISTE\nOffre 2026-05-11 : pack Officiel 1000 € = 500 € cash + 500 € en goodies (apport en nature).",
+      "notes": "Source : Ambérieu Vitrines · https://amberieuvitrines.fr/boutique/enseigne/atol\nAdresse précise à récupérer sur la fiche.\nActivité (base FULL) : OPTICIEN / AUDIOPROTHÉSISTE\nDeal 2026-05-11 : pack Partenaire 500 € cash + 500 € en lunettes offertes (apport en nature, hors pipeline cash) · bénéficie des avantages Officiel.",
       "timeline": [
         {
           "date": "2026-05-10",
@@ -3354,7 +3354,7 @@
         {
           "date": "2026-05-11",
           "type": "negociation",
-          "text": "Atol · pack Officiel 1000 € : 500 € cash + 500 € goodies"
+          "text": "Atol · pack Partenaire 500 € cash + 500 € goodies (avantages Officiel)"
         }
       ],
       "createdAt": "2026-05-10",
@@ -17617,22 +17617,27 @@
       "sector": "Communication / Marketing",
       "address": "40 Avenue de Verdun, 01800 Meximieux",
       "city": "Meximieux",
-      "level": "ouvert",
-      "status": "a-contacter",
+      "level": "officiel",
+      "status": "negociation",
       "phase": "p1",
       "tags": [
         "base-full"
       ],
-      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : IMPRIMERIE, CRÉATION GRAPHIQUE, MARQUAGE TEXTILE, SERVICES AUX ENTREPRISES.\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : IMPRIMERIE ET STUDIO GRAPHIQUE : CRÉATION, IMPRESSION, MARQUAGE TEXTILE.",
+      "notes": "Source : base FULL (fichier Numbers Morgan)\nActivité : IMPRIMERIE, CRÉATION GRAPHIQUE, MARQUAGE TEXTILE, SERVICES AUX ENTREPRISES.\n\n--- Fusion ---\nSource : base FULL (fichier Numbers Morgan)\nActivité : IMPRIMERIE ET STUDIO GRAPHIQUE : CRÉATION, IMPRESSION, MARQUAGE TEXTILE.\n\nDeal 2026-05-11 : pack Officiel 1000 € envisagé sur 2027.",
       "timeline": [
         {
           "date": "2026-05-10",
           "type": "ajout",
           "text": "Ajouté depuis base FULL Morgan (Numbers)"
+        },
+        {
+          "date": "2026-05-11",
+          "type": "negociation",
+          "text": "Pixel Chrom · pack Officiel 1000 € en négociation 2027"
         }
       ],
       "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
+      "updatedAt": "2026-05-11",
       "contacts": [
         {
           "name": "Contact magasin",
