@@ -2,7 +2,7 @@
   "meta": {
     "objective": 50000,
     "currency": "EUR",
-    "updatedAt": "2026-05-10",
+    "updatedAt": "2026-05-11",
     "phases": {
       "p1": {
         "id": "p1",
@@ -764,7 +764,7 @@
       "sector": "Cave · bières / vins",
       "address": "37 Avenue de la Libération, 01500 Ambérieu-en-Bugey",
       "city": "Ambérieu-en-Bugey",
-      "level": "majeur",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -1397,7 +1397,7 @@
       "sector": "Brasserie locale",
       "address": "Rue de l'Artisanat, 01800 Villieu-Loyes-Mollon",
       "city": "Villieu-Loyes-Mollon",
-      "level": "majeur",
+      "level": "ouvert",
       "status": "a-contacter",
       "phase": "p1",
       "tags": [
@@ -3336,23 +3336,29 @@
       "sector": "Opticien",
       "address": "Galerie commerciale C/C Intermarché, 01500 AMBERIEU EN BUGEY",
       "city": "Amberieu en Bugey",
-      "level": "ouvert",
-      "status": "a-contacter",
+      "level": "officiel",
+      "status": "negociation",
       "phase": "p1",
       "tags": [
         "amberieuvitrines",
-        "base-full"
+        "base-full",
+        "goodies"
       ],
-      "notes": "Source : Ambérieu Vitrines · https://amberieuvitrines.fr/boutique/enseigne/atol\nAdresse précise à récupérer sur la fiche.\nActivité (base FULL) : OPTICIEN / AUDIOPROTHÉSISTE",
+      "notes": "Source : Ambérieu Vitrines · https://amberieuvitrines.fr/boutique/enseigne/atol\nAdresse précise à récupérer sur la fiche.\nActivité (base FULL) : OPTICIEN / AUDIOPROTHÉSISTE\nOffre 2026-05-11 : pack Officiel 1000 € = 500 € cash + 500 € en goodies (apport en nature).",
       "timeline": [
         {
           "date": "2026-05-10",
           "type": "ajout",
           "text": "Ajouté depuis liste Ambérieu Vitrines"
+        },
+        {
+          "date": "2026-05-11",
+          "type": "negociation",
+          "text": "Atol · pack Officiel 1000 € : 500 € cash + 500 € goodies"
         }
       ],
       "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
+      "updatedAt": "2026-05-11",
       "coords": [
         45.975775,
         5.343037
@@ -4072,23 +4078,29 @@
       "sector": "Bâtiment · menuiserie",
       "address": "63 Rue Alexandre Bérard, 01500 AMBERIEU EN BUGEY",
       "city": "Amberieu en Bugey",
-      "level": "ouvert",
-      "status": "a-contacter",
+      "level": "partenaire",
+      "status": "negociation",
       "phase": "p1",
       "tags": [
         "amberieuvitrines",
-        "base-full"
+        "base-full",
+        "relance"
       ],
-      "notes": "Source : Ambérieu Vitrines · https://amberieuvitrines.fr/boutique/enseigne/ronzat-menuiseries-exterieures\nAdresse précise à récupérer sur la fiche.\nActivité (base FULL) : MENUISERIES EXTÉRIEURES, RÉNOVATION, PRODUITS FRANÇAIS, SERVICE COMPLET.",
+      "notes": "Source : Ambérieu Vitrines · https://amberieuvitrines.fr/boutique/enseigne/ronzat-menuiseries-exterieures\nAdresse précise à récupérer sur la fiche.\nActivité (base FULL) : MENUISERIES EXTÉRIEURES, RÉNOVATION, PRODUITS FRANÇAIS, SERVICE COMPLET.\nRelance 2026-05-11 : pack Partenaire 500 € sur l'édition 2027.",
       "timeline": [
         {
           "date": "2026-05-10",
           "type": "ajout",
           "text": "Ajouté depuis liste Ambérieu Vitrines"
+        },
+        {
+          "date": "2026-05-11",
+          "type": "relance",
+          "text": "Ronzat relance · pack Partenaire 500 € confirmé sur 2027"
         }
       ],
       "createdAt": "2026-05-10",
-      "updatedAt": "2026-05-10",
+      "updatedAt": "2026-05-11",
       "coords": [
         45.962343,
         5.356702
