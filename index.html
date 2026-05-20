@@ -3040,11 +3040,10 @@
             <div>
                 <div class="section-label mb-5">Formulaire de contact</div>
                 <form id="partnerForm" onsubmit="handleSubmit(event)" style="display:flex;flex-direction:column;gap:0.875rem;">
-                    <input type="hidden" name="_subject" value="Demande partenariat 2027">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_autoresponse" value="Bonjour,&#10;&#10;Merci pour votre intérêt envers Enjoylife 2027.&#10;&#10;Nous avons bien reçu votre demande de partenariat et reviendrons vers vous très rapidement pour échanger sur votre projet et le niveau d'engagement le plus adapté.&#10;&#10;En attendant, n'hésitez pas à nous joindre directement :&#10;· Morgan (WhatsApp) : +33 7 44 98 00 15&#10;· Email : contact@mgentertainment.fr&#10;&#10;À très vite,&#10;&#10;·&#10;MG Entertainment&#10;Association organisatrice d'Enjoylife&#10;contact@mgentertainment.fr · linkedin.com/company/mgentertainment">
-                    <input type="text" name="_honey" style="display:none">
+                    <input type="hidden" name="access_key" value="91bff01e-6970-431f-886f-a446e4dc4d79">
+                    <input type="hidden" name="subject" value="Demande partenariat 2027">
+                    <input type="hidden" name="from_name" value="Site partenaires Enjoylife">
+                    <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <input type="text" name="prenom" placeholder="Prénom *" class="form-input" required>
                         <input type="text" name="entreprise" placeholder="Entreprise *" class="form-input" required>
@@ -3390,20 +3389,20 @@ async function handleSubmit(e) {
 
     const fd = new FormData(form);
     fd.set('sponsor2026', form.querySelector('[name="sponsor2026"]').checked ? 'Oui' : 'Non');
-    fd.set('_subject', 'Demande partenariat 2027 · ' + (fd.get('entreprise') || ''));
+    fd.set('subject', 'Demande partenariat 2027 · ' + (fd.get('entreprise') || ''));
 
     const originalLabel = submitBtn.innerHTML;
     submitBtn.disabled = true;
     submitBtn.innerHTML = 'Envoi en cours…';
 
     try {
-        const res = await fetch('https://formsubmit.co/ajax/contact@mgentertainment.fr', {
+        const res = await fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             headers: { 'Accept': 'application/json' },
             body: fd
         });
         const data = await res.json();
-        if (res.ok && (data.success === 'true' || data.success === true)) {
+        if (res.ok && data.success) {
             successEl.style.display = 'block';
             form.reset();
         } else {
